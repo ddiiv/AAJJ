@@ -16,6 +16,7 @@ const FutbolCatalog = () => {
 
   useEffect(() => {
    // getProducts().then(data => {
+    // temporal por array hardcodeado
     setListaProductos(products)
     setProductosFiltrados(products)
     //  setListaProductos(data)
