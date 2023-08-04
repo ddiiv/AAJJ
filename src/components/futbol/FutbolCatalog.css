@@ -1,20 +1,24 @@
 
-  
+  .products{
+    margin-left: 20vw;
+    width: 70vw;
+    height: 200vw;
+  }
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px; 
-    width: 17vw;
-    height: 30vw;
+    width: 18vw;
+    height: 20vw;
     padding: 1.5vw;
     margin: 2vw;
     display: flex;
     float: left;
     justify-content: center;
-    
+
   }
   @media screen and (max-width: 600px) {
-    .card, .card img, .card .title, .card .price {
+    .card, .card img, .card .title, .card .price ,.products{
       width: 100%;
       height: 100%;
       font-size: 100%;
@@ -23,8 +27,10 @@
   
   .title{
     color: rgb(58, 58, 58);
-    font-size: 1.45vw;
-    text-transform: capitalize;
+    
+    text-transform: capitalize;   
+    font-size:large;
+    font-style: normal;
   }
   .price{
     color: rgb(58, 58, 58);

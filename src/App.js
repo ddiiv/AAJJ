@@ -23,10 +23,14 @@ return (
     </header>
     </div>
     <body>
-      <div className='main'>
+      
         <FutbolCatalog/>
-      </div>
+
+    
     </body>
+
+
+    
   </div>
   );
 }
