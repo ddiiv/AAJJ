@@ -1,7 +1,18 @@
-.App {
-  text-align: center;
+.App{
+  font-size: larger;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 1vw;
 }
-/* body {margin:0;}
+head {margin:0;}
+body {margin:0;  background-color: #f5f5f5;}
+
+.main{
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
 .home {
   list-style-type: none;
@@ -33,9 +44,12 @@ a {
 a:hover {
   background-color: #bdbdbd6e;
 }
+.navbarContent{
 
+}
 .navbar{
-  padding:0px;margin-top:30px;
+  padding:0px;margin-top:20px;
+  text-align: center;
 }
 
 ul .icons{
@@ -49,20 +63,21 @@ a .img{
   object-fit: cover;
 } */
 
-body {margin: 0;}
+body {margin: 0; z-index: -1;}
 
 ul.topnav {
   list-style-type: none;
   margin: 0;
   padding: 20px;
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: #ffffffe1;
   border-bottom: black 0.5px solid;
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   align-items: center;
+  z-index: 1;
 
 }
 
@@ -79,15 +94,16 @@ ul.topnav li a {
 ul.topnav li a:hover{background-color: #64646471;}
 
 
-ul.topnav li.right { float: right;}
 
+ul.topnav li.right { float: right; border-right: 2px solid #333;}
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
 }
 
+
 ul.topnav li a .img{
-  width: 35%;
+  width: 20px;
   object-fit: cover;
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getProducts } from "../api/apiFuntions"
-import { Card, Dropdown, Button} from 'react-bootstrap'
+import { Card, Dropdown, button} from 'react-bootstrap'
 import './FutbolCatalog.css'
 import products from "../../futbolProducts"
 // esta linea ponerla en el index.js:
@@ -35,46 +35,49 @@ const FutbolCatalog = () => {
     setProductosFiltrados(newProductos)
   }, [filtros])
 
+
+  /* separadores */ 
+
   return (
 
-    <div className="products">
-      <div className="dropdown">
+  <div className="catalog">
+    <h2>Productos</h2>
+      {/* <div className="dropdown">
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Filtros
           </Dropdown.Toggle>
 
-          <Dropdown.Menu name="">
-            <Dropdown.Item><Button onClick={handleClick} name="subcategory" value="hombre">Hombre</Button></Dropdown.Item>
-            <Dropdown.Item><Button onClick={handleClick} name="subcategory" value="mujer">Mujer</Button></Dropdown.Item>
-            <Dropdown.Item><Button onClick={handleClick} name="subcategory" value="niño">Niño</Button></Dropdown.Item>
-            <Dropdown.Item><Button onClick={handleClick} name="subcategory" value="" variant="subcategory">Reset</Button></Dropdown.Item>
-          </Dropdown.Menu>
+          <Dropdown name="">
+            <Dropdown.Item><button onClick={handleClick} name="subcategory" value="hombre">Hombre</button></Dropdown.Item>
+            <Dropdown.Item><button onClick={handleClick} name="subcategory" value="mujer">Mujer</button></Dropdown.Item>
+            <Dropdown.Item><button onClick={handleClick} name="subcategory" value="niño">Niño</button></Dropdown.Item>
+            <Dropdown.Item><button onClick={handleClick} name="subcategory" value="" variant="subcategory">Reset</button></Dropdown.Item>
+          </Dropdown>
         </Dropdown>
         <section>
-          <Button onClick={handleClick} name="size" value="S">Short</Button>
-          <Button onClick={handleClick} name="size" value="M">Medium</Button>
-          <Button onClick={handleClick} name="size" value="L">Large</Button>
-          <Button onClick={handleClick} name="size" value="" variant="success">Reset</Button>
-        </section>
-      </div>
+          <button onClick={handleClick} name="size" value="S">Short</button>
+          <button onClick={handleClick} name="size" value="M">Medium</button>
+          <button onClick={handleClick} name="size" value="L">Large</button>
+          <button onClick={handleClick} name="size" value="" variant="success">Reset</button>
+        </section> */}
+      {/* </div> */}
 
-
+      <div className="products">
       {productosFiltrados.map((productFutbol) => (
-        <Card style={{ width: '18rem' }} key={productFutbol.id}>
-          <Card.Img variant="top" src={productFutbol.images[0]} />
-          <Card.Body>
-            <Card.Title>{productFutbol.title}</Card.Title>
-            <Card.Text>
-              {/* {productFutbol.Description} */}
-              Sizes:{productFutbol.sizes.map(size => " " + size)}
-            </Card.Text>
-            <Button variant="primary">Comprar</Button>
-          </Card.Body>
-        </Card>
-      ))}
 
+        <div class="card" key={productFutbol.id}>
+        <img src={productFutbol.images[0]} alt="Producto"/>
+        <div class="container">
+          <h4><b className="title">{productFutbol.title}</b></h4>
+          <h5><span className="price">${productFutbol.price}</span></h5>
+          <p>Talles:{productFutbol.sizes.map(size => " " + size)}</p>
+        </div>
+        <button variant="primary">Comprar</button>
+      </div>
+      ))}
     </div>
+  </div>
   )
 
 }

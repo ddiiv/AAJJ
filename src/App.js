@@ -5,30 +5,29 @@ import user from'./img/user.png'
 import FutbolCatalog from './components/futbol/Futbol';
 
 function App() {
-  return (
 
-  <body>
-  <ul class="topnav">
-  <li><a href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about"><img className="img" src={search}/></a></li>
-  <li class="right"><a href="#about"><img className="img" src={user}/></a></li>
-  
- 
-</ul>
 
-<div className='main'>
-  <h2>Responsive Topnav Example</h2>
- { /*<p><MainMainComponent/></p>
-  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>  <p><MainMainComponent/></p>*/}
-    <FutbolCatalog/>
 
-</div>
 
-       
-  </body>
-
+return (
+  <div className="App">
+    <div className='navbarContent'>
+    <header className='navbar'>
+        <ul class="topnav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="right"><a href="#about"> <img className="img" src={search}/></a></li>
+          <li class="right"><a href="#about"><img className="img" src={user}/></a></li>
+        </ul> 
+    </header>
+    </div>
+    <body>
+      <div className='main'>
+        <FutbolCatalog/>
+      </div>
+    </body>
+  </div>
   );
 }
 
