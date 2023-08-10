@@ -4,12 +4,10 @@ import MainCarrusel from "./MainCarrusel";
 const MainMainComponent = () => {
 
 return(
- <>
-    
-    
-    <MainCarrusel/>
- 
- </>
+<>
+   <MainCarrusel/>
+
+</>
 )
 
 }

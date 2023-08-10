@@ -3,6 +3,8 @@ import MainMainComponent from './components/main/MainMainComponent';
 import search from'./img/search.png'
 import user from'./img/user.png'
 import FutbolCatalog from './components/futbol/Futbol';
+import { BrowserRouter as Routes, Switch, Route,Router, Link, BrowserRouter } from "react-router-dom";
+
 
 function App() {
 
@@ -10,6 +12,15 @@ function App() {
 
 
 return (
+
+  <>
+    
+        <Router>
+          <Route path="/" component={MainMainComponent}  />
+          <Route path="/futbol" component={FutbolCatalog}/>
+        </Router>
+ 
+
   <div className="App">
     <div className='navbarContent'>
     <header className='navbar'>
@@ -23,15 +34,10 @@ return (
     </header>
     </div>
     <body>
-      
         <FutbolCatalog/>
-
-    
     </body>
-
-
-    
   </div>
+  </>
   );
 }
 
