@@ -17,6 +17,15 @@ export const getProductsById = async(id) => {
     console.log(data)
     return data
 }
+
+export const getCategories = async() => {
+    const response = await fetch(`${baseURL}category`)
+    const data = await response.json()
+    console.log(data)
+    return data
+}
+
+
 export const getProducts = async() => {
     const response = await fetch(`${baseURL}products`)
     const data = await response.json()

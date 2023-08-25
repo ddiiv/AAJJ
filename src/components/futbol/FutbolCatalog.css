@@ -1,22 +1,49 @@
 
   .products{
-    margin-left: 20vw;
-    width: 70vw;
+    margin-top: 10vw;
+    margin-left: 22vw;
+    width: 63vw;
     height: 200vw;
+
+    
   }
   .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; 
-    width: 18vw;
-    height: 20vw;
-    padding: 1.5vw;
-    margin: 2vw;
+    transition: 0.3s;    
+    width: 19vw;
+    height: 25vw;
+    margin: 5px;
+    border-bottom: 2px solid  rgb(194, 15, 15);
+    border-top: 2px solid  rgb(194, 15, 15);
+    border-radius: 0;
     display: flex;
     float: left;
-    justify-content: center;
+    align-items: center;
+    justify-content:center;
+    padding: 12px;
+  }
+  .gender{
+    color: rgb(99, 99, 99);
 
   }
+
+  .addcart{
+    transition: 0.5s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(58, 58, 58);
+    font-size: 1.2vw;
+    font-style: normal;
+    padding: 2px;
+    cursor: pointer;
+    width: 100%;
+
+  }
+  button:hover{
+    transition: 0.5s;
+    background-color: rgb(194, 15, 15);
+    color: aliceblue;
+  }
+
   @media screen and (max-width: 600px) {
     .card, .card img, .card .title, .card .price ,.products{
       width: 100%;
@@ -26,17 +53,28 @@
   }
   
   .title{
-    color: rgb(58, 58, 58);
     
-    text-transform: capitalize;   
-    font-size:large;
-    font-style: normal;
+    color: rgb(58, 58, 58);
+    text-transform:capitalize;   
+    font:inherit;
+    font-size: large;
+    font-weight: 500;
+    font-style:normal;
+    cursor: pointer;
   }
   .price{
     color: rgb(58, 58, 58);
-    font-size: 1.2vw;
+    font-size: 1vw;
+    font-style: normal;
+    padding: 2px;
+    letter-spacing: 1px;
   }
 
   img {
     border-radius: 5px 5px 0 0;
+    max-width: 13vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
   }

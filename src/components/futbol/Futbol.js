@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react"
 import { getProducts } from "../api/apiFuntions"
 import { Card, Dropdown, button} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './FutbolCatalog.css'
 import products from "../../futbolProducts"
-// esta linea ponerla en el index.js:
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 const FutbolCatalog = () => {
   const [listaProductos, setListaProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([])
+  const [category, setCategory] = useState([])
+  const [images, setImages] = useState([])
 
   const [filtros, setFiltros] = useState({})
 
   const handleClick = e => setFiltros(filtros => ({ ...filtros, [e.target.name]: e.target.value }))
 
   useEffect(() => {
-   // getProducts().then(data => {
-    // temporal por array hardcodeado
-    setListaProductos(products)
-    setProductosFiltrados(products)
-    //  setListaProductos(data)
-     // setProductosFiltrados(data)
-   // })
+
+    getProducts().then(products => {
+      setListaProductos(products)
+      setProductosFiltrados(products)
+    })
+    
+    products.map(product => {
+      setImages(images => [...images, product.images[0]])
+    }
+    )
   }, [])
 
   useEffect(() => {
@@ -63,20 +68,20 @@ const FutbolCatalog = () => {
         </section> */}
       {/* </div> */}
 
-      <div className="products">
-      {productosFiltrados.map((productFutbol) => (
+      <ul className="products">
+      {productosFiltrados.map(productFutbol => (
 
-        <div class="card" key={productFutbol.id}>
-        <img src={productFutbol.images[0]} alt="Producto"/>
+        <div class="card" key={productFutbol.idProduct}>
+        <img src={images[productFutbol.idProduct]} alt="Producto"/>
         <div class="container">
-          <h4><b className="title">{productFutbol.title}</b></h4>
-          <h5><span className="price">${productFutbol.price}</span></h5>
-          <p>Talles:{productFutbol.sizes.map(size => " " + size)}</p>
+          <p className="gender">{productFutbol.SubCategory}</p>
+          <b className="title">{productFutbol.Title}</b>
+          <h5><span className="price">{productFutbol.Price}$</span></h5>
         </div>
-        <button variant="primary">Comprar</button>
+        <button variant="primary" className="addcart">Agregar al carrito</button>
       </div>
       ))}
-    </div>
+    </ul>
   </div>
   )
 
