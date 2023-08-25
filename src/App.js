@@ -1,9 +1,10 @@
 import './App.css';
 import FutbolCatalog from './components/futbol/Futbol';
-import { BrowserRouter as Routes, Switch, Route,Router, Link, BrowserRouter } from "react-router-dom";
-import Nav from './components/NavBar';
+import {BrowserRouter,Routes, Route, Switch, Link} from "react-router-dom";
+import Nav from './NavBar';
 import products from './futbolProducts';
 import { useEffect, useState } from 'react';
+import MainComponent from './components/main/MainComponent';
 
 function App() {
 
@@ -16,25 +17,15 @@ setCategory(products.ca)
 
 
 return (
-
-  <>
-    
-
-
   <div className="App">
-    {/* <BrowserRouter>
+    <BrowserRouter>
       <Nav/>
         <Routes>
-          <Route/>
-
-          
+          <Route path="/" element={<MainComponent/>}/>
+          <Route path="/futbol" element={<FutbolCatalog/>}/>
         </Routes>
-    </BrowserRouter> */}
-    <body>
-        <FutbolCatalog/>
-    </body>
+    </BrowserRouter>
   </div>
-  </>
   );
 }
 

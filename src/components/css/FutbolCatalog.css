@@ -1,0 +1,207 @@
+
+  .products{
+    margin-top: 10vw;
+    margin-left: 22vw;
+    width: 63vw;
+    height: 200vw;
+
+    
+  }
+  .card {
+    transition: 0.3s;    
+    width: 19vw;
+    height: 25vw;
+    margin: 5px;
+    border-bottom: 2px solid  rgb(194, 15, 15);
+    border-top: 2px solid  rgb(194, 15, 15);
+    border-radius: 0;
+    display: flex;
+    float: left;
+    align-items: center;
+    justify-content:center;
+    padding: 12px;
+  }
+  .gender{
+    color: rgb(99, 99, 99);
+
+  }
+
+  .addcart{
+    transition: 0.5s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(58, 58, 58);
+    font-size: 1.2vw;
+    font-style: normal;
+    padding: 2px;
+    cursor: pointer;
+    width: 100%;
+
+  }
+  button:hover{
+    transition: 0.5s;
+    background-color: rgb(194, 15, 15);
+    color: aliceblue;
+  }
+
+  @media screen and (max-width: 600px) {
+    .card, .card img, .card .title, .card .price ,.products{
+      width: 100%;
+      height: 100%;
+      font-size: 100%;
+    }
+  }
+  
+  .title{
+    
+    color: rgb(58, 58, 58);
+    text-transform:capitalize;   
+    font:inherit;
+    font-size: large;
+    font-weight: 500;
+    font-style:normal;
+    cursor: pointer;
+  }
+  .price{
+    color: rgb(58, 58, 58);
+    font-size: 1vw;
+    font-style: normal;
+    padding: 2px;
+    letter-spacing: 1px;
+  }
+
+  img {
+    border-radius: 5px 5px 0 0;
+    max-width: 13vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+  }
+
+/*////////////////////////////// filtro //////////////////////////////*/
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa;
+  border: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item button {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.size-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.size-buttons button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.reset-button {
+  background-color: #dc3545;
+}
+
+/* Estilos para el botón de "Filtros" */
+.filter-toggle {
+background-color: #28a745;
+color: #fff;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.2s;
+}
+
+.filter-toggle:hover {
+background-color: #218838;
+transform: scale(1.05);
+}
+
+/* Estilos para las opciones de subcategoría */
+.subcategory-options {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+background-color: #f8f9fa;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 4px;
+padding: 10px;
+}
+
+.filter-toggle:focus + .subcategory-options {
+display: block;
+}
+
+.subcategory-options button {
+background: none;
+border-radius: 0 ; 
+margin: 5px 0;
+cursor: pointer;
+font-size: 14px;
+color: #333;
+transition: color 0.3s;
+}
+
+.subcategory-options button:hover {
+color: #007bff;
+}
+
+/* Estilos para los botones de tamaño */
+section button {
+background-color: #007bff;
+color: #fff;
+border-radius: 0;
+padding: 8px 16px;
+margin-right: 10px;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.2s;
+}
+
+section button:last-child {
+margin-right: 0;
+}
+
+section button:hover {
+background-color: #0056b3;
+transform: scale(1.05);
+}
+
+/* Agrega este estilo en tu archivo CSS o en línea */
+
+.vertical-buttons {
+position: fixed;
+left: 0;
+top: 50%;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+}
+
+.vertical-buttons button {
+width: 100%;
+margin-bottom: 5px;
+}

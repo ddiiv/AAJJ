@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react";
 import MainCarrusel from "./MainCarrusel";
 
-const MainMainComponent = () => {
+const MainComponent = () => {
 
 return(
 <>
@@ -11,4 +11,4 @@ return(
 )
 
 }
-export default MainMainComponent;
+export default MainComponent;
