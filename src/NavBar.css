@@ -4,12 +4,17 @@ a {
     color: #333;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
-    text-decoration: dotted;
+    text-decoration:dotted;
+    font-family:sans-serif;
+    font-size: 18px;
+    font-weight:500;
+    transition: 0.5s;
 }
 
 a:hover {
-    background-color: #bdbdbd6e;
+    transition: 0.5s;
+    background-color: #8181816e;
+    color: #df0000d3;
 }
 
 .navbarContent{
@@ -19,8 +24,9 @@ a:hover {
 }
 ul.nav{
     width: auto;
-    border-top:2px solid #333; ;
+    border-top:2px solid #8b8b8b; ;
     z-index: 5;
+    width: 80%;
     padding: 0px;
     margin-top: 20px;
     text-align: center;
@@ -31,15 +37,16 @@ ul.nav{
 
 
 .navbar {
-    background-color: #333;
     overflow: hidden;
     width: 100%;
     height: 100px;
     margin: 0;
     background-color: #ffffff;
-    float: left;
+    float: inline-start;
     display: flex;
     color: white;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

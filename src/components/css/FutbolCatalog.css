@@ -170,16 +170,10 @@ color: #007bff;
 }
 
 /* Estilos para los botones de tamaño */
-section button {
-background-color: #007bff;
-color: #fff;
-border-radius: 0;
-padding: 8px 16px;
-margin-right: 10px;
-font-size: 14px;
-cursor: pointer;
-transition: background-color 0.3s, transform 0.2s;
+.item-filter{
+  border-radius: 0;
 }
+
 
 section button:last-child {
 margin-right: 0;
@@ -204,4 +198,12 @@ flex-direction: column;
 .vertical-buttons button {
 width: 100%;
 margin-bottom: 5px;
+}
+/* filters */
+
+.filters{
+
+  font-family: sans-serif;
+  border-radius: 0;
+  background-color: #333;
 }

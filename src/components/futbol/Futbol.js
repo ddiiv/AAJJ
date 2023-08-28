@@ -3,7 +3,7 @@ import { getProducts } from "../api/apiFuntions"
 import { Card, Dropdown, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/FutbolCatalog.css'
-import products from "../../futbolProducts"
+import Products from "../../futbolProducts"
 
 
 const FutbolCatalog = () => {
@@ -17,11 +17,11 @@ const FutbolCatalog = () => {
   const handleClick = e => setfilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
 
   useEffect(() => {
-    getProducts().then(products => {
-      setListProduct(products)
-      setProductosFiltrados(products)
-    })
-    products.map(product => {
+    // getProducts().then(products => {
+      setListProduct(Products)
+      setProductosFiltrados(Products)
+    // })
+    Products.map(product => {
       setImages(images => [...images, product.images[0]])
     }
     )
@@ -32,11 +32,11 @@ const FutbolCatalog = () => {
     let newProductos = [...listProduct];
 
     if (filters.subcategory) {
-      newProductos = newProductos.filter(producto => producto.subcategory === filters.subcategory);
+      newProductos = newProductos.filter(product => product.subcategory === filters.subcategory);
     }
 
     if (filters.size) {
-      newProductos = newProductos.filter(producto => producto.sizes.includes(filters.size));
+      newProductos = newProductos.filter(product => product.sizes.includes(filters.size));
     }
 
     setProductosFiltrados(newProductos);
@@ -46,22 +46,22 @@ return (
     <div className="catalog">
       <h2>Productos</h2>
       <div className="filter">
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            filters
+        <Dropdown >
+          <Dropdown.Toggle  className="filters" variant="success" id="dropdown-basic">
+            Filtros
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item>
+            <Dropdown.Item className="item-filter">
               <button onClick={handleClick} name="subcategory" value="hombre">Hombre</button>
             </Dropdown.Item>
-            <Dropdown.Item>
+            <Dropdown.Item className="item-filter">
               <button onClick={handleClick} name="subcategory" value="mujer">Mujer</button>
-            </Dropdown.Item>
-            <Dropdown.Item>
+            </Dropdown.Item >
+            <Dropdown.Item className="item-filter">
               <button onClick={handleClick} name="subcategory" value="niño">Niño</button>
             </Dropdown.Item>
-            <Dropdown.Item>
+            <Dropdown.Item className="item-filter">
               <button onClick={handleClick} name="subcategory" value="">Reset</button>
             </Dropdown.Item>
           </Dropdown.Menu>
