@@ -79,7 +79,7 @@ return (
         {productosFiltrados.map(productFutbol => (
 
           <div class="card" key={productFutbol.idProduct}>
-          <img src={images[productFutbol.idProduct]} alt="Producto"/>
+          <img src={images[productFutbol.idProduct]} className="productImg" alt="Producto"/>
           <div class="container">
             <p className="gender">{productFutbol.SubCategory}</p>
             <b className="title">{productFutbol.Title}</b>

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Carrusel.css';
+import './Carrusel.css';
 import "../../../node_modules/bootstrap/js/src/carousel.js";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
@@ -7,7 +7,7 @@ const MCarrusel = () => {
 
 
     return (
-
+        <div className='CarruselLocation'>
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -16,13 +16,13 @@ const MCarrusel = () => {
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img className='image' src="https://unsplash.it/650/420?image=924" />
+                    <img className='item' src="https://unsplash.it/650/420?image=924" />
                 </div>
                 <div class="carousel-item">
-                    <img className='image' src="https://unsplash.it/650/420?image=924" />
+                    <img className='item' src="https://unsplash.it/650/420?image=924" />
                 </div>
                 <div class="carousel-item">
-                    <img className='image' src="https://unsplash.it/650/420?image=924" />
+                    <img className='item' src="https://unsplash.it/650/420?image=924" />
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -34,7 +34,7 @@ const MCarrusel = () => {
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
+        </div>
     );
 }
 export default MCarrusel;

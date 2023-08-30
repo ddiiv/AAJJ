@@ -74,7 +74,7 @@
 
   }
 
-  img {
+  .productImg {
     border-radius: 5px 5px 0 0;
     max-width: 13vw;
     align-items: center;

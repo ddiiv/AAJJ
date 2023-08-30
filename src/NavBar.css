@@ -29,12 +29,9 @@ a:hover {
 
 }
 ul.nav{
-    width: auto;
-    border-top:2px solid #8b8b8b; ;
-    z-index: 5;
+    border-top:2px solid #8b8b8b;
     width: 80%;
     padding: 0px;
-    margin-top: 20px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -44,7 +41,7 @@ ul.nav{
 
 .navbar {
     width: 100%;
-    height: 100px;
+    height: 82px;
     margin: 0;
     background-color: #ffffff;
     color: white;
@@ -127,9 +124,13 @@ ul.topnav li a .img {
 
 
 
-.img{
-    
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+.logo{
+    border-radius: 5px 5px 0 0;
+    max-width: 13vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    transition: 0.5s;
+  
 }
