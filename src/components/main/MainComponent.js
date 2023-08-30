@@ -1,12 +1,33 @@
 import React,{useState, useEffect} from "react";
-import MainCarrusel from "./MainCarrusel";
+import Carrusel from "./Carrusel.js";
 
 const MainComponent = () => {
 
 return(
 <>
-   <MainCarrusel/>
-
+   <Carrusel/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   a
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   <br/>
+   active
+   <br/>
+   <br/>
+   <br/>
+   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>   
 </>
 )
 

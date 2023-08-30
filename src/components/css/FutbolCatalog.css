@@ -4,11 +4,11 @@
     margin-left: 22vw;
     width: 63vw;
     height: 200vw;
-
+    transform: 0.5s;
     
   }
   .card {
-    transition: 0.3s;    
+ 
     width: 19vw;
     height: 25vw;
     margin: 5px;
@@ -19,7 +19,8 @@
     float: left;
     align-items: center;
     justify-content:center;
-    padding: 12px;
+    padding: 12px;    
+    transition: 0.5s;   
   }
   .gender{
     color: rgb(99, 99, 99);
@@ -61,6 +62,7 @@
     font-weight: 500;
     font-style:normal;
     cursor: pointer;
+    transition: 0.5s;
   }
   .price{
     color: rgb(58, 58, 58);
@@ -68,6 +70,8 @@
     font-style: normal;
     padding: 2px;
     letter-spacing: 1px;
+    transition: 0.5s;
+
   }
 
   img {
@@ -77,6 +81,8 @@
     justify-content: center;
     display: flex;
     margin: auto;
+    transition: 0.5s;
+
   }
 
 /*////////////////////////////// filtro //////////////////////////////*/

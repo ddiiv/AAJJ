@@ -8,11 +8,11 @@ import bichologo from './img/bichologo.png'
 const Nav =()=>{
 return(
 <>
-    <header>
+    <header className='separator'>
         <div className='navbarContent'>
             <div className='topnav'>
                 <img className='logo' src={bichologo}/>
-            </div>
+            
             
             <nav className='navbar'>
                 <ul className='nav'> 
@@ -20,6 +20,7 @@ return(
                     <li className='nav-item'><Link to="/basket">Basket</Link></li>
                 </ul>
             </nav>
+            </div>
         </div>
     </header>
 </>
