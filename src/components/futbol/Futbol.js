@@ -44,7 +44,7 @@ const FutbolCatalog = () => {
 
 return (
     <div className="catalog">
-      <h2>Productos</h2>
+
       <div className="filter">
         <Dropdown >
           <Dropdown.Toggle  className="filters" variant="success" id="dropdown-basic">
