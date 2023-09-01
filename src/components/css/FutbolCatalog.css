@@ -1,3 +1,9 @@
+  .catalog{
+    margin: 2vw;
+  }
+  *{
+    transition: 0.5s ease;
+  }
   .products{
     margin-left: 22vw;
     width: 75vw;
@@ -12,6 +18,10 @@
     transition-property: width;  
     
   }
+  ::marker {
+    font-size: 0;
+  }
+  
   .card {
 
     width: 22vw;
@@ -24,7 +34,7 @@
     float: left;
     align-items: center;
     justify-content:center;
-    padding: 12px;    
+    
     position: relative;
     transition: 0.5s;
     transition: width 0.5s;
@@ -65,7 +75,7 @@
   
   .title{
     
-    font-size: 20px;
+    font-size: 17px;
     color: #000;
     font-weight: 500;
     line-height: 18px;
@@ -99,7 +109,7 @@
   }
   .productImg {
     border-radius: 5px 5px 0 0;
-    width: 80%;
+    width: 70%;
     height: auto;
     float: left;
     opacity: 1;
@@ -113,21 +123,26 @@
 
   }
 
+.container{
+  width: 100%;
+
+}
+
 /*////////////////////////////// filtro //////////////////////////////*/
 .dropdown {
   position: relative;
 }
 
 .dropdown-toggle {
-  background-color: #28a745;
+  
   color: #fff;
   border: none;
 }
 
 .dropdown-menu {
   background-color: #f8f9fa;
+  border-radius: 0px;
   border: none;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item button {
@@ -136,27 +151,59 @@
   width: 100%;
   text-align: left;
   padding: 8px 16px;
+  border-left: 1px solid rgba(141, 141, 141, 0.541);
   cursor: pointer;
+}
+.btn.active,.btn.show, .btn:first-child:active{
+  background-color: #a73128;
+  color: white;
+}
+.size-buttons, .btn-primary  :hover{
+  background-color: #a73128;
+  color: white;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active, .btn:hover{
+
+  background-color: #a73128;
+  color: white;
+}
+.dropdown-toggle::after{
+  content: none;
+  float: left;
+  
 }
 
 .size-buttons, .btn-primary{
-  background-color: #000000;
-  color: #fff;
+  background-color: #ffffff;
+  color: rgb(196, 2, 2);
+  font-weight: 500;
   border-radius: 0px;
-  border: none;
+  border-bottom: 0.5px solid rgba(141, 141, 141, 0.541);
   width: 20vw;
-  margin-bottom: 5px ;
+  max-width: 20vw;
   display: flex;
-  gap: 10px;
   padding: 8px 16px;
   cursor: pointer;
-  --bs-btn-color: #000000;
-  justify-content: center;
-  align-items: center;
+  --bs-btn-color: #ffffff;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .reset-button {
   background-color: #dc3545;
+}
+.titleFilter{
+    display: flex;
+    width: 100%;
+    color: #dc3545;
+    border-bottom: 1px solid rgba(141, 141, 141, 0.541);
+    font-family: "Montserrat",sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 30px;
+    text-decoration: none;
+    align-items: center;
 }
 
 /* Estilos para el botón de "Filtros" */
@@ -239,37 +286,65 @@ margin-bottom: 5px;
 .filterSection{
   width: 0vw;
   height: 100%;
+  margin: 2vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 
-@media screen and (max-width: 600px) {
-  .card,.price{
-    width: 55vw;
-    height: 50vw;
-    font-size: 100%;
-  }
-}
-@media screen and (max-width: 600px) {
-  
-  .products{
-    margin-left: 20vw;
-    width: 65vw;
-    height: 100%;
-    font-size: 100%;
-  }
-  .productImg{
-    max-width: 20vw;
-  }
-}
 
 aside{
   width: 23vw;
   height: 100%;
-  top: 300px;
+  top: 200px;
   position: absolute;
   display:list-item;
   transition: 0.5s ease-in-out;
+}
+
+@media screen and (max-width:900px) {
+  .products{
+    width: 78vw;
+    margin-left: 20vw;
+    height: 100%;
+    font-size: 100%;
+  }
+  .title, .price, .gender, p,.addcart{
+    font-size: 2vw;
+
+  }
+  .card{
+    width: 35vw;
+    height: 250px;
+  }
+  .productImg
+  {
+    max-width: 70%;
+  }
+}
+
+
+
+@media screen and (max-width:1250px){
+  .title, .price, .gender, p,.addcart{
+    font-size: 1.5vw;
+
+  }
+  .card{
+    height: 400px;
+  }
+
+}
+@media screen and (max-width: 600px) {
+  .card{
+    width: 55vw;
+    height: 60vw;
+  }
+  .productImg{
+    max-width: 40%;
+  }
+  .title,.price,.gender,.addcart{
+    font-size: 3vw;
+  }
 }

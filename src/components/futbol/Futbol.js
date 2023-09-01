@@ -39,13 +39,15 @@ const FutbolCatalog = () => {
       newProductos = newProductos.filter(product => product.sizes.includes(filters.size));
     }
 
+    if(filters.category){
+      newProductos = newProductos.filter(product => product.category === filters.category);
+    }
+
     setProductosFiltrados(newProductos);
   }, [filters])
 
 return (
     <div className="catalog">
-
-        
         <ul className="products">
         {productosFiltrados.map(productFutbol => (
 
@@ -61,8 +63,78 @@ return (
         ))}
       </ul>
 
-    <aside>
-      <div className="filterSection">
+<aside>
+
+    <div className="filterSection">
+            <Dropdown>
+              <h1 className="titleFilter">Filtros</h1>
+              <Dropdown.Toggle  className="size-buttons"variant="success" id="dropdown-basic">
+                Género
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item className="item-filter"> 
+                  <button onClick={handleClick} className="size-buttons" value="hombre">Hombre</button>
+                </Dropdown.Item>
+                <Dropdown.Item className="item-filter">
+                  <button onClick={handleClick} className="size-buttons" value="mujer">Mujer</button>
+                </Dropdown.Item >
+                <Dropdown.Item className="item-filter">
+                  <button onClick={handleClick} className="size-buttons" value="niño">Niño</button>
+                </Dropdown.Item>
+                <Dropdown.Item className="item-filter">
+                  <button onClick={handleClick} className="size-buttons" value="">Reset</button>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown> 
+            <section>
+              <div className="vertical-buttons">
+                <Dropdown>
+                <Dropdown.Toggle className="size-buttons" variant = "success" id = "dropdown-basic">
+                  Size
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item className="item-filter">
+                <button onClick={handleClick} className="size-buttons" value="S">Short</button>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="item-filter">
+                  <button onClick={handleClick} className="size-buttons" value="M">Medium</button>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="item-filter">
+                  <button onClick={handleClick} className="size-buttons" value="L">Large</button>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="item-filter">
+                  <button onClick={handleClick} className="size-buttons" value="">Reset</button>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+                </Dropdown>
+              </div>
+            </section>
+            <div className="filter-category">
+              <Dropdown>
+                <Dropdown.Toggle className="size-buttons" variant="success" id="dropdown-basic">
+                  Deportes
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item className="item-filter">
+                    <button onClick={handleClick} className="size-buttons" value="Futbol">Futbol</button>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="item-filter">
+                    <button onClick={handleClick} className="size-buttons" value="Basquet">Basket</button>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="item-filter">
+                    <button onClick={handleClick} className="size-buttons" value="Indumentaria">Indumentaria</button>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          
+        </div>  
+      </aside>
+    </div>
+
+
+      /* <div className="filterSection">
       <Dropdown >
         <Dropdown.Toggle  className="size-buttons" variant="success" id="dropdown-basic">
           Filtros
@@ -70,29 +142,29 @@ return (
 
         <Dropdown.Menu>
           <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} name="subcategory" value="hombre">Hombre</button>
+            <button onClick={handleClick} className="size-buttons" value="hombre">Hombre</button>
           </Dropdown.Item>
           <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} name="subcategory" value="mujer">Mujer</button>
+            <button onClick={handleClick} className="size-buttons" value="mujer">Mujer</button>
           </Dropdown.Item >
           <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} name="subcategory" value="niño">Niño</button>
+            <button onClick={handleClick} className="size-buttons" value="niño">Niño</button>
           </Dropdown.Item>
           <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} name="subcategory" value="">Reset</button>
+            <button onClick={handleClick} className="size-buttons" value="">Reset</button>
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       
         <div className="vertical-buttons">
-          <Button onClick={handleClick} name="size"  clasname="size-buttons" value="S">Short</Button>
-          <Button onClick={handleClick} name="size"  clasname="size-buttons" value="M">Medium</Button>
-          <Button onClick={handleClick} name="size"  clasname="size-buttons" value="L">Large</Button>
-          <Button onClick={handleClick} name="size"  clasname="size-buttons" value="">Reset</Button>
+          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="S">Short</Button>
+          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="M">Medium</Button>
+          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="L">Large</Button>
+          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="">Reset</Button>
         </div>
         </div>
-    </aside>
-    </div>
+    </aside> */
+
 
 );
 }
