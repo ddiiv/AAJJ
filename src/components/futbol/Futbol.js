@@ -39,6 +39,10 @@ const FutbolCatalog = () => {
       newProductos = newProductos.filter(product => product.sizes.includes(filters.size));
     }
 
+    if(filters.category){
+      newProductos = newProductos.filter(product => product.category === filters.category);
+    }
+
     setProductosFiltrados(newProductos);
   }, [filters])
 
@@ -48,11 +52,11 @@ return (
       <div className="filter">
         <Dropdown >
           <Dropdown.Toggle  className="filters" variant="success" id="dropdown-basic">
-            Filtros
+            Género
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item className="item-filter">
+            <Dropdown.Item className="item-filter"> 
               <button onClick={handleClick} name="subcategory" value="hombre">Hombre</button>
             </Dropdown.Item>
             <Dropdown.Item className="item-filter">
@@ -65,15 +69,49 @@ return (
               <button onClick={handleClick} name="subcategory" value="">Reset</button>
             </Dropdown.Item>
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> 
         <section>
           <div className="vertical-buttons">
-            <Button onClick={handleClick} name="size" value="S">Short</Button>
-            <Button onClick={handleClick} name="size" value="M">Medium</Button>
-            <Button onClick={handleClick} name="size" value="L">Large</Button>
-            <Button onClick={handleClick} name="size" value="">Reset</Button>
+            <Dropdown>
+            <Dropdown.Toggle className="filters" variant = "success" id = "dropdown-basic">
+              Size
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item className="item-filter">
+            <button onClick={handleClick} name="size" value="S">Short</button>
+              </Dropdown.Item>
+              <Dropdown.Item className="item-filter">
+              <button onClick={handleClick} name="size" value="M">Medium</button>
+              </Dropdown.Item>
+              <Dropdown.Item className="item-filter">
+              <button onClick={handleClick} name="size" value="L">Large</button>
+              </Dropdown.Item>
+              <Dropdown.Item className="item-filter">
+              <button onClick={handleClick} name="size" value="">Reset</button>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+            </Dropdown>
           </div>
         </section>
+        <div className="filter-category">
+          <Dropdown>
+            <Dropdown.Toggle className="filters" variant="success" id="dropdown-basic">
+              Deportes
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item className="item-filter">
+                <button onClick={handleClick} name = "category" value="Futbol">Futbol</button>
+              </Dropdown.Item>
+              <Dropdown.Item className="item-filter">
+                <button onClick={handleClick} name = "category" value="Basquet">Basket</button>
+              </Dropdown.Item>
+              <Dropdown.Item className="item-filter">
+                <button onClick={handleClick} name = "category" value="Indumentaria">Indumentaria</button>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      
     </div>  
         <ul className="products">
         {productosFiltrados.map(productFutbol => (
