@@ -1,15 +1,21 @@
-
   .products{
-    margin-left: 18vw;
-    width: 63vw;
+    margin-left: 22vw;
+    width: 75vw;
     height: 200vw;
     transform: 0.5s;
+    position: relative;
+    transition: 0.5s;
+    transition: width 0.5s;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: width;  
     
   }
   .card {
- 
-    width: 19vw;
-    height: 25vw;
+
+    width: 22vw;
+    height: 28vw;
     margin: 5px;
     border-bottom: 2px solid  rgb(194, 15, 15);
     border-top: 2px solid  rgb(194, 15, 15);
@@ -19,11 +25,24 @@
     align-items: center;
     justify-content:center;
     padding: 12px;    
-    transition: 0.5s;   
+    position: relative;
+    transition: 0.5s;
+    transition: width 0.5s;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: width;   
   }
   .gender{
-    color: rgb(99, 99, 99);
-
+    display: flex;
+    letter-spacing: 0.8px;
+    color:#504B4B;
+    font-family: "Montserrat",sans-serif;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+    text-rendering: geometricPrecision;
+    font-size: 13px;
+    
   }
 
   .addcart{
@@ -43,39 +62,49 @@
     background-color: rgb(194, 15, 15);
     color: aliceblue;
   }
-
-  @media screen and (max-width: 600px) {
-    .card, .card img, .card .title, .card .price ,.products{
-      width: 100%;
-      height: 100%;
-      font-size: 100%;
-    }
-  }
   
   .title{
     
-    color: rgb(58, 58, 58);
-    text-transform:capitalize;   
-    font:inherit;
-    font-size: large;
+    font-size: 20px;
+    color: #000;
     font-weight: 500;
-    font-style:normal;
-    cursor: pointer;
-    transition: 0.5s;
+    line-height: 18px;
+    min-height: 38px;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+    letter-spacing: 0.8px;
   }
   .price{
-    color: rgb(58, 58, 58);
-    font-size: 1vw;
-    font-style: normal;
-    padding: 2px;
-    letter-spacing: 1px;
-    transition: 0.5s;
+    display: flex;
+    letter-spacing: 0.8px;
+    color:#000;
+    font-family: "Montserrat",sans-serif;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+    text-rendering: geometricPrecision;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-align: left;
+    
 
   }
-
+  span, p, b{
+    font-family: "Montserrat",sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline
+  }
   .productImg {
     border-radius: 5px 5px 0 0;
-    max-width: 13vw;
+    width: 80%;
+    height: auto;
+    float: left;
+    opacity: 1;
+    transform: translateY(0);
+    background-color: #F5F3F3;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -110,18 +139,20 @@
   cursor: pointer;
 }
 
-.size-buttons {
+.size-buttons, .btn-primary{
+  background-color: #000000;
+  color: #fff;
+  border-radius: 0px;
+  border: none;
+  width: 20vw;
+  margin-bottom: 5px ;
   display: flex;
   gap: 10px;
-}
-
-.size-buttons button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  
   padding: 8px 16px;
   cursor: pointer;
+  --bs-btn-color: #000000;
+  justify-content: center;
+  align-items: center;
 }
 
 .reset-button {
@@ -130,7 +161,7 @@
 
 /* Estilos para el botón de "Filtros" */
 .filter-toggle {
-background-color: #28a745;
+background-color: #a73128;
 color: #fff;
 border: none;
 padding: 10px 20px;
@@ -156,12 +187,9 @@ border-radius: 4px;
 padding: 10px;
 }
 
-.filter-toggle:focus + .subcategory-options {
-display: block;
-}
 
 .subcategory-options button {
-background: none;
+background: #fff;
 border-radius: 0 ; 
 margin: 5px 0;
 cursor: pointer;
@@ -185,30 +213,63 @@ margin-right: 0;
 }
 
 section button:hover {
-background-color: #0056b3;
+background-color: #000000;
 transform: scale(1.05);
 }
 
 /* Agrega este estilo en tu archivo CSS o en línea */
 
 .vertical-buttons {
-position: fixed;
+
 left: 0;
 top: 50%;
-transform: translateY(-50%);
+width: 20vw;
+
 display: flex;
 flex-direction: column;
 }
 
 .vertical-buttons button {
 width: 100%;
+border-radius: 0px;
 margin-bottom: 5px;
 }
 /* filters */
 
-.filters{
+.filterSection{
+  width: 0vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-  font-family: sans-serif;
-  border-radius: 0;
-  background-color: #333;
+
+@media screen and (max-width: 600px) {
+  .card,.price{
+    width: 55vw;
+    height: 50vw;
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  
+  .products{
+    margin-left: 20vw;
+    width: 65vw;
+    height: 100%;
+    font-size: 100%;
+  }
+  .productImg{
+    max-width: 20vw;
+  }
+}
+
+aside{
+  width: 23vw;
+  height: 100%;
+  top: 300px;
+  position: absolute;
+  display:list-item;
+  transition: 0.5s ease-in-out;
 }

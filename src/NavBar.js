@@ -1,6 +1,6 @@
 
-import search from './img/search.png'
-import user from'./img/user.png'
+// import search from './img/search.png'
+// import user from'./img/user.png'
 import './NavBar.css'
 import { BrowserRouter as Routes, Switch, Route,Router, Link, BrowserRouter } from "react-router-dom";
 import bichologo from './img/bichologo.png'
@@ -8,21 +8,21 @@ import bichologo from './img/bichologo.png'
 const Nav =()=>{
 return(
 <>
-    <header className='separator'>
         <div className='navbarContent'>
             <div className='topnav'>
-                <img className='logo' src={bichologo}/>
-            
-            
-            <nav className='navbar'>
+                <div className='containerLogo'>
+                <Link to="/" ><img className='logo' src={bichologo}/></Link>
+                </div>
+
+            <div className='navbar'>
                 <ul className='nav'> 
                     <li className='nav-item'><Link to="/futbol">Futbol</Link></li>
                     <li className='nav-item'><Link to="/basket">Basket</Link></li>
                 </ul>
-            </nav>
+            </div>
             </div>
         </div>
-    </header>
+
 </>
 );
 }
