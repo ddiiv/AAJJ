@@ -48,10 +48,10 @@ const FutbolCatalog = () => {
 
 return (
     <div className="catalog">
-
-      <div className="filter">
+<aside>
+<div className="filterSection">
         <Dropdown >
-          <Dropdown.Toggle  className="filters" variant="success" id="dropdown-basic">
+          <Dropdown.Toggle  className="size-buttons" variant="success" id="dropdown-basic">
             Género
           </Dropdown.Toggle>
 
@@ -113,6 +113,10 @@ return (
         </div>
       
     </div>  
+</aside>
+      
+
+
         <ul className="products">
         {productosFiltrados.map(productFutbol => (
 
