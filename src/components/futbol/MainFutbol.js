@@ -4,8 +4,7 @@ import FutbolCatalog from "./Futbol.js";
 
 const MainFutbol = () => { 
     return (
-        <div>
-            
+        <div className="">
             <FutbolCatalog />
         </div>
     );

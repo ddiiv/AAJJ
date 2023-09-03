@@ -55,10 +55,9 @@ return (
           <img src={images[productFutbol.idProduct]} className="productImg" alt="Producto"/>
           <div class="container">
             <p className="gender">{productFutbol.SubCategory}</p>
-            <b className="title">{productFutbol.Title}</b>
-            <span className="price">${productFutbol.Price}</span>
+            <p className="title">{productFutbol.Title}</p>
+            <p className="price">${productFutbol.Price}</p>
           </div>
-          <button variant="primary" className="addcart">Agregar al carrito</button>
         </div>
         ))}
       </ul>
@@ -66,8 +65,11 @@ return (
 <aside>
 
     <div className="filterSection">
+    <h1 className="titleFilter">Filtros</h1>
+      <section>
+              <div className="vertical-buttons">
             <Dropdown>
-              <h1 className="titleFilter">Filtros</h1>
+              
               <Dropdown.Toggle  className="size-buttons"variant="success" id="dropdown-basic">
                 Género
               </Dropdown.Toggle>
@@ -87,8 +89,7 @@ return (
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown> 
-            <section>
-              <div className="vertical-buttons">
+
                 <Dropdown>
                 <Dropdown.Toggle className="size-buttons" variant = "success" id = "dropdown-basic">
                   Size
@@ -108,8 +109,7 @@ return (
                   </Dropdown.Item>
                 </Dropdown.Menu>
                 </Dropdown>
-              </div>
-            </section>
+
             <div className="filter-category">
               <Dropdown>
                 <Dropdown.Toggle className="size-buttons" variant="success" id="dropdown-basic">
@@ -128,7 +128,8 @@ return (
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-          
+                        </div>
+            </section>
         </div>  
       </aside>
     </div>

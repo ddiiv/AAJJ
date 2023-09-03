@@ -6,7 +6,7 @@
   }
   .products{
     margin-left: 22vw;
-    width: 75vw;
+    width: 74vw;
     height: 200vw;
     transform: 0.5s;
     position: relative;
@@ -43,17 +43,7 @@
     transition-delay: 0s;
     transition-property: width;   
   }
-  .gender{
-    display: flex;
-    letter-spacing: 0.8px;
-    color:#504B4B;
-    font-family: "Montserrat",sans-serif;
-    margin-bottom: 8px;
-    text-transform: capitalize;
-    text-rendering: geometricPrecision;
-    font-size: 13px;
-    
-  }
+
 
   .addcart{
     transition: 0.5s;
@@ -72,41 +62,53 @@
     background-color: rgb(194, 15, 15);
     color: aliceblue;
   }
-  
-  .title{
-    
-    font-size: 17px;
-    color: #000;
-    font-weight: 500;
-    line-height: 18px;
-    min-height: 38px;
-    margin-bottom: 12px;
-    text-transform: capitalize;
-    letter-spacing: 0.8px;
-  }
-  .price{
+  p{  
     display: flex;
-    letter-spacing: 0.8px;
-    color:#000;
-    font-family: "Montserrat",sans-serif;
-    margin-bottom: 8px;
-    text-transform: capitalize;
-    text-rendering: geometricPrecision;
-    font-size: 15px;
-    letter-spacing: 3px;
-    text-align: left;
-    
-
-  }
-  span, p, b{
     font-family: "Montserrat",sans-serif;
     margin: 0;
     padding: 0;
     border: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline
+    text-transform: capitalize;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    color: #101010;
+    padding: 6px 10px;
+    text-align: center;                                                                                                
+    font-size: 22px;
+    font-weight:300;
+    transition: 0.5s;
+    text-decoration: none;
+
   }
+  .gender{
+
+    letter-spacing: 0.8px;
+    color:#7d7d7d;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+  .title{
+    font-size: 20px;
+
+    color: #101010;
+    font-weight: 600;
+    line-height: 18px;
+
+    align-items: center;
+    letter-spacing: 0.8px;
+  }
+  .price{
+
+    letter-spacing: 0.8px;
+    color:#000;
+    margin-bottom: 8px;
+    
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+
+  
+
   .productImg {
     border-radius: 5px 5px 0 0;
     width: 70%;
