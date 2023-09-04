@@ -2,25 +2,24 @@ import { useEffect, useState } from "react"
 import { getProducts } from "../api/apiFuntions"
 import { Card, Dropdown, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/FutbolCatalog.css'
+import '../css/CategoryCatalog.css'
 import Products from "../../futbolProducts"
 
 
-const FutbolCatalog = () => {
+const CategoryCatalog = (categorySelected) => {
   const [listProduct, setListProduct] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([])
   const [category, setCategory] = useState([])
   const [images, setImages] = useState([])
 
-  const [filters, setfilters] = useState({})
+  const [filters, setFilters] = useState({})
 
-  const handleClick = e => setfilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
+  const handleClick = e => setFilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
 
   useEffect(() => {
-    // getProducts().then(products => {
+      setCategory(categorySelected.categorySelected)
       setListProduct(Products)
       setProductosFiltrados(Products)
-    // })
     Products.map(product => {
       setImages(images => [...images, product.images[0]])
     }
@@ -135,39 +134,9 @@ return (
     </div>
 
 
-      /* <div className="filterSection">
-      <Dropdown >
-        <Dropdown.Toggle  className="size-buttons" variant="success" id="dropdown-basic">
-          Filtros
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} className="size-buttons" value="hombre">Hombre</button>
-          </Dropdown.Item>
-          <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} className="size-buttons" value="mujer">Mujer</button>
-          </Dropdown.Item >
-          <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} className="size-buttons" value="niño">Niño</button>
-          </Dropdown.Item>
-          <Dropdown.Item className="item-filter">
-            <button onClick={handleClick} className="size-buttons" value="">Reset</button>
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-      
-        <div className="vertical-buttons">
-          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="S">Short</Button>
-          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="M">Medium</Button>
-          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="L">Large</Button>
-          <Button onClick={handleClick} className="size-buttons"  clasname="size-buttons" value="">Reset</Button>
-        </div>
-        </div>
-    </aside> */
-
+    
 
 );
 }
 
-export default FutbolCatalog;
+export default CategoryCatalog;

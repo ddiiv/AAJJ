@@ -1,4 +1,4 @@
-
+import React,{useState,useEffect} from 'react'
 import search from './img/search.png'
 import user from'./img/user.png'
 import bichologo from './img/bichologo.png'
@@ -8,6 +8,19 @@ import { BrowserRouter as Routes, Switch, Route,Router, Link, BrowserRouter } fr
 
 
 const Nav =()=>{
+const [categorySelected , setCategorySelected] = useState('');
+const [category, setCategory] = useState([]);
+
+useEffect(() => {
+    setCategory();
+}, [])
+let futbol = "futbol";
+const handleCategorySelected = (e) => {
+    e.preventDefault(e.target.value);
+    setCategorySelected("futbol");
+    console.log(e);
+}
+
 return(
 <>
         <div className='navbarContent'>
@@ -25,7 +38,7 @@ return(
 
             <div className='navbar'>
                 <ul className='nav'> 
-                    <li className='nav-item'><Link to="/futbol">Fútbol</Link></li>
+                    <li className='nav-item'><Link to='/category/futbol' >Fútbol</Link></li>
                     <li className='nav-item'><Link to="/basket">Basket</Link></li>
                 </ul>
             </div>

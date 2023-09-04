@@ -3,6 +3,7 @@ let Products = [
         idProduct: 1,
         Title: "Camiseta AAJJ Futbol",
         Price: 15000,
+        Category:"basket",
         SubCategory: "hombre",
         sizes: ["M", "L"],
         images: [
@@ -14,6 +15,7 @@ let Products = [
         idProduct: 2,
         Title: "camiseta mujer",
         Price: 15000,
+        Category:"futbol",
         SubCategory: "mujer",
         sizes: ["M"],
         images: [
@@ -25,6 +27,7 @@ let Products = [
         idProduct: 3,
         Title: "short entrenamiento oficial",
         Price: 6000,
+        Category:"futbol",
         SubCategory: "hombre",
         sizes: ["S"],
         images: [
@@ -36,6 +39,7 @@ let Products = [
         idProduct: 4,
         Title: "musculosa de entrenamiento AAJJ",
         Price: 9000,
+        Category:"futbol",
         SubCategory: "hombre",
         sizes: ["L"],
         images: [
@@ -47,6 +51,7 @@ let Products = [
         idProduct: 5,
         Title: "camiseta de niño AAJJ",
         Price: 9000,
+        Category:"futbol",
         SubCategory: "niño",
         sizes: ["S", "M"],
         images: [
@@ -58,6 +63,7 @@ let Products = [
         idProduct: 6,
         Title: "short de niño AAJJ",
         Price: 4000,
+        Category:"futbol",
         SubCategory: "niño",
         sizes: ["L"],
         images: [
