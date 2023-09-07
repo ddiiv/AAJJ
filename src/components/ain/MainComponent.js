@@ -1,5 +1,3 @@
-import React from "react";
-
 import CarouselComponent from "./CarouselComponent.js";
 
 const MainComponent = () => {

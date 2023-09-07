@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react"
-import { getProductsByCategory } from "../api/apiFuntions"
-import { getCategories } from "../api/apiFuntions"
-import { getSubCategories } from "../api/apiFuntions"
-import { getSizes } from "../api/apiFuntions"
+import { getProductsByCategory,getCategories,getSizes,getSubCategories } from "../../api/apiFuntions"
 
 
-import { Card, Dropdown, Button } from 'react-bootstrap'
+import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/CategoryCatalog.css'
+import '../../css/CategoryCatalog.css'
 
 
 const CategoryCatalog = (categorySelected) => {
@@ -29,7 +26,6 @@ const CategoryCatalog = (categorySelected) => {
 
   /* ------------------GetProducts useEffect------------------*/ 
 useEffect(() => {
- 
     getProductsByCategory(categorySelected)
       .then(Products => {
         setListProduct(Products)

@@ -1,12 +1,17 @@
+//---------------CSS
 import './App.css';
-import CategoryCatalog from './components/category/CategoryCatalog.js';
-import {BrowserRouter,Routes, Route, Switch, Link} from "react-router-dom";
-import Nav from './NavBar';
-import { useEffect, useState } from 'react';
-import MainComponent from './components/main/MainComponent';
-import { getCategories } from './components/api/apiFuntions';
-import Footer from './Footer';
 
+//-------------Router
+import { BrowserRouter,Routes, Route} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { getCategories } from './api/apiFuntions';
+
+//---------Components
+
+import MainComponent from './components/main/MainComponent';
+import Nav from './components/navbar/NavBar.js';
+import Footer from './components/footer/Footer.js';
+import CategoryCatalog from './components/category/CategoryCatalog.js';
 
 function App() {
 
@@ -30,10 +35,9 @@ return (
         <Routes>
           <Route path="/" element={<MainComponent/>}/>
           {category.map((categories) => {
-          return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>}
-          )}
+            return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
+            })}
         </Routes>
-        
     </BrowserRouter>
     <Footer/>
   </div>

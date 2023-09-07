@@ -1,13 +1,11 @@
-import React from "react";
-
 
 const baseURL="http://localhost:3001/";
 
-const getImages=()=>{
+// const getImages=()=>{
     
 
 
-}
+// }
 //-----------------------------------------GETS------------------------------------------------------------
 //-----------------------------------Products------------------------------------------------------------
 export const getProductsById = async(id) => {

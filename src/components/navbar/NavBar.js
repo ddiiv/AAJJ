@@ -1,15 +1,15 @@
 import React,{useState,useEffect} from 'react'
-import search from './img/search.png'
-import user from'./img/user.png'
-import bichologo from './img/bichologo.png'
-import cart from './img/carro.png'
-import './components/css/NavBar.css'
-import { getCategories } from './components/api/apiFuntions.js';
-import { BrowserRouter as Routes, Switch, Route,Router, Link, BrowserRouter } from "react-router-dom";
+import search from '../../img/search.png'
+import user from'../../img/user.png'
+import bichologo from '../../img/bichologo.png'
+import cart from '../../img/carro.png'
+import '../../css/NavBar.css'
+import { getCategories } from '../../api/apiFuntions.js';
+import { BrowserRouter as Link} from "react-router-dom";
 
 
 const Nav =()=>{
-const [categorySelected , setCategorySelected] = useState([]);
+
 const [category, setCategory] = useState([]);
 
 useEffect(() => {
@@ -26,12 +26,12 @@ return(
             <div className='topnav'>
                 <div className='containerNav'>
                 <div className='containerLogo'>
-                <Link to="/" ><img className='logo' src={bichologo}/></Link>
+                <Link to="/" ><img className='logo' src={bichologo} alt=""/></Link>
                 </div>
                 <div className='containerItems'>
-                <button className='buttonItem'><img className='items' src={search}/></button>
-                <button className='buttonItem' id="center"><img className='items' src={user}/></button>
-                <button className='buttonItem'> <img className='items' src={cart}/> </button>
+                <button className='buttonItem'><img className='items' src={search} alt=""/></button>
+                <button className='buttonItem' id="center"><img className='items' src={user} alt=""/></button>
+                <button className='buttonItem'> <img className='items' src={cart} alt=""/> </button>
                 </div>
                 </div>
 
