@@ -32,32 +32,34 @@ a:hover {
 .navbarContent{
     width: 100%;
     height: 200px;
-
+    position: sticky;
+    top: -140px;
+    z-index: 999;
 }
 ul.nav{
-    border-top:0.52px solid #e4e4e4;
+    border-top:0.52px solid #ffffff;
     width: 100%;
     padding: 0px;
     text-align: center;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: flex;
+
 }
 
-
-.navbar {
+div.navbar {
+    transition-delay: 0.5s;
     width: 100%;
     height: 83px;
     margin: 0;
-    background-color: #ffffff;
+    background-color: #ffffffd0;
     color: white;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     text-align: center;
     padding: 25px 160px;
     z-index: 999;
 
-    transition: 0.5s;
 
 
 }
@@ -182,6 +184,9 @@ button.buttonItem{
     .topnav,
     .navbarContent {
         width: 100%;
+        position: sticky;
+        top: -140px;
+        z-index: 999;
     }
     ul.topnav li.right,
     ul.topnav li {

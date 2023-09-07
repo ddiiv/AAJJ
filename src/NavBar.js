@@ -3,23 +3,22 @@ import search from './img/search.png'
 import user from'./img/user.png'
 import bichologo from './img/bichologo.png'
 import cart from './img/carro.png'
-import './NavBar.css'
+import './components/css/NavBar.css'
+import { getCategories } from './components/api/apiFuntions.js';
 import { BrowserRouter as Routes, Switch, Route,Router, Link, BrowserRouter } from "react-router-dom";
 
 
 const Nav =()=>{
-const [categorySelected , setCategorySelected] = useState('');
+const [categorySelected , setCategorySelected] = useState([]);
 const [category, setCategory] = useState([]);
 
 useEffect(() => {
-    setCategory();
+    getCategories()
+    .then(Categories => {
+        setCategory(Categories)
+    })
 }, [])
-let futbol = "futbol";
-const handleCategorySelected = (e) => {
-    e.preventDefault(e.target.value);
-    setCategorySelected("futbol");
-    console.log(e);
-}
+
 
 return(
 <>
@@ -37,9 +36,10 @@ return(
                 </div>
 
             <div className='navbar'>
-                <ul className='nav'> 
-                    <li className='nav-item'><Link to='/category/futbol' >Fútbol</Link></li>
-                    <li className='nav-item'><Link to="/basket">Basket</Link></li>
+                <ul className='nav'>
+                    { category.map((categories) => {
+                        return <li className='nav-item'  key={categories.IdCategory} ><Link to={`/category/${categories.Category}`} >{categories.Category}</Link></li>
+                    })}
                 </ul>
             </div>
             </div>

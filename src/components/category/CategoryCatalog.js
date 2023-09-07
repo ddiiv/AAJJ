@@ -1,45 +1,80 @@
 import { useEffect, useState } from "react"
-import { getProducts } from "../api/apiFuntions"
+import { getProductsByCategory } from "../api/apiFuntions"
+import { getCategories } from "../api/apiFuntions"
+import { getSubCategories } from "../api/apiFuntions"
+import { getSizes } from "../api/apiFuntions"
+
+
 import { Card, Dropdown, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/CategoryCatalog.css'
-import Products from "../../futbolProducts"
 
 
 const CategoryCatalog = (categorySelected) => {
+
   const [listProduct, setListProduct] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([])
   const [category, setCategory] = useState([])
+  const [subCategory, setSubCategory] = useState([])
   const [images, setImages] = useState([])
+  const [size, setSize] = useState([])
+  
+  const [filters, setFilters] = useState([])
 
-  const [filters, setFilters] = useState({})
+  const handleClick = (e) => {
+    e.preventDefault();
+    setFilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
+    
+  }
 
-  const handleClick = e => setFilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
+  /* ------------------GetProducts useEffect------------------*/ 
+useEffect(() => {
+ 
+    getProductsByCategory(categorySelected)
+      .then(Products => {
+        setListProduct(Products)
+        setProductosFiltrados(Products)
 
+    })
+  },[categorySelected])
+  /* -------------------Category useEffect -------------------*/ 
   useEffect(() => {
-      setCategory(categorySelected.categorySelected)
-      setListProduct(Products)
-      setProductosFiltrados(Products)
-    Products.map(product => {
-      setImages(images => [...images, product.images[0]])
-    }
-    )
-  }, [])
+    getCategories()
+      .then(Categories => {
+      setCategory(Categories)
+    })
+    
 
+  /* ------------------SubCategory useEffect -----------------*/ 
+
+    getSubCategories()
+      .then(SubCategory => {
+      setSubCategory(SubCategory)
+    })
+
+
+  /* -------------------Size     useEffect -------------------*/ 
+  
+    getSizes()
+      .then(Sizes => {
+      setSize(Sizes)
+    })
+  },[])
+  /* --------------------Filter useEffect --------------------*/ 
   useEffect(() => {
     if (!listProduct.length) return;
     let newProductos = [...listProduct];
 
-    if (filters.subcategory) {
-      newProductos = newProductos.filter(product => product.subcategory === filters.subcategory);
+    if (filters.SubCategory) {
+      newProductos = newProductos.filter(product => product.SubCategory === filters.SubCategory);
     }
 
-    if (filters.size) {
-      newProductos = newProductos.filter(product => product.sizes.includes(filters.size));
+    if (filters.Size) {
+      newProductos = newProductos.filter(product => product.Size.includes(filters.Size));
     }
 
-    if(filters.category){
-      newProductos = newProductos.filter(product => product.category === filters.category);
+    if(filters.Category){
+      newProductos = newProductos.filter(product => product.Category === filters.Category);
     }
 
     setProductosFiltrados(newProductos);
@@ -48,14 +83,14 @@ const CategoryCatalog = (categorySelected) => {
 return (
     <div className="catalog">
         <ul className="products">
-        {productosFiltrados.map(productFutbol => (
+        {listProduct.map(product => (
 
-          <div class="card" key={productFutbol.idProduct}>
-          <img src={images[productFutbol.idProduct]} className="productImg" alt="Producto"/>
+          <div class="card" key={product.idProduct}>
+          <img href={images[product.idProduct]} className="productImg" alt="Producto"/>
           <div class="container">
-            <p className="gender">{productFutbol.SubCategory}</p>
-            <p className="title">{productFutbol.Title}</p>
-            <p className="price">${productFutbol.Price}</p>
+            <p className="gender">{product.SubCategory}</p>
+            <p className="title">{product.Title}</p>
+            <p className="price">${product.Price}</p>
           </div>
         </div>
         ))}
@@ -74,15 +109,12 @@ return (
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item className="item-filter"> 
-                  <button onClick={handleClick} className="size-buttons" value="hombre">Hombre</button>
+              {subCategory.map(subcategory => (
+                <Dropdown.Item className="item-filter" key={subcategory.IdSubCategory}> 
+                  <button onClick={handleClick} className="size-buttons" value={subcategory.SubCategory}>{subcategory.SubCategory}</button>
                 </Dropdown.Item>
-                <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="mujer">Mujer</button>
-                </Dropdown.Item >
-                <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="niño">Niño</button>
-                </Dropdown.Item>
+                ))}
+
                 <Dropdown.Item className="item-filter">
                   <button onClick={handleClick} className="size-buttons" value="">Reset</button>
                 </Dropdown.Item>
@@ -91,20 +123,16 @@ return (
 
                 <Dropdown>
                 <Dropdown.Toggle className="size-buttons" variant = "success" id = "dropdown-basic">
-                  Size
+                  Talles
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
+                {size.map(size => (
+                <Dropdown.Item className="item-filter" key={size.IdSize}> 
+                  <button onClick={handleClick} className="size-buttons" value={size.size}>{size.size}</button>
+                </Dropdown.Item>
+                ))}
                   <Dropdown.Item className="item-filter">
-                <button onClick={handleClick} className="size-buttons" value="S">Short</button>
-                  </Dropdown.Item>
-                  <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="M">Medium</button>
-                  </Dropdown.Item>
-                  <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="L">Large</button>
-                  </Dropdown.Item>
-                  <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="">Reset</button>
+                  <button onClick={handleClick} className="size-buttons" value="">Resetear filtros</button>
                   </Dropdown.Item>
                 </Dropdown.Menu>
                 </Dropdown>
@@ -115,14 +143,13 @@ return (
                   Deportes
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
+                {category.map(categories => (
+                <Dropdown.Item className="item-filter" key={categories.IdCategory}> 
+                  <button onClick={handleClick} className="size-buttons" value={categories.Category}>{categories.Category}</button>
+                </Dropdown.Item>
+                ))}
                   <Dropdown.Item className="item-filter">
-                    <button onClick={handleClick} className="size-buttons" value="Futbol">Futbol</button>
-                  </Dropdown.Item>
-                  <Dropdown.Item className="item-filter">
-                    <button onClick={handleClick} className="size-buttons" value="Basquet">Basket</button>
-                  </Dropdown.Item>
-                  <Dropdown.Item className="item-filter">
-                    <button onClick={handleClick} className="size-buttons" value="Indumentaria">Indumentaria</button>
+                  <button onClick={handleClick} className="size-buttons" value="">Resetear filtros</button>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
