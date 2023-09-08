@@ -38,7 +38,7 @@ return(
             <div className='navbar'>
                 <ul className='nav'>
                     { category.map((categories) => {
-                        return <li className='nav-item'  key={categories.IdCategory} ><Link to={`/category/${categories.Category}`}  className='navItem'>{categories.Category}</Link></li>
+                        return <li className='nav-item'  key={categories.IdCategory} ><Link to={`/category/${categories.Category}`} id="a" className='navItem'>{categories.Category}</Link></li>
                     })}
                     
                 </ul>

@@ -21,12 +21,20 @@
     line-height: 40px;
     text-decoration: none;
     letter-spacing: 0.82px;
+    
 }
 
 a:hover {
     transition: 0.5s;   
+
+    color: #df0000d3;    background-color: #ffffff;
+
+}
+#a:hover{
+    border-bottom:2px solid #df0000d3;
     color: #df0000d3;
     background-color: #ffffff;
+    transition: 0.5s;
 }
 
 .navbarContent{
@@ -177,6 +185,7 @@ button.buttonItem{
     transform: scale(1.1);
     background-color: #ba0505;
     width: 80%;
+
 }
 
 @media screen and (max-width: 950px) {
@@ -209,7 +218,7 @@ button.buttonItem{
         
     }
     .navbar,.nav-item{
-       display: none;
+        display: none;
     }
     .topnav,.navbarContent{
         display: flex;
