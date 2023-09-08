@@ -4,3 +4,17 @@
     height: 30vw;
 }
 
+.productImgHighList
+{
+    width: 60%;
+    height: 60%;
+    opacity: 1;
+    transform: translateY(0);
+    background-color: #F5F3F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    transition: 0.5s;
+}

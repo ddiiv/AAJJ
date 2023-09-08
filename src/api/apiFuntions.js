@@ -6,9 +6,15 @@ const baseURL="http://localhost:3001/";
 
 //----------------------------------------Images--------------------------------------------------------
 export const getImages = async(img)=>{
-    const response = await fetch(`${baseURL}img/asd`)
-    const data =  response.url
-    
+    const response = await fetch(`${baseURL}img/${img}`)
+    const data = response.url
+    return data
+}
+export const getCarruselImages = async() => {
+    const response = await fetch(`${baseURL}carrousel`)
+    const data = await response.json()
+    console.log("carrousel")
+    console.log(data)
     return data
 }
 //---------------------------------------Products-------------------------------------------------------

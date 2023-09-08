@@ -1,10 +1,46 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../../css/Carrusel.css';
+import { getCarruselImages, getImages } from '../../api/apiFuntions';
 
 const CarouselComponent = () => {
+    
+    const [images, setImages] = useState([]);
+    const [i ,setI] = useState([]);
+    let array = [1,2,3,4,5]
+    // useEffect(() => {
+    //     getCarruselImages().then((data) => {
+    //         data = data.map(e => {
+    //             var newFoto
+    //             getImages(e.Route).then((foto) => newFoto = foto)
+    //             return {...e, foto: newFoto}
+    //         })
+    //         setI(data)
+    //         console.log("DATA", data)
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error al obtener la imagen de la API:', error);
+    //     })
+    // }, [])
+
+    useEffect(() => async() => {
+        try {
+            const response = await getCarruselImages()
+            const data = response.map(async(e) => {
+                console.log('e.Route', e.Route)
+                const newFoto = await getImages(e.Route)
+                return ({...e, foto: newFoto})
+            })
+            console.log('DATA', data)
+            setI(data)
+        }
+        catch(error) {
+            console.error('Error al obtener la imagen de la API:', error);
+        }
+    }, [])
     return (
+
         <>
             <div className='carrousel'>
                 <Carousel 
@@ -20,24 +56,14 @@ const CarouselComponent = () => {
                     
 
                 >
-                    <div className='item'>
+                    {i?.map(image =>(
+                        <div className='item' key={image.IdImageCarrusel}>
                         <img    className='carruselImg'
-                                src="https://www.gagebeasleyshop.com/cdn/shop/articles/hans-jurgen-mager-CHqbiMhQ_wE-unsplash_1200x1200.jpg?v=1647831849"
-                                alt="Oso Polar"
+                                src={image.foto}
+                                alt={image.Route}
 
-                        />      </div>
-                    <div className='item'>
-                        <img    className='carruselImg'
-                                src="https://avicultura.com/wp-content/uploads/2016/06/greenpeace-1.jpg"
-                                alt="Greenpeace"
-
-                        />      </div>
-                    <div className='item'>
-                        <img    className='carruselImg'
-                                src="https://tourismmedia.italia.it/is/image/mitur/1600X900_natura_lago_di_carezza?wid=1600&hei=900&fit=constrain,1&fmt=webp"
-                                alt="Naturaleza"
-
-                        />      </div>
+                        /> </div>
+                        ))}
                 </Carousel>
             </div>
 

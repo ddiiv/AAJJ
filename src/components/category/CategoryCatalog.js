@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getProductsByCategory,getCategories,getSizes,getSubCategories } from "../../api/apiFuntions"
+import { getProductsByCategory,getCategories,getSizes,getSubCategories,getImages } from "../../api/apiFuntions"
 
 
 import { Dropdown }from 'react-bootstrap'
@@ -32,7 +32,12 @@ useEffect(() => {
         setProductosFiltrados(Products)
 
     })
+    getImages("as")
+          .then(image =>{
+            setImages(image)
+          })
   },[categorySelected])
+
   /* -------------------Category useEffect -------------------*/ 
   useEffect(() => {
     getCategories()
@@ -81,9 +86,9 @@ return (
         <ul className="products">
         {listProduct.map(product => (
 
-          <div class="card" key={product.idProduct}>
-          <img href={images[product.idProduct]} className="productImg" alt="Producto"/>
-          <div class="container">
+          <div className="card" key={product.idProduct}>
+          <img src={images} className="productImg" alt="Producto"/>
+          <div className="container">
             <p className="gender">{product.SubCategory}</p>
             <p className="title">{product.Title}</p>
             <p className="price">${product.Price}</p>
