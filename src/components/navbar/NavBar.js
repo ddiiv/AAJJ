@@ -5,7 +5,7 @@ import bichologo from '../../img/bichologo.png'
 import cart from '../../img/carro.png'
 import '../../css/NavBar.css'
 import { getCategories } from '../../api/apiFuntions.js';
-import { BrowserRouter as Link} from "react-router-dom";
+import { BrowserRouter as Routes, Link} from "react-router-dom";
 
 
 const Nav =()=>{
@@ -38,8 +38,9 @@ return(
             <div className='navbar'>
                 <ul className='nav'>
                     { category.map((categories) => {
-                        return <li className='nav-item'  key={categories.IdCategory} ><Link to={`/category/${categories.Category}`} >{categories.Category}</Link></li>
+                        return <li className='nav-item'  key={categories.IdCategory} ><Link to={`/category/${categories.Category}`}  className='navItem'>{categories.Category}</Link></li>
                     })}
+                    
                 </ul>
             </div>
             </div>

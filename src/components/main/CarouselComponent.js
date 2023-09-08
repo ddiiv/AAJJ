@@ -16,7 +16,7 @@ const CarouselComponent = () => {
                     transitionTime={500}
                     stopOnHover={false}
                     showStatus={false}
-                    showIndicators={true}
+                    showIndicators={false}
                     
 
                 >

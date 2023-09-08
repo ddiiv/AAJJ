@@ -1,35 +1,39 @@
 
 const baseURL="http://localhost:3001/";
 
-// const getImages=()=>{
+
+//-----------------------------------------GETS---------------------------------------------------------
+
+//----------------------------------------Images--------------------------------------------------------
+export const getImages = async(img)=>{
+    const response = await fetch(`${baseURL}img/asd`)
+    const data =  response.url
     
-
-
-// }
-//-----------------------------------------GETS------------------------------------------------------------
-//-----------------------------------Products------------------------------------------------------------
-export const getProductsById = async(id) => {
-    const response = await fetch(`${baseURL}products/${id}`)
-    const data = await response.json()
-
     return data
 }
+//---------------------------------------Products-------------------------------------------------------
+
 export const getProducts = async() => {
     const response = await fetch(`${baseURL}products`)
     const data = await response.json()
-    console.log("getProducts")
-    console.log(data)
+
     return data
 }
 export const getProductsByCategory = async(id) => {
 
-    const response = await fetch(`${baseURL}product/category/${id.categorySelected}`)
-    const data = await response.json()
+        const response = await fetch(`${baseURL}product/category/${id.categorySelected}`)
+        const data = await response.json()
+    
+        return data
+}   
 
+export const getProductsHighlist = async() => {
+    const response = await fetch(`${baseURL}products/highlights`)
+    const data = await response.json()
     return data
 }
     
-//-----------------------------------Categories------------------------------------------------------------
+//-----------------------------------Categories---------------------------------------------------------
 
 export const getCategories = async() => {
     const response = await fetch(`${baseURL}categories`)
@@ -37,7 +41,7 @@ export const getCategories = async() => {
 
     return data
 }
-//-----------------------------------SubCategories------------------------------------------------------------
+//-----------------------------------SubCategories------------------------------------------------------
 
 export const getSubCategories = async() => {
     const response = await fetch(`${baseURL}subcategories`)
@@ -45,7 +49,7 @@ export const getSubCategories = async() => {
 
     return data
 }
-//-----------------------------------Sizes------------------------------------------------------------
+//-----------------------------------Sizes--------------------------------------------------------------
 export const getSizes = async() => {
     const response = await fetch(`${baseURL}sizes`)
     const data = await response.json()
