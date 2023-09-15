@@ -12,9 +12,7 @@ export const getImages = async(img)=>{
 }
 export const getCarruselImages = async() => {
     const response = await fetch(`${baseURL}carrousel`)
-    const data = await response.json()
-    console.log("carrousel")
-    console.log(data)
+    const data = response.json()
     return data
 }
 //---------------------------------------Products-------------------------------------------------------
