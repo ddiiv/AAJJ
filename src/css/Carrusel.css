@@ -1,7 +1,7 @@
-.carrousel{
+.Carrousel{
 
     width:100%;
-    height: 50%;
+    height: 40%;
 
 }
 .item{
@@ -14,15 +14,16 @@
 }
 .carruselImg{
 
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    min-width: 20%;
+
 }
 .carousel .slide {
     min-width: 100%;
     margin: 0;
     position: relative;
     text-align: center;
-    min-height: 50%;
+    min-height: 20%;
 }
 .slider-wrapper{
     max-height: 20%;

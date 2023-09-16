@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { getProductsByCategory,getCategories,getSizes,getSubCategories,getImages } from "../../api/apiFuntions"
+import { getProductsByCategory,getCategories,getSizes,getSubCategories } from "../api/apiFuntions"
 
 
 import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../../css/CategoryCatalog.css'
+import '../css/CategoryCatalog.css'
 
 
 const CategoryCatalog = (categorySelected) => {
@@ -13,7 +13,6 @@ const CategoryCatalog = (categorySelected) => {
   const [productosFiltrados, setProductosFiltrados] = useState([])
   const [category, setCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])
-  const [images, setImages] = useState([])
   const [size, setSize] = useState([])
   
   const [filters, setFilters] = useState([])
@@ -26,16 +25,23 @@ const CategoryCatalog = (categorySelected) => {
 
   /* ------------------GetProducts useEffect------------------*/ 
 useEffect(() => {
-    getProductsByCategory(categorySelected)
-      .then(Products => {
-        setListProduct(Products)
-        setProductosFiltrados(Products)
+    const getProductAndImageByCategorySelected = async () => {  
+      try{
+      const products=  await getProductsByCategory(categorySelected)
+      console.log(products)
+      const images = products.map((product) => ({ ...product, foto:  `http://localhost:3001/img/${product.Image}`}))
 
-    })
-    getImages("as")
-          .then(image =>{
-            setImages(image)
-          })
+      setListProduct(images)
+      setProductosFiltrados(products)
+      setFilters(products.Category,products.SubCategory, products.Size)
+
+    } catch (error) {
+      throw new Error('Error al obtener los productos de la API. Error: ' + error)
+
+
+    }
+  }
+  getProductAndImageByCategorySelected()
   },[categorySelected])
 
   /* -------------------Category useEffect -------------------*/ 
@@ -66,15 +72,15 @@ useEffect(() => {
     if (!listProduct.length) return;
     let newProductos = [...listProduct];
 
-    if (filters.SubCategory) {
+    if (filters) {
       newProductos = newProductos.filter(product => product.SubCategory === filters.SubCategory);
     }
 
-    if (filters.Size) {
+    if (filters) {
       newProductos = newProductos.filter(product => product.Size.includes(filters.Size));
     }
 
-    if(filters.Category){
+    if(filters){
       newProductos = newProductos.filter(product => product.Category === filters.Category);
     }
 
@@ -87,7 +93,7 @@ return (
         {listProduct.map(product => (
 
           <div className="card" key={product.idProduct}>
-          <img src={images} className="productImg" alt="Producto"/>
+          <img src={product.foto} className="productImg" alt="Producto"/>
           <div className="container">
             <p className="gender">{product.SubCategory}</p>
             <p className="title">{product.Title}</p>

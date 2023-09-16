@@ -2,13 +2,16 @@
 const baseURL="http://localhost:3001/";
 
 
-//-----------------------------------------GETS---------------------------------------------------------
+//-----------------------------------------GETS---------------------------------------------------------    
 
 //----------------------------------------Images--------------------------------------------------------
 export const getImages = async(img)=>{
-    const response = await fetch(`${baseURL}img/${img}`)
-    const data = response.url
-    return data
+        const response = await fetch(`${baseURL}img/${img}`)
+        const data = response.url
+        console.log(data)
+        return data
+
+
 }
 export const getCarruselImages = async() => {
     const response = await fetch(`${baseURL}carrousel`)

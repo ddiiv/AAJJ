@@ -8,10 +8,10 @@ import { getCategories } from './api/apiFuntions';
 
 //---------Components
 
-import MainComponent from './components/main/MainComponent';
+import MainComponent from './pages/MainComponent';
 import Nav from './components/navbar/NavBar.js';
 import Footer from './components/footer/Footer.js';
-import CategoryCatalog from './components/category/CategoryCatalog.js';
+import CategoryCatalog from './pages/CategoryCatalog.js';
 
 function App() {
 
