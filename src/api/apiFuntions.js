@@ -5,17 +5,10 @@ const baseURL = "http://localhost:3001/";
 //-----------------------------------------GETS---------------------------------------------------------    
 
 //----------------------------------------Images--------------------------------------------------------
-export const getImages = async (img) => {
-    await fetch(`${baseURL}img/${img}`)
-        .then((response) => {
-            const data = response.url
-            console.log(data)
-            return data
-        })
-        .catch((error) => {
-            console.log("ERROR EN GETIMAGES: " + error)
-        })
+export const getImages =  (img) => {
+        return fetch(`${baseURL}img/${img}`)        
 }
+
 export const getCarruselImages = async () => {
     const response = await fetch(`${baseURL}carrousel`)
     const data = response.json()

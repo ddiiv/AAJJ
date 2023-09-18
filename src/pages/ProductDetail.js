@@ -1,34 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "../css/ProductDetail.css"
 import "../css/htmltags.css"
+import { getImages } from "../api/apiFuntions";
 
 const ProductDetail = (productSelected) => {
     const [product, setProduct] = useState([]);
-    useEffect(() => {
+
+    const fetchImage = async () => {
         const productDetail = productSelected.productSelected
-        if (productDetail && productDetail.Image) {
-            fetch(`http://localhost:3001/img/${productDetail.Image}`)
-                .then(response => response.url)
-                .then((data) => {
-
-                    setProduct({
-                        ...productDetail,
-                        Image: data,
-                    });
-                    console.log(data)
-                })
-                .catch((error) => {
-                    console.error('Error al obtener la URL de la imagen:', error);
-                }
-                );
-        }
-        else {
-            console.log("No hay Producto Seleccionado")
-        }
-
-
-    }, [productSelected.productSelected])
-
+        const res = await getImages(productDetail.Image)
+        const url = await res.url;
+        setProduct({
+            ...productDetail,
+            Image: url});
+    };
+    
+    useEffect(() => {
+        fetchImage();
+    }, []);
 
 
 

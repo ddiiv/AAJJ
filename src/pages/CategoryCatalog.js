@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getProductsByCategory,getCategories,getSizes,getSubCategories } from "../api/apiFuntions"
+import { getProductsByCategory,getCategories,getSizes,getSubCategories, getImages } from "../api/apiFuntions"
 import { BrowserRouter as Routes, Link} from "react-router-dom";
 
 
@@ -28,11 +28,11 @@ const CategoryCatalog = (categorySelected) => {
   /* ------------------GetProducts useEffect------------------*/ 
 useEffect(() => {
     const getProductAndImageByCategorySelected = async () => {  
+
       try{
       const products=  await getProductsByCategory(categorySelected)
-      console.log(products)
-      const images = products.map((product) => ({ ...product, foto:  `http://localhost:3001/img/${product.Image}`}))
-
+      const images = products.map((product) => ({...product, foto:  `http://localhost:3001/img/${product.Image}`}))
+      console.log(images) 
       setListProduct(images)
       setProductosFiltrados(products)
       setFilters(products.Category,products.SubCategory, products.Size)
@@ -93,9 +93,9 @@ return (
     <div className="catalog">
         <div className="products">
         {listProduct.map(product => (
-           <Link className="nothing" to={`/product=/${product.Title}`}>
+          <Link className="nothing" to={`/product=/${product.Title}`}>
           <div className="card" key={product.idProduct}>
-           
+          
             <img src={product.foto} className="productImg" alt="Producto"/>
             <div className="container">
             <div className="genderContainer">
@@ -111,7 +111,7 @@ return (
         
         </div>  
         </Link>
-       
+      
         ))}
       </div>
 
