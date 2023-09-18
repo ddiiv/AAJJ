@@ -8,9 +8,9 @@ import { getCategories, getProducts } from './api/apiFuntions';
 
 //---------Components
 
-import MainComponent from './pages/MainComponent';
+import Home from './pages/Home';
 import Nav from './components/navbar/NavBar.js';
-import Footer from './components/footer/Footer.js';
+import Footer from './components/Footer.js';
 import CategoryCatalog from './pages/CategoryCatalog.js';
 import ProductDetail from './pages/ProductDetail.js';
 
@@ -39,7 +39,7 @@ return (
     <BrowserRouter>
       <Nav/>
         <Routes>
-          <Route path="/" element={<MainComponent/>}/>
+          <Route path="/" element={<Home/>}/>
           {category.map((categories) => {
             return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
             })}

@@ -1,10 +1,10 @@
 import React from "react";
 
-import CarouselComponent from "../components/main/CarouselComponent.js";
-import HighlistProducts from "../components/main/HighlistProducts.js";
+import CarouselComponent from "../components/CarouselComponent.js";
+import HighlistProducts from "../components/highlightProduct/HighlightProducts.js";
 import '../css/MainComponent.css'
 
-const MainComponent = () => {
+const Home = () => {
 
 return(
 <>   
@@ -23,4 +23,4 @@ return(
 )
 
 }
-export default MainComponent;
+export default Home;

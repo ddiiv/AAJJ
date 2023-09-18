@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from "react";
 import { getProductsHighlist} from '../../api/apiFuntions.js';
+import HighlightCard from "./HighlightCard.js";
 
 import '../../css/HighlistProducts.css'
 
@@ -17,8 +18,7 @@ const HighlistProducts = () => {
         const getProductsAndImageHightlist = async () => {
             try {
                 const products = await getProductsHighlist()
-                const images = products.map((product) => ({ ...product, foto:  `http://localhost:3001/img/${product.Image}` }))
-                setListProduct(images)
+                setListProduct(products)
 
             }
             catch (error) {
@@ -46,24 +46,8 @@ const HighlistProducts = () => {
         <Slider  {...settings}>
 
         {listProduct?.map(product =>
-          
           (
-          <Link className="LinkConteiner" to={`/product=/${product.Title}`}>          
-          <div className="CardHighList" key={product.IdProduct}>
-           <img src={product.foto} className="productImgHighList" alt="Producto"/>
-            <div className="container">
-                <div className="genderContainer">
-                <b className="gender">{product.SubCategory}</b>
-                </div>
-                <div className="TitleContainer">
-                <h1 className="title">{product.Title}</h1>
-                </div>
-                <div className="priceContainer">
-                <span className="price">${product.Price}</span>
-                </div>
-            </div>
-          </div>
-        </Link>
+            <HighlightCard product={product}/>
           ))}
         </Slider>
       </div>
