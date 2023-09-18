@@ -1,21 +1,19 @@
   .catalog{
     margin: 2vw;
+    max-width: 100%;
+    height:100%;
   }
   *{
     transition: 0.5s ease;
   }
   .products{
     margin-left: 22vw;
+    padding: 10px ;
     width: 74vw;
-    height: 200vw;
+    max-width: 100%;
+    height:100%;
     transform: 0.5s;
-    position: relative;
     transition: 0.5s;
-    transition: width 0.5s;
-    transition-duration: 0.5s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
-    transition-property: width;  
     
   }
   ::marker {
@@ -23,19 +21,19 @@
   }
   
   .card {
-
-    width: 22vw;
-    height: 28vw;
+    margin: 0px;
+    width: 23vw;
+    height: 30vw;
+    display: flex;
     margin: 5px;
     border-bottom: 2px solid  rgb(194, 15, 15);
     border-top: 2px solid  rgb(194, 15, 15);
     border-radius: 0;
-    display: flex;
+   
     float: left;
     align-items: center;
     justify-content:center;
-    
-    position: relative;
+  
     transition: 0.5s;
     transition: width 0.5s;
     transition-duration: 0.5s;
@@ -62,24 +60,7 @@
     background-color: rgb(194, 15, 15);
     color: aliceblue;
   }
-  p{  
-    display: flex;
-    font-family: "Montserrat",sans-serif;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    text-transform: capitalize;
-    text-rendering: geometricPrecision;
-    -webkit-font-smoothing: antialiased;
-    color: #101010;
-    padding: 6px 10px;
-    text-align: center;                                                                                                
-    font-size: 22px;
-    font-weight:300;
-    transition: 0.5s;
-    text-decoration: none;
 
-  }
   .gender{
 
     letter-spacing: 0.8px;
@@ -89,13 +70,11 @@
   }
   .title{
     font-size: 20px;
-
-    color: #101010;
     font-weight: 600;
     line-height: 18px;
-
-    align-items: center;
     letter-spacing: 0.8px;
+    color: #101010;
+
   }
   .price{
 
@@ -110,7 +89,7 @@
   
 
   .productImg {
-    border-radius: 5px 5px 0 0;
+    border-radius:0;
     width: 70%;
     height: auto;
     float: left;
@@ -127,6 +106,11 @@
 
 .container{
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: start;
+  align-items: start;
 
 }
 
@@ -140,7 +124,9 @@
   color: #fff;
   border: none;
 }
-
+h1{
+  display: flex;
+}
 .dropdown-menu {
   background-color: #f8f9fa;
   border-radius: 0px;
@@ -200,7 +186,7 @@
     width: 100%;
     color: #dc3545;
     border-bottom: 1px solid rgba(141, 141, 141, 0.541);
-    font-family: "Montserrat",sans-serif;
+    font-family: "Poppins";
     font-size: 20px;
     font-weight: 900;
     line-height: 30px;
@@ -306,23 +292,12 @@ aside{
 }
 
 @media screen and (max-width:900px) {
-  .products{
-    width: 78vw;
-    margin-left: 20vw;
-    height: 100%;
-    font-size: 100%;
-  }
-  .title, .price, .gender, p,.addcart{
-    font-size: 2vw;
-
-  }
-  .card{
-    width: 35vw;
-    height: 250px;
-  }
+  .products,
+  .title, .price, .gender, p,.addcart,
+  .card,
   .productImg
   {
-    max-width: 70%;
+    transform: translateY(-3);
   }
 }
 
@@ -334,7 +309,8 @@ aside{
 
   }
   .card{
-    height: 400px;
+    height: 350px;
+    width: 22.5vw;
   }
 
 }
@@ -349,4 +325,51 @@ aside{
   .title,.price,.gender,.addcart{
     font-size: 3vw;
   }
+}
+.nothing{
+  text-decoration: none;
+  color: #000;
+  padding: 0px;
+}
+.genderContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto;
+  transition: 0.5s;
+  padding: 0px;
+
+}
+.priceContainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top:5px;
+  transition: 0.5s;
+  padding: 0px;
+}
+span.price{
+  font-family: "Poppins";
+  font-size: 25px;
+  line-height: 18px;
+
+}
+
+.TitleContainer{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  float: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  transition: 0.5s;
+  padding: 0px;
 }

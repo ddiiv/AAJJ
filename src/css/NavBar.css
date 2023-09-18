@@ -14,7 +14,6 @@
     float: left;
     text-align: center;                                                                                                
     text-decoration:dotted;
-    font-family:sans-serif;
     font-size: 22px;
     font-weight:300;
     transition: 0.5s;
@@ -42,7 +41,7 @@ a:hover {
     height: 200px;
     position: sticky;
     top: -140px;
-    z-index: 999;
+    z-index: 999 !important;
 }
 ul.nav{
     border-top:0.52px solid #ffffff;
@@ -55,20 +54,20 @@ ul.nav{
 
 }
 
-div.navbar {
+.CategoryNavbar {
     transition-delay: 0.5s;
     width: 100%;
-    height: 83px;
+    height: 80px;
+    display: flex;
     margin: 0;
     background-color: #ffffffd0;
     color: white;
     justify-content: center;
-    align-items: end;
     text-align: center;
-    padding: 25px 160px;
-    z-index: 999;
-
-
+    padding: 25px 10px;
+    z-index: 999 !important;
+    position: sticky;
+    top:0;
 
 }
 .topnav{
@@ -127,7 +126,7 @@ ul.topnav li a .img {
 
 .logo{
     border-radius: 5px 5px 0 0;
-    max-width: 13vw;
+    max-width: 250px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -189,44 +188,42 @@ button.buttonItem{
 }
 
 @media screen and (max-width: 950px) {
-    .navbar,
     .topnav,
-    .navbarContent {
-        width: 100%;
-        position: sticky;
-        top: -140px;
-        z-index: 999;
-    }
+    .navbarContent,
     ul.topnav li.right,
-    ul.topnav li {
-        float: none;
+    ul.topnav li ,    .items,
+    .containerLogo,
+    .CategoryNavbar,.nav-item,
+    .navItem,
+    .buttonItem{
+        transition: 0.5s;
+        transform: translateY(-3);
     }
     .logo{
-        max-width: 120px;
-        height:50px ;
+        max-width: 200px;
     }
-    .items{
-        max-width: 20px;
-        height:20px;
-
+    .navItem{
+        font-size: 14px;
     }
-    .containerLogo{
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-        padding: 0 10px;
+}
+@media screen and (max-width:770px) {
+    .CategoryNavbar,.nav ,.navItem{
+        display:none ;
         
     }
-    .navbar,.nav-item{
-        display: none;
+    .navbarContent, .topnav{
+        height: 80px;
     }
-    .topnav,.navbarContent{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: auto;
-    }
+    .topnav,
+    .navbarContent,
+    ul.topnav li.right,
+    ul.topnav li ,
+    .logo,
+    .items,
+    .containerLogo,
+    .nav-item,
     .buttonItem{
-        height: 40px;
+        transition: 0.5s;
+        transform: translateY(-3);
     }
 }

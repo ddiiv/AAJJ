@@ -1,6 +1,6 @@
 .App{
   font-size: larger;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 1vw;
 }
@@ -34,7 +34,7 @@ a {
   float: left;
   display: block;
   color: #333;
-  text-align: center;
+
   padding: 14px 16px;
   text-decoration: none;
   text-decoration:dotted;

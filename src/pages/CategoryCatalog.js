@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { getProductsByCategory,getCategories,getSizes,getSubCategories } from "../api/apiFuntions"
+import { BrowserRouter as Routes, Link} from "react-router-dom";
 
 
 import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/CategoryCatalog.css'
-
+import '../css/htmltags.css'
 
 const CategoryCatalog = (categorySelected) => {
 
@@ -13,6 +14,7 @@ const CategoryCatalog = (categorySelected) => {
   const [productosFiltrados, setProductosFiltrados] = useState([])
   const [category, setCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])
+
   const [size, setSize] = useState([])
   
   const [filters, setFilters] = useState([])
@@ -89,19 +91,29 @@ useEffect(() => {
 
 return (
     <div className="catalog">
-        <ul className="products">
+        <div className="products">
         {listProduct.map(product => (
-
+           <Link className="nothing" to={`/product=/${product.Title}`}>
           <div className="card" key={product.idProduct}>
-          <img src={product.foto} className="productImg" alt="Producto"/>
-          <div className="container">
-            <p className="gender">{product.SubCategory}</p>
-            <p className="title">{product.Title}</p>
-            <p className="price">${product.Price}</p>
+           
+            <img src={product.foto} className="productImg" alt="Producto"/>
+            <div className="container">
+            <div className="genderContainer">
+            <b className="gender">{product.SubCategory}</b>
+            </div>
+            <div className="TitleContainer">
+            <h1 className="title">{product.Title}</h1>
+            </div>
+            <div className="priceContainer">
+            <span className="price">${product.Price}</span>
+            </div>
           </div>
-        </div>
+        
+        </div>  
+        </Link>
+       
         ))}
-      </ul>
+      </div>
 
 <aside>
 

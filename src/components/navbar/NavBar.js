@@ -35,13 +35,13 @@ return(
                 </div>
                 </div>
 
-            <div className='navbar'>
-                <ul className='nav'>
+            <div className='CategoryNavbar'>
+                <div className='nav'>
                     { category.map((categories) => {
                         return <li className='nav-item'  key={categories.IdCategory} ><Link to={`/category/${categories.Category}`} id="a" className='navItem'>{categories.Category}</Link></li>
                     })}
                     
-                </ul>
+                </div>
             </div>
             </div>
         </div>

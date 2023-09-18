@@ -1,0 +1,79 @@
+
+
+.ProductDetailContainer{
+    width: 100%;
+    height: 100%;
+
+
+}
+.ProductDetail{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction:row;
+
+    padding: 0 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.ProductImages{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ProductInfo{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    justify-content:left;
+    float: left;
+
+}
+.ProductInfoTitle{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.ProductInfoPrice{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.ProductReference{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.ProductDescription{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.ProductInfoSize{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}

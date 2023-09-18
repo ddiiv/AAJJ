@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../../css/Carrusel.css';
-import { getCarruselImages, getImages } from '../../api/apiFuntions';
+import { getCarruselImages } from '../../api/apiFuntions';
 
 const CarouselComponent = () => {
     const [images, setImages] = useState([])
@@ -11,7 +11,6 @@ const CarouselComponent = () => {
         try {
                 const rutas = await getCarruselImages()
                 const images = rutas.map((ruta) => ({ ...ruta, foto:  `http://localhost:3001/img/${ruta.Route}` }))
-                console.log(images)
                 setImages(images)
             }
             catch (error) {
