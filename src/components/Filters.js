@@ -3,12 +3,10 @@ import { getCategories,getSizes,getSubCategories } from "../api/apiFuntions"
 import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Filters=()=>{
+const Filters=({props})=>{
     const [category, setCategory] = useState([])
-    const [subCategory, setSubCategory] = useState([])
-  
-    const [size, setSize] = useState([])
-    
+    const [subCategory, setSubCategory] = useState([])  
+    const [size, setSize] = useState([])    
     const [filters, setFilters] = useState([])
     
   const handleClick = (e) => {
@@ -41,6 +39,7 @@ const Filters=()=>{
     })
   },[])
   /* --------------------Filter useEffect --------------------*/ 
+
     /* useEffect(() => {
     if (!listProduct.length) return;
     let newProductos = [...listProduct];
@@ -59,6 +58,7 @@ const Filters=()=>{
 
     setProductosFiltrados(newProductos);
   }, [filters])*/
+  
     return(
 
 
@@ -118,7 +118,7 @@ const Filters=()=>{
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-                        </div>
+           </div>
             </section>
         </div>  
     )
