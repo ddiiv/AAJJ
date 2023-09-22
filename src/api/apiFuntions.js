@@ -59,5 +59,11 @@ export const getSizes = async () => {
 
     return data
 }
+export const getSizesByIdProduct = async (id) => {
 
+    const response = await fetch(`${baseURL}sizes/product/${id}`)
+    const data = await response.json()
+    console.log(data)
+    return data
+}
 

@@ -32,14 +32,9 @@
     align-items: center;
     justify-content:center;
     flex-direction: column;
-  }
-
-  .nothing :hover{
-    transition: 0.5s;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
   }
-  
+
 
   .addcart{
     transition: 0.5s;
