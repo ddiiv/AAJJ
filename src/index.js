@@ -9,10 +9,15 @@ import './fonts/Poppins-ExtraLight.ttf'
 import './fonts/Poppins-ExtraBold.ttf'
 import './fonts/Poppins-Black.ttf'
 
+
+import { SearchProvider }  from "./context/SearchContext.js";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <SearchProvider>
     <App />
+    </SearchProvider>
   </React.StrictMode>
 );
 
