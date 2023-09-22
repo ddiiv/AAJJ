@@ -3,8 +3,9 @@ import user from '../../img/user.png'
 import bichologo from '../../img/bichologo.png'
 import cart from '../../img/carro.png'
 import React from 'react'
+import SearchBar from './search/SearchBar'
 
-import { BrowserRouter as Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TopNav = () => {
     return (
@@ -12,6 +13,9 @@ const TopNav = () => {
             <div className='containerNav'>
                 <div className='containerLogo'>
                     <Link to="/" ><img className='logo' src={bichologo} alt="" /></Link>
+                </div>
+                <div>
+                    <SearchBar/>
                 </div>
                 <div className='containerItems'>
                     <button className='buttonItem'><img className='items' src={search} alt="" /></button>
