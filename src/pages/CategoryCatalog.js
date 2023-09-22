@@ -30,7 +30,7 @@ useEffect(() => {
   },[categorySelected])
 
   /*------------------------------filter.js---------------------------------------*/
-  
+  const [productosFiltrados, setProductosFiltrados] = useState([])
   const [category, setCategory] = useState([])
   const [subCategory, setSubCategory] = useState([])  
   const [size, setSize] = useState([])    
@@ -67,7 +67,7 @@ useEffect(() => {
 },[])
 /* --------------------Filter useEffect --------------------*/ 
 
-  /* useEffect(() => {
+  useEffect(() => {
   if (!listProduct.length) return;
   let newProductos = [...listProduct];
 
@@ -84,7 +84,7 @@ useEffect(() => {
   }
 
   setProductosFiltrados(newProductos);
-}, [filters])*/
+}, [filters])
 
 /*-------------------------fin filter.js ------------------------------*/
 
@@ -92,7 +92,7 @@ useEffect(() => {
 return (
     <div className="catalog">
         <div className="products">
-        <CardList props={listProduct} />
+        <CardList props={productosFiltrados} />
       </div>
       <aside>
       <div className="filterSection">
@@ -108,7 +108,7 @@ return (
               <Dropdown.Menu>
               {subCategory.map(subcategory => (
                 <Dropdown.Item className="item-filter" key={subcategory.IdSubCategory}> 
-                  <button onClick={handleClick} className="size-buttons" value={subcategory.SubCategory}>{subcategory.SubCategory}</button>
+                  <button onClick={handleClick} className="size-buttons" value={subcategory.SubCategory} name= 'SubCategory'>{subcategory.SubCategory}</button>
                 </Dropdown.Item>
                 ))}
 
@@ -125,7 +125,7 @@ return (
                 <Dropdown.Menu>
                 {size.map(size => (
                 <Dropdown.Item className="item-filter" key={size.IdSize}> 
-                  <button onClick={handleClick} className="size-buttons" value={size.size}>{size.size}</button>
+                  <button onClick={handleClick} className="size-buttons" value={size.size} name='Size'>{size.size}</button>
                 </Dropdown.Item>
                 ))}
                   <Dropdown.Item className="item-filter">
@@ -142,7 +142,7 @@ return (
                 <Dropdown.Menu>
                 {category.map(categories => (
                 <Dropdown.Item className="item-filter" key={categories.IdCategory}> 
-                  <button onClick={handleClick} className="size-buttons" value={categories.Category}>{categories.Category}</button>
+                  <button onClick={handleClick} className="size-buttons" value={categories.Category} name = 'Category'>{categories.Category}</button>
                 </Dropdown.Item>
                 ))}
                   <Dropdown.Item className="item-filter">
