@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/ProductDetail.css"
 import "../css/htmltags.css"
-import { getImages, getSizesByIdProduct } from "../api/apiFuntions";
+import { getImages, getSizesByIdProduct } from "../api/apiFunctions";
 import ImagesProduct from "../components/productDetail/ImagesProduct";
 import TitleProduct from "../components/productDetail/TitleProduct";
 import DescriptionProduct from "../components/productDetail/DescriptionProduct";
@@ -40,9 +40,13 @@ const ProductDetail = ({ productSelected }) => {
                 <ImagesProduct imageurl={product.Image} />
                 <div className="ProductInfo">
                     <TitleProduct product={product} /> 
+
                     <div className="ProductInfoSize">
+                        <h3 className="sizeTitle">Talles disponibles</h3> 
+                    </div>
+                    <div className="ProductSizeItem" >
                     <SizesProduct idProductS={productDetail.idProduct} />
-                </div>
+                    </div>
                 </div>
             </div>
 

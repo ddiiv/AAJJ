@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import { getProductsHighlist} from '../../api/apiFuntions.js';
+import { getProductsHighlist} from '../../api/apiFunctions.js';
 import HighlightCard from "./HighlightCard.js";
 
 import '../../css/HighlistProducts.css'

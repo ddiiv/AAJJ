@@ -1,4 +1,3 @@
-
 import user from '../../img/user.png'
 import bichologo from '../../img/bichologo.png'
 import cart from '../../img/carro.png'

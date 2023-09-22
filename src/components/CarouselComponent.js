@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../css/Carrusel.css';
-import { getCarruselImages } from '../api/apiFuntions';
+import { getCarruselImages } from '../api/apiFunctions';
 
 const CarouselComponent = () => {
     const [images, setImages] = useState([])

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import search_png from "../../../img/search.png";
 
-import { getProducts } from '../../../api/apiFuntions.js';
+import { getProducts } from '../../../api/apiFunctions.js';
 import { SearchContext } from "../../../context/SearchContext.js";
 
 const SearchBar = () => {

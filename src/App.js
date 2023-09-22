@@ -4,7 +4,7 @@ import './App.css';
 //-------------Router
 import { BrowserRouter,Routes, Route} from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getCategories, getProducts } from './api/apiFuntions';
+import { getCategories, getProducts } from './api/apiFunctions';
 
 //---------Components
 

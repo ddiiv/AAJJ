@@ -91,15 +91,22 @@ h1.DescriptionProduct{
 }
 
 h3.sizeTitle{
-
-
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
 }
 .ProductSizeItem{
     width: 100%;
-    height: 10%;
+    height: 100%;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sizeCircle{
+    width: 100%;
+    height: 100%;
+    border-radius: 20%;
+    border: 20px red;
 }

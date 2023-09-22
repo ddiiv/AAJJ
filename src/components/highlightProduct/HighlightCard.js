@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Routes, Link } from "react-router-dom";
-import { getImages } from "../../api/apiFuntions";
+import { getImages } from "../../api/apiFunctions";
 
 const HighlightCard = ({ product }) => {
     const [products, setProducts] = useState([]);

@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from "react"
-import { getCategories,getSizes,getSubCategories } from "../api/apiFuntions"
+import { getCategories,getSizes,getSubCategories } from "../api/apiFunctions"
 import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -118,7 +118,7 @@ const Filters=({props})=>{
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-           </div>
+          </div>
             </section>
         </div>  
     )
