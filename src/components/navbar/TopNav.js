@@ -1,7 +1,7 @@
-import search from '../../img/search.png'
+import search from '../../../public/img/search.png'
 import user from '../../img/user.png'
 import bichologo from '../../img/bichologo.png'
-import cart from '../../img/carro.png'
+import cart from '../img/carro.png'
 import React from 'react'
 
 import { BrowserRouter as Routes, Link } from "react-router-dom";
