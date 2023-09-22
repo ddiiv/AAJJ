@@ -22,7 +22,7 @@ const HighlightCard = ({ product }) => {
     }, [])
     return (
         <>
-            <Link className="LinkConteiner" to={`/product=/${products.Title}`}>
+            <Link className="LinkConteiner" to={`/product/${products.Title}`}>
                 <div className="CardHighList" key={products.IdProduct}>
                     <img src={products.Image} className="productImgHighList" alt="Producto" />
                     <div className="container">

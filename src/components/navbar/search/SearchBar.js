@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import search_png from "../../../img/search.png";
-import '../../../css/NavBar.css';
+
 import { getProducts } from '../../../api/apiFuntions.js';
 import { SearchContext } from "../../../context/SearchContext.js";
 
@@ -12,7 +12,6 @@ const SearchBar = () => {
     const { searchProducts, setSearchProducts } = useContext(SearchContext);
 
     useEffect(() => setSearchProducts(getProducts()), [])
-    console.log("searchpr" + searchProducts)
     useEffect(() => {
     }, [])
 
@@ -34,7 +33,7 @@ const SearchBar = () => {
                 value={search}
                 onChange={handleChange}
                 ref={searchInput} />
-            <Link to={`/search`}><img className="items" src={search_png} /></Link>
+            <Link to={`/search`}><img className="items" src={search_png} alt=""/></Link>
         </div>
     )
 }

@@ -92,7 +92,7 @@ useEffect(() => {
 return (
     <div className="catalog">
         <div className="products">
-        <CardList props={productosFiltrados} />
+        <CardList props={listProduct} />
       </div>
       <aside>
       <div className="filterSection">

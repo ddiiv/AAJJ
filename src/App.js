@@ -49,7 +49,9 @@ return (
             return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
             })}
           {products.map((product) => {
+            
             return <Route path={`/product/${product.Title}`} key={product.IdProduct} element={<ProductDetail productSelected={product}/>}/>
+            
             })}
           <Route path= "/search" element={<Search/>}></Route>
         </Routes>

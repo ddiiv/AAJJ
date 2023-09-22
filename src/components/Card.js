@@ -3,7 +3,6 @@ import { BrowserRouter as Routes, Link } from "react-router-dom";
 import { getImages } from "../api/apiFuntions";
 
 const Card = ({ product }) => {
-    console.log(product)
     const [products, setProducts] = useState([]);
 
 
@@ -23,13 +22,12 @@ const Card = ({ product }) => {
             throw new Error('Error al obtener los productos de la API. Error: ' + error)
         }
     }
-
     useEffect(() => {
         getImageProduct()
     }, [])
     return (
         <>
-            <Link className="nothing" to={`/product=/${products.Title}`}>
+            <Link className="nothing" to={`/product/${products.Title}`}>
                 <div className="card" key={products.idProduct}>
 
                     <img src={products.Image} className="productImg" alt="Producto" />
