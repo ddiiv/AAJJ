@@ -6,22 +6,38 @@ const SizesProduct = ({ idProductS })   => {
     const idProductSelected = idProductS;
 
     const [sizesProduct, setSizesProduct] =  useState([]);
+    const [sizeWithStock, setSizeWithStock] = useState([]);
     useEffect(()=>{
         getSizesByIdProduct(idProductSelected).then((data)=>{
-        setSizesProduct(data)}
-        )
+
+            if(data.Quantity > 0)
+            {
+            setSizesProduct(data)
+            }
+            else{
+                setSizeWithStock(data)
+            }
+
+        })
 
     }, [])
 
     return (
         <>
-
-                {sizesProduct.map((size) => (
-                        <div className="sizeCircle">
-                        
+            
+                {sizeWithStock.map((size) => (
+                    <div className="SizeItems">
+                        <button className="sizeCircle">
                         <h1 className="itemSize" key={size.IdSize} for={size.Size}>{size.size}</h1>
-                        <b>Quedan: {size.Quantity}</b>
+                        </button>
+                    </div>
+                ))}
+                {sizesProduct.map((size) => (
+                    <div className="SizeItems">
+                        <div className="sizeCircleNoStock">
+                        <h1 className="itemSize" key={size.IdSize} for={size.Size}>{size.size}</h1>
                         </div>
+                    </div>
                 ))}
 
         </>

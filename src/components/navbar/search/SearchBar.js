@@ -29,11 +29,11 @@ const SearchBar = () => {
     return (
         <div className="navItem" id="searchBar">
             <input placeholder="Buscar"
-                className="navItem"
+                className="searchInput"
                 value={search}
                 onChange={handleChange}
                 ref={searchInput} />
-            <Link to={`/search`}><img className="items" src={search_png} alt=""/></Link>
+            <button className='buttonItem'><Link to={`/search`} className="searchBAR"><img className="items" src={search_png} alt=""></img></Link></button>
         </div>
     )
 }

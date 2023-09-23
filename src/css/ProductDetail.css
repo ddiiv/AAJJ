@@ -21,10 +21,32 @@
     flex-direction:row;
 }
 .ProductImages{
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+.asideImages{
+    width: 20%;
+    height: 100%;
+    padding: 0 2% 0 2%; 
+    display: flex;
+    float: left;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+img.asideImage{
+    width: 80px;
+    height: 80px;
+    float: left;
+    opacity: 1;
+    transform: translateY(0);
+}
+.MainImage{
+    width: 100%;
+    height: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -90,11 +112,6 @@ h1.DescriptionProduct{
 
 }
 
-h3.sizeTitle{
-display: flex;
-align-items: flex-start;
-justify-content: flex-start;
-}
 .ProductSizeItem{
     width: 100%;
     height: 100%;
@@ -104,9 +121,170 @@ justify-content: flex-start;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.sizeCircle{
+.SizeItems{
     width: 100%;
     height: 100%;
-    border-radius: 20%;
-    border: 20px red;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sizeCircle{
+    display:flex;
+    background-color: #fff;
+    font-size: 13px;
+    vertical-align: baseline;
+    font-weight: 400;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+    width: 60px;
+    height: 60px;
+    line-height: 50px;
+    position: relative;
+    border: 1px solid #eee;
+}
+.sizeCircleNoStock{
+    display:flex;
+    background-color: #000000;
+    font-size: 13px;
+    vertical-align: baseline;
+    font-weight: 400;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+    width: 60px;
+    height: 60px;
+    line-height: 50px;
+    position: relative;
+    border: 1px solid #eee;
+}
+h1.sizeTitle:hover{
+    color:  #e90606;
+}
+.sizeCircle:hover{
+    border: 1px solid #2b2b2b;
+}
+.sizeCircle:active{
+    border: 1px solid #e90606;
+}
+
+
+
+
+@media screen and (max-width: 950px) {
+    .ProductDetailContainer{
+        padding: 0 5%;
+    }
+    .ProductDetail{
+        flex-direction: column;
+    }
+    .asideImages{
+        width: 100%;
+        height: 20%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .MainImage{
+        width: 100%;
+        height: 50%;
+    }
+    .ProductInfo{
+        width: 100%;
+        height: 100%;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:space-between;
+        float: left;
+    
+    }
+    .ProductInfoTitle{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .ProductInfoPrice{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    
+    }
+    .ProductReference{
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .ProductDescription{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        
+    }
+    .ProductInfoSize{
+        width: 100%;
+        height: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    
+    }
+    h1.DescriptionProduct{
+        display: flex;    
+        align-items: center;
+        justify-content: flex-start;
+    
+    }
+    
+    h3.sizeTitle{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    }
+    .ProductSizeItem{
+        width: 100%;
+        height: 100%;
+    
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .sizeCircle{
+        width: 100%;
+        height: 100%;
+        border-radius: 20%;
+        border: 20px red;
+        
+    }
 }

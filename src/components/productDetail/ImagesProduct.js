@@ -4,10 +4,18 @@ import React from "react";
 const ImagesProduct = ({ imageurl }) => {
     return (
         <>
-         <div className="ProductImages">
-                    <img src={imageurl} alt={imageurl} />
+                              
+                    <div className="ProductImages">
+                    <div className="asideImages">
+                    <img className="asideImage" src={imageurl} alt={imageurl} />
+                    <img className="asideImage" src={imageurl} alt={imageurl} />
+                    <img className="asideImage" src={imageurl} alt={imageurl} />
+                    </div>
+                    <div className="MainImage">
 
-                </div>
+                    <img src={imageurl} alt={imageurl} />
+                    </div>
+        </div>
         </>
     )
 }

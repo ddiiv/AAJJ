@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/ProductDetail.css"
 import "../css/htmltags.css"
-import { getImages, getSizesByIdProduct } from "../api/apiFunctions";
+import { getImages } from "../api/apiFunctions";
 import ImagesProduct from "../components/productDetail/ImagesProduct";
 import TitleProduct from "../components/productDetail/TitleProduct";
 import DescriptionProduct from "../components/productDetail/DescriptionProduct";
