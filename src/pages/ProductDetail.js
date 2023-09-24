@@ -44,9 +44,9 @@ const ProductDetail = ({ productSelected }) => {
                     <div className="ProductInfoSize">
                         <h3 className="sizeTitle">Talles disponibles</h3> 
                     </div>
-                    <div className="ProductSizeItem" >
+                    <li className="ProductSizeItem" >
                     <SizesProduct idProductS={productDetail.idProduct} />
-                    </div>
+                    </li>
                 </div>
             </div>
 

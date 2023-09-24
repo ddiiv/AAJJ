@@ -32,8 +32,8 @@ const HighlistProducts = () => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3, 
-        slidesToScroll: 2,
+        slidesToShow: 4, 
+        slidesToScroll: 1,
         autoplay: false,
         autoplaySpeed: 2500,
         pauseOnHover: true

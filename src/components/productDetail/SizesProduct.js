@@ -1,45 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { getSizesByIdProduct } from "../../api/apiFunctions";
+import StockProductxSize from "./StockProductxSize";
 
 const SizesProduct = ({ idProductS })   => {
 
     const idProductSelected = idProductS;
 
     const [sizesProduct, setSizesProduct] =  useState([]);
-    const [sizeWithStock, setSizeWithStock] = useState([]);
+    const [stock, setStock] = useState(false);
     useEffect(()=>{
         getSizesByIdProduct(idProductSelected).then((data)=>{
 
-            if(data.Quantity > 0)
-            {
-            setSizesProduct(data)
-            }
-            else{
-                setSizeWithStock(data)
-            }
-
+            setSizesProduct(data);
         })
 
     }, [])
+    const handleStock = () => {
+            setStock(true)
+    
+    }
 
     return (
         <>
             
-                {sizeWithStock.map((size) => (
-                    <div className="SizeItems">
-                        <button className="sizeCircle">
-                        <h1 className="itemSize" key={size.IdSize} for={size.Size}>{size.size}</h1>
-                        </button>
-                    </div>
-                ))}
-                {sizesProduct.map((size) => (
-                    <div className="SizeItems">
-                        <div className="sizeCircleNoStock">
-                        <h1 className="itemSize" key={size.IdSize} for={size.Size}>{size.size}</h1>
+                {sizesProduct.map((size) =>{
+                if(size.Quantity === 0){
+                    return(
+                        <div className="SizeItems">
+                            <div className="sizeCircleNoStock">
+                            <b className="itemSizeHidden" key={size.IdSize} for={size.Size}>{size.size}</b>
+                            </div>
                         </div>
+                    )
+                }
+                else{
+                    
+                return(
+                    <div className="SizeItems">
+                        <input type="radio" className="itemSize" value={size.size} specification={size.size} onClick={handleStock}></input><b className="sizeCircle" key={size.IdSize} for={size.Size}>{size.size}</b> 
                     </div>
-                ))}
+                )}})}
+                {stock ? <StockProductxSize Size={sizesProduct} /> : null}
 
+            
         </>
     )
 }
