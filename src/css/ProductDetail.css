@@ -117,7 +117,7 @@ h1.DescriptionProduct{
     height: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
@@ -178,12 +178,79 @@ h1.sizeTitle:hover{
 .sizeCircle:hover{
     border: 1px solid #2b2b2b;
 }
-.sizeCircle:active{
-    border: 1px solid #e90606;
+
+
+
+input[type=radio]{
+
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+    z-index: 5;
+    cursor: pointer;    
+    position: absolute;
+}
+input[type=radio]+ .sizeCircle{
+    display: inline-block;
+    font-size: 20px;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin: 0px;
+    cursor: pointer;
+
+}
+input[type=radio]:checked + .sizeCircle{
+    border: 1px solid #c00000;
+    color: #c00000;
+
+}
+.itemSize:checked{
+    border: 1px solid #c00000;
+    color: #c00000;
+
 }
 
-
-
+.StockProductxSizeNumber{
+    display: inline-flex !important;
+    box-shadow: none;
+    font-size: 12px;
+    border: 1px solid #eee;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 0;
+    float: left;
+    border-left: 0;
+    border-right: 0;
+}
+.adds{
+    display: inline-flex;
+    float: left;
+    height: 50px;
+    align-items: center;
+    padding: 0 0.7rem;
+    border: 1px solid #eee;
+    border-left: 0;
+    font-size: 11px;
+    cursor: pointer;
+}
+.subs{
+    display: inline-flex;
+    float: left;
+    height: 50px;
+    align-items: center;
+    padding: 0 0.7rem;
+    border: 1px solid #eee;
+    border-right: 0;
+    font-size: 11px;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 950px) {
     .ProductDetailContainer{
@@ -288,30 +355,4 @@ h1.sizeTitle:hover{
         border: 20px red;
         
     }
-}
-input[type=radio]{
-    width: 60px;
-    height: 60px;
-    opacity: 0;
-    z-index: 1;
-    cursor: pointer;
-}
-input[type=radio]+ .sizeCircle{
-    display: inline-block;
-    font-size: 20px;
-    line-height: 60px;
-    text-align: center;
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100%;
-    margin: 0px;
-    cursor: pointer;
-    position: absolute;
-}
-input[type=radio]:checked + .sizeCircle{
-    border: 1px solid #c00000;
-    color: #c00000;
-
 }
