@@ -2,30 +2,29 @@ import React,{useState} from "react";
 
 const StockProductxSize = ({ Size })   => {
     const [stock, setStock] = useState(1);
+
     const handleStock = (e) => {
         console.log(e.target.value)
         setStock(e.target.value);
     }
+
     const handleStockAdd = (e) => {
         console.log(e.target.value)
         if(stock < Size.Quantity)
         {
         setStock(stock + 1);
         }
-        else{
-            alert("No hay mas stock disponible")
-        }
+
     }
+
     const handleStockSubs = (e) => {
         console.log(e.target.value)
         if(stock > 1)
         {
         setStock(stock - 1);
         }
-        else{
-            alert("No se puede seleccionar menos de 1")
-        }
     }
+
 
 
         return (

@@ -12,8 +12,6 @@ const SearchBar = () => {
     const { searchProducts, setSearchProducts } = useContext(SearchContext);
 
     useEffect(() => setSearchProducts(getProducts()), [])
-    useEffect(() => {
-    }, [])
 
     useEffect(() => { // Filtrar
         let list = [...searchProducts]

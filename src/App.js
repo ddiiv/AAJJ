@@ -16,7 +16,7 @@ import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
 
 //---------Context
-
+import { UserContext } from './context/UserContext';
 
 function App() {
 
@@ -39,6 +39,7 @@ useEffect(() => {
 
 
 return (
+
   <div className="App">
     
     <BrowserRouter>
@@ -58,6 +59,7 @@ return (
     </BrowserRouter>
     <Footer/>
   </div>
+
   );
 }
 
