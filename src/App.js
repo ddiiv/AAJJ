@@ -16,7 +16,7 @@ import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
 
 //---------Context
-import { UserContext } from './context/UserContext';
+import {  UserProvider } from './context/UserContext';
 
 function App() {
 
@@ -39,26 +39,27 @@ useEffect(() => {
 
 
 return (
-
-  <div className="App">
-    
-    <BrowserRouter>
-      <Nav/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          {category.map((categories) => {
-            return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
-            })}
-          {products.map((product) => {
-            
-            return <Route path={`/product/${product.Title}`} key={product.IdProduct} element={<ProductDetail productSelected={product}/>}/>
-            
-            })}
-          <Route path= "/search" element={<Search/>}></Route>
-        </Routes>
-    </BrowserRouter>
-    <Footer/>
-  </div>
+<UserProvider>
+    <div className="App">
+      
+      <BrowserRouter>
+        <Nav/>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            {category.map((categories) => {
+              return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
+              })}
+            {products.map((product) => {
+              
+              return <Route path={`/product/${product.Title}`} key={product.IdProduct} element={<ProductDetail productSelected={product}/>}/>
+              
+              })}
+            <Route path= "/search" element={<Search/>}></Route>
+          </Routes>
+      </BrowserRouter>
+      <Footer/>
+    </div>
+  </UserProvider>
 
   );
 }

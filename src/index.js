@@ -10,17 +10,16 @@ import './fonts/Poppins-ExtraBold.ttf'
 import './fonts/Poppins-Black.ttf'
 
 
-import { UserContext } from "./context/UserContext.js";
 import { SearchProvider }  from "./context/SearchContext.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserContext>
+
     <SearchProvider>
     <App />
     </SearchProvider>
-    </UserContext>
+
   </React.StrictMode>
 );
 

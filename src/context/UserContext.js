@@ -1,17 +1,33 @@
-import React,{useState,createContext, useEffect} from "react";
+import React, { useState, createContext, useContext } from "react";
 import user from './user';
 
-const UserContext = createContext();    
+const UserContext = createContext();
+const UserLogged = createContext();
 
-const UserProvider = ({children}) => {
-    
-
-    const [User, setUser] = useState({});
-    const a = user[0]
-    useEffect(() => {
-       setUser(a)
-    }, []);
-
-    return <UserContext.Provider value={{User}}>{children}</UserContext.Provider>
+export function useUserContext() {
+    return useContext(UserContext);
 }
-export {UserProvider, UserContext};
+
+export function useUserLogged() {
+    return useContext(UserLogged);
+}
+
+export const UserProvider = ({ children }) => {
+
+
+    const [User, setUser] = useState(null);
+    const changueLogin = () => {
+        if (User) {
+            setUser(null);
+        }
+        else {
+            setUser(user[0]);
+        }
+    }
+
+    return <UserContext.Provider value={User}>
+        <UserLogged.Provider value={changueLogin}>
+            {children}
+        </UserLogged.Provider>
+    </UserContext.Provider>
+}
