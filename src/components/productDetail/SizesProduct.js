@@ -53,7 +53,6 @@ const SizesProduct = ({idProductS}) => {
     return (
         <>
             <div className="SizeItems">
-             
                 {sizesProduct.map((size) => {
                     if (size.Quantity === 0) {
                         return (
@@ -74,7 +73,7 @@ const SizesProduct = ({idProductS}) => {
                         )
                     }
                 })}
- 
+
             </div>
         
             <div className="StockXProductSizxSize">

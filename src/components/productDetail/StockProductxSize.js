@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import AddToCardProduct from "./AddToCardProduct";
 
-const StockProductxSize = ({Size}) => {
+const StockProductxSize = ({ Size }) => {
     // necesito que al cambiar el size se resetee el stock
 
     const [stock, setStock] = useState(1);
@@ -14,8 +16,6 @@ const StockProductxSize = ({Size}) => {
         }
 
     }
-
-    
     const handleStockSubs = (e) => {
         console.log(e.target.value)
         if (stock > 1) {
@@ -24,7 +24,7 @@ const StockProductxSize = ({Size}) => {
 
     }
 
-
+    useEffect(() => setStock(1),[Size])
 
     return (
         <>
@@ -33,13 +33,13 @@ const StockProductxSize = ({Size}) => {
                 <div className="subs">
                     <b className="subsButton" onClick={handleStockSubs}>-</b>
                 </div>
-                <input type="number" inputMode="numeric" value={stock}  min={1} max={Size.Quantity} className="StockProductxSizeNumber" disabled ></input>
+                <input id="stock" type="number" inputMode="numeric" value={stock} min={1} max={Size.Quantity} className="StockProductxSizeNumber" disabled ></input>
                 <div className="adds">
                     <b className="subsButton" onClick={handleStockAdd}>+</b>
                 </div>
-
+            
             </div>
-
+    <AddToCardProduct/>
         </>
     )
 }
