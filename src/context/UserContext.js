@@ -1,7 +1,9 @@
 import React, { useState, createContext, useContext } from "react";
-import user from './user';
+import {getUserById} from "../api/apiFunctions";
+import { useEffect } from "react";
 
-const UserContext = createContext();
+
+const UserContext = createContext( );
 const UserLogged = createContext();
 
 export function useUserContext() {
@@ -13,15 +15,23 @@ export function useUserLogged() {
 }
 
 export const UserProvider = ({ children }) => {
-
+    
 
     const [User, setUser] = useState(null);
+    useEffect(() => {
+
+        const id = 2;
+        getUserById(id).then((data) => {
+            setUser(data);
+        });
+    }, []);
+
     const changueLogin = () => {
         if (User) {
             setUser(null);
         }
         else {
-            setUser(user[0]);
+            setUser(User);
         }
     }
 

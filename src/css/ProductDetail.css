@@ -172,12 +172,6 @@ h1.DescriptionProduct{
     position: relative;
     border: 1px solid #eee;
 }
-h1.sizeTitle:hover{
-    color:  #e90606;
-}
-.sizeCircle:hover{
-    border: 1px solid #2b2b2b;
-}
 
 
 
@@ -204,16 +198,17 @@ input[type=radio]+ .sizeCircle{
     cursor: pointer;
 
 }
-input[type=radio]:checked + .sizeCircle{
+.itemSize:hover + .sizeCircle{
+    transition: 0.3s all;
+    border: 1px solid #000000;
+    
+}
+.itemSize:checked + .sizeCircle{
     border: 1px solid #c00000;
     color: #c00000;
 
 }
-.itemSize:checked{
-    border: 1px solid #c00000;
-    color: #c00000;
 
-}
 
 .StockProductxSizeNumber{
     display: inline-flex !important;
