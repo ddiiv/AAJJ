@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import AddToCardProduct from "./AddToCardProduct";
 
 const StockProductxSize = ({ Size }) => {
-    // necesito que al cambiar el size se resetee el stock
 
     const [stock, setStock] = useState(1);
 

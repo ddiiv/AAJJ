@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 const baseURL = "http://localhost:3001/";
 
@@ -63,13 +64,29 @@ export const getSizesByIdProduct = async (id) => {
 
     const response = await fetch(`${baseURL}sizes/product/${id}`)
     const data = await response.json()
-    console.log(data)
     return data
 }
 //-----------------------------------Users--------------------------------------------------------------
 export const getUserById = async (id) => {
-    const response = await fetch(`${baseURL}user/${id}`)
-    const data = await response.json()
-
-    return data
+    try{
+        const { data } = await axios({
+            method:'post',
+            url:`${baseURL}user`,
+            data:{
+                body:{
+                    "id":id
+                }
+            }
+        })
+        console.log(data);
+        return alert('Usuario logeado')
+    }
+    catch(e){
+        if (e.response.status === 404) {
+            console.log('Resource could not be found!');
+        } else {
+            console.log(e.message);
+        }
+    }
+    
 }
