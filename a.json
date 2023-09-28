@@ -1,0 +1,12 @@
+{
+    "products":[{},{},{}],
+    
+    "footer": {
+        "ig": "aaa",
+        "fc": "aaa",
+        "yt": "aaa",
+        "qr": "route"
+    },
+
+    "ImagesCarrousel":["route","route","route","route"]
+}
