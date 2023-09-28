@@ -1,15 +1,16 @@
 *{
     font-family: "Poppins";
 }
+
 .Carrousel{
     width:100%;
-    height: 40%;
+    height: 500px ;
     
 }
 .item{
 
     width: 100% ;
-    height: 50% ;
+    height: 500px ;
     border: none;
     outline: none;
     cursor: pointer;
@@ -17,7 +18,7 @@
 .carruselImg{
 
     width: 100%;
-    min-width: 20%;
+    height: 500px ;
 
 }
 .carousel .slide {
@@ -25,7 +26,7 @@
     margin: 0;
     position: relative;
     text-align: center;
-    min-height: 20%;
+    height: 500px ;
 }
 .slider-wrapper{
     max-height: 20%;
@@ -33,5 +34,5 @@
 .slide.selected{
     display: flex;
     width: 100%;
-    height: 50%;
+    height: 500px ;
 }

@@ -1,123 +1,119 @@
-import { useEffect, useState } from "react"
-import { getProductsByCategory,getCategories,getSizes,getSubCategories, getImages } from "../api/apiFuntions"
+import React,{ useEffect, useState } from "react"
+import { getProducts, getProductsByCategory} from "../api/apiFunctions"
 import { BrowserRouter as Routes, Link} from "react-router-dom";
+import CardList from "../components/CardList";
+import Filters from "../components/Filters";
+import '../css/CategoryCatalog.css'
 
-
+import { getCategories,getSizes,getSubCategories } from "../api/apiFunctions"
 import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../css/CategoryCatalog.css'
-import '../css/htmltags.css'
+
 
 const CategoryCatalog = (categorySelected) => {
 
   const [listProduct, setListProduct] = useState([])
-  const [productosFiltrados, setProductosFiltrados] = useState([])
-  const [category, setCategory] = useState([])
-  const [subCategory, setSubCategory] = useState([])
-
-  const [size, setSize] = useState([])
-  
-  const [filters, setFilters] = useState([])
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setFilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
-    
-  }
 
   /* ------------------GetProducts useEffect------------------*/ 
 useEffect(() => {
-    const getProductAndImageByCategorySelected = async () => {  
+    const getProductByCategorySelected = async () => {  
 
       try{
       const products=  await getProductsByCategory(categorySelected)
-      const images = products.map((product) => ({...product, foto:  `http://localhost:3001/img/${product.Image}`}))
-      console.log(images) 
-      setListProduct(images)
-      setProductosFiltrados(products)
-      setFilters(products.Category,products.SubCategory, products.Size)
+      
+      setListProduct(products)
 
     } catch (error) {
       throw new Error('Error al obtener los productos de la API. Error: ' + error)
-
-
     }
   }
-  getProductAndImageByCategorySelected()
+  getProductByCategorySelected()
   },[categorySelected])
 
-  /* -------------------Category useEffect -------------------*/ 
-  useEffect(() => {
-    getCategories()
-      .then(Categories => {
-      setCategory(Categories)
-    })
-    
+  /*------------------------------filter.js---------------------------------------*/
+  const [productosFiltrados, setProductosFiltrados] = useState([])
+  const [category, setCategory] = useState([])
+  const [subCategory, setSubCategory] = useState([])  
+  const [size, setSize] = useState([])    
+  const [filters, setFilters] = useState([])
 
-  /* ------------------SubCategory useEffect -----------------*/ 
+const handleClick = (e) => {
+  e.preventDefault();
+  setFilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
+}
+const handleResetFilters = () => {
+  setFilters({}); // Restablece los filtros a un objeto vacío
+  setProductosFiltrados(listProduct); // Muestra todos los productos originales
+};
 
-    getSubCategories()
-      .then(SubCategory => {
-      setSubCategory(SubCategory)
-    })
-
-
-  /* -------------------Size     useEffect -------------------*/ 
+/* -------------------Category useEffect -------------------*/ 
+useEffect(() => {
+  getCategories()
+    .then(Categories => {
+    setCategory(Categories)
+  })
   
-    getSizes()
-      .then(Sizes => {
-      setSize(Sizes)
-    })
-  },[])
-  /* --------------------Filter useEffect --------------------*/ 
-  useEffect(() => {
-    if (!listProduct.length) return;
-    let newProductos = [...listProduct];
+  /*getProducts()
+  .then(products =>{
+    setListProduct(products)
+  })*/
 
-    if (filters) {
-      newProductos = newProductos.filter(product => product.SubCategory === filters.SubCategory);
-    }
+/* ------------------SubCategory useEffect -----------------*/ 
 
-    if (filters) {
-      newProductos = newProductos.filter(product => product.Size.includes(filters.Size));
-    }
+  getSubCategories()
+    .then(SubCategory => {
+    setSubCategory(SubCategory)
+  })
 
-    if(filters){
-      newProductos = newProductos.filter(product => product.Category === filters.Category);
-    }
 
-    setProductosFiltrados(newProductos);
-  }, [filters])
+/* -------------------Size     useEffect -------------------*/ 
+
+  getSizes()
+    .then(Sizes => {
+    setSize(Sizes)
+  })
+},[])
+/* --------------------Filter useEffect --------------------*/ 
+
+useEffect(() => {
+  if (!listProduct.length) return;
+
+  let filteredProducts = [...listProduct];
+
+  // Aplicar filtro de SubCategoría
+  if (filters.SubCategory) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.SubCategory === filters.SubCategory
+    );
+  }
+
+  // Aplicar filtro de Talla
+  if (filters.Size) {
+    filteredProducts = filteredProducts.filter((product) =>
+      product?.Size?.includes(filters.Size)
+    );
+  }
+
+  // Aplicar filtro de Categoría
+  if (filters.Category) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.Category === filters.Category
+    );
+  }
+
+  setProductosFiltrados(filteredProducts); // Guardar productos filtrados en el estado
+}, [filters, listProduct]);
+console.log(filters)
+/*-------------------------fin filter.js ------------------------------*/
+
 
 return (
     <div className="catalog">
         <div className="products">
-        {listProduct.map(product => (
-          <Link className="nothing" to={`/product=/${product.Title}`}>
-          <div className="card" key={product.idProduct}>
-          
-            <img src={product.foto} className="productImg" alt="Producto"/>
-            <div className="container">
-            <div className="genderContainer">
-            <b className="gender">{product.SubCategory}</b>
-            </div>
-            <div className="TitleContainer">
-            <h1 className="title">{product.Title}</h1>
-            </div>
-            <div className="priceContainer">
-            <span className="price">${product.Price}</span>
-            </div>
-          </div>
-        
-        </div>  
-        </Link>
-      
-        ))}
+        <CardList props={productosFiltrados} />
       </div>
-
-<aside>
-
-    <div className="filterSection">
+      <aside>
+      <div className="filterSection">
     <h1 className="titleFilter">Filtros</h1>
       <section>
               <div className="vertical-buttons">
@@ -130,13 +126,10 @@ return (
               <Dropdown.Menu>
               {subCategory.map(subcategory => (
                 <Dropdown.Item className="item-filter" key={subcategory.IdSubCategory}> 
-                  <button onClick={handleClick} className="size-buttons" value={subcategory.SubCategory}>{subcategory.SubCategory}</button>
+                  <button onClick={handleClick} className="size-buttons" value={subcategory.SubCategory} name= 'SubCategory'>{subcategory.SubCategory}</button>
                 </Dropdown.Item>
                 ))}
 
-                <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="">Reset</button>
-                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown> 
 
@@ -147,12 +140,10 @@ return (
                 <Dropdown.Menu>
                 {size.map(size => (
                 <Dropdown.Item className="item-filter" key={size.IdSize}> 
-                  <button onClick={handleClick} className="size-buttons" value={size.size}>{size.size}</button>
+                  <button onClick={handleClick} className="size-buttons" value={size.size} name='Size'>{size.size}</button>
                 </Dropdown.Item>
                 ))}
-                  <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="">Resetear filtros</button>
-                  </Dropdown.Item>
+          
                 </Dropdown.Menu>
                 </Dropdown>
 
@@ -164,16 +155,15 @@ return (
                 <Dropdown.Menu>
                 {category.map(categories => (
                 <Dropdown.Item className="item-filter" key={categories.IdCategory}> 
-                  <button onClick={handleClick} className="size-buttons" value={categories.Category}>{categories.Category}</button>
+                  <button onClick={handleClick} className="size-buttons" value={categories.Category} name = 'Category'>{categories.Category}</button>
                 </Dropdown.Item>
                 ))}
-                  <Dropdown.Item className="item-filter">
-                  <button onClick={handleClick} className="size-buttons" value="">Resetear filtros</button>
-                  </Dropdown.Item>
+              
                 </Dropdown.Menu>
               </Dropdown>
+              <button onClick={() => handleResetFilters()} className="size-buttons" value="">Resetear filtros</button>
             </div>
-                        </div>
+          </div>
             </section>
         </div>  
       </aside>

@@ -1,63 +1,58 @@
 import React, { useState, useEffect } from "react";
 import "../css/ProductDetail.css"
 import "../css/htmltags.css"
-import { getImages } from "../api/apiFuntions";
+import { getImages } from "../api/apiFunctions";
+import ImagesProduct from "../components/productDetail/ImagesProduct";
+import TitleProduct from "../components/productDetail/TitleProduct";
+import DescriptionProduct from "../components/productDetail/DescriptionProduct";
+import SizesProduct from "../components/productDetail/SizesProduct";
 
-const ProductDetail = (productSelected) => {
+const ProductDetail = ({ productSelected }) => {
     const [product, setProduct] = useState([]);
 
+
+    const productDetail = productSelected
+    const [size, setSize] = useState([]);
     const fetchImage = async () => {
-        const productDetail = productSelected.productSelected
         const res = await getImages(productDetail.Image)
         const url = await res.url;
         setProduct({
             ...productDetail,
-            Image: url});
+            Image: url
+        });
     };
-    
+    const fetchSizes = async () => {
+        const res = await fetch(`http://localhost:3001/sizes/product/${productDetail.idProduct}`)
+        const data = await res.json();
+        setSize(data);
+    }
+
     useEffect(() => {
+
+        fetchSizes();
         fetchImage();
     }, []);
-
-
 
 
     return (
         <div className="ProductDetailContainer">
             <div className="ProductDetail">
-                <div className="ProductImages">
-                    <img src={product.Image} alt={product.Title} />
-
-                </div>
-
+                <ImagesProduct imageurl={product.Image} />
                 <div className="ProductInfo">
-                    <div className="ProductInfoTitle">
-                        <h2>{product.Title}</h2>
-                    </div>
-                    <div className="ProductReference">
-                        <b>Ref. GU{product.idProduct}RF1</b>
-                    </div>
+                    <TitleProduct product={product} /> 
 
-                    <div className="ProductInfoPrice">
-
-                        <span>${product.Price}</span>
+                    <div className="ProductInfoSize">
+                        <h3 className="sizeTitle">Talles disponibles</h3> 
                     </div>
-
-                </div>
-
-            </div>
-            <div className="ProductInfoSize">
-                <h3>Talle</h3>
-                <div className="ProductSize">
-                    <div className="ProductSizeItem">
-                        <h1 for="s">S</h1>
-                    </div>
+                    <li className="ProductSizeItem" >
+                    <SizesProduct idProductS={productDetail.idProduct} />
+                    </li>
                 </div>
             </div>
 
-            <div className="ProductDescription">
-                <h1>{product.Description}</h1>
-            </div>
+
+            <DescriptionProduct product={product} />
+
         </div>
     )
 }

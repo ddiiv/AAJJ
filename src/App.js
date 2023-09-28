@@ -4,15 +4,19 @@ import './App.css';
 //-------------Router
 import { BrowserRouter,Routes, Route} from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getCategories, getProducts } from './api/apiFuntions';
+import { getCategories, getProducts } from './api/apiFunctions';
 
 //---------Components
 
-import MainComponent from './pages/MainComponent';
+import Home from './pages/Home';
 import Nav from './components/navbar/NavBar.js';
-import Footer from './components/footer/Footer.js';
+import Footer from './components/Footer.js';
 import CategoryCatalog from './pages/CategoryCatalog.js';
 import ProductDetail from './pages/ProductDetail.js';
+import Search from './pages/Search.js'
+
+//---------Context
+import {  UserProvider } from './context/UserContext';
 
 function App() {
 
@@ -35,21 +39,28 @@ useEffect(() => {
 
 
 return (
-  <div className="App">
-    <BrowserRouter>
-      <Nav/>
-        <Routes>
-          <Route path="/" element={<MainComponent/>}/>
-          {category.map((categories) => {
-            return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
-            })}
-          {products.map((product) => {
-            return <Route path={`/product=/${product.Title}`} key={product.IdProduct} element={<ProductDetail productSelected={product}/>}/>
-            })}
-        </Routes>
-    </BrowserRouter>
-    <Footer/>
-  </div>
+<UserProvider>
+    <div className="App">
+      
+      <BrowserRouter>
+        <Nav/>
+          <Routes>
+            <Route path="/" element={<Home/>}/>
+            {category.map((categories) => {
+              return <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
+              })}
+            {products.map((product) => {
+              
+              return <Route path={`/product/${product.Title}`} key={product.IdProduct} element={<ProductDetail productSelected={product}/>}/>
+              
+              })}
+            <Route path= "/search" element={<Search/>}></Route>
+          </Routes>
+      </BrowserRouter>
+      <Footer/>
+    </div>
+  </UserProvider>
+
   );
 }
 
