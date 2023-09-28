@@ -1,0 +1,29 @@
+.ProductTable
+{
+
+}
+
+.productName{
+color: var(--carbon-868, #28282D);
+font-style: normal;
+font-weight: 500;
+
+}
+.productNameth
+{
+    color: var(--carbon-868, #28282D);
+    font-style: normal;
+    font-weight: 200;
+
+}
+.th{
+    color: var(--carbon-868, #28282D);
+    font-style: normal;
+    font-weight: 200;
+}
+.products{
+    color: var(--carbon-868, #28282D);
+    font-style: normal;
+    font-weight: 500;
+
+}

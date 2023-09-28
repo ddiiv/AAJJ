@@ -1,0 +1,9 @@
+.button-container {
+    display: flex;
+    gap: 8px;
+
+}
+.delete-stock-button {
+    display: flex;
+    gap: 8px;
+    }

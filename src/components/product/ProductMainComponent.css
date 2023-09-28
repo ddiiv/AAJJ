@@ -1,0 +1,28 @@
+.container{
+    display:flexbox;
+    justify-content:flex-start;
+    align-self:flex-start;
+}
+.title{
+
+color: var(--carbon-868, #28282D);
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: 135%;
+letter-spacing: -1.2px;
+
+display: flex;
+justify-content:flex-start;
+align-self:flex-start;
+padding: 10px;
+}
+.buttons
+{
+    display: flex;
+    align-self:flex-end;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+

@@ -1,27 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './fonts/Poppins-Regular.ttf'
-import './fonts/Poppins-Medium.ttf'
-import './fonts/Poppins-ExtraLight.ttf'
-import './fonts/Poppins-ExtraBold.ttf'
-import './fonts/Poppins-Black.ttf'
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
+import ProductMainComponent from './components/product/ProductMainComponent';
+import StockMainComponent from './components/stock/StockMainComponent';
 
 
-import { SearchProvider }  from "./context/SearchContext.js";
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />
+  },
+  {
+    path: '/products',
+    element: <ProductMainComponent />
+  },
+  {
+    path: '/stock',
+    element: <StockMainComponent />
+  },
+
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-
-    <SearchProvider>
-    <App />
-    </SearchProvider>
-
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
-
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
