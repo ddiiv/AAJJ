@@ -25,7 +25,7 @@ class UserService {
                 .input('pId', sql.Int, id)
                 .query(`
                     SELECT *
-                    FROM User
+                    FROM [User]
                     WHERE IdUser = @pId
                 `);
             returnEntity = result.recordsets[0][0];

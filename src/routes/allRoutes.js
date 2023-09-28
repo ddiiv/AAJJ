@@ -8,6 +8,8 @@ import routerStock from "./stock.js"
 import routerImages from "./images.js"
 import routerFooter from "./footer.js"
 import routerImageCarrousel from "./imageCarrousel.js"
+import routerUser from "./user.js"
+import routerCartItem from "./cartItem.js"
 
 export default [
     routerCategory,
@@ -19,5 +21,7 @@ export default [
     routerStock,
     routerImages,
     routerFooter,
-    routerImageCarrousel
+    routerImageCarrousel,
+    routerUser,
+    routerCartItem
 ]
