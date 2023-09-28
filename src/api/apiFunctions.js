@@ -68,25 +68,29 @@ export const getSizesByIdProduct = async (id) => {
 }
 //-----------------------------------Users--------------------------------------------------------------
 export const getUserById = async (id) => {
-    try{
-        const { data } = await axios({
-            method:'post',
-            url:`${baseURL}user`,
-            data:{
-                body:{
-                    "id":id
-                }
-            }
-        })
-        console.log(data);
-        return alert('Usuario logeado')
-    }
-    catch(e){
-        if (e.response.status === 404) {
-            console.log('Resource could not be found!');
-        } else {
-            console.log(e.message);
-        }
-    }
-    
+    // try{
+
+    //     const { data } = await axios({
+    //         method:'post',
+    //         url:`${baseURL}user`,
+    //         data:{
+    //             body:{
+    //                 'id':id 
+    //             }
+    //         }
+    //     })
+    //     console.log(data);
+    //     return data
+    // }
+    // catch(e){
+    //     if (e.response.status === 404) {
+    //         console.log('Resource could not be found!');
+    //     } else {
+    //         console.log(e.message);
+    //     }
+    // }
+    const response = await fetch(`${baseURL}user/${id}`)
+    const data = await response.json()
+    console.log(data)
+    return data
 }

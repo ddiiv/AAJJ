@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import userr from '../../img/user.png'
 
-import { useUserContext, useUserLogged } from "../../context/UserContext.js";
+import { useUserContext } from "../../context/UserContext.js";
 
 
 
 const User = () => {
     const User = useUserContext();
-    const changueLogin = useUserLogged();
-    const isLogged = User ? true : false;
+    const [isLogged, setIsLogged] =  useState(false)
+    const handleLogged= () =>{
+        if(isLogged===true)
+        {
+            setIsLogged(false)
+        }
+        else{
+            setIsLogged(true)
+        }
+    }
 
 
     return (
         <>
-            <button className='buttonItem' id="center" onClick={changueLogin}><img className='items' src={userr} alt="" />
-             
-             {isLogged===true ? (
-                    <div className="UserName">
-                    <b> {User.User} </b>
-                    </div>
+    
+            <button className='buttonItem' id="center" onClick={handleLogged}><img className='items' src={userr} alt="" />
+            
+            {isLogged===true ? (
+            
+                    <b>{User.User}</b>
+            
             ) : null}
             </button>
-           
-           
+        
+        
         </>
     );
 }

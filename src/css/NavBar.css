@@ -21,7 +21,9 @@
     letter-spacing: 0.82px;
     
 }
-
+a{
+    padding: 2px 16px;
+}
 a:hover {
     transition: 0.5s;   
 
@@ -37,31 +39,33 @@ a:hover {
 
 .navbarContent{
     width: 100%;
-    height: 100%;
+    height: 80px;
     position: sticky !important;
-    top: -17.5% !important;
+    top: -13.5% !important;
     z-index: 999 !important;
+    
 }
 .nav{
     border-top:0.52px solid #d6d6d6;
     width: 100%;
-    height: 70px;
+    height: 40px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+
     display: flex;
+    transition-delay: 5s;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #ffffff;
+    justify-content: center;
+    text-align: center;
 
 }
 
 .CategoryNavbar {
 
-    transition-delay: 5s;
-    width: 100%;
-    height: 70%;
-    display: flex;
-    background-color: #ffffff;
-    justify-content: center;
-    text-align: center;
+
 
 
 
@@ -71,10 +75,9 @@ a:hover {
     height: 100%;
     z-index: 1;
     padding: 0px;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: center;
-    
-
+    padding: 0 50px;
 }
 
  .icons {
@@ -121,13 +124,13 @@ a .img {
 
 
 .logo{
-    border-radius: 5px 5px 0 0;
-    max-width: 250px;
-    align-items: center;
+
+    max-width: 200px;
+    align-items: flex-start;
     justify-content: center;
     display: flex;
-    margin: auto;
     transition: 0.5s;
+    margin-top: 15px;
 }
 .logo:hover{
     transition: 0.5s;
@@ -151,7 +154,7 @@ a .img {
 }
 .containerItems{
     height: 30px;
-    width: 33%;
+    width: 40%;
     position: relative;
     display: flex;
     justify-content: right;
@@ -241,4 +244,9 @@ a.searchBAR{
     border-bottom: 1px solid black ;
     width: 250px;
     font-family: "PoppinsItalic";
+}
+.userContainer{
+    display: flex;
+    flex-direction: row;
+    
 }

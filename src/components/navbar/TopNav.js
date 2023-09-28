@@ -18,11 +18,11 @@ const TopNav = () => {
 
                 </div>
                 <div className='containerItems'>                    
-                     <div className='searchBar'>
+                    <div className='searchBar'>
                     <SearchBar className='buttonItem'/>
                     </div>
-                    <div >
-                    <User />
+                    <div className='userContainer'>
+                    <User/>
                     </div>
                     <div>
                     <button className='buttonItem'> <img className='items' src={cart} alt="" /> </button>

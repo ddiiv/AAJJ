@@ -7,12 +7,12 @@ const Nav = () => {
 
     return (
         <>
-            <div className='navbarContent'>
+            <nav className='navbarContent'>
                 <TopNav />
                 <div className='CategoryNavbar'>
                     <BottomNav />
                 </div>
-            </div>
+            </nav>
 
         </>
     );

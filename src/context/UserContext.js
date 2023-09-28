@@ -20,14 +20,14 @@ export const UserProvider = ({ children }) => {
     const [User, setUser] = useState(null);
     useEffect(() => {
 
-        const id = 2;
+        const id = 3;
         getUserById(id).then((data) => {
             setUser(data);
         });
     }, []);
 
-    const changueLogin = () => {
-        if (User) {
+    const changueLogin = (e) => {
+        if (e === false) {
             setUser(null);
         }
         else {
