@@ -41,19 +41,15 @@ a:hover {
     width: 100%;
     height: 80px;
     position: sticky !important;
-    top: -13.5% !important;
+    top: -11% !important;
     z-index: 999 !important;
     
 }
 .nav{
     border-top:0.52px solid #d6d6d6;
     width: 100%;
-    height: 40px;
-    text-align: center;
-
-    display: flex;
+    height: 100%;
     transition-delay: 5s;
-
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -64,11 +60,15 @@ a:hover {
 }
 
 .CategoryNavbar {
-
-
-
-
-
+    width: 100%;
+    height: 45px;
+    transition-delay: 5s;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #ffffff;
+    justify-content: center;
+    text-align: center;
 }
 .topnav{
     width: 100%;

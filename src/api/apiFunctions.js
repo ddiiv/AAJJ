@@ -91,6 +91,5 @@ export const getUserById = async (id) => {
     // }
     const response = await fetch(`${baseURL}user/${id}`)
     const data = await response.json()
-    console.log(data)
     return data
 }

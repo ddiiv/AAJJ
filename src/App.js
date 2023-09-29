@@ -51,7 +51,7 @@ return (
               })}
             {products.map((product) => {
               
-              return <Route path={`/product/${product.Title}`} key={product.IdProduct} element={<ProductDetail productSelected={product}/>}/>
+              return <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail productSelected={product}/>}/>
               
               })}
             <Route path= "/search" element={<Search/>}></Route>

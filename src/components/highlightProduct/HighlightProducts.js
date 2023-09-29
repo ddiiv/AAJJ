@@ -39,6 +39,7 @@ const HighlistProducts = () => {
         pauseOnHover: true
 
       };
+
     return (
     
         <div className="productsHighlist">
@@ -47,7 +48,7 @@ const HighlistProducts = () => {
 
         {listProduct?.map(product =>
           (
-            <HighlightCard product={product}/>
+            <HighlightCard key={product.idProduct} product={product}/>
           ))}
         </Slider>
       </div>

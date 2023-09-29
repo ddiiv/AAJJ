@@ -7,7 +7,7 @@ const SizesProduct = ({idProductS}) => {
 
     const idProductSelected = idProductS;
     const [StockxSizeSelected, setStockxSizeSelected] = useState([]);
-    const [frameWork, setFrameWork] = useState([]);
+    const [frameWork, setFrameWork] = useState(0);
     const [sizesProduct, setSizesProduct] = useState([]);
     const [showStock, setShowStock] = useState(false);
     
@@ -17,7 +17,6 @@ const SizesProduct = ({idProductS}) => {
 
     useEffect(() => {
         getSizesByIdProduct(idProductSelected).then((data) => {
-
             setSizesProduct(data);
         })
 
@@ -27,12 +26,13 @@ const SizesProduct = ({idProductS}) => {
 
         const a = e.target.value;
         setFrameWork(e.target.value);
-        setStockxSizeSelected(sizesProduct[a - 1]);
+        const sizeSelected = sizesProduct.filter((size) => size.IdSize === parseInt(a));  
+        setStockxSizeSelected(sizeSelected);
         setShowStock(true);
 
     }
 
-
+    
     function showStockxSize() {
         
         if (showStock === true) {
@@ -56,9 +56,9 @@ const SizesProduct = ({idProductS}) => {
                 {sizesProduct.map((size) => {
                     if (size.Quantity === 0) {
                         return (
-                            <div className="SizeItems">
+                            <div className="SizeItems" key={size.IdSize} >
                                 <div className="sizeCircleNoStock">
-                                    <b className="itemSizeHidden" key={size.IdSize} for={size.Size}>{size.size}</b>
+                                    <b className="itemSizeHidden">{size.size}</b>
                                 </div>
                             </div>
                         )
@@ -66,9 +66,9 @@ const SizesProduct = ({idProductS}) => {
                     else {
 
                         return (
-                            <div className="SizeItems">
-                                <input key={size.IdSize} type="radio" className="itemSize" name="itemSize" value={size.IdSize} specification={size.size} onChange={handleStock} checked={frameWork === size.IdSize ? true : false}/>
-                                <b className="sizeCircle" for={size.Size}>{size.size}</b>
+                            <div className="SizeItems" key={size.IdSize}>
+                                <input type="radio" className="itemSize" name="itemSize" value={size.IdSize} specification={size.size} onChange={handleStock} checked={frameWork === size.IdSize ? true : false}/>
+                                <b className="sizeCircle">{size.size}</b>
                             </div>
                         )
                     }

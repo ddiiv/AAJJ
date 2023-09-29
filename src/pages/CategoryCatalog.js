@@ -103,7 +103,6 @@ useEffect(() => {
 
   setProductosFiltrados(filteredProducts); // Guardar productos filtrados en el estado
 }, [filters, listProduct]);
-console.log(filters)
 /*-------------------------fin filter.js ------------------------------*/
 
 
