@@ -35,6 +35,8 @@ const ProductDetail = ({ productSelected }) => {
 
 
     return (
+        <div className="page">
+        <div className="containerPage">
         <div className="ProductDetailContainer">
             <div className="ProductDetail">
                 <ImagesProduct imageurl={product.Image} />
@@ -53,6 +55,8 @@ const ProductDetail = ({ productSelected }) => {
 
             <DescriptionProduct product={product} />
 
+        </div>
+        </div>
         </div>
     )
 }

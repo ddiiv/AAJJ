@@ -31,13 +31,50 @@ const HighlistProducts = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 4, 
         slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 2500,
-        pauseOnHover: true
-
+        scrollX: true,
+        screenX: true,
+        statusbar: true,
+        autoplay: true,
+        initialSlide: 0,
+        toolbar: true,
+        screenTop: true,
+        autoplaySpeed: 2000,
+        autoplayHoverPause: true,
+        
+        cssEase: "linear",
+        pauseOnDotsHover: true,
+        pauseOnHover: true,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1, 
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 800,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1
+            }
+          }
+        ]
+     
+        
       };
 
     return (

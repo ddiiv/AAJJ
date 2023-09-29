@@ -2,12 +2,26 @@
   -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: "Poppins";
+
 }
 .App{
   font-size: larger;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 1vw;
+  
+}
+.page{
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+.containerPage{
+  float: left;
+  width: 100%;
+  padding: 0 30px;
 }
 head {margin:0;}
 body {margin:0;}
@@ -103,6 +117,22 @@ ul.topnav li.right { float: right; border-right: 2px solid #333;}
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
+  .page{
+    width: 100%;
+    height: auto;
+  }
+  .containerPage{
+    width: 100%;
+    height: auto;
+  }
+  .main{
+    width: 100%;
+    height: auto;
+  }
+  .home{
+    width: 100%;
+    height: auto;
+  }
 }
 
 
@@ -112,6 +142,26 @@ ul.topnav li a .img{
 }
 @media screen and (max-width: 600px) {
   .main{
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .page{
+    width: 100%;
+    height: auto;
+  }
+  .containerPage{
+    width: 100%;
+    height: auto;
+    padding:0  15px;
+  }
+  .main{
+    width: 100%;
+    height: auto;
+  }
+  .home{
     width: 100%;
     height: auto;
   }

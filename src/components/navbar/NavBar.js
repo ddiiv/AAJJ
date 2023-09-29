@@ -10,7 +10,7 @@ const Nav = () => {
             <nav className='navbarContent'>
                 <TopNav />
                 <div className='CategoryNavbar'>
-                    <BottomNav />
+                 
                 </div>
             </nav>
 

@@ -29,16 +29,18 @@ const StockProductxSize = ({Size}) => {
         <>
             <div className="StockProductxSize">
                 <h3 className="StockProductxSizeTitle">Seleccionó el talle: {Size[0].size}</h3>
-                <div className="subs">
-                    <b className="subsButton" onClick={handleStockSubs}>-</b>
+                <div className="StockProductxSizeNumber">
+                    <div className="subs">
+                        <button className="subsButton" onClick={handleStockSubs}>-</button>
+                    </div>
+                    <input  className="subsButton" type="number" inputMode="numeric" value={stock} min={1} max={Size[0].Quantity} disabled ></input>
+                    <div className="adds">
+                        <button className="subsButton" onClick={handleStockAdd}>+</button>
+                    </div> 
                 </div>
-                <input id="stock" type="number" inputMode="numeric" value={stock} min={1} max={Size[0].Quantity} className="StockProductxSizeNumber" disabled ></input>
-                <div className="adds">
-                    <b className="subsButton" onClick={handleStockAdd}>+</b>
-                </div>
-            
+               <AddToCardProduct/>
             </div>
-    <AddToCardProduct/>
+        
         </>
     )
 }

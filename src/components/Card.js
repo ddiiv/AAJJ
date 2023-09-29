@@ -31,7 +31,7 @@ const Card = ({ product }) => {
                 <div className="card" key={products.idProduct}>
 
                     <img src={products.Image} className="productImg" alt="Producto" />
-                    <div className="container">
+                    <div className="containerCard">
                         <div className="genderContainer">
                             <b className="gender">{products.SubCategory}</b>
                         </div>

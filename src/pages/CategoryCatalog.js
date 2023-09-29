@@ -1,14 +1,14 @@
 import React,{ useEffect, useState } from "react"
-import { getProducts, getProductsByCategory} from "../api/apiFunctions"
+import { getProductsByCategory} from "../api/apiFunctions"
 import { BrowserRouter as Routes, Link} from "react-router-dom";
 import CardList from "../components/CardList";
-import Filters from "../components/Filters";
-import '../css/CategoryCatalog.css'
+/*  import Filters from "../components/Filters";  */
+
 
 import { getCategories,getSizes,getSubCategories } from "../api/apiFunctions"
 import { Dropdown }from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import '../css/CategoryCatalog.css'
 
 const CategoryCatalog = (categorySelected) => {
 
@@ -107,10 +107,9 @@ useEffect(() => {
 
 
 return (
+  <div className="page">
+    <div className="containerPage">
     <div className="catalog">
-        <div className="products">
-        <CardList props={productosFiltrados} />
-      </div>
       <aside>
       <div className="filterSection">
     <h1 className="titleFilter">Filtros</h1>
@@ -166,8 +165,12 @@ return (
             </section>
         </div>  
       </aside>
+      <div className="products">
+        <CardList props={productosFiltrados} />
+      </div>
     </div>
-
+    </div>
+    </div>
 
     
 

@@ -25,7 +25,7 @@ const HighlightCard = ({ product }) => {
             <Link className="LinkConteiner" to={`/product/${products.Title}`}>
                 <div className="CardHighList" key={products.IdProduct}>
                     <img src={products.Image} className="productImgHighList" alt="Producto" />
-                    <div className="container">
+                    <div className="infoContainer">
                         <div className="genderContainer">
                             <b className="gender">{products.SubCategory}</b>
                         </div>

@@ -56,7 +56,7 @@ img.asideImage{
     display: flex;
     flex-direction: column;
     align-items:center;
-    justify-content:space-between;
+    padding: 0 20px;
     float: left;
 
 }
@@ -104,6 +104,9 @@ img.asideImage{
     align-items: flex-start;
     justify-content: flex-start;
 
+}
+.DescriptionProduct{
+    font-size: 700;
 }
 h1.DescriptionProduct{
     display: flex;    
@@ -185,67 +188,145 @@ input[type=radio]{
     position: absolute;
 }
 input[type=radio]+ .sizeCircle{
-    display: inline-block;
-    font-size: 20px;
-    line-height: 60px;
-    text-align: center;
-    vertical-align: middle;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    background-color: #fff;
     border-radius: 100%;
-    margin: 0px;
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    box-sizing: border-box;
+    color: #121212;
     cursor: pointer;
+    display: inline-flex;
+
+    font-family: Inter,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    white-space: nowrap;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 
 }
 .itemSize:hover + .sizeCircle{
     transition: 0.3s all;
-    border: 1px solid #000000;
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
     
 }
-.itemSize:checked + .sizeCircle{
+input[type=radio]:checked+ .sizeCircle{
     border: 1px solid #c00000;
     color: #c00000;
 
 }
 
+.addCartButton{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
 
+}
+input[type=number]{
+
+    z-index: -1;
+    border: none;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 0;
+    background-color: #ffffff;
+
+    float: left;
+    
+
+
+}
 .StockProductxSizeNumber{
+
+    z-index: 1;
     display: inline-flex !important;
     box-shadow: none;
+    flex-direction: row;
     font-size: 12px;
-    border: 1px solid #eee;
-    width: 50px;
+    width:50px;
     height: 50px;
     line-height: 50px;
     text-align: center;
     border-radius: 0;
+    background-color: #fff;
     float: left;
-    border-left: 0;
-    border-right: 0;
+    margin-bottom: 20px;
 }
-.adds{
-    display: inline-flex;
-    float: left;
-    height: 50px;
+.subsButton{
+
+      align-items: center;
+      background-color: #fff;
+      box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+      box-sizing: border-box;
+      color: #121212;
+      cursor: pointer;
+      display: inline-flex;
+      flex: 1 1 auto;
+      font-family: Inter,sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      justify-content: center;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      padding: 1rem 1.2rem;
+      text-align: center;
+      text-decoration: none;
+      transition: box-shadow .2s,-webkit-box-shadow .2s;
+      white-space: nowrap;
+      border: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    .subsButton:hover {
+      box-shadow: #121212 0 0 0 1px, transparent 0 0 0 0;
+    }
+
+.addCartButton{
     align-items: center;
-    padding: 0 0.7rem;
-    border: 1px solid #eee;
-    border-left: 0;
-    font-size: 11px;
+    background-color: #fff;
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    box-sizing: border-box;
+    color: #121212;
     cursor: pointer;
-}
-.subs{
     display: inline-flex;
-    float: left;
-    height: 50px;
-    align-items: center;
-    padding: 0 0.7rem;
-    border: 1px solid #eee;
-    border-right: 0;
-    font-size: 11px;
-    cursor: pointer;
+    flex: 1 1 auto;
+    font-family: Inter,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    outline: none;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    white-space: nowrap;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
+.addCartButton:hover {
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+  }
+
 
 @media screen and (max-width: 950px) {
     .ProductDetailContainer{
@@ -272,8 +353,9 @@ input[type=radio]+ .sizeCircle{
         display: flex;
         flex-direction: column;
         align-items:center;
-        justify-content:space-between;
+    
         float: left;
+        padding: 0 20px;
     
     }
     .ProductInfoTitle{

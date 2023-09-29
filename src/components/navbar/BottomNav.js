@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Routes, Link } from "react-router-dom";
 import { getCategories } from '../../api/apiFunctions.js';
+import '../../css/NavBar.css'
 
 const BottomNav = () => {
     const [category, setCategory] = useState([]);

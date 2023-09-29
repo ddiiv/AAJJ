@@ -10,7 +10,7 @@ const AddToCardProduct = ()=>{
 return(
     <>
 
-    <button type="submit" onClick={handleSubmit}> Agregar al carrito</button>
+    <button type="submit" className="addCartButton" onClick={handleSubmit}> Agregar al carrito</button>
     </>
 )
 }

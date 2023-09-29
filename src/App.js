@@ -10,6 +10,7 @@ import { getCategories, getProducts } from './api/apiFunctions';
 
 import Home from './pages/Home';
 import Nav from './components/navbar/NavBar.js';
+import BottomNav from './components/navbar/BottomNav';
 import Footer from './components/Footer.js';
 import CategoryCatalog from './pages/CategoryCatalog.js';
 import ProductDetail from './pages/ProductDetail.js';
@@ -44,6 +45,7 @@ return (
       
       <BrowserRouter>
         <Nav/>
+        <BottomNav/>
           <Routes>
             <Route path="/" element={<Home/>}/>
             {category.map((categories) => {

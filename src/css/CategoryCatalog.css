@@ -1,19 +1,21 @@
-  .catalog{
-    margin: 2vw;
+
+   .catalog{
     max-width: 100%;
     height:100%;
+    display: flex;
   }
-  *{
-    transition: 0.5s ease;
-  }
+
   .products{
-    margin-left: 18vw;
-    padding: 10px ;
-    width: 78vw;
-    max-width: 100%;
+    width: 100%;
     height:100%;
-    transform: 0.5s;
     transition: 0.5s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 0px;
+
     
   }
   ::marker {
@@ -21,8 +23,7 @@
   }
   
   .card {
-
-    width: 23vw;
+    width: 20vw;
     height: 33vw;
     display: flex;
     margin: 15px;
@@ -110,14 +111,14 @@
 
   }
 
-.container{
+.containerCard{
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction:column;
   justify-content:flex-start;
   align-items: flex-start;
-
+  padding: 0 10px;
 }
 
 /*////////////////////////////// filtro //////////////////////////////*/
@@ -170,14 +171,13 @@ h1{
   font-weight: 500;
   border-radius: 0px;
   border-bottom: 0.5px solid rgba(141, 141, 141, 0.541);
-  width: 20vw;
-  max-width: 20vw;
+  width: 150%;
   display: flex;
   padding: 8px 16px;
   cursor: pointer;
   --bs-btn-color: #ffffff;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .reset-button {
@@ -187,7 +187,6 @@ h1{
     display: flex;
     width: 100%;
     color: #dc3545;
-    border-bottom: 1px solid rgba(141, 141, 141, 0.541);
     font-family: "Poppins";
     font-size: 20px;
     font-weight: 900;
@@ -196,23 +195,6 @@ h1{
     align-items: center;
 }
 
-/* Estilos para el botón de "Filtros" */
-.filter-toggle {
-background-color: #a73128;
-color: #fff;
-border: none;
-padding: 10px 20px;
-font-size: 16px;
-cursor: pointer;
-transition: background-color 0.3s, transform 0.2s;
-}
-
-.filter-toggle:hover {
-background-color: #218838;
-transform: scale(1.05);
-}
-
-/* Estilos para las opciones de subcategoría */
 .subcategory-options {
 display: none;
 position: absolute;
@@ -235,48 +217,21 @@ color: #333;
 transition: color 0.3s;
 }
 
-.subcategory-options button:hover {
-color: #007bff;
-}
-
-/* Estilos para los botones de tamaño */
-.item-filter{
-  border-radius: 0;
-}
-
-
-section button:last-child {
-margin-right: 0;
-}
-
-section button:hover {
-background-color: #000000;
-transform: scale(1.05);
-}
-
-/* Agrega este estilo en tu archivo CSS o en línea */
 
 .vertical-buttons {
 
 left: 0;
 top: 50%;
-width: 20vw;
+width: 100%;
 
 display: flex;
 flex-direction: column;
 }
 
-.vertical-buttons button {
-width: 80%;
-border-radius: 0px;
-margin-bottom: 5px;
-}
 /* filters */
 
 .filterSection{
-  width: 18vw;
-  height: 100%;
-  margin-top: 2vw;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -285,22 +240,37 @@ margin-bottom: 5px;
 
 
 aside{
-  width: 20vw;
-  height: 100%;
-  top: 200px;
-  position: absolute;
-  display:list-item;
   transition: 0.5s ease-in-out;
+  height: 100%;
+  position: sticky;
+  top: 2%;
+  transition: 0.5s ease-in-out;
+  float: left;
+  display: block !important;
+  transition: all 300ms ease 0s;
 }
 
+
 @media screen and (max-width:900px) {
+
+  .catalog{
+    max-width: 100%;
+    height:100%;
+    display: flex;
+  }
+  
+  aside,
   .products,
   .title, .price, .gender, p,.addcart,
   .card,
-  .productImg
-  {
+  .productImg{
     transform: translateY(-3);
   }
+  .size-buttons {
+    transition: 0.5s;
+    transform: translateY(-3);
+  }
+  
 }
 
 

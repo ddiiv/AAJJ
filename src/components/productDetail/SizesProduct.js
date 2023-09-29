@@ -23,11 +23,12 @@ const SizesProduct = ({idProductS}) => {
     }, [])
 
     const handleStock = (e) => {
-
         const a = e.target.value;
-        setFrameWork(e.target.value);
-        const sizeSelected = sizesProduct.filter((size) => size.IdSize === parseInt(a));  
+        const sizeSelected = sizesProduct.filter((size) => size.IdSize === parseInt(a)); 
+        setFrameWork(a);
+       
         setStockxSizeSelected(sizeSelected);
+    
         setShowStock(true);
 
     }
@@ -67,7 +68,7 @@ const SizesProduct = ({idProductS}) => {
 
                         return (
                             <div className="SizeItems" key={size.IdSize}>
-                                <input type="radio" className="itemSize" name="itemSize" value={size.IdSize} specification={size.size} onChange={handleStock} checked={frameWork === size.IdSize ? true : false}/>
+                                <input type="radio" className="itemSize" name="itemSize" value={size.IdSize} specification={size.size} onChange={handleStock} isChecked={frameWork === size.IdSize ? true: false}/>
                                 <b className="sizeCircle">{size.size}</b>
                             </div>
                         )
