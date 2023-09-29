@@ -165,9 +165,9 @@ return (
             </section>
         </div>  
       </aside>
-      <div className="products">
+      <main className="products">
         <CardList props={productosFiltrados} />
-      </div>
+      </main>
     </div>
     </div>
     </div>

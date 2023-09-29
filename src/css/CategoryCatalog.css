@@ -1,11 +1,12 @@
 
-   .catalog{
+  .catalog{
     max-width: 100%;
     height:100%;
     display: flex;
   }
+  main{
+    
 
-  .products{
     width: 100%;
     height:100%;
     transition: 0.5s;
@@ -14,9 +15,7 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 0px;
-
-    
+    padding: 20px;
   }
   ::marker {
     font-size: 0;
@@ -33,7 +32,7 @@
     align-items: center;
     justify-content:center;
     flex-direction: column;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa00;
   }
 
 
@@ -57,7 +56,6 @@
 
   .gender{
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -68,7 +66,7 @@
   }
   .title{
     width: 100%;
-    height: 100%;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -81,7 +79,7 @@
   }
   .price{
     width: 100%;
-    height: 100%;
+
     display: flex;
     justify-content: flex-start;
     align-items:flex-start;
@@ -102,7 +100,6 @@
     float: left;
     opacity: 1;
     transform: translateY(0);
-    background-color: #F5F3F3;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -122,9 +119,7 @@
 }
 
 /*////////////////////////////// filtro //////////////////////////////*/
-.dropdown {
-  position: relative;
-}
+
 
 .dropdown-toggle {
   
@@ -134,20 +129,16 @@
 h1{
   display: flex;
 }
-.dropdown-menu {
-  background-color: #f8f9fa;
-  border-radius: 0px;
-  border: none;
-}
+
 
 .dropdown-item button {
   background: none;
   border: none;
   width: 100%;
   text-align: left;
-  padding: 8px 16px;
   border-left: 1px solid rgba(141, 141, 141, 0.541);
   cursor: pointer;
+  
 }
 .btn.active,.btn.show, .btn:first-child:active{
   background-color: #a73128;
@@ -171,13 +162,15 @@ h1{
   font-weight: 500;
   border-radius: 0px;
   border-bottom: 0.5px solid rgba(141, 141, 141, 0.541);
-  width: 150%;
-  display: flex;
-  padding: 8px 16px;
+  width: 100%;
+  padding: 8px 15px;
   cursor: pointer;
   --bs-btn-color: #ffffff;
   justify-content: flex-start;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-bottom: 10px ;
 }
 
 .reset-button {
@@ -191,12 +184,14 @@ h1{
     font-size: 20px;
     font-weight: 900;
     line-height: 30px;
-    text-decoration: none;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .subcategory-options {
-display: none;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
 position: absolute;
 top: 100%;
 left: 0;
@@ -241,6 +236,7 @@ flex-direction: column;
 
 aside{
   transition: 0.5s ease-in-out;
+  width: 26%;
   height: 100%;
   position: sticky;
   top: 2%;
@@ -305,7 +301,6 @@ aside{
 }
 .genderContainer{
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -317,7 +312,6 @@ aside{
 }
 .priceContainer{
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

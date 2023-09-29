@@ -19,7 +19,7 @@ const TopNav = () => {
                 </div>
                 <div className='containerItems'>                    
                     <div className='searchBar'>
-                    <SearchBar className='buttonItem'/>
+                    <SearchBar/>
                     </div>
                     <div className='userContainer'>
                     <User/>

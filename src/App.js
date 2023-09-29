@@ -15,7 +15,7 @@ import Footer from './components/Footer.js';
 import CategoryCatalog from './pages/CategoryCatalog.js';
 import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
-
+import CartDetail from './pages/CartDetail';
 //---------Context
 import {  UserProvider } from './context/UserContext';
 
@@ -57,7 +57,9 @@ return (
               
               })}
             <Route path= "/search" element={<Search/>}></Route>
+          <Route path="/cart" element={<CartDetail/>}></Route>
           </Routes>
+          
       </BrowserRouter>
       <Footer/>
     </div>

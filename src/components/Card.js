@@ -27,8 +27,9 @@ const Card = ({ product }) => {
     }, [])
     return (
         <>
+        
             <Link className="nothing" to={`/product/${products.Title}`}>
-                <div className="card" key={products.idProduct}>
+                <article className="card" key={products.idProduct}>
 
                     <img src={products.Image} className="productImg" alt="Producto" />
                     <div className="containerCard">
@@ -43,7 +44,7 @@ const Card = ({ product }) => {
                         </div>
                     </div>
 
-                </div>
+                </article>
             </Link>
         </>
     )

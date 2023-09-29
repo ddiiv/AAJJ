@@ -20,7 +20,7 @@ export const UserProvider = ({ children }) => {
     const [User, setUser] = useState(null);
     useEffect(() => {
 
-        const id = 4;
+        const id = 3;
         getUserById(id).then((data) => {
             setUser(data);
         });
