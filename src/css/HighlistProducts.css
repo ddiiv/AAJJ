@@ -54,14 +54,19 @@
 
 .LinkConteiner{
     margin: 5px;
+    box-shadow: 0 0.5px 0.5rem -4px #000;
         text-decoration: none;
         color: #000;
+        overflow: hidden;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 250ms ease-in-out;
         
 }
 .LinkConteiner:hover{
     text-decoration: none;
-    
-    box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 1rem -4px #000;
+    transform: translateY(-3px);
 }
 
 .genderContainer{

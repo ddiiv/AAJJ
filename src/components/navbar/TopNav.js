@@ -4,11 +4,14 @@ import cart from '../../img/carro.png'
 import React from 'react'
 import SearchBar from './search/SearchBar'
 import User from './User'
+import '../../css/NavBar.css'
+
 
 import { Link } from "react-router-dom";
 
 const TopNav = () => {
     return (
+        <nav className='navbarContent'>
         <div className='topnav'>
             <div className='containerNav'>
                 <div className='containerLogo'>
@@ -30,6 +33,7 @@ const TopNav = () => {
                 </div>
             </div>
         </div>
+        </nav>
     )
 }
 export default TopNav;

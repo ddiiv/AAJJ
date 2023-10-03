@@ -23,7 +23,7 @@
   
   .card {
     width: 20vw;
-    height: 33vw;
+    height: 30vw;
     display: flex;
     margin: 15px;
     border: none;
@@ -32,9 +32,14 @@
     align-items: center;
     justify-content:center;
     flex-direction: column;
+    box-shadow: 0 0px 0.5rem -4px #000;
     background-color: #f8f9fa00;
+    transition: all 250ms ease-in-out;
   }
-
+  .card:hover{
+    box-shadow: 0 4px 1rem -4px #000;
+    transform: translateY(-3px);
+  }
 
   .addcart{
     transition: 0.5s;

@@ -9,13 +9,14 @@ import { getCategories, getProducts } from './api/apiFunctions';
 //---------Components
 
 import Home from './pages/Home';
-import Nav from './components/navbar/NavBar.js';
+import TopNav from './components/navbar/TopNav.js';
 import BottomNav from './components/navbar/BottomNav';
 import Footer from './components/Footer.js';
 import CategoryCatalog from './pages/CategoryCatalog.js';
 import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
 import CartDetail from './pages/CartDetail';
+
 //---------Context
 import {  UserProvider } from './context/UserContext';
 
@@ -44,7 +45,7 @@ return (
     <div className="App">
       
       <BrowserRouter>
-        <Nav/>
+        <TopNav/>
         <BottomNav/>
           <Routes>
             <Route path="/" element={<Home/>}/>
@@ -62,6 +63,7 @@ return (
           
       </BrowserRouter>
       <Footer/>
+
     </div>
   </UserProvider>
 
