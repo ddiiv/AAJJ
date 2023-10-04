@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Card } from "react-bootstrap";
 
 const baseURL = "http://localhost:3001/";
 
@@ -108,3 +109,27 @@ export const getCartByIdUser = async (idUser) => {
         }
     }
 };
+//-----------------------------------------PUTS---------------------------------------------------------
+export const putCardItem = async(ids)=>{
+    try{
+        await axios({
+            method:'put',
+            url:`${baseURL}cartitem`,
+            data:
+            {
+                IdUser:ids,
+                IdStock:ids,
+                Quantity:ids
+            }
+
+        })
+    }
+    catch(e)
+    {
+        if (e.response.status === 404) {
+                    console.log('Resource could not be found!');
+                } else {
+                    console.log(e.message);
+                }
+    }
+}

@@ -24,11 +24,15 @@ a:hover {
     color: #df0000d3;    
     background-color: #ffffff;
 
+
+}
+#a{
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
 #a:hover{
     border-bottom:2px solid #df0000d3;
     color: #df0000d3;
-    background-color: #ffffff;
+    background-color: #f3f3f3;
     transition: 0.5s ease-in-out;
 }
 
@@ -62,7 +66,6 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
     justify-content: center;
     text-align: center;
 }

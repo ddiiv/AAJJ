@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+
 import AddToCardProduct from "./AddToCardProduct";
 
 const StockProductxSize = ({Size}) => {
@@ -7,20 +8,15 @@ const StockProductxSize = ({Size}) => {
     const [stock, setStock] = useState(1);
 
 
-
     const handleStockAdd = (e) => {
-
         if (stock < Size[0].Quantity) {
             setStock(stock + 1);
         }
-
     }
     const handleStockSubs = (e) => {
-
         if (stock > 1) {
             setStock(stock - 1);
         }
-
     }
 
     useEffect(() => setStock(1),[Size])
@@ -38,7 +34,7 @@ const StockProductxSize = ({Size}) => {
                         <button className="subsButton" onClick={handleStockAdd}>+</button>
                     </div> 
                 </div>
-               <AddToCardProduct/>
+            <AddToCardProduct size={Size} stockSelected={stock}/>
             </div>
         
         </>

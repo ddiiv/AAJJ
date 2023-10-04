@@ -26,9 +26,7 @@ const SizesProduct = ({idProductS}) => {
         const a = e.target.value;
         const sizeSelected = sizesProduct.filter((size) => size.IdSize === parseInt(a)); 
         setFrameWork(a);
-       
         setStockxSizeSelected(sizeSelected);
-    
         setShowStock(true);
 
     }
