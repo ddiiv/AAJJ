@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-
+import { useStockxSizeSelected } from "./SizesProduct";
 import AddToCardProduct from "./AddToCardProduct";
 
 const StockProductxSize = ({Size}) => {

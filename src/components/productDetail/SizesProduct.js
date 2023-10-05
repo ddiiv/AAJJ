@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,createContext, useContext  } from "react";
 import { getSizesByIdProduct } from "../../api/apiFunctions";
 import StockProductxSize from "./StockProductxSize";
 
+const StockxSizeSelected = createContext();
 
-const SizesProduct = ({idProductS}) => {
+export function useStockxSizeSelected() {
+    return useContext(StockxSizeSelected);
+}
 
-    const idProductSelected = idProductS;
+const SizesProduct = (idProductS) => {
+    
+    const idProductSelected = idProductS.idProductS;
     const [StockxSizeSelected, setStockxSizeSelected] = useState([]);
     const [frameWork, setFrameWork] = useState(0);
     const [sizesProduct, setSizesProduct] = useState([]);
@@ -35,9 +40,9 @@ const SizesProduct = ({idProductS}) => {
     function showStockxSize() {
         
         if (showStock === true) {
-
             return (
-                <StockProductxSize Size={StockxSizeSelected} />
+                    <StockProductxSize Size={StockxSizeSelected}/>
+
             )
         }
         else {

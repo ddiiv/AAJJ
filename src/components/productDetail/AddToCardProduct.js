@@ -4,10 +4,14 @@ import { putCardItem } from "../../api/apiFunctions";
 import { useUserContext } from "../../context/UserContext";
 
 
-const AddToCardProduct = (size, stockSelected)=>{
-    
-const [IdsForPut, setIdsForPut] = useState(null);
-const User = useUserContext();
+const AddToCardProduct = (size)=>{
+
+    const [IdsForPut, setIdsForPut] = useState();
+    const User = useUserContext();
+    const s = size.size[0];
+    const stock= size.stockSelected;
+    const idstock = s.IdStock;
+
 
     const handleSubmit=()=>
     {
@@ -16,15 +20,15 @@ const User = useUserContext();
         setIdsForPut
         ({
             IdUser : User.IdUser,
-            IdStock: size.IdStock,
-            Quantity: stockSelected
+            IdStock: idstock,
+            Quantity: stock
         })
         
     }
     else{
         alert("logeate flaco");
     }
-
+    console.log(IdsForPut)
 
 
     }
