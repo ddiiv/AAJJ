@@ -14,20 +14,22 @@ export function useUserLogged() {
     return useContext(UserLogged);
 }
 
-export const UserProvider = ({ children }) => {
-    
+export const UserProvider = (props) => {
+
 
     const [User, setUser] = useState(null);
     useEffect(() => {
 
         const id = 3;
         getUserById(id).then((data) => {
-            setUser(data);
+            setUser(
+                data
+                );
         });
     }, []);
 
-    const changueLogin = (e) => {
-        if (e === false) {
+    const changueLogin = () => {
+        if (User) {
             setUser(null);
         }
         else {
@@ -37,7 +39,7 @@ export const UserProvider = ({ children }) => {
 
     return <UserContext.Provider value={User}>
         <UserLogged.Provider value={changueLogin}>
-            {children}
+            {props.children}
         </UserLogged.Provider>
     </UserContext.Provider>
 }

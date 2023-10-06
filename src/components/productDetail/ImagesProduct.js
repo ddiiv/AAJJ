@@ -2,9 +2,10 @@ import React from "react";
 
 
 const ImagesProduct = ({ imageurl }) => {
+    console.log(imageurl)
     return (
         <>
-                              
+        
                     <div className="ProductImages">
                     <div className="asideImages">
                     <img className="asideImage" src={imageurl} alt={imageurl} />

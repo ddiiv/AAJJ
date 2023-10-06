@@ -25,7 +25,7 @@ const SizesProduct = (idProductS) => {
             setSizesProduct(data);
         })
 
-    }, [])
+    }, [idProductSelected])
 
     const handleStock = (e) => {
         const a = e.target.value;
