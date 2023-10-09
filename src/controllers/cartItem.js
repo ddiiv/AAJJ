@@ -1,7 +1,7 @@
 import CartItemService from "../services/cartItem-services.js"
 
 export const getCartByIdUser = async(req,res) =>{
-    res.send(JSON.stringify(await new CartItemService().postCartByIdUser(req.params.id)))
+    res.send(JSON.stringify(await new CartItemService().getCartByIdUser(req.params.id)))
 }
 
 export const insert = async(req,res) =>{
