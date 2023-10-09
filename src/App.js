@@ -20,6 +20,8 @@ import CartDetail from './pages/CartDetail';
 //---------Context
 import {  UserProvider } from './context/UserContext';
 
+import { CartProvider } from './context/CartContext';
+
 function App() {
 
 
@@ -42,6 +44,7 @@ useEffect(() => {
 
 return (
 <UserProvider>
+  <CartProvider>
     <div className="App">
       
       <BrowserRouter>
@@ -65,8 +68,8 @@ return (
           
       </BrowserRouter>
       <Footer/>
-
     </div>
+    </CartProvider>
   </UserProvider>
 
   );

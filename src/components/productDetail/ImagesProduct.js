@@ -2,7 +2,6 @@ import React from "react";
 
 
 const ImagesProduct = ({ imageurl }) => {
-    console.log(imageurl)
     return (
         <>
         
