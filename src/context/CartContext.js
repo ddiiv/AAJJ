@@ -8,29 +8,29 @@ export function useCartContext() {
     return useContext(CartContext);
 }
 
-export const CartProvider = ({children}) => {
+export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
     const User = useUserContext();
 
-    const  getCartItemsByIdUser= async ()   =>{
-        if (User != null) {
-            
-            await getCartByIdUser(User.IdUser).then((data) => {
-                 setCart(
-                     data
-                 );
-             });
-             console.log("CartProvider", cart);
-         }
-         else {
-             console.log("no hay usuario logeado ");
-         }
-    }
+    // const getCartItemsByIdUser = async () => {
+    //     if (User != null) {
 
-    useEffect( () => async () =>{
-        getCartItemsByIdUser()
-    }, [10])
+    //         await getCartByIdUser(User.IdUser).then((data) => {
+    //             setCart(
+    //                 data
+    //             );
+    //         });
+    //         console.log("CartProvider", cart);
+    //     }
+    //     else {
+    //         console.log("no hay usuario logeado ");
+    //     }
+    // }
+
+    // useEffect(() => async () => {
+    //     getCartItemsByIdUser()
+    // }, [10])
 
 
 

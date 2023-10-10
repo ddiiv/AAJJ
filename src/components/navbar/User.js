@@ -5,15 +5,23 @@ import { useUserLogged } from '../../context/UserContext.js';
 
 
 const User = () => {
+    
     const User = useUserContext();
-    const Logged = useUserLogged();
+    const setlogged = useUserLogged();
     console.log(User)
 
 
     return (
         <>
-        {Logged}
+
+        <button className='buttonItem' id="center" value={User} onClick={setlogged.changueLogin}><img className='items' src={userr} alt="" />
             
+            {User!= null ? (
+            
+                    <b>{User.User}</b>
+            
+            ) : null}
+            </button>
         
         
         </>
