@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
-import { useUserContext } from "./UserContext";
+import { useUserLogged, useUserContext } from "./UserContext";
 import { getCartByIdUser } from "../api/apiFunctions";
 
 const CartContext = createContext();
@@ -8,52 +8,77 @@ export function useCartContext() {
     return useContext(CartContext);
 }
 
+let IdCartItem;
+let IdStock;
+let QquantityCart;
+let CartTitle;
+let CartImage;
+let Price;
+let QuantityStock;
+let Size;
+let Enabled;
 export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
-    const User = useUserContext();
+    const Logged = useUserLogged();
+    const UserContext = useUserContext();
 
-    // const getCartItemsByIdUser = async () => {
-    //     if (User != null) {
+    const getCartItemsByIdUser = async () => {
+        if (Logged.Logged === true) {
 
-    //         await getCartByIdUser(User.IdUser).then((data) => {
-    //             setCart(
-    //                 data
-    //             );
-    //         });
-    //         console.log("CartProvider", cart);
-    //     }
-    //     else {
-    //         console.log("no hay usuario logeado ");
-    //     }
-    // }
+            await getCartByIdUser(UserContext.IdUser).then((data) => {
 
-    // useEffect(() => async () => {
-    //     getCartItemsByIdUser()
-    // }, [10])
+                if (data ) {
+                    setCart(
+                        data
+                    );
+
+                    IdCartItem = data.IdCartItem;
+                    IdStock = data.IdStock;
+                    QquantityCart = data.QquantityCart;
+                    CartTitle = data.CartTitle;
+                    CartImage = data.CartImage;
+                    Price = data.Price;
+                    QuantityStock = data.QuantityStock;
+                    Size = data.Size;
+                    Enabled = data.Enabled;
+
+                }
+                console.log("CartProvider", data);
+            });
+
+        }
+        else {
+            alert("CART CONTEXT : no hay usuario logeado");
+        }
+    }
+    console.log(cart)
+    useEffect(() => {
+        getCartItemsByIdUser()
+    }, [])
 
 
 
 
 
 
-    /*
-        const addToCart = (product) => {
-            const existingCartItem = cartItems.find(
-                (cartItem) => cartItem.IdStock === product.IdStock
+
+    const addToCart = (product) => {
+        const existingCartItem = cart.find(
+            (cartItem) => cartItem.IdStock === product.IdStock
+        );
+
+        if (existingCartItem) {
+            return cart.map((cartItem) =>
+                cartItem.IdStock === product.IdStock
+                    ? { ...cartItem, Quantity: cartItem.Quantity + 1 }
+                    : cartItem
             );
-    
-            if (existingCartItem) {
-                return cartItems.map((cartItem) =>
-                    cartItem.IdStock === product.IdStock
-                        ? { ...cartItem, Quantity: cartItem.Quantity + 1 }
-                        : cartItem
-                );
-            }
-    
-            return [...cartItems, { ...product, Quantity: 1 }];
-        };
-    
+        }
+
+        return [...cart, { ...product, Quantity: 1 }];
+    };
+    /*
         const removeFromCart = (product) => {
             const existingCartItem = cartItems.find(
                 (cartItem) => cartItem.IdStock === product.IdStock
@@ -68,7 +93,7 @@ export const CartProvider = ({ children }) => {
             return cartItems.map((cartItem) =>
                 cartItem.IdStock === product.IdStock
                     ? { ...cartItem, Quantity: cartItem.Quantity - 1 }
-                    : cartItem
+                    : cartItem 
             );
         };
         */
@@ -78,27 +103,12 @@ export const CartProvider = ({ children }) => {
         setCart([]);
     };
 
-    const IdCartItem = cart.IdCartItem;
-    const IdStock = cart.IdStock;
-    const QquantityCart = cart.QquantityCart;
-    const CartTitle = cart.Title;
-    const CartImage = cart.Image;
-    const Price = cart.Price;
-    const QuantityStock = cart.QuantityStock;
-    const Size = cart.Size;
-    const Enabled = cart.Enabled;
+
+
     return (
         <CartContext.Provider
             value={{
-                IdCartItem,
-                IdStock,
-                QquantityCart,
-                CartTitle,
-                CartImage,
-                Price,
-                QuantityStock,
-                Size,
-                Enabled,
+                cart,
                 clearCart,
             }}
         >

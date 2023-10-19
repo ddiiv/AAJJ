@@ -1,15 +1,12 @@
 import React from 'react';
 import userr from '../../img/user.png'
-import { useUserContext } from "../../context/UserContext.js";
-import { useUserLogged } from '../../context/UserContext.js';
+import { useUserContext, useUserLogged } from "../../context/UserContext.js";   
 
 
 const User = () => {
     
     const User = useUserContext();
     const setlogged = useUserLogged();
-    console.log(User)
-
 
     return (
         <>

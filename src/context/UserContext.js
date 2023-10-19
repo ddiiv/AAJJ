@@ -22,12 +22,13 @@ let DateCreation;
 let DateOfBirth;
 let MembershipNumber;
 let PhoneNumber;
+let Token;
 
 export const UserProvider = ({ children }) => {
 
 
-    const [User, setUser] = useState(null);
-    const [Logged, setLogged] = useState(true);
+
+    const [Logged, setLogged] = useState(false);
 
 
 
@@ -35,18 +36,21 @@ export const UserProvider = ({ children }) => {
         const id = 5;
         await getUserById(id).then((data) => {
 
-            setUser(data);
 
-            if (User && Logged=== true) {
-                IdUser = User.IdUser;
-                UserName = User.User;
-                Password = User.Password;
-                Email = User.Email;
-                DNI = User.Dni;
-                DateCreation = User.DateCreation;
-                DateOfBirth = User.DateOfBirth;
-                MembershipNumber = User.MembershipNumber;
-                PhoneNumber = User.PhoneNumber;
+
+            if (data) {
+
+                IdUser = data.IdUser;
+                UserName = data.User;
+                Password = data.Password;
+                Email = data.Email;
+                DNI = data.Dni;
+                DateCreation = data.DateCreation;
+                DateOfBirth = data.DateOfBirth;
+                MembershipNumber = data.MembershipNumber;
+                PhoneNumber = data.PhoneNumber;
+                Token = data.IdUser;
+
             }
             else {
                 alert("no llego el user");
@@ -61,15 +65,16 @@ export const UserProvider = ({ children }) => {
 
 
     const changueLogin = () => {
-        if (User) {
+        if (Logged === false) {
             setLogged(true);
+
         }
         else {
             setLogged(false);
         }
     }
 
-    console.log(User)
+
 
 
     return <UserLogged.Provider value={{ Logged, changueLogin }}>
@@ -83,7 +88,8 @@ export const UserProvider = ({ children }) => {
             DateCreation,
             DateOfBirth,
             MembershipNumber,
-            PhoneNumber
+            PhoneNumber,
+            Token
         }}>
             {children}
 
