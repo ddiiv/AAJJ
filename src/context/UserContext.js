@@ -13,30 +13,31 @@ export function useUserLogged() {
     return useContext(UserLogged);
 }
 
-    let IdUser;
-    let UserName;
-    let Password;
-    let Email;
-    let DNI;
-    let DateCreation;
-    let DateOfBirth;
-    let MembershipNumber;
-    let PhoneNumber;
+let IdUser;
+let UserName;
+let Password;
+let Email;
+let DNI;
+let DateCreation;
+let DateOfBirth;
+let MembershipNumber;
+let PhoneNumber;
+
 export const UserProvider = ({ children }) => {
 
 
     const [User, setUser] = useState(null);
-    const [Logged, setLogged] = useState(false)
+    const [Logged, setLogged] = useState(true);
 
 
 
     const getUser = async () => {
         const id = 5;
         await getUserById(id).then((data) => {
-            
+
             setUser(data);
 
-            if (User != null) {
+            if (User && Logged=== true) {
                 IdUser = User.IdUser;
                 UserName = User.User;
                 Password = User.Password;
@@ -47,7 +48,7 @@ export const UserProvider = ({ children }) => {
                 MembershipNumber = User.MembershipNumber;
                 PhoneNumber = User.PhoneNumber;
             }
-            else{
+            else {
                 alert("no llego el user");
             }
         });
@@ -71,19 +72,21 @@ export const UserProvider = ({ children }) => {
     console.log(User)
 
 
-    return <UserContext.Provider value={{
-        IdUser,
-        UserName,
-        Password,
-        Email,
-        DNI,
-        DateCreation,
-        DateOfBirth,
-        MembershipNumber,
-        PhoneNumber
-    }}>
-        <UserLogged.Provider value={{ Logged, changueLogin }}>
+    return <UserLogged.Provider value={{ Logged, changueLogin }}>
+
+        <UserContext.Provider value={{
+            IdUser,
+            UserName,
+            Password,
+            Email,
+            DNI,
+            DateCreation,
+            DateOfBirth,
+            MembershipNumber,
+            PhoneNumber
+        }}>
             {children}
-        </UserLogged.Provider>
-    </UserContext.Provider>
+
+        </UserContext.Provider>
+    </UserLogged.Provider>
 }
