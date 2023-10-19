@@ -13,43 +13,21 @@ export function useUserLogged() {
     return useContext(UserLogged);
 }
 
-let IdUser;
-let UserName;
-let Password;
-let Email;
-let DNI;
-let DateCreation;
-let DateOfBirth;
-let MembershipNumber;
-let PhoneNumber;
-let Token;
-
 export const UserProvider = ({ children }) => {
 
 
 
     const [Logged, setLogged] = useState(false);
-
-
+    const [User, setUser] = useState();
 
     const getUser = async () => {
         const id = 5;
         await getUserById(id).then((data) => {
 
-
-
             if (data) {
 
-                IdUser = data.IdUser;
-                UserName = data.User;
-                Password = data.Password;
-                Email = data.Email;
-                DNI = data.Dni;
-                DateCreation = data.DateCreation;
-                DateOfBirth = data.DateOfBirth;
-                MembershipNumber = data.MembershipNumber;
-                PhoneNumber = data.PhoneNumber;
-                Token = data.IdUser;
+                setUser({ ...data, Token: data.IdUser })
+                return User;
 
             }
             else {
@@ -59,38 +37,25 @@ export const UserProvider = ({ children }) => {
 
     }
 
-    useEffect(() => {
-        getUser()
-    }, []);
+    const LogOut = () => {
+        setUser(null)
+        setLogged(false)
+    }
 
 
     const changueLogin = () => {
         if (Logged === false) {
+            getUser();
             setLogged(true);
-
         }
         else {
-            setLogged(false);
+            LogOut()
         }
     }
 
-
-
-
     return <UserLogged.Provider value={{ Logged, changueLogin }}>
 
-        <UserContext.Provider value={{
-            IdUser,
-            UserName,
-            Password,
-            Email,
-            DNI,
-            DateCreation,
-            DateOfBirth,
-            MembershipNumber,
-            PhoneNumber,
-            Token
-        }}>
+        <UserContext.Provider value={User}>
             {children}
 
         </UserContext.Provider>

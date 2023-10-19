@@ -7,15 +7,14 @@ const User = () => {
     
     const User = useUserContext();
     const setlogged = useUserLogged();
-
     return (
         <>
 
         <button className='buttonItem' id="center" value={User} onClick={setlogged.changueLogin}><img className='items' src={userr} alt="" />
             
-            {setlogged.Logged ===true ? (
+            {User ? (
             
-                    <b>{User.UserName}</b>
+                    <b>{User.User}</b>
             
             ) : null}
             </button>

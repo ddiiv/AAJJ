@@ -5,17 +5,41 @@ import { useCartContext } from "../../context/CartContext";
 
 
 
+
 const Cart = () => {
     const cart = useCartContext();
-    console.log(cart)
+
+    let c = 0 ;
+    function NumberQuantityItems (){
+        if(cart)
+        {
+
+
+            if(cart.QuantityCart > cart.QuantityStock)
+            {
+                cart.QuantityCart = cart.QuantityStock
+            }
+            else
+            {
+                cart.forEach(function(a){
+                    c = c + a.QuantityCart;
+                    console.log(a)
+                },[c]);
+                
+                
+                return (
+                    <b className="cartItemsQuantity">{c}</b>
+                )
+            }
+        }
+    }
 
 
     return (
         <>
             <button className='buttonItem'>
                 <img className='items' src={cartImage} alt="" />
-                {cart ? (
-                    <b>{cart.cart}</b>) : null}
+                {NumberQuantityItems() }
             </button>
         </>
     )

@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
-import { useUserLogged, useUserContext } from "./UserContext";
+import { useUserContext } from "./UserContext";
 import { getCartByIdUser } from "../api/apiFunctions";
 
 const CartContext = createContext();
@@ -8,57 +8,34 @@ export function useCartContext() {
     return useContext(CartContext);
 }
 
-let IdCartItem;
-let IdStock;
-let QquantityCart;
-let CartTitle;
-let CartImage;
-let Price;
-let QuantityStock;
-let Size;
-let Enabled;
+
 export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
-    const Logged = useUserLogged();
     const UserContext = useUserContext();
 
     const getCartItemsByIdUser = async () => {
-        if (Logged.Logged === true) {
+        if (UserContext) {
 
             await getCartByIdUser(UserContext.IdUser).then((data) => {
 
-                if (data ) {
-                    setCart(
-                        data
-                    );
+                if (data) {
 
-                    IdCartItem = data.IdCartItem;
-                    IdStock = data.IdStock;
-                    QquantityCart = data.QquantityCart;
-                    CartTitle = data.CartTitle;
-                    CartImage = data.CartImage;
-                    Price = data.Price;
-                    QuantityStock = data.QuantityStock;
-                    Size = data.Size;
-                    Enabled = data.Enabled;
-
+                    setCart(data);
+                    return cart;
                 }
-                console.log("CartProvider", data);
+
             });
 
         }
         else {
-            alert("CART CONTEXT : no hay usuario logeado");
+            setCart(null)
+            console.log("CART CONTEXT : no hay usuario logeado");
         }
     }
-    console.log(cart)
     useEffect(() => {
         getCartItemsByIdUser()
-    }, [])
-
-
-
+    }, [UserContext])
 
 
 
@@ -107,10 +84,7 @@ export const CartProvider = ({ children }) => {
 
     return (
         <CartContext.Provider
-            value={{
-                cart,
-                clearCart,
-            }}
+            value={cart}
         >
             {children}
         </CartContext.Provider>
