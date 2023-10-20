@@ -33,9 +33,10 @@ export const CartProvider = ({ children }) => {
             console.log("CART CONTEXT : no hay usuario logeado");
         }
     }
+
     useEffect(() => {
         getCartItemsByIdUser()
-    }, [UserContext])
+    })
 
 
 
@@ -76,9 +77,9 @@ export const CartProvider = ({ children }) => {
         */
 
 
-    const clearCart = () => {
-        setCart([]);
-    };
+    // const clearCart = () => {
+    //     setCart([]);
+    // };
 
 
 

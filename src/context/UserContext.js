@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from "react";
 import { getUserById } from "../api/apiFunctions";
-import { useEffect } from "react";
+
 
 const UserContext = createContext();
 const UserLogged = createContext();

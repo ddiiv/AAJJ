@@ -99,7 +99,6 @@ export const getCartByIdUser = async (idUser) => {
     try {
         const response = await fetch(`${baseURL}cartitems/${idUser}`);
         const data = await response.json();
-        console.log("getCartByIdUser", data);
         return data;
     } catch (e) {
         if (e.response.status === 404) {

@@ -1,49 +1,53 @@
-
-.navItem{
+.navItem {
 
     display: flex;
     color: #101010;
-    justify-content: space-between;     
+    justify-content: space-between;
     align-self: center;
     float: left;
-    text-align: flex-start;                                                                                                
-    text-decoration:dotted;
+    text-align: flex-start;
+    text-decoration: dotted;
     font-size: 22px;
-    font-weight:300;
+    font-weight: 300;
     transition: 0.5s;
     line-height: 40px;
     text-decoration: none;
     letter-spacing: 0.82px;
-    
+
 }
-a{
+
+a {
     padding: 2px 16px;
 }
+
 a:hover {
-    transition: 0.5s;   
-    color: #df0000d3;    
+    transition: 0.5s;
+    color: #df0000d3;
     background-color: #ffffff;
 
 
 }
-#a{
+
+#a {
     border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
-#a:hover{
-    border-bottom:2px solid #df0000d3;
+
+#a:hover {
+    border-bottom: 2px solid #df0000d3;
     color: #df0000d3;
     background-color: #f3f3f3;
     transition: 0.5s ease-in-out;
 }
 
-.navbarContent{
+.navbarContent {
     width: 100%;
     height: 80px;
     z-index: 999 !important;
-    
+
 }
-.nav{
-    border-top:0.5px solid #eaeaeaed;
+
+.nav {
+    border-top: 0.5px solid #eaeaeaed;
 
     width: 100%;
     height: 100%;
@@ -56,7 +60,7 @@ a:hover {
     position: sticky !important;
     top: 0 !important;
     z-index: 999 !important;
-    background-color: rgba(255, 255, 255, 0.846);
+    background-color: #ffffff;
 }
 
 .CategoryNavbar {
@@ -69,7 +73,8 @@ a:hover {
     justify-content: center;
     text-align: center;
 }
-.topnav{
+
+.topnav {
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -84,6 +89,7 @@ a:hover {
     align-items: flex-start;
     justify-content: flex-end;
 }
+
 .icons a {
     display: flex;
     align-items: center;
@@ -93,6 +99,7 @@ a:hover {
     position: relative;
     cursor: pointer;
 }
+
 a .img {
     width: 100%;
     height: 100%;
@@ -130,7 +137,7 @@ a .img {
 
 
 
-.logo{
+.logo {
 
     max-width: 200px;
     align-items: flex-start;
@@ -139,19 +146,21 @@ a .img {
     transition: 0.5s;
     margin-top: 15px;
 }
-.logo:hover{
+
+.logo:hover {
     transition: 0.5s;
     transform: scale(1.1);
 }
 
-.containerLogo{
+.containerLogo {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
-.containerNav{
+
+.containerNav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -159,7 +168,8 @@ a .img {
     height: 65%;
     padding: 0 0 0 0px;
 }
-.containerItems{
+
+.containerItems {
     height: 30px;
     width: 40%;
     position: relative;
@@ -167,7 +177,8 @@ a .img {
     justify-content: right;
     margin-left: auto;
 }
-.items{
+
+.items {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -176,31 +187,32 @@ a .img {
     position: relative;
     cursor: pointer;
 }
-.buttonItem {
-  appearance: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transition: 0.5s;
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  box-shadow: none;
-  cursor: pointer;
-  display: inline-block;
-  list-style: none;
-  padding: 6px 20px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
 
-  word-wrap: break-word;
+.buttonItem {
+    appearance: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    list-style: none;
+    padding: 6px 20px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+
+    word-wrap: break-word;
 }
 
 
-.buttonItem#center{
+.buttonItem#center {
 
     border-left: 1px solid rgb(102, 102, 102);
     border-right: 1px solid rgb(102, 102, 102);
@@ -208,7 +220,7 @@ a .img {
 }
 
 
-.buttonItem:hover{
+.buttonItem:hover {
 
     border: none;
     box-shadow: #12121200 2px 0 0 2px, transparent 0 0 0 2px;
@@ -217,81 +229,97 @@ a .img {
 
 
 .buttonItem:focus {
-  outline: 1px transparent;
+    outline: 1px transparent;
 }
 
 .buttonItem:before {
-  display: none;
+    display: none;
 }
 
 .buttonItem:-webkit-details-marker {
-  display: none;
+    display: none;
 }
 
-a{
-display: flex;
-justify-content: center;
-align-items: center;
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 @media screen and (max-width: 950px) {
+
     .topnav,
     .navbarContent,
     .topnav li.right,
-    .topnav li ,    .items,
+    .topnav li,
+    .items,
     .containerLogo,
-    .CategoryNavbar,.nav-item,
+    .CategoryNavbar,
+    .nav-item,
     .navItem,
     .buttonItem,
-    .buttonItem#center{
+    .buttonItem#center {
         transition: 0.5s;
         transform: translateY(-3);
     }
-    .logo{
+
+    .logo {
         max-width: 30vw;
     }
-    .navItem{
+
+    .navItem {
         font-size: 14px;
     }
-    .items{
+
+    .items {
         max-width: 5vw;
         height: 5vw;
     }
 }
+
 @media screen and (max-width:770px) {
-    .CategoryNavbar,.nav ,.navItem{
-        display:none ;
-        
+
+    .CategoryNavbar,
+    .nav,
+    .navItem {
+        display: none;
+
     }
-    .navbarContent, .topnav{
+
+    .navbarContent,
+    .topnav {
         height: 80px;
     }
+
     .topnav,
     .navbarContent,
     .topnav li.right,
-    .topnav li ,
+    .topnav li,
     .logo,
     .items,
     .containerLogo,
     .nav-item,
     .buttonItem,
-    .buttonItem#center{
+    .buttonItem#center {
         transition: 0.5s;
         transform: translateY(-3);
     }
 }
-a.searchBAR{
+
+a.searchBAR {
     padding: 0px 0px 0px 0px;
 }
-.searchInput{
+
+.searchInput {
     border: none;
-    border-bottom: 1px solid black ;
+    border-bottom: 1px solid black;
     width: 250px;
     font-family: "PoppinsItalic";
 }
-.userContainer{
+
+.userContainer {
     display: flex;
     flex-direction: row;
-    
+
 }

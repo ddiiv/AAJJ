@@ -1,0 +1,103 @@
+.price-box-container__title {
+    line-height: 20px;
+    margin-bottom: 20px;
+    padding: 0 24px;
+}
+
+.price-box-container {
+    background: #fff;
+    border-radius: 6px 6px 0 0;
+    bottom: 0;
+    box-shadow: 0 -6px 16px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    margin-top: auto;
+    overflow: hidden;
+    padding: 0 16px 16px;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    z-index: 14;
+}
+.rich-text{
+    font-size: 16px;
+    font-weight: 600;
+}
+.card-price-box-button{
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    width: 100%;
+}
+
+/*----------------*/
+.card-wrapper {
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 87px);
+    min-width: 270px;
+    position: relative;
+}
+
+.cards-list {
+    background-color: #ededed;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.cards-container .card-wrapper,
+.cards-double-scroll .card-wrapper {
+    padding: 8px 16px;
+}
+
+.card-header {
+    padding: 20px 24px;
+}
+
+.separator-ui {
+    background: rgba(0, 0, 0, .1);
+    height: 1px;
+    margin: 0;
+    width: 100%;
+}
+
+.item-row {
+    background: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    position: relative;
+    width: 100%;
+}
+
+.info-row {
+    padding: 12px 16px;
+}
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer {
+    padding: 16px;
+}
+
+
+@media (min-width: 768px) {
+    .cards-container {
+        display: grid;
+        gap: 32px;
+        grid-template-columns: calc(100% - 392px) auto;
+        height: auto;
+        margin: 32px auto 44px;
+        max-width: 1200px;
+        min-height: unset;
+    }
+}

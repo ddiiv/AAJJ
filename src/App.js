@@ -51,7 +51,7 @@ return (
         <TopNav/>
         <BottomNav/>
           <Routes>
-            <Route path="/" element={<Home/>}/>
+            <Route path='/' element={<Home/>}/>
             {category.map((categories) => {
               return(
               <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
@@ -62,8 +62,9 @@ return (
               <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail productSelected={product}/>}/>
               )
               })}
-            <Route path= "/search" element={<Search/>}></Route>
-          <Route path="/cart" element={<CartDetail/>}></Route>
+            <Route path= {`/search?=`} element={<Search/>}></Route>
+            <Route path='/cartdetail' element={<CartDetail/>}></Route>
+              
           </Routes>
           
       </BrowserRouter>
