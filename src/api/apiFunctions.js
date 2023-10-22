@@ -6,7 +6,7 @@ const baseURL = "http://localhost:3001/";
 //-----------------------------------------GETS---------------------------------------------------------
 
 //----------------------------------------Images--------------------------------------------------------
-export const getImages = (img) => {
+export const getImage = (img) => {
     return fetch(`${baseURL}img/${img}`);
 };
 
@@ -110,26 +110,27 @@ export const getCartByIdUser = async (idUser) => {
 };
 
 //-----------------------------------------PUTS---------------------------------------------------------
-export const putCardItem = async(ids)=>{
-    try{
-        await axios({
-            method:'put',
-            url:`${baseURL}cartitem`,
+export const putCardItem = async (ids) => {
+    try {
+
+        const { data } = await axios({
+            method: 'put',
+            url: `${baseURL}cartitem`,
             data:
             {
-                IdUser:ids,
-                IdStock:ids,
-                Quantity:ids
+                    "IdUser": ids.IdUser,
+                    "IdStock": ids.IdStock,
+                    "Quantity": ids.StockSelected
             }
-
         })
+        console.log(data)
+        return alert('Item Añadido')
     }
-    catch(e)
-    {
+    catch (e) {
         if (e.response.status === 404) {
-                    console.log('Resource could not be found!');
-                } else {
-                    console.log(e.message);
-                }
+            console.log('Resource could not be found!');
+        } else {
+            console.log(e.message);
+        }
     }
 }

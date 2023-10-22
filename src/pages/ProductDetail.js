@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/ProductDetail.css"
 import "../css/htmltags.css"
-import { getImages } from "../api/apiFunctions";
+import { getImage } from "../api/apiFunctions";
 import ImagesProduct from "../components/productDetail/ImagesProduct";
 import TitleProduct from "../components/productDetail/TitleProduct";
 import DescriptionProduct from "../components/productDetail/DescriptionProduct";
@@ -13,7 +13,7 @@ const ProductDetail = ({ productSelected }) => {
     const productDetail = productSelected
     
     const fetchImage = async () => {
-        const res = await getImages(productDetail.Image)
+        const res = await getImage(productDetail.Image)
         const url = await res.url;
         setProduct({
             ...productDetail,

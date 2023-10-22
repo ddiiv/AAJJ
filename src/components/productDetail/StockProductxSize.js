@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useStockxSizeSelected } from "./SizesProduct";
 import AddToCardProduct from "./AddToCardProduct";
 
 const StockProductxSize = ({Size}) => {
 
     const [stock, setStock] = useState(1);
-
+    
 
     const handleStockAdd = (e) => {
         if (stock < Size[0].Quantity) {

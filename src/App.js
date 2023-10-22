@@ -16,7 +16,7 @@ import CategoryCatalog from './pages/CategoryCatalog.js';
 import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
 import CartDetail from './pages/CartDetail';
-
+import Login from './pages/Login'
 //---------Context
 import {  UserProvider } from './context/UserContext';
 
@@ -39,9 +39,6 @@ useEffect(() => {
 
 }, [])
 
-
-
-
 return (
 <UserProvider>
   <CartProvider>
@@ -53,8 +50,9 @@ return (
           <Routes>
             <Route path='/' element={<Home/>}/>
             {category.map((categories) => {
+              const categorytoLowerCase = categories.Category.toLowerCase();
               return(
-              <Route path={`/category/${categories.Category}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
+              <Route path={`/category/${categorytoLowerCase}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory}/>}/>
               )})}
             {products.map((product) => {
               
@@ -64,7 +62,7 @@ return (
               })}
             <Route path= {`/search?=`} element={<Search/>}></Route>
             <Route path='/cartdetail' element={<CartDetail/>}></Route>
-              
+            <Route path='/login' element={<Login/>}></Route>              
           </Routes>
           
       </BrowserRouter>

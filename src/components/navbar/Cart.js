@@ -9,26 +9,11 @@ import { useUserLogged } from "../../context/UserContext";
 const Cart = () => {
     const cart = useCartContext();
     const usercontext = useUserLogged();
-    
-    let c = 0;
+
     function NumberQuantityItems() {
         if (cart) {
-
-            cart.forEach(function (a) {
-                let i = 0;
-                if (a.QuantityCart > a.QuantityStock) {
-                    i = a.QuantityStock
-                    c = i;
-                }
-                else {
-                    c = c + a.QuantityCart;
-                }
-
-            }, [c]);
-
-
             return (
-                <b className="cartItemsQuantity">{c}</b>
+                <b className="cartItemsQuantity">{cart.QuantityCart}</b>
             )
 
         }

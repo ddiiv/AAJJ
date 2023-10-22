@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Routes, Link } from "react-router-dom";
-import { getImages } from "../api/apiFunctions";
+import { getImage } from "../api/apiFunctions";
 
 const Card = ({ product }) => {
     const [products, setProducts] = useState([]);
@@ -11,7 +11,7 @@ const Card = ({ product }) => {
         try {
 
             const staticProduct = product
-            const res = await getImages(staticProduct.Image)
+            const res = await getImage(staticProduct.Image)
             const url = await res.url;
             setProducts({
                 ...staticProduct,

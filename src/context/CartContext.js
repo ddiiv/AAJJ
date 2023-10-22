@@ -18,44 +18,50 @@ export const CartProvider = ({ children }) => {
         if (UserContext) {
 
             await getCartByIdUser(UserContext.IdUser).then((data) => {
-
                 if (data) {
+                    let c = 0;
+                   function QuantityCartFix () {
+                    data.map( a => {
+                        let i = 0
+                        if(a.QuantityCart > a.QuantityStock)
+                        {
+                            i = a.QuantityStock
+                            c = i;
+                            a.QuantityCart = i;
+                            return a
+                        }
+                        else{
+                            c = c + a.QuantityCart;
+                            return a
+                        }
+                       
+                    })
+                    return data;
+                    }
+                    setCart(QuantityCartFix())
+                    return cart
+                
 
-                    setCart(data);
-                    return cart;
+                 
                 }
-
             });
-
         }
         else {
             setCart(null)
             console.log("CART CONTEXT : no hay usuario logeado");
+            return cart
         }
     }
 
     useEffect(() => {
+
+
         getCartItemsByIdUser()
+        
+ 
     })
 
 
-
-
-    const addToCart = (product) => {
-        const existingCartItem = cart.find(
-            (cartItem) => cartItem.IdStock === product.IdStock
-        );
-
-        if (existingCartItem) {
-            return cart.map((cartItem) =>
-                cartItem.IdStock === product.IdStock
-                    ? { ...cartItem, Quantity: cartItem.Quantity + 1 }
-                    : cartItem
-            );
-        }
-
-        return [...cart, { ...product, Quantity: 1 }];
-    };
     /*
         const removeFromCart = (product) => {
             const existingCartItem = cartItems.find(

@@ -1,45 +1,47 @@
 import React from "react";
-import { useState } from "react";
+
 import { putCardItem } from "../../api/apiFunctions";
 import { useUserContext } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 
 
-const AddToCardProduct = (size)=>{
+const AddToCardProduct = (size) => {
 
-    const [IdsForPut, setIdsForPut] = useState();
+  
     const User = useUserContext();
     const s = size.size[0];
-    const stock= size.stockSelected;
+    const stock = size.stockSelected;
     const idstock = s.IdStock;
+    let ids;
+    const handleSubmit = async() => {
+        if (User) {
+           if(stock < s.Quantity){ 
+                 
+                   ids= {IdUser : User.IdUser, IdStock : idstock, StockSelected : stock}
+                    await putCardItem(ids)
+                return <Link to="" />
+            
+            }
+                else{
+                    window.location.reload()
+                }
 
-
-    const handleSubmit=()=>
-    {
-        if(User != null)
-        {
-        setIdsForPut
-        ({
-            IdUser : User.IdUser,
-            IdStock: idstock,
-            Quantity: stock
-        })
+        }
+        else {
+            alert("logeate flaco");
+        }
         
-    }
-    else{
-        alert("logeate flaco");
-    }
-    console.log(IdsForPut)
 
 
     }
 
-    
-return(
-    <>
-    
-    <button type="submit" className="addCartButton" onClick={handleSubmit}> Agregar al carrito</button>
-    </>
-)
+
+    return (
+        <>
+
+            <button type="submit" className="addCartButton" onClick={handleSubmit}> Agregar al carrito</button>
+        </>
+    )
 }
 
 export default AddToCardProduct;
