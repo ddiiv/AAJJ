@@ -1,6 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { useUserContext } from "./UserContext";
 import { getCartByIdUser } from "../api/apiFunctions";
+import CardHeader from "react-bootstrap/esm/CardHeader";
 
 const CartContext = createContext();
 
@@ -14,52 +15,46 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const UserContext = useUserContext();
 
-    const getCartItemsByIdUser = async () => {
-        if (UserContext) {
 
-            await getCartByIdUser(UserContext.IdUser).then((data) => {
-                if (data) {
-                    let c = 0;
-                   function QuantityCartFix () {
-                    data.map( a => {
-                        let i = 0
-                        if(a.QuantityCart > a.QuantityStock)
-                        {
-                            i = a.QuantityStock
-                            c = i;
-                            a.QuantityCart = i;
-                            return a
-                        }
-                        else{
-                            c = c + a.QuantityCart;
-                            return a
-                        }
-                       
-                    })
-                    return data;
-                    }
-                    setCart(QuantityCartFix())
-                    return cart
-                
-
-                 
-                }
-            });
-        }
-        else {
-            setCart(null)
-            console.log("CART CONTEXT : no hay usuario logeado");
-            return cart
-        }
-    }
 
     useEffect(() => {
 
+        async function getCartItemsByIdUser() {
+            if (UserContext) {
 
-        getCartItemsByIdUser()
-        
- 
-    })
+                await getCartByIdUser(UserContext.IdUser).then((data) => {
+
+
+                    if (cart === null) {
+                        data.map(a => {
+                            let i = 0
+                            if (a.QuantityCart > a.QuantityStock) {
+                                i = a.QuantityStock
+                                a.QuantityCart = i;
+
+                                return a
+                            }
+                            else {
+                                return a
+                            }
+
+                        })
+
+                        setCart(data)
+                        return cart
+                    }
+                   
+                });
+            }
+            else {
+                setCart(null)
+            }
+        }
+
+        getCartItemsByIdUser();
+
+
+    }, [UserContext, cart])
 
 
     /*

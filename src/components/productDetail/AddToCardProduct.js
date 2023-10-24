@@ -2,7 +2,7 @@ import React from "react";
 
 import { putCardItem } from "../../api/apiFunctions";
 import { useUserContext } from "../../context/UserContext";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 
 const AddToCardProduct = (size) => {
@@ -19,16 +19,17 @@ const AddToCardProduct = (size) => {
                  
                    ids= {IdUser : User.IdUser, IdStock : idstock, StockSelected : stock}
                     await putCardItem(ids)
-                return <Link to="" />
+                    window.location.reload()
+                return <Navigate to="/cartdetail" replace={true}/>
             
-            }
+                }
                 else{
                     window.location.reload()
                 }
 
         }
         else {
-            alert("logeate flaco");
+            alert("Tienes que logearte para realizar esta accion");
         }
         
 

@@ -12,8 +12,18 @@ const Cart = () => {
 
     function NumberQuantityItems() {
         if (cart) {
+            let sum = 0;
+            function sumQuantityCart() {
+                let cont = cart.length
+                let i; 
+                for (i = 0; i < cont; i++) {
+                    sum = sum + cart[i].QuantityCart
+                }
+                return sum
+            }
+
             return (
-                <b className="cartItemsQuantity">{cart.QuantityCart}</b>
+                <b className="cartItemsQuantity">{sumQuantityCart()}</b>
             )
 
         }
@@ -24,11 +34,11 @@ const Cart = () => {
             return (
                 <><Link to='/cartdetail' className="nothing">
                     <button className='buttonItem'>
-                        
+
                         <img className='items' src={cartImage} alt="" />
                         {NumberQuantityItems()}
                     </button>
-                    </Link>
+                </Link>
                     <Outlet />
                 </>
             )
@@ -39,7 +49,7 @@ const Cart = () => {
                     <button className='buttonItem' >
                         <img className='items' src={cartImage} alt="cartImage" />
                     </button>
-                    
+
                 </>
             )
 
