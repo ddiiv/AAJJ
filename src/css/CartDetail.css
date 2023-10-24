@@ -26,6 +26,11 @@
     font-size: 16px;
     font-weight: 600;
 }
+.rich-text#product-rich-text{
+    font-family: "PoppinsMedium", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
 .rich-text-small{
     font-size: 16px;
     line-height: 1.25;
@@ -233,12 +238,15 @@
 .ticket-right-column{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 .ticket-row__left-column
 {
     justify-content: flex-start;
     text-align: left;
+}
+.ticket-row__left-column--primary-text#productListCard{
+    justify-content: flex-start;
 }
 .ticket-row__right-column--secondary-text ,.ticket-row__right-column--primary-text, .ticket-row__left-column--primary-text, .ticket-row__left-column--secondary-text
 {

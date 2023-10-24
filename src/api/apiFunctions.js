@@ -134,3 +134,25 @@ export const putCardItem = async (ids) => {
         }
     }
 }
+export const putCartItemQuantity = async (ids) =>{
+    try{
+        const { data } = await axios({
+            method: 'put',
+            url: `${baseURL}cartitem/quantity`,
+            data:
+            {
+                    "IdCartItem": ids.IdCartItem,
+                    "Quantity": ids.Quantity
+            }
+        })
+        console.log(data)
+        return alert('Se añadio' + ids.Quantity + "al item" + ids.IdCartItem)
+    }
+    catch (e){
+        if (e.response.status === 404) {
+            console.log('Resource could not be found!');
+        } else {
+            console.log(e.message);
+        }
+    }
+}
