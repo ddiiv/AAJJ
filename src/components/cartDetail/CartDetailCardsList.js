@@ -30,7 +30,6 @@ const CartDetailCardsList = () => {
                 <div className="card-wrapper">
                     <div className="card__card">
                         <div className="card-header">
-                           
                                 <h5 className="ticket-row__left-column--primary-text" id="productListCard"><span className="rich-text" id="product-rich-text">Productos</span></h5>
                             
                         </div>

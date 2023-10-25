@@ -19,12 +19,13 @@ const CartDetailCard = ({ cartProductIn }) => {
 
     const handleStockAdd = (e) => {
         if (stock < product.QuantityStock) {
-
+            //await 
             setStock(stock + 1);
         }
     }
     const handleStockSubs = (e) => {
         if (stock > 1) {
+            //await 
             setStock(stock - 1);
         }
     }
@@ -85,11 +86,11 @@ const CartDetailCard = ({ cartProductIn }) => {
                 <div className="bf-quantity-selector">
                     <div className="item-quantity-selector--box">
                 
-                        <button className="selector-button" onChange={handleStockSubs}>-</button>
+                        <button className="selector-button" onClick={handleStockSubs}>-</button>
                         <div className="input-controler">
                             <input className="cartitemQuantityCart" type="number" inputMode="numeric" value={stock} min={1} max={product.QuantityStock} disabled />
                         </div>
-                        <button className="selector-button" onChange={handleStockAdd}>+</button>
+                        <button className="selector-button" onClick={handleStockAdd}>+</button>
 
                     </div>
                 </div>

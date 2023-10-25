@@ -7,7 +7,7 @@ import HaveToLogin from "../components/HaveToLogin";
 const CartDetail = () => {
 
     const userContext = useUserContext();
-  
+
     function isLogged() {
         if (userContext) {
 
@@ -16,30 +16,30 @@ const CartDetail = () => {
                     <div className="card-wrapper">
                         <div className="cards-container">
                             <CartDetailCardsList />
-                        
-                        <div className="price-box-container">
-                        <div className="price-box-container__title">
-                            <span className="rich-text"></span>
-                        </div>
-                        <div className="separator-ui"></div>
-                        <div className="cards-price-box-row">
 
+                            <div className="price-box-container">
+                                <div className="price-box-container__title">
+                                    <span className="rich-text"></span>
+                                </div>
+                                <div className="separator-ui"></div>
+                                <div className="cards-price-box-row">
+
+                                </div>
+                                <button className="card-price-box-button"></button>
+                            </div>
                         </div>
-                        <button className="card-price-box-button"></button>
-                     </div>
-                     </div>
                     </div>
 
 
-                    
+
                 </>
             )
         }
         else {
             return (
-                
-                <HaveToLogin/>
-                );
+
+                <HaveToLogin />
+            );
 
         }
 

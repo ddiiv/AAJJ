@@ -1,7 +1,6 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { useUserContext } from "./UserContext";
 import { getCartByIdUser } from "../api/apiFunctions";
-import CardHeader from "react-bootstrap/esm/CardHeader";
 
 const CartContext = createContext();
 
@@ -24,26 +23,21 @@ export const CartProvider = ({ children }) => {
 
                 await getCartByIdUser(UserContext.IdUser).then((data) => {
 
-
                     if (cart === null) {
                         data.map(a => {
                             let i = 0
                             if (a.QuantityCart > a.QuantityStock) {
                                 i = a.QuantityStock
                                 a.QuantityCart = i;
-
                                 return a
                             }
                             else {
                                 return a
                             }
-
                         })
-
                         setCart(data)
                         return cart
                     }
-                   
                 });
             }
             else {
@@ -81,8 +75,19 @@ export const CartProvider = ({ children }) => {
     // const clearCart = () => {
     //     setCart([]);
     // };
+        const handleChangueCartStock = async(quantity)=>{
+            if(quantity && cart)
+            {   
+                //await 
+                //then actualizar carrito
+                //catch
+            }
+            else{
+
+            }
 
 
+        }
 
     return (
         <CartContext.Provider
