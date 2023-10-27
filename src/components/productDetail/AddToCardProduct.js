@@ -7,31 +7,31 @@ import { Navigate } from "react-router-dom";
 
 const AddToCardProduct = (size) => {
 
-  
+
     const User = useUserContext();
     const s = size.size[0];
     const stock = size.stockSelected;
     const idstock = s.IdStock;
     let ids;
-    const handleSubmit = async() => {
+    const handleSubmit = async () => {
         if (User) {
-           if(stock < s.Quantity){ 
-                 
-                   ids= {IdUser : User.IdUser, IdStock : idstock, StockSelected : stock}
-                    await putCardItem(ids)
-                    window.location.reload()
-                return <Navigate to="/cartdetail" replace={true}/>
-            
-                }
-                else{
-                    window.location.reload()
-                }
+            if (stock < s.Quantity) {
+
+                ids = { IdUser: User.IdUser, IdStock: idstock, StockSelected: stock }
+                await putCardItem(ids)
+                window.location.reload()
+                return <Navigate to="/cartdetail" replace={true} />
+
+            }
+            else {
+                window.location.reload()
+            }
 
         }
         else {
             alert("Tienes que logearte para realizar esta accion");
         }
-        
+
 
 
     }

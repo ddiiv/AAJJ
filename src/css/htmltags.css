@@ -8,7 +8,7 @@ h1{
 }
 span{
     font-family: "PoppinsExtraBold";
-    color: rgb(46, 46, 46);
+    color: #1a1a1a;
     font-size: 30px;
     letter-spacing: 0.8px;
 }
@@ -16,4 +16,19 @@ b{
     font-family:"PoppinsExtraLight";
     color: rgb(173, 173, 173);
     font-size: 20px;
+}
+
+span.richtext-gray-regular{
+    font-family: "PoppinsMedium";
+    color:rgba(0,0,0,.55);
+    font-size: 1rem;
+
+}
+span.richtext-black{
+    font-family: "PoppinsMedium";
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+span.richtext-gray-regular#totalPricexProduct{
+    color: #101010;
 }

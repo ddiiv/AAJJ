@@ -3,7 +3,7 @@ import '../css/CartDetail.css'
 import CartDetailCardsList from "../components/cartDetail/CartDetailCardsList";
 import { useUserContext } from "../context/UserContext";
 import HaveToLogin from "../components/HaveToLogin";
-
+import CartDetailBuyOut from "../components/cartDetail/CartDetailBuyOut";
 const CartDetail = () => {
 
     const userContext = useUserContext();
@@ -16,17 +16,8 @@ const CartDetail = () => {
                     <div className="card-wrapper">
                         <div className="cards-container">
                             <CartDetailCardsList />
-
-                            <div className="price-box-container">
-                                <div className="price-box-container__title">
-                                    <span className="rich-text"></span>
-                                </div>
-                                <div className="separator-ui"></div>
-                                <div className="cards-price-box-row">
-
-                                </div>
-                                <button className="card-price-box-button"></button>
-                            </div>
+                            <CartDetailBuyOut />
+                            
                         </div>
                     </div>
 

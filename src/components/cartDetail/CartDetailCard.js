@@ -3,12 +3,17 @@ import { getImage, putCartItemQuantity } from "../../api/apiFunctions";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { Waveform } from '@uiball/loaders'
+
 
 
 const CartDetailCard = ({ cartProductIn }) => {
     const [product, setProducts] = useState([]);
     const [stock, setStock] = useState(0);
-
+    const [loading, setLoading] = useState(false)
+    let stockToHandle;
+    let idCartItem;
+    let idsToPutQuantity;
     let priceTotalByProduct = 0;
 
     const SignupSchema = Yup.object().shape({
@@ -17,16 +22,46 @@ const CartDetailCard = ({ cartProductIn }) => {
 
     });
 
-    const handleStockAdd = (e) => {
+
+    const handleStockAdd = async(e) => {
         if (stock < product.QuantityStock) {
-            //await 
-            setStock(stock + 1);
+            e.preventDefault();
+            setLoading(true)
+            setStock(stock + 1)
+            stockToHandle = stock + 1;
+            idCartItem= product.IdCartItem;
+            
+            idsToPutQuantity = {idCartItem, stockToHandle}
+            await putCartItemQuantity(idsToPutQuantity).then(data =>{
+
+                if(data){
+                setLoading(false)
+                
+                }
+                
+            })
+            
         }
+
     }
-    const handleStockSubs = (e) => {
+    const handleStockSubs = async(e) => {
         if (stock > 1) {
-            //await 
-            setStock(stock - 1);
+            e.preventDefault();
+            setLoading(true)
+            setStock(stock - 1)
+            stockToHandle = stock - 1;
+            idCartItem= product.IdCartItem;
+            
+            idsToPutQuantity = {idCartItem, stockToHandle}
+            await putCartItemQuantity(idsToPutQuantity).then(data =>{
+
+                if(data){
+                setLoading(false)
+                
+                }
+                
+            })
+            
         }
     }
 
@@ -66,9 +101,11 @@ const CartDetailCard = ({ cartProductIn }) => {
                     <div className="item-cart__info">
                         <div className="item-name">
                             <Link to={`/product/${product.Title}`} className="nothing">
-                                <h5><p>{product.Title}</p></h5>
+                                <h5 className="ticket-row__left-column--primary-text" id="cartDetailTitlexSize"><span className="richtext-black">{product.Title}</span></h5>
                             </Link>
+                            <p className="item-cart__description-text"><span className="richtext-gray-regular">Talle seleccionado: {product.Size}</span></p>
                         </div>
+
                         <div className="ui-link-container">
                             <div className="item-link">
                                 <Link to={`/product/${product.Title}`} className="link">Eliminar</Link>
@@ -85,10 +122,17 @@ const CartDetailCard = ({ cartProductIn }) => {
                 </article>
                 <div className="bf-quantity-selector">
                     <div className="item-quantity-selector--box">
-                
+
                         <button className="selector-button" onClick={handleStockSubs}>-</button>
                         <div className="input-controler">
-                            <input className="cartitemQuantityCart" type="number" inputMode="numeric" value={stock} min={1} max={product.QuantityStock} disabled />
+                            {loading === true &&(
+                                <Waveform
+                                    size={25}
+                                    lineWeight={3.5}
+                                    speed={1}
+                                    color="black"
+                                />
+                                ) } { loading=== false &&(<input className="cartitemQuantityCart" type="number" inputMode="numeric" value={stock} min={1} max={product.QuantityStock} disabled />)}
                         </div>
                         <button className="selector-button" onClick={handleStockAdd}>+</button>
 
@@ -96,7 +140,13 @@ const CartDetailCard = ({ cartProductIn }) => {
                 </div>
                 <div className="item-price-container">
                     <div className="item-price">
-                        <p className="item-price-p">${priceTotalxProduct()}</p>
+                        <p className="item-price-p">{loading === false &&(
+                            <span className="richtext-gray-regular" id="totalPricexProduct">${priceTotalxProduct()}</span>
+                        )}
+                        {loading === true &&( <span className="richtext-gray-regular"> Loading</span>)
+
+                        }
+                        </p>
                     </div>
                 </div>
 

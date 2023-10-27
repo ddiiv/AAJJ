@@ -1,9 +1,9 @@
 
 
 .price-box-container__title {
-    line-height: 20px;
-    margin-bottom: 20px;
-    padding: 0 24px;
+    background-color: #fff;
+    border-radius: 6px;
+    padding-top: 8px;
 }
 
 .price-box-container {
@@ -260,6 +260,12 @@
     line-height: 1.25;
     margin: 0;
     padding: 0;
+}
+.ticket-row__left-column--primary-text#cartDetailTitlexSize{
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    
 }
 .rich-text-small#RIGHT-FREE{
     color: green !important;

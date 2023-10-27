@@ -27,6 +27,8 @@ export const UserProvider = ({ children }) => {
             if (data) {
 
                 setUser({ ...data, Token: data.IdUser })
+                window.localStorage.setItem('IdUser', data.IdUser)
+                window.localStorage.setItem('Token', 360000)
                 return User;
 
             }
