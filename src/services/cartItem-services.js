@@ -56,7 +56,7 @@ class CartItemService {
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pQuantity', sql.NChar , cartItem?.Quantity)
+                .input('pQuantity', sql.Int , cartItem?.Quantity)
                 .input('pId', sql.Int , cartItem?.IdCartItem)
                 .query(`
                     UPDATE CartItem SET

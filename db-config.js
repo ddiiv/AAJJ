@@ -1,4 +1,4 @@
-/*
+
 const config = {
     user: 'ArgentinosJuniors',
     password: 'El_Semillero_Del_Mundo',
@@ -11,8 +11,7 @@ const config = {
 };
 
 export default config;
-
-*/
+/*
 
 const config = {
     user: 'dbjaja',
@@ -26,3 +25,4 @@ const config = {
 };
 
 export default config;
+*/

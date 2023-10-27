@@ -7,7 +7,7 @@ export const getCartByIdUser = async(req,res) =>{
 export const insert = async(req,res) =>{
     let rowsAffected = 0;
 	try {
-		rowsAffected = await new CartItemService().insert(req,body);
+		rowsAffected = await new CartItemService().insert(req.body);
 		res.status(200).send("Correct Insert,"+ rowsAffected +"RowsAffected");
 	} catch (error) {
 		res.status(400).send(error)
@@ -17,7 +17,7 @@ export const insert = async(req,res) =>{
 export const update = async(req,res) =>{
     let rowsAffected = 0;
 	try {
-		rowsAffected = await new CartItemService().update(req,body);
+		rowsAffected = await new CartItemService().update(req.body);
 		res.status(200).send("Correct Insert,"+ rowsAffected +"RowsAffected");
 	} catch (error) {
 		res.status(400).send(error)
