@@ -1,67 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { getImage, putCartItemQuantity } from "../../api/apiFunctions";
 import { Link } from "react-router-dom";
-import { Formik } from "formik";
-import * as Yup from "yup";
 import { Waveform } from '@uiball/loaders'
-
+import { useCartFunctions } from "../../context/CartContext";
 
 
 const CartDetailCard = ({ cartProductIn }) => {
     const [product, setProducts] = useState([]);
     const [stock, setStock] = useState(0);
     const [loading, setLoading] = useState(false)
+    const cartFunctions = useCartFunctions();
     let stockToHandle;
     let idCartItem;
     let idsToPutQuantity;
     let priceTotalByProduct = 0;
 
-    const SignupSchema = Yup.object().shape({
-        stock: Yup.number()
-            .max(product.QuantityStock, `No puedes elegir mas de` + product.QuantityStock)
-
-    });
 
 
-    const handleStockAdd = async(e) => {
+    const handleStockAdd = async (e) => {
         if (stock < product.QuantityStock) {
             e.preventDefault();
             setLoading(true)
             setStock(stock + 1)
             stockToHandle = stock + 1;
-            idCartItem= product.IdCartItem;
-            
-            idsToPutQuantity = {idCartItem, stockToHandle}
-            await putCartItemQuantity(idsToPutQuantity).then(data =>{
+            idCartItem = product.IdCartItem;
+            idsToPutQuantity = { idCartItem, stockToHandle }
 
-                if(data){
+            cartFunctions.changueQuantityItemCart(idsToPutQuantity).then(
                 setLoading(false)
-                
-                }
-                
-            })
-            
+            )
+
         }
 
     }
-    const handleStockSubs = async(e) => {
+    const handleStockSubs = async (e) => {
         if (stock > 1) {
             e.preventDefault();
             setLoading(true)
             setStock(stock - 1)
             stockToHandle = stock - 1;
-            idCartItem= product.IdCartItem;
-            
-            idsToPutQuantity = {idCartItem, stockToHandle}
-            await putCartItemQuantity(idsToPutQuantity).then(data =>{
+            idCartItem = product.IdCartItem;
 
-                if(data){
+            idsToPutQuantity = { idCartItem, stockToHandle }
+            cartFunctions.changueQuantityItemCart(idsToPutQuantity).then(
                 setLoading(false)
-                
-                }
-                
-            })
-            
+            )
+
         }
     }
 
@@ -125,14 +109,14 @@ const CartDetailCard = ({ cartProductIn }) => {
 
                         <button className="selector-button" onClick={handleStockSubs}>-</button>
                         <div className="input-controler">
-                            {loading === true &&(
+                            {loading === true && (
                                 <Waveform
                                     size={25}
                                     lineWeight={3.5}
                                     speed={1}
                                     color="black"
                                 />
-                                ) } { loading=== false &&(<input className="cartitemQuantityCart" type="number" inputMode="numeric" value={stock} min={1} max={product.QuantityStock} disabled />)}
+                            )} {loading === false && (<input className="cartitemQuantityCart" type="number" inputMode="numeric" value={stock} min={1} max={product.QuantityStock} disabled />)}
                         </div>
                         <button className="selector-button" onClick={handleStockAdd}>+</button>
 
@@ -140,12 +124,12 @@ const CartDetailCard = ({ cartProductIn }) => {
                 </div>
                 <div className="item-price-container">
                     <div className="item-price">
-                        <p className="item-price-p">{loading === false &&(
+                        <p className="item-price-p">{loading === false && (
                             <span className="richtext-gray-regular" id="totalPricexProduct">${priceTotalxProduct()}</span>
                         )}
-                        {loading === true &&( <span className="richtext-gray-regular"> Loading</span>)
+                            {loading === true && (<span className="richtext-gray-regular"> Loading</span>)
 
-                        }
+                            }
                         </p>
                     </div>
                 </div>

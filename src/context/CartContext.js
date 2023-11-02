@@ -1,19 +1,22 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { useUserContext } from "./UserContext";
-import { getCartByIdUser } from "../api/apiFunctions";
+import { getCartByIdUser, putCartItemQuantity } from "../api/apiFunctions";
+
 
 const CartContext = createContext();
+const CartFunctionsContext = createContext();
 
 export function useCartContext() {
     return useContext(CartContext);
 }
-
+export function useCartFunctions() {
+    return useContext(CartFunctionsContext);
+}
 
 export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
     const UserContext = useUserContext();
-
 
 
     useEffect(() => {
@@ -72,28 +75,37 @@ export const CartProvider = ({ children }) => {
         */
 
 
-    // const clearCart = () => {
-    //     setCart([]);
-    // };
-        const handleChangueCartStock = async(quantity)=>{
-            if(quantity && cart)
-            {   
-                //await 
-                //then actualizar carrito
-                //catch
-            }
-            else{
+    const clearCart = () => {
+        setCart([]);
+    };
+    const changueQuantityItemCart = async (idsToPutQuantity) => {
+        if (idsToPutQuantity && cart) {
+            
+            await putCartItemQuantity(idsToPutQuantity).then(data => {
 
-            }
+                if (data) {
+                    return data
 
+                }
 
+            })
         }
+    }
+
+
+    //await 
+    //then actualizar carrito
+    //catch
 
     return (
-        <CartContext.Provider
-            value={cart}
+        <CartFunctionsContext.Provider
+            value={{changueQuantityItemCart, clearCart, }}
         >
-            {children}
-        </CartContext.Provider>
+            <CartContext.Provider
+                value={cart}
+            >
+                {children}
+            </CartContext.Provider>
+        </CartFunctionsContext.Provider>
     );
 };
