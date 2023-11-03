@@ -1,39 +1,56 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import search_png from "../../../img/search.png";
-
 import { getProducts } from '../../../api/apiFunctions.js';
-import { SearchContext } from "../../../context/SearchContext.js";
 
 const SearchBar = () => {
-    const [search, setSearch] = useState('');
-    const handleChange = e => setSearch(e.target.value);
-    const searchInput = useRef()
-    const { searchProducts, setSearchProducts } = useContext(SearchContext);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [allProducts, setAllProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
-    useEffect(() => setSearchProducts(getProducts()), [])
+    useEffect(() => {
+        const fetchData = async () => {
+            const products = await getProducts();
+            setAllProducts(products);
+        };
+        fetchData();
+    }, []);
 
-    useEffect(() => { // Filtrar
-        let list = [...searchProducts]
-        if (search) {
-            list = list.filter((example) => (
-                example.title.toUpperCase().includes(searchInput.current.value.toUpperCase())
-            ))
-            console.log("LLEGUE")
+    useEffect(() => {
+        if (allProducts.length > 0) {
+            const list = allProducts.filter((product) =>
+                product.title && product.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredProducts(list);
         }
-        setSearchProducts(list);
-    }, [search])
+    }, [searchTerm, allProducts]);
 
     return (
         <div className="navItem" id="searchBar">
-            <input placeholder="Buscar"
+            <input
+                placeholder="Buscar"
                 className="searchInput"
-                value={search}
-                onChange={handleChange}
-                ref={searchInput} />
-            <button className='buttonItem'><Link to={`/search`} className="searchBAR"><img className="items" src={search_png} alt=""></img></Link></button>
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button className='buttonItem'>
+                <Link to={`/search`} className="searchBAR">
+                    <img className="items" src={search_png} alt="" />
+                </Link>
+            </button>
+            <div className="MainContainer">
+            {filteredProducts.map((product) => (
+        <div key={product.id} className="product-card">
+            <h3>{product.title}</h3>
+            <p>{product.description}</p>
+            <p>Precio: {product.price}</p>
+            {/* Agrega más detalles según tu estructura de datos */}
         </div>
-    )
-}
+    ))}
+</div>
+
+        </div>
+    );
+};
 
 export default SearchBar;
