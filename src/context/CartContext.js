@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 import { useUserContext } from "./UserContext";
-import { getCartByIdUser, putCartItemQuantity } from "../api/apiFunctions";
+import { getCartByIdUser, putCartItemQuantity, deleteCartItem } from "../api/apiFunctions";
 
 
 const CartContext = createContext();
@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
 
                     if (cart === null) {
                         data.map(a => {
-                            let i = 0
+                            let i = 0;
                             if (a.QuantityCart > a.QuantityStock) {
                                 i = a.QuantityStock
                                 a.QuantityCart = i;
@@ -54,52 +54,59 @@ export const CartProvider = ({ children }) => {
     }, [UserContext, cart])
 
 
-    /*
-        const removeFromCart = (product) => {
-            const existingCartItem = cartItems.find(
-                (cartItem) => cartItem.IdStock === product.IdStock
-            );
-    
-            if (existingCartItem.Quantity === 1) {
-                return cartItems.filter(
-                    (cartItem) => cartItem.IdStock !== product.IdStock
-                );
-            }
-    
-            return cartItems.map((cartItem) =>
-                cartItem.IdStock === product.IdStock
-                    ? { ...cartItem, Quantity: cartItem.Quantity - 1 }
-                    : cartItem 
-            );
-        };
-        */
+
+    const removeFromCart = async (idCartItem) => {
+
+        if (idCartItem) {
+
+            await deleteCartItem(idCartItem).then(data => {
+                setCart(null);
+                return data
+            })
+        }
+    };
+
 
 
     const clearCart = () => {
         setCart([]);
     };
+
     const changueQuantityItemCart = async (idsToPutQuantity) => {
         if (idsToPutQuantity && cart) {
-            
+
             await putCartItemQuantity(idsToPutQuantity).then(data => {
 
                 if (data) {
+                    setCart(null);
                     return data
-
                 }
 
             })
         }
     }
-
-
-    //await 
-    //then actualizar carrito
-    //catch
+    function sumQuantityCart() {
+        let sum = 0;
+        let cont = cart?.length
+        let i;
+        for (i = 0; i < cont; i++) {
+            sum = sum + cart[i].QuantityCart
+        }
+        return sum
+    }
+    function sumTotalPriceCart() {
+        let sum = 0;
+        let cont = cart?.length
+        let i;
+        for (i = 0; i < cont; i++) {
+            sum = sum + cart[i].QuantityCart * cart[i].Price
+        }
+        return sum
+    }
 
     return (
         <CartFunctionsContext.Provider
-            value={{changueQuantityItemCart, clearCart, }}
+            value={{ changueQuantityItemCart, clearCart, sumQuantityCart, sumTotalPriceCart, removeFromCart }}
         >
             <CartContext.Provider
                 value={cart}

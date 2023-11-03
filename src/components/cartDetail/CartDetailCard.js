@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getImage, putCartItemQuantity } from "../../api/apiFunctions";
+import { getImage } from "../../api/apiFunctions";
 import { Link } from "react-router-dom";
 import { Waveform } from '@uiball/loaders'
 import { useCartFunctions } from "../../context/CartContext";
@@ -49,6 +49,11 @@ const CartDetailCard = ({ cartProductIn }) => {
         }
     }
 
+    const removeItemFromCart = (e)=>{
+        e.preventDefault();
+        cartFunctions.removeFromCart(product?.IdCartItem)
+    }
+
     const getImageProduct = async () => {
         try {
             const staticProduct = cartProductIn
@@ -92,13 +97,13 @@ const CartDetailCard = ({ cartProductIn }) => {
 
                         <div className="ui-link-container">
                             <div className="item-link">
-                                <Link to={`/product/${product.Title}`} className="link">Eliminar</Link>
+                                <a className="link" onClick={removeItemFromCart}>Eliminar</a> 
                             </div>
                             <div className="item-link">
-                                <Link className="link" to={`/product/${product.Title}`} >Guardar</Link>
+                                <a className="link"  >Guardar</a>
                             </div>
                             <div className="item-link">
-                                <Link to={`/product/${product.Title}`} className="link">Comprar Ahora</Link>
+                                <a className="link">Comprar Ahora</a>
                             </div>
                         </div>
 
@@ -136,7 +141,7 @@ const CartDetailCard = ({ cartProductIn }) => {
 
             </section >
 
-            <div className="separator-ui"></div>
+            <div className="separator-ui" id="packaging-separator"></div>
         </>
     )
 }

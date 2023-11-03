@@ -157,3 +157,21 @@ export const putCartItemQuantity = async (ids) => {
         }
     }
 }
+//-----------------------------------------DELETES---------------------------------------------------------
+
+export const deleteCartItem = async (id) => {
+    try {
+        const { data } = await axios({
+            method: 'delete',
+            url: `${baseURL}cartitem/${id}`
+        })
+        return data
+    }
+    catch (e) {
+        if (e.response.status === 404) {
+            console.log('Resource could not be found!');
+        } else {
+            console.log(e.message);
+        }
+    }
+}
