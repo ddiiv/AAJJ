@@ -46,6 +46,20 @@ span.richtext-gray-regular#totalPricexProduct{
     text-align: center;
     
 }
+.andres-button.andres__empty{
+    margin-top: 16px ;
+    background-color: #000000;
+}
+.andres-button.andres__empty:hover{
+
+    background-color: #c00101;
+}
+#principal_btn_cartempty{
+
+    font-size: 16px;
+    font-family: "Poppins";
+    color: #e0e0e0;
+}
 .span-container-btn{
     display: flex;
     flex-direction: row;

@@ -15,8 +15,6 @@ export function useUserLogged() {
 
 export const UserProvider = ({ children }) => {
 
-
-    const [loading, setLoading] = useState(false);
     const [Logged, setLogged] = useState(false);
     const [User, setUser] = useState();
     

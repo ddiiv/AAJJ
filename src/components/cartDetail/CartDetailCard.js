@@ -97,13 +97,13 @@ const CartDetailCard = ({ cartProductIn }) => {
 
                         <div className="ui-link-container">
                             <div className="item-link">
-                                <a className="link" onClick={removeItemFromCart}>Eliminar</a> 
+                                <a href className="link" onClick={removeItemFromCart}>Eliminar</a> 
                             </div>
                             <div className="item-link">
-                                <a className="link"  >Guardar</a>
+                                <a href className="link"  >Guardar</a>
                             </div>
                             <div className="item-link">
-                                <a className="link">Comprar Ahora</a>
+                                <a href className="link">Comprar Ahora</a>
                             </div>
                         </div>
 

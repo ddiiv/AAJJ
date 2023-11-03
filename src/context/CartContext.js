@@ -15,42 +15,81 @@ export function useCartFunctions() {
 
 export const CartProvider = ({ children }) => {
 
-    const [cart, setCart] = useState([]);
-    const UserContext = useUserContext();
 
+    const [cart, setCart] = useState({
+        Enabled: false,
+        IdCartItem: 0,
+        IdStock: 0,
+        Image: "",
+        Price: 0,
+        QuantityCart: 0,
+        QuantityStock: 0,
+        Size: "",
+        Title: "",
+        QC: true
+    });
+    const UserContext = useUserContext();
+    const [loading, setLoading] = useState(false);
+
+    function sumQuantityCart() {
+        let sum = 0;
+        let cont = cart?.length
+        let i;
+        for (i = 0; i < cont; i++) {
+            sum = sum + cart[i].QuantityCart
+        }
+        if (sum === 0) {
+            setLoading(true)
+            return sum
+        }
+        else {
+            setLoading(false)
+            return sum
+        }
+
+    }
+    function sumTotalPriceCart() {
+        let sum = 0;
+        let cont = cart?.length
+        let i;
+        for (i = 0; i < cont; i++) {
+            sum = sum + cart[i].QuantityCart * cart[i].Price
+        }
+        return sum
+    }
 
     useEffect(() => {
 
         async function getCartItemsByIdUser() {
             if (UserContext) {
-
                 await getCartByIdUser(UserContext.IdUser).then((data) => {
-
-                    if (cart === null) {
+                    if (cart.IdCartItem === 0) {
                         data.map(a => {
                             let i = 0;
                             if (a.QuantityCart > a.QuantityStock) {
                                 i = a.QuantityStock
                                 a.QuantityCart = i;
-                                return a
+                                return a;
                             }
                             else {
-                                return a
+
+                                return a;
                             }
                         })
                         setCart(data)
+
                         return cart
                     }
                 });
             }
             else {
-                setCart(null)
+                setLoading(true)
             }
         }
 
         getCartItemsByIdUser();
 
-
+        console.log(cart)
     }, [UserContext, cart])
 
 
@@ -60,7 +99,18 @@ export const CartProvider = ({ children }) => {
         if (idCartItem) {
 
             await deleteCartItem(idCartItem).then(data => {
-                setCart(null);
+                setCart({
+                    Enabled: false,
+                    IdCartItem: 0,
+                    IdStock: 0,
+                    Image: "",
+                    Price: 0,
+                    QuantityCart: 0,
+                    QuantityStock: 0,
+                    Size: "",
+                    Title: ""
+                });
+
                 return data
             })
         }
@@ -78,35 +128,27 @@ export const CartProvider = ({ children }) => {
             await putCartItemQuantity(idsToPutQuantity).then(data => {
 
                 if (data) {
-                    setCart(null);
+                    setCart({
+                        Enabled: false,
+                        IdCartItem: 0,
+                        IdStock: 0,
+                        Image: "",
+                        Price: 0,
+                        QuantityCart: 0,
+                        QuantityStock: 0,
+                        Size: "",
+                        Title: ""
+                    });
                     return data
                 }
 
             })
         }
     }
-    function sumQuantityCart() {
-        let sum = 0;
-        let cont = cart?.length
-        let i;
-        for (i = 0; i < cont; i++) {
-            sum = sum + cart[i].QuantityCart
-        }
-        return sum
-    }
-    function sumTotalPriceCart() {
-        let sum = 0;
-        let cont = cart?.length
-        let i;
-        for (i = 0; i < cont; i++) {
-            sum = sum + cart[i].QuantityCart * cart[i].Price
-        }
-        return sum
-    }
 
     return (
         <CartFunctionsContext.Provider
-            value={{ changueQuantityItemCart, clearCart, sumQuantityCart, sumTotalPriceCart, removeFromCart }}
+            value={{ changueQuantityItemCart, clearCart, sumQuantityCart, sumTotalPriceCart, removeFromCart, loading }}
         >
             <CartContext.Provider
                 value={cart}

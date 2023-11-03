@@ -98,7 +98,7 @@ export const getUserById = async (id) => {
 export const getCartByIdUser = async (idUser) => {
     try {
         const response = await fetch(`${baseURL}cartitems/${idUser}`);
-        const data = await response.json();
+        const data  = await response.json();
         return data;
     } catch (e) {
         if (e.response.status === 404) {
