@@ -28,7 +28,7 @@ const StockProductxSize = ({Size}) => {
                     <div className="subs">
                         <button className="subsButton" onClick={handleStockSubs}>-</button>
                     </div>
-                    <input  className="subsButton" type="number" inputMode="numeric" value={stock} min={1} max={Size[0].Quantity} disabled ></input>
+                    <input  className="subsButton" id="input" type="number" inputMode="numeric" value={stock} min={1} max={Size[0].Quantity} disabled ></input>
                     <div className="adds">
                         <button className="subsButton" onClick={handleStockAdd}>+</button>
                     </div> 

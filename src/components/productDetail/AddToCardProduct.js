@@ -40,7 +40,7 @@ const AddToCardProduct = (size) => {
     return (
         <>
 
-            <button type="submit" className="addCartButton" onClick={handleSubmit}> Agregar al carrito</button>
+            <button type="submit" className="andres-button" id="addCartButton" onClick={handleSubmit}> Agregar al carrito</button>
         </>
     )
 }

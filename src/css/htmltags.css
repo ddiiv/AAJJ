@@ -46,7 +46,13 @@ span.richtext-gray-regular#totalPricexProduct{
     line-height: 48px;
     padding: 0 24px;
     text-align: center;
+    border: 1px solid rgba(240, 248, 255, 0);
     
+}
+.andres-button:hover{
+    background-color: rgb(241, 241, 241);
+    border: 1px solid#c00101;
+    color: #c00101;
 }
 .andres-button.andres__empty{
     margin-top: 16px ;

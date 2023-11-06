@@ -19,18 +19,25 @@ const Cart = () => {
             )
 
         }
+        else {
+            return (
+                <b className="cartItemsQuantity">{0}</b>
+            )
+        }
     }
 
     function showCart() {
 
-        if (cart && usercontext.Logged === true)
+        if (usercontext.Logged === true)
             return (
                 <>
                     <Link to='/cartdetail' className="nothing">
                         <button className='buttonItem'>
-                            <img className='items' src={cartImage} alt="" />
-                            {NumberQuantityItems()}
+                            <img className='items' src={cartImage} alt="cartImage" />
                         </button>
+                        <div className="absoluteCartQuantity">
+                            {NumberQuantityItems()}
+                        </div>
                     </Link>
                     <Outlet />
                 </>
@@ -38,11 +45,15 @@ const Cart = () => {
 
         else
             return (
-                <>
-                    <button className='buttonItem' >
+                <> <Link to='/login' className="nothing">
+                    <button className='buttonItem'>
                         <img className='items' src={cartImage} alt="cartImage" />
                     </button>
-
+                    <div className="absoluteCartQuantity">
+                        {NumberQuantityItems()}
+                    </div>
+                </Link>
+                    <Outlet />
                 </>
             )
 

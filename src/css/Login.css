@@ -56,7 +56,9 @@
     color: #fff;
     font-family: "Poppins";
 }
-
+.andres-button__content.login:hover{
+    color: #c00101;
+}
 .login-form__input {
     position: relative;
     z-index: 10;
@@ -166,6 +168,7 @@
 .link#login {
     margin-top: 0px;
     font-size: 15px;
+    font-family: "Poppins";
 }
 
 .separator-ui#login-separator{
