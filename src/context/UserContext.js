@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-import { getUserById } from "../api/apiFunctions";
+import { getUserByCredentials } from "../api/apiFunctions";
 
 
 const UserContext = createContext();
@@ -18,13 +18,12 @@ export const UserProvider = ({ children }) => {
     const [Logged, setLogged] = useState(false);
     const [User, setUser] = useState();
     
-    const getUser = async () => {
-        const id = 5;
-        await getUserById(id).then((data) => {
+    const getUser = async (credentials) => {
+        await getUserByCredentials(credentials).then((data) => {
 
             if (data) {
 
-                setUser({ ...data, Token: data.IdUser })
+                setUser({ ...data})
                 window.localStorage.setItem('IdUser', data.IdUser)
                 window.localStorage.setItem('Token', 360000)
                 return User;
@@ -53,8 +52,7 @@ export const UserProvider = ({ children }) => {
         }
     }
 
-    return <UserLogged.Provider value={{ Logged, changueLogin }}>
-
+    return <UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut }}>
         <UserContext.Provider value={User}>
             {children}
 

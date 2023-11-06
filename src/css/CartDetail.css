@@ -226,7 +226,7 @@
 
     fill: #3483fa;
     align-items: center;
-    color: #3483fa;
+    color: #c00101;
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -240,6 +240,9 @@
     margin-top: 16px;
     padding-bottom: 0;
 
+}
+.link:hover{
+    color: #3483fa;
 }
 .link#emptylink_home:hover{
     background-color: #3483fa00;

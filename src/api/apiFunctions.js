@@ -67,6 +67,31 @@ export const getSizesByIdProduct = async (id) => {
     return data;
 };
 //-----------------------------------Users--------------------------------------------------------------
+export const getUserByCredentials = async (credentials)=>{
+    try{
+        const { data } = await axios ({
+            method:'post',
+            url:`${baseURL}user/login`,
+            data:{
+                body:{
+                    'name':credentials.name,
+                    'password':credentials.password
+                }
+            }
+        
+        })
+        console.log(data);
+        return data
+
+    }
+    catch(e){
+        if (e.response.status === 404) {
+            console.log('Resource could not be found!');
+        } else {
+            console.log(e.message);
+        }
+    }
+}
 export const getUserById = async (id) => {
     // try{
 
