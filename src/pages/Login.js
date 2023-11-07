@@ -4,11 +4,11 @@ import { useUserLogged } from "../context/UserContext";
 import * as Yup from "yup"
 import '../css/Login.css'
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const context = useUserLogged();
-    
+    const navigate = useNavigate();
     const SignupSchema = Yup.object().shape({
         User: Yup.string()
             .required("Un nombre es requerido"),
@@ -18,10 +18,12 @@ const Login = () => {
 
 
     });
-    return (
-
-        <>
-            <main className="page">
+    function checkLogged() {
+        if (context.Logged === true) {
+            return navigate("/")
+        }
+        else {
+            return (<main className="page">
                 <section className="containerPage">
                     <div className="landscape-view__container">
                         <div className="landscape-view__column landscape-view__column--left">
@@ -39,7 +41,7 @@ const Login = () => {
                                     onSubmit={async (values) => {
                                         await new Promise((r) => setTimeout(r, 500));
                                         alert("Bienvenido " + values.User + " !");
-                                        /*context.getUser(values);*/
+                                        context.getUser(values);
                                     }}
                                 >
                                     <Form className="login-form">
@@ -113,7 +115,14 @@ const Login = () => {
                         </div>
                     </div>
                 </section>
-            </main>
+            </main>);
+        }
+    }
+
+    return (
+
+        <>
+            {checkLogged()}
         </>
     )
 }

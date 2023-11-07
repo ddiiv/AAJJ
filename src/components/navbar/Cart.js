@@ -13,7 +13,7 @@ const Cart = () => {
 
 
     function NumberQuantityItems() {
-        if (cart) {
+        if (cart.IdCartItem !== 0) {
             return (
                 <b className="cartItemsQuantity">{cartFunctions.sumQuantityCart()}</b>
             )
@@ -21,7 +21,7 @@ const Cart = () => {
         }
         else {
             return (
-                <b className="cartItemsQuantity">{0}</b>
+                <></>
             )
         }
     }

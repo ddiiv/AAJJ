@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
-import { getUserByCredentials } from "../api/apiFunctions";
+import { getUserByCredentials, getUserById } from "../api/apiFunctions";
 
 
 const UserContext = createContext();
@@ -16,9 +16,24 @@ export function useUserLogged() {
 export const UserProvider = ({ children }) => {
 
     const [Logged, setLogged] = useState(false);
-    const [User, setUser] = useState();
+    const [User, setUser] = useState(null);
     
     const getUser = async (credentials) => {
+        const id = 5;
+        await getUserById(id).then((data) => {
+
+            if (data) {
+
+                setUser({ ...data})
+                setLogged(true)
+                return User;
+
+            }
+            else {
+                alert("no llego el user");
+            }
+        });
+        /* 
         await getUserByCredentials(credentials).then((data) => {
 
             if (data) {
@@ -33,6 +48,7 @@ export const UserProvider = ({ children }) => {
                 alert("no llego el user");
             }
         });
+        */
 
     }
 

@@ -19,11 +19,12 @@ import CartDetail from './pages/CartDetail';
 import Login from './pages/Login'
 //---------Context
 import {  UserProvider } from './context/UserContext';
-
+import { useUserContext } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 
 function App() {
 
+const contextUser = useUserContext();
 
 const [category, setCategory] = useState([]);
 const [products, setProducts] = useState([]);
@@ -62,7 +63,8 @@ return (
               })}
             <Route path= {`/search?=`} element={<Search/>}></Route>
             <Route path='/cartdetail' element={<CartDetail/>}></Route>
-            <Route path='/login' element={<Login/>}></Route>              
+            <Route path='/login' element={<Login/>}></Route>
+            <Route path={`/profile/${contextUser?.User}`} element={<Search/>}></Route>
           </Routes>
           
       </BrowserRouter>
