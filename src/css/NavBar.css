@@ -196,7 +196,8 @@ a .img {
     cursor: pointer;
     transition: 0.5s;
     width: 100%;
-
+    height: auto;
+    z-index: 20;
     box-sizing: border-box;
     box-shadow: none;
     cursor: pointer;

@@ -1,54 +1,29 @@
-import React, { useState, useEffect } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import search_png from "../../../img/search.png";
-import { getProducts } from '../../../api/apiFunctions.js';
+import { useSearchFunctions } from "../../../context/SearchContext";
+import { useState } from "react";
 
 const SearchBar = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [allProducts, setAllProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const contextFunctions = useSearchFunctions();
+    const searchRef = useRef();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const products = await getProducts();
-            setAllProducts(products);
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        if (allProducts.length > 0) {
-            const list = allProducts.filter((product) =>
-                product.title && product.title.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            setFilteredProducts(list);
-        }
-    }, [searchTerm, allProducts]);
+    const handleChangeSearch = (e) => {
+        setSearchTerm(e.target.value);
+    }
 
     return (
         <div className="navItem" id="searchBar">
             <input
+                type="text"
                 placeholder="Buscar"
                 className="searchInput"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleChangeSearch}
             />
-            <button className='buttonItem'>
-                <Link to={`/search`} className="searchBAR">
-                    <img className="items" src={search_png} alt="" />
-                </Link>
+            <button className='buttonItem' type="submit" value={searchTerm} onClick={contextFunctions.handleSearchProductsByInput}>
+                <img className="items" src={search_png} alt="" />
             </button>
-            <div className="MainContainer">
-            {filteredProducts.map((product) => (
-        <div key={product.id} className="product-card">
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <p>Precio: {product.price}</p>
-            {/* Agrega más detalles según tu estructura de datos */}
-        </div>
-    ))}
-</div>
-
         </div>
     );
 };

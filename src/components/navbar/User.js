@@ -6,7 +6,6 @@ import { useUserContext } from '../../context/UserContext';
 const User = () => {
     const context = useUserContext();
     function isLogged() {
-        console.log(context)
         if (context !== null) {
             return (
                 <button className='buttonItem' id="center">

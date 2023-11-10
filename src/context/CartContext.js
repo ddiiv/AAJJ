@@ -14,8 +14,7 @@ export function useCartFunctions() {
 }
 
 export const CartProvider = ({ children }) => {
-
-
+    
     const [cart, setCart] = useState({
         Enabled: false,
         IdCartItem: 0,
@@ -59,7 +58,6 @@ export const CartProvider = ({ children }) => {
     }
 
     useEffect(() => {
-
         async function getCartItemsByIdUser() {
             if (UserContext) {
                 await getCartByIdUser(UserContext.IdUser).then((data) => {
@@ -86,18 +84,11 @@ export const CartProvider = ({ children }) => {
                 setLoading(true)
             }
         }
-
         getCartItemsByIdUser();
-
-        console.log(cart)
     }, [UserContext, cart])
 
-
-
     const removeFromCart = async (idCartItem) => {
-
         if (idCartItem) {
-
             await deleteCartItem(idCartItem).then(data => {
                 setCart({
                     Enabled: false,
@@ -110,13 +101,10 @@ export const CartProvider = ({ children }) => {
                     Size: "",
                     Title: ""
                 });
-
                 return data
             })
         }
     };
-
-
 
     const clearCart = () => {
         setCart([]);
@@ -124,9 +112,7 @@ export const CartProvider = ({ children }) => {
 
     const changueQuantityItemCart = async (idsToPutQuantity) => {
         if (idsToPutQuantity && cart) {
-
             await putCartItemQuantity(idsToPutQuantity).then(data => {
-
                 if (data) {
                     setCart({
                         Enabled: false,
@@ -141,18 +127,15 @@ export const CartProvider = ({ children }) => {
                     });
                     return data
                 }
-
             })
         }
     }
 
     return (
         <CartFunctionsContext.Provider
-            value={{ changueQuantityItemCart, clearCart, sumQuantityCart, sumTotalPriceCart, removeFromCart, loading }}
-        >
+            value={{ changueQuantityItemCart, clearCart, sumQuantityCart, sumTotalPriceCart, removeFromCart, loading }}>
             <CartContext.Provider
-                value={cart}
-            >
+                value={cart}>
                 {children}
             </CartContext.Provider>
         </CartFunctionsContext.Provider>
