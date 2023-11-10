@@ -2,12 +2,8 @@
 
     display: flex;
     color: #101010;
-    justify-content: space-between;
-    align-self: center;
-    float: left;
     text-align: flex-start;
     text-decoration: dotted;
-    font-size: 22px;
     font-weight: 300;
     transition: 0.5s;
     line-height: 40px;
@@ -152,7 +148,10 @@ a .img {
     transition: 0.5s;
     transform: scale(1.1);
 }
-
+.cartContainer {
+    display: flex;
+    flex-direction: row;
+}
 .containerLogo {
     height: 100%;
     width: 100%;
@@ -195,7 +194,6 @@ a .img {
     background: transparent;
     cursor: pointer;
     transition: 0.5s;
-    width: 100%;
     height: auto;
     z-index: 20;
     box-sizing: border-box;
@@ -203,7 +201,6 @@ a .img {
     cursor: pointer;
     display: inline-block;
     list-style: none;
-    padding: 6px 20px;
     position: relative;
     user-select: none;
     -webkit-user-select: none;

@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { getProductsHighlist } from "../../api/apiFunctions";
 import '../../css/HighlistProducts.css'
 
@@ -8,86 +8,56 @@ import 'slick-carousel/slick/slick-theme.css';
 import HighlightCard from "../highlightProduct/HighlightCard.js"
 
 const Recommended = () => {
-    const [listProduct, setListProduct] = useState([]);
+  const [listProduct, setListProduct] = useState([]);
 
-    useEffect(() => {
-        const getProductsAndImageHightlist = async () => {
-            try {
-                const products = await getProductsHighlist()
-                setListProduct(products)
+  useEffect(() => {
+    const getProductsAndImageHightlist = async () => {
+      try {
+        const products = await getProductsHighlist()
+        setListProduct(products)
 
-            }
-            catch (error) {
-                throw new Error('Error al obtener los productos de la API. Error: ' + error)
-            }
-        } 
-  getProductsAndImageHightlist()        
-    }, [])
+      }
+      catch (error) {
+        throw new Error('Error al obtener los productos de la API. Error: ' + error)
+      }
+    }
+    getProductsAndImageHightlist()
+  }, [])
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 1000,
-        slidesToShow: 3, 
-        slidesToScroll: 1,
-        scrollX: true,
-        screenX: true,
-        statusbar: true,
-        autoplay: true,
-        initialSlide: 0,
-        toolbar: true,
-        screenTop: true,
-        autoplaySpeed: 2000,
-        autoplayHoverPause: true,
-        
-        cssEase: "linear",
-        pauseOnDotsHover: true,
-        pauseOnHover: true,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1, 
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 800,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-              initialSlide: 2
-            }
-          },
-          {
-            breakpoint: 500,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1
-            }
-          }
-        ]
-     
-        
-      };
+  const settings = {
+    useTransform: true,
+    autoplay: true,
+    autoplaySpeed: 4500,
+    arrows: false,
+    slide: '.slider-pic',
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: false,
+    cssEase: 'ease-out',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          dots: false
+        }
+      }]
+  };
 
-    return (
-    
-        <div className="productsHighlist">
-        <h2 className="highList">Recomendados</h2> 
-        <Slider  {...settings}>
+  return (
+
+    <div className="productsHighlist">
+      <h2 className="highList">Recomendados</h2>
+      <Slider  {...settings}>
 
         {listProduct?.map(product =>
-          (
-            <HighlightCard key={product.idProduct} product={product}/>
-          ))}
-        </Slider>
-      </div>
+        (
+          <HighlightCard key={product.idProduct} product={product} />
+        ))}
+      </Slider>
+    </div>
 
   );
-    
+
 
 
 }

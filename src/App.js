@@ -21,14 +21,13 @@ import Login from './pages/Login'
 import { UserProvider } from './context/UserContext';
 import { useUserContext } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
-import { SearchProvider } from './context/SearchContext';
+import { SearchProvider, useSearchContext, useSearchFunctions } from './context/SearchContext';
 function App() {
 
   const contextUser = useUserContext();
-
+  const contextSearch = useSearchFunctions();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     getCategories()
       .then(Categories => {
@@ -53,9 +52,9 @@ function App() {
               <Routes>
                 <Route path='/' element={<Home />} />
                 {category.map((categories) => {
-                  const categorytoLowerCase = categories.Category.toLowerCase();
+                  const categorytoLowerCase = categories.Category
                   return (
-                    <Route path={`/category/${categorytoLowerCase}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
+                    <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
                   )
                 })}
                 {products.map((product) => {
@@ -64,7 +63,7 @@ function App() {
                     <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail productSelected={product} />} />
                   )
                 })}
-                <Route path='/search' element={<Search />}></Route>
+                <Route path={`/search=?${contextSearch.searchInput}`} element={<Search />}></Route>
                 <Route path='/cartdetail' element={<CartDetail />}></Route>
                 <Route path='/login' element={<Login />}></Route>
                 <Route path={`/profile/${contextUser?.User}`} element={<Search />}></Route>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getImage } from "../../api/apiFunctions";
 
 const HighlightCard = ({ product }) => {
@@ -30,10 +30,10 @@ const HighlightCard = ({ product }) => {
                             <b className="gender">{products.SubCategory}</b>
                         </div>
                         <div className="TitleContainer">
-                            <h1 className="title">{products.Title}</h1>
+                            <h1 className="title-highlist">{products.Title}</h1>
                         </div>
                         <div className="priceContainer">
-                            <span className="price">${products.Price}</span>
+                            <span className="price-highlist">${products.Price}</span>
                         </div>
                     </div>
                 </div>

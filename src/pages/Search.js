@@ -10,7 +10,7 @@ import '../css/CategoryCatalog.css'
 
 const Search = () => {
     const contextSearch = useSearchContext();
-
+        console.log(contextSearch)
     return (
         <div className="catalog">
             <div className="products">

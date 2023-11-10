@@ -29,9 +29,9 @@ const CarouselComponent = () => {
                 showArrows={false}
                 interval={3000}
                 transitionTime={500}
-                stopOnHover={false}
                 showStatus={false}
                 showIndicators={true}
+                stopOnHover={false}
             >
                 {images?.map((image, index) => (
                     <div className='item' key={index}>
