@@ -28,6 +28,13 @@ span.richtext-gray-regular{
     font-size: 1rem;
 
 }
+
+span.richtext-gray-regular#cartitemSize{
+    font-family: "PoppinsMedium";
+    color:rgba(0,0,0,.55);
+    font-size: 1rem;
+    margin-left: 20px;
+}
 span.richtext-black{
     font-family: "PoppinsMedium";
     font-size: 1.2rem;

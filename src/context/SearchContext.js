@@ -14,17 +14,17 @@ export const useSearchFunctions = () => {
 export const SearchProvider = ({ children }) => {
 
     const [allProducts, setAllProducts] = useState(null);
-    const [filteredProducts, setFilteredProducts] = useState("");
-    const [searchInput, setSearchInput] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState(null);
+    const [searchInput, setSearchInput] = useState('');
 
-    useEffect(() => { 
+    useEffect(() => {
         const fetchData = async () => {
-        if (allProducts === null) {
-            const products = await getProducts();
-            setAllProducts(products);
-            setFilteredProducts(products);
-        }
-    };
+            if (allProducts === null) {
+                const products = await getProducts();
+                setAllProducts(products);
+                setFilteredProducts(products);
+            }
+        };
         fetchData();
     }, [filteredProducts, allProducts])
 
@@ -32,17 +32,15 @@ export const SearchProvider = ({ children }) => {
         setSearchInput(e.target.value);
     }
 
-    const handleSearchProductsByInput =()=>{
-        if (filteredProducts !== null && allProducts !== "") {
+    const handleSearchProductsByInput = () => {
+        if (filteredProducts !== null && allProducts !== null) {
             const updateProducts = allProducts.filter((r) =>
                 r.Title && typeof r.Title === 'string' && r.Title.toLowerCase().includes(searchInput.toLowerCase())
             );
             setFilteredProducts(updateProducts);
         }
+        
     }
-    console.log("filtered" , filteredProducts)
-
-
     return (
         <SearchFunctions.Provider value={{ handleSearchProductsByInput, searchInput, handleChangeSearch }}>
             <SerachContext.Provider value={filteredProducts}>

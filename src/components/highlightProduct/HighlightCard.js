@@ -22,22 +22,20 @@ const HighlightCard = ({ product }) => {
     }, [])
     return (
         <>
-            <Link className="LinkConteiner" to={`/product/${products.Title}`}>
-                <div className="CardHighList" key={products.IdProduct}>
-                    <img src={products.Image} className="productImgHighList" alt="Producto" />
-                    <div className="infoContainer">
-                        <div className="genderContainer">
-                            <b className="gender">{products.SubCategory}</b>
-                        </div>
-                        <div className="TitleContainer">
-                            <h1 className="title-highlist">{products.Title}</h1>
-                        </div>
-                        <div className="priceContainer">
-                            <span className="price-highlist">${products.Price}</span>
-                        </div>
+            <div className="product-card" key={products.idProduct}>
+                <div className="badge"></div>
+                <div className="product-tumb">
+                    <img src={products.Image} alt="Producto" />
+                </div>
+                <div className="product-details">
+                    <span className="product-catagory"><b className="gender">{products.SubCategory}</b></span>
+                    <h4> <Link className="nothing" to={`/product/${products.Title}`}><h1 className="title">{products.Title}</h1> </Link></h4>
+                    <p><h4 className="description"> {products.Description}</h4> </p>
+                    <div className="product-bottom-details">
+                        <div className="product-price"><span className="price">${products.Price}</span></div>
                     </div>
                 </div>
-            </Link>
+            </div>
         </>
     )
 }

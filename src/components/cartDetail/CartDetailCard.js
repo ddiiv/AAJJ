@@ -92,7 +92,7 @@ const CartDetailCard = ({ cartProductIn }) => {
                             <Link to={`/product/${product.Title}`} className="nothing">
                                 <h5 className="ticket-row__left-column--primary-text" id="cartDetailTitlexSize"><span className="richtext-black">{product.Title}</span></h5>
                             </Link>
-                            <p className="item-cart__description-text"><span className="richtext-gray-regular">Talle seleccionado: {product.Size}</span></p>
+                            <p className="item-cart__description-text"><span className="richtext-gray-regular" id="cartitemSize">Talle seleccionado: {product.Size}</span></p>
                         </div>
 
                         <div className="ui-link-container">

@@ -10,16 +10,24 @@ import '../css/CategoryCatalog.css'
 
 const Search = () => {
     const contextSearch = useSearchContext();
-        console.log(contextSearch)
+    console.log(contextSearch)
     return (
-        <div className="catalog">
-            <div className="products">
-                <CardList props={contextSearch} />
+
+        <main className="page">
+            <div className="containerPage" >
+                <div className="catalog">
+                    <aside>
+                        <Filters />
+                    </aside>
+                    <main className="products">
+                        <CardList props={contextSearch} />
+                    </main>
+
+                </div>
             </div>
-            <aside>
-                <Filters />
-            </aside>
-        </div>);
+        </main>
+
+    );
 }
 
 export default Search;

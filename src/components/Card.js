@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getImage } from "../api/apiFunctions";
 
 const Card = ({ product }) => {
@@ -24,28 +24,25 @@ const Card = ({ product }) => {
     }
     useEffect(() => {
         getImageProduct()
-    }, [])
+    }, [products])
     return (
         <>
-        
-            <Link className="nothing" to={`/product/${products.Title}`}>
-                <article className="card" key={products.idProduct}>
 
-                    <img src={products.Image} className="productImg" alt="Producto" />
-                    <div className="containerCard">
-                        <div className="genderContainer">
-                            <b className="gender">{products.SubCategory}</b>
-                        </div>
-                        <div className="TitleContainer">
-                            <h1 className="title">{products.Title}</h1>
-                        </div>
-                        <div className="priceContainer">
-                            <span className="price">${products.Price}</span>
-                        </div>
+
+            <div class="product-card" key={products.idProduct}>
+                <div class="badge"></div>
+                <div class="product-tumb">
+                    <img src={products.Image} alt="Producto" />
+                </div>
+                <div class="product-details">
+                    <span class="product-catagory"><b className="gender">{products.SubCategory}</b></span>
+                    <h4> <Link className="nothing" to={`/product/${products.Title}`}><h1 className="title">{products.Title}</h1> </Link></h4>
+                    <p><h4 className="description"> {products.Description}</h4> </p>
+                    <div class="product-bottom-details">
+                        <div class="product-price"><span className="price">${products.Price}</span></div>
                     </div>
-
-                </article>
-            </Link>
+                </div>
+            </div>
         </>
     )
 }

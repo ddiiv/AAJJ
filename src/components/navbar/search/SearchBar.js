@@ -7,7 +7,6 @@ const SearchBar = () => {
     const contextFunctions = useSearchFunctions();
 
 
-    console.log("searchTerm" , contextFunctions.searchInput)
     return (
         <div className="navItem" id="searchBar">
             <input
@@ -18,7 +17,7 @@ const SearchBar = () => {
             />
 
             <button className='buttonItem' type="submit" value={contextFunctions.searchInput} onClick={contextFunctions.handleSearchProductsByInput} >
-                <Link to={`/search?=`} className="nothing"><img className="items" src={search_png} alt="" /></Link>
+                <Link to={`/search=?${contextFunctions.searchInput}`} className="nothing"><img className="items" src={search_png} alt="" /></Link>
             </button>
         </div>
     );
