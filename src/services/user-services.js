@@ -34,6 +34,33 @@ class UserService {
         }
         return returnEntity;
     }
+    login = async (user, password) => {
+        let returnEntity = null;
+        console.log('Estoy en: UserService.login(user, password)');
+        console.log(user,password)
+        try {
+            let pool   = await sql.connect(config);
+            let result = await pool.request()
+                .input('pUser', sql.NChar, user)
+                .input('pPassword', sql.NChar, password)
+                .query(`
+                    SELECT *
+                    FROM [User]
+                    WHERE CONVERT(NVARCHAR(MAX), [User]) = @pUser AND CONVERT(NVARCHAR(MAX), [Password]) = @pPassword;
+                `);
+            if (result.recordset.length > 0) {
+                returnEntity = result.recordsets[0][0];
+            } 
+            else {
+                console.log(returnEntity)
+                throw new Error('Invalid credentials');
+              }
+            } catch (error) {
+              console.log(error);
+              throw new Error('Database error');
+            } 
+        return returnEntity;
+    }
     insert = async (user) => {
         let rowsAffected = 0;
         console.log('Estoy en: UserService.insert(user)');

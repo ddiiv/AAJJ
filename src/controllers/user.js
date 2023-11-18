@@ -1,42 +1,35 @@
 import UserService from "../services/user-services.js"
-import { verify, sign}  from "jsonwebtoken"
+import jwtservice from "../../middleware/middeware.js"
 
-const TOKEN_KEY = "A321FAS6CXZV";
+const auth = new jwtservice()
 
-const verifyToken = (req,res,next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    console.log(authHeader)
-    if(token == null) 
-        return res.status(401).send('Token requerido')
-    verify(token, TOKEN_KEY, (err, user)=>{
-        if(err)
-            return res.status(403).send('Token invalido')
-        req.user = user;
-        next();
-    })
-}
-
-export const postById = async(req,res) =>{
+export const postById = async (req, res) => {
     res.send(JSON.stringify(await new UserService().postById(req.params.id)))
 }
 
-export const login = async(req,res) =>{
-    const user = req.body.user;
-    const password = req.body.password;
-    const datos= {
-        id: 123,
-        user: 'owen'
-    }
-    const token = sign(
-        {
-            userId: datos.id,
-            user: datos.user
-        },
-        TOKEN_KEY,
-        {expiresIn: "3h"}
-    );
-    let nDatos = {...datos, token}
-    res.status(200).json(nDatos);
+export const login = async (req, res) => {
 
+    try {
+        const { user, password } = req.body;
+
+        if (!user || !password) {
+            return res.status(400).json("No se ingresó el usuario o la contraseña");
+        }
+
+        const logedUser = await new UserService().login(user, password);
+
+        if (logedUser) {
+            return res.json({
+                successful: auth.createToken(logedUser),
+                done: "Login correct",
+            });
+        } 
+        else {
+            return res.status(401).json("No se encontró al usuario o la contraseña");
+        }
+    } 
+    catch (error) {
+        console.error(error);
+        return res.status(500).json("Error en el servidor");
+    }
 }

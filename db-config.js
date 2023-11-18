@@ -1,17 +1,17 @@
 
-const config = {
-    user: 'ArgentinosJuniors',
-    password: 'El_Semillero_Del_Mundo',
-    server: 'localhost',
-    database: 'db_aajj',
-    options: {
-        trustServerCertificate: true,
-        trustedConnection: true
-    }
-};
+// const config = {
+//     user: 'ArgentinosJuniors',
+//     password: 'El_Semillero_Del_Mundo',
+//     server: 'DESKTOP-14PUO0S',
+//     database: 'db_aajj',
+//     options: {
+//         trustServerCertificate: true,
+//         trustedConnection: true
+//     }
+// };
 
-export default config;
-/*
+// export default config;
+
 
 const config = {
     user: 'dbjaja',
@@ -25,4 +25,3 @@ const config = {
 };
 
 export default config;
-*/
