@@ -6,7 +6,7 @@ class UserService {
         let returnArray = null;
         console.log('Estoy en: UserService.getAll()');
         try {
-            let pool   = await sql.connect(config);
+            let pool = await sql.connect(config);
             let result = await pool.request().query(`SELECT * FROM User`);
             returnArray = result.recordsets[0];
         }
@@ -20,7 +20,7 @@ class UserService {
         console.log('Estoy en: UserService.postById(id)');
         console.log(id)
         try {
-            let pool   = await sql.connect(config);
+            let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('pId', sql.Int, id)
                 .query(`
@@ -37,9 +37,8 @@ class UserService {
     login = async (user, password) => {
         let returnEntity = null;
         console.log('Estoy en: UserService.login(user, password)');
-        console.log(user,password)
         try {
-            let pool   = await sql.connect(config);
+            let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('pUser', sql.NChar, user)
                 .input('pPassword', sql.NChar, password)
@@ -50,15 +49,14 @@ class UserService {
                 `);
             if (result.recordset.length > 0) {
                 returnEntity = result.recordsets[0][0];
-            } 
+            }
             else {
-                console.log(returnEntity)
-                throw new Error('Invalid credentials');
-              }
-            } catch (error) {
-              console.log(error);
-              throw new Error('Database error');
-            } 
+                console.log(returnEntity);
+            }
+        } catch (error) {
+            console.log(error);
+            throw new Error('Database error');
+        }
         return returnEntity;
     }
     insert = async (user) => {
@@ -67,8 +65,8 @@ class UserService {
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pUser', sql.NChar , user?.user)
-                .input('pImage', sql.NChar , user?.image)
+                .input('pUser', sql.NChar, user?.user)
+                .input('pImage', sql.NChar, user?.image)
                 .query(`
                     INSERT INTO User (User, Image) 
                     VALUES (@pUser, @pImage)
@@ -85,15 +83,15 @@ class UserService {
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pUser', sql.NChar , user?.user)
-                .input('pImage', sql.NChar , user?.image)
+                .input('pUser', sql.NChar, user?.user)
+                .input('pImage', sql.NChar, user?.image)
                 .query(`
                     UPDATE User SET 
                         User = @pUser, 
                         Image = @pImage
                     WHERE Id=@pId`
                 );
-            rowsAffected = result.rowsAffected; 
+            rowsAffected = result.rowsAffected;
         } catch (error) {
             console.log(error);
         }
@@ -103,10 +101,10 @@ class UserService {
         let rowsAffected = 0;
         console.log('Estoy en: UserService.deleteById(id)');
         try {
-            let pool   = await sql.connect(config);
+            let pool = await sql.connect(config);
             let result = await pool.request()
-                                .input('pId', sql.Int, id)
-                                .query(`
+                .input('pId', sql.Int, id)
+                .query(`
                                     DELETE FROM User 
                                     WHERE id = @pId
                                 `);

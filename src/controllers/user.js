@@ -8,7 +8,6 @@ export const postById = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-
     try {
         const { user, password } = req.body;
 
@@ -17,11 +16,10 @@ export const login = async (req, res) => {
         }
 
         const logedUser = await new UserService().login(user, password);
-
         if (logedUser) {
             return res.json({
-                successful: auth.createToken(logedUser),
-                done: "Login correct",
+                token: auth.createToken(logedUser),
+                data: logedUser,
             });
         } 
         else {
