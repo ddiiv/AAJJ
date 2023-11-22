@@ -50,9 +50,6 @@ class UserService {
             if (result.recordset.length > 0) {
                 returnEntity = result.recordsets[0][0];
             }
-            else {
-                console.log(returnEntity);
-            }
         } catch (error) {
             console.log(error);
             throw new Error('Database error');
@@ -84,11 +81,23 @@ class UserService {
             let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('pUser', sql.NChar, user?.user)
-                .input('pImage', sql.NChar, user?.image)
+                .input('pPassword', sql.NChar, user?.password)
+                .input('pDateCreation', sql.Date, user?.dateCreation)
+                .input('pEmail', sql.NChar, user?.email)
+                .input('pMembershipNumber', sql.Int, user?.membershipNumber)
+                .input('pDni', sql.Int, user?.dni)
+                .input('pDateOfBirth', sql.Date, user?.dateOfBirth)
+                .input('pPhonenumber', sql.NChar, user?.phoneNumber)
                 .query(`
-                    UPDATE User SET 
-                        User = @pUser, 
-                        Image = @pImage
+                    UPDATE [User] SET 
+                        [User] = @pUser,
+                        [Password] = @pPassword,
+                        DateCreation = @pDateCreation,
+                        Email = @pEmail,
+                        MembershipNumber = @pMembershipNumber,
+                        Dni = @pDni,
+                        DateOfBirth = @pDateOfBirth,
+                        Phonenumber = @pPhonenumber
                     WHERE Id=@pId`
                 );
             rowsAffected = result.rowsAffected;

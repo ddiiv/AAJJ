@@ -31,3 +31,15 @@ export const login = async (req, res) => {
         return res.status(500).json("Error en el servidor");
     }
 }
+
+export const update= async(req,res) =>{
+    let rowsAffected = 0;
+	try {
+		const user = req.body;
+		rowsAffected = await new UserService().update(user);
+		res.status(200).send("Correct Update,"+ rowsAffected +" RowsAffected");
+	} catch (error) {
+		console.error(error);
+        return res.status(500).json("Error en el servidor");
+	}
+}
