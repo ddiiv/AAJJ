@@ -58,10 +58,11 @@ export const CartProvider = ({ children }) => {
         return sum
     }
     async function getCartItemsByIdUser() {
-        if (UserContext!==null) {
+        if (UserContext !== null) {
             await getCartByIdUser(UserContext.IdUser).then((data) => {
                 if (cart.IdCartItem === 0) {
-                    data.map(a => {
+                    console.log(data)
+                    data?.map(a => {
                         let i = 0;
                         if (a.QuantityCart > a.QuantityStock) {
                             i = a.QuantityStock
@@ -86,16 +87,21 @@ export const CartProvider = ({ children }) => {
     }
     useEffect(() => {
         getCartItemsByIdUser();
-    },[UserContext])
+    }, [UserContext])
 
     const removeFromCart = async (idCartItem) => {
         if (idCartItem) {
-            await deleteCartItem(idCartItem).then(data => {
-                const updatecart = cart.filter((c)=>
-                c.IdCartItem && typeof c.IdCartItem === Int8Array && c.IdCartItem !== idCartItem)
-                console.log(updatecart)
-                return data
-            })
+            try {
+                await deleteCartItem(idCartItem);
+                const updatedCart = cart.filter(c => c.idCartItem !== idCartItem);
+                console.log(updatedCart);
+                setCart(updatedCart);
+                window.location.reload()
+
+            } catch (error) {
+
+                console.error('Error al eliminar el elemento:', error);
+            }
         }
     };
 
@@ -107,18 +113,14 @@ export const CartProvider = ({ children }) => {
         if (idsToPutQuantity && cart) {
             await putCartItemQuantity(idsToPutQuantity).then(data => {
                 if (data) {
-                    setCart({
-                        Enabled: false,
-                        IdCartItem: 0,
-                        IdStock: 0,
-                        Image: "",
-                        Price: 0,
-                        QuantityCart: 0,
-                        QuantityStock: 0,
-                        Size: "",
-                        Title: ""
-                    });
-                    return data
+                    const idcart = idsToPutQuantity.idCartItem;
+                    const updateCart = cart.map(item => {
+                        if (idcart.idCartItem === item.idCartItem) {
+                            return { ...item, QuantityCart: idsToPutQuantity.stockToHandle }
+                        }
+                        return item;
+                    })
+                    setCart(updateCart);
                 }
             })
         }

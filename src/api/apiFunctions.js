@@ -3,7 +3,11 @@ import axios from "axios";
 
 const baseURL = "http://localhost:3001/";
 const headerToken = { "user_token": window.localStorage.getItem("token") }
-
+const token = window.localStorage.getItem("token");
+const headers = {
+    'Content-Type': 'application/json',
+    'user_token': token
+};
 //-----------------------------------------GETS---------------------------------------------------------
 
 //----------------------------------------Images--------------------------------------------------------
@@ -115,11 +119,13 @@ export const getUserById = async (id) => {
 
 export const getCartByIdUser = async (idUser) => {
     try {
-
         const { data } = await axios.get(`${baseURL}cartitems/${idUser}`,
             {
-                headers: headerToken
-            });
+                headers: {
+                    "user_token": token
+                }
+            }
+        );
         return data;
     } catch (e) {
         if (e.response.status === 404) {
@@ -133,57 +139,54 @@ export const getCartByIdUser = async (idUser) => {
 //-----------------------------------------PUTS---------------------------------------------------------
 export const putCardItem = async (ids) => {
     try {
-
-        const { data } = await axios.put(
-            `${baseURL}cartitem`,
-            {
-                headerToken,
-                "IdUser": ids.IdUser,
-                "IdStock": ids.IdStock,
-                "Quantity": ids.StockSelected
-            }
-        )
+        const bodyData = {
+            IdUser: ids.IdUser,
+            IdStock: ids.IdStock,
+            Quantity: ids.StockSelected
+        }
+        const { data } = await axios.put(`${baseURL}cartitem`, bodyData, { headers })
+            .then(response => {
+                // Manejar la respuesta exitosa
+                console.log('Respuesta:', response.data);
+            })
         console.log(data)
         return alert('Item Añadido')
     }
     catch (e) {
-        if (e.response.status === 404) {
-            console.log('Resource could not be found!');
-        } else {
-            console.log(e.message);
-        }
+
+            console.log(e);
+
     }
 }
 export const putCartItemQuantity = async (ids) => {
-
     try {
-        const { data } = await axios.put(`${baseURL}cartitem/quantity`, 
-        {
-            headerToken,
-            "IdCartItem": ids.idCartItem,
-            "Quantity": ids.stockToHandle
-        })
-
+        const bodyData = {
+            IdCartItem: ids.idCartItem,
+            Quantity: ids.stockToHandle
+        }
+        const { data } = await axios.put(`${baseURL}cartitem/quantity`, bodyData, { headers })
+            .then(response => {
+                console.log('Respuesta:', response.data);
+            })
         return data
     }
     catch (e) {
-        if (e.response.status === 404) {
-            console.log('Resource could not be found!');
-        } else {
-            console.log(e.message);
-        }
+        console.log(e)
     }
 }
 //-----------------------------------------DELETES---------------------------------------------------------
 
 export const deleteCartItem = async (id) => {
     try {
-        const { data } = await axios.delete(
-            `${baseURL}cartitem/${id}`)
-        return data
+        const { data } = await axios.delete(`${baseURL}cartitem/${id}`, { headers })
+        .then(response => {
+            console.log('Respuesta:', response.data);
+        })
+        
+    return data
     }
     catch (e) {
-        if (e.response.status === 404) {
+        if (e.response === 404) {
             console.log('Resource could not be found!');
         } else {
             console.log(e.message);
