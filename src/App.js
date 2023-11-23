@@ -17,17 +17,22 @@ import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
 import CartDetail from './pages/CartDetail';
 import Login from './pages/Login'
+import UserProfile from './pages/UserProfile'
 //---------Context
 import { UserProvider } from './context/UserContext';
 import { useUserContext } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import { SearchProvider, useSearchFunctions } from './context/SearchContext';
+
+
 function App() {
 
   const contextUser = useUserContext();
+
   const contextSearch = useSearchFunctions();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
+
 
   useEffect(() => {
     getCategories()
@@ -47,6 +52,7 @@ function App() {
       <CartProvider>
         <SearchProvider>
           <div className="App">
+            
             <BrowserRouter>
               <TopNav />
               <BottomNav />
@@ -67,7 +73,7 @@ function App() {
                 <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
                 <Route path='/cartdetail' element={<CartDetail />}></Route>
                 <Route path='/login' element={<Login />}></Route>
-                <Route path={`/profile/${contextUser?.User}`} element={<Search />}></Route>
+                <Route path={`/profile/${contextUser?.User}`} element={<UserProfile />}></Route>
               </Routes>
 
             </BrowserRouter>

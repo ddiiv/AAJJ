@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
+import { useEffect } from "react";
 import { getUserByCredentials, getUserById } from "../api/apiFunctions";
 
 
@@ -17,38 +18,20 @@ export const UserProvider = ({ children }) => {
 
     const [Logged, setLogged] = useState(false);
     const [User, setUser] = useState(null);
-    
+
     const getUser = async (credentials) => {
-        const id = 5;
-        await getUserById(id).then((data) => {
-
-            if (data) {
-
-                setUser({ ...data})
+        await getUserByCredentials(credentials).then((data) => {
+            if (data !== null) {
+                setUser(data.data)
+                window.localStorage.setItem("token", data.token)
+                window.localStorage.setItem("idU", data.data.IdUser)
                 setLogged(true)
                 return User;
-
             }
             else {
                 alert("no llego el user");
             }
         });
-        /* 
-        await getUserByCredentials(credentials).then((data) => {
-
-            if (data) {
-
-                setUser({ ...data})
-                window.localStorage.setItem('IdUser', data.IdUser)
-                window.localStorage.setItem('Token', 360000)
-                return User;
-
-            }
-            else {
-                alert("no llego el user");
-            }
-        });
-        */
 
     }
 
@@ -67,8 +50,22 @@ export const UserProvider = ({ children }) => {
             LogOut()
         }
     }
+    const authLogged = async () => {
+        const token = window.localStorage.getItem("token");
+        const idU = window.localStorage.getItem("idU")
+        if (token !== null && User === null) {
+            await getUserById(idU).then((data) => {
+                setUser(data);
+                setLogged(true);
+            })
+        }
+    }
+    useEffect(() => {
+        authLogged()
+    })
 
-    return <UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut }}>
+
+    return <UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut, authLogged }}>
         <UserContext.Provider value={User}>
             {children}
 

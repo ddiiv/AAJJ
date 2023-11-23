@@ -14,7 +14,7 @@ export function useCartFunctions() {
 }
 
 export const CartProvider = ({ children }) => {
-    
+
     const [cart, setCart] = useState({
         Enabled: false,
         IdCartItem: 0,
@@ -27,6 +27,7 @@ export const CartProvider = ({ children }) => {
         Title: "",
         QC: true
     });
+
     const UserContext = useUserContext();
     const [loading, setLoading] = useState(false);
 
@@ -56,51 +57,43 @@ export const CartProvider = ({ children }) => {
         }
         return sum
     }
+    async function getCartItemsByIdUser() {
+        if (UserContext!==null) {
+            await getCartByIdUser(UserContext.IdUser).then((data) => {
+                if (cart.IdCartItem === 0) {
+                    data.map(a => {
+                        let i = 0;
+                        if (a.QuantityCart > a.QuantityStock) {
+                            i = a.QuantityStock
+                            a.QuantityCart = i;
+                            return a;
+                        }
+                        else {
 
-    useEffect(() => {
-        async function getCartItemsByIdUser() {
-            if (UserContext) {
-                await getCartByIdUser(UserContext.IdUser).then((data) => {
-                    if (cart.IdCartItem === 0) {
-                        data.map(a => {
-                            let i = 0;
-                            if (a.QuantityCart > a.QuantityStock) {
-                                i = a.QuantityStock
-                                a.QuantityCart = i;
-                                return a;
-                            }
-                            else {
+                            return a;
+                        }
+                    })
+                    setCart(data)
 
-                                return a;
-                            }
-                        })
-                        setCart(data)
-
-                        return cart
-                    }
-                });
-            }
-            else {
-                setLoading(true)
-            }
+                    return cart
+                }
+            });
         }
+        else {
+
+            setLoading(true)
+        }
+    }
+    useEffect(() => {
         getCartItemsByIdUser();
-    }, [UserContext, cart])
+    },[UserContext])
 
     const removeFromCart = async (idCartItem) => {
         if (idCartItem) {
             await deleteCartItem(idCartItem).then(data => {
-                setCart({
-                    Enabled: false,
-                    IdCartItem: 0,
-                    IdStock: 0,
-                    Image: "",
-                    Price: 0,
-                    QuantityCart: 0,
-                    QuantityStock: 0,
-                    Size: "",
-                    Title: ""
-                });
+                const updatecart = cart.filter((c)=>
+                c.IdCartItem && typeof c.IdCartItem === Int8Array && c.IdCartItem !== idCartItem)
+                console.log(updatecart)
                 return data
             })
         }
