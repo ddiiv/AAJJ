@@ -37,6 +37,7 @@ class UserService {
     login = async (user, password) => {
         let returnEntity = null;
         console.log('Estoy en: UserService.login(user, password)');
+        
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
