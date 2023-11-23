@@ -53,11 +53,12 @@ class CartItemService {
     update = async (cartItem) => {
         let rowsAffected = 0;
         console.log('Estoy en: CartItemService.update(cartItem)');
+
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pQuantity', sql.Int , cartItem?.Quantity)
-                .input('pId', sql.Int , cartItem?.IdCartItem)
+                .input('pQuantity', sql.Int , cartItem.Quantity)
+                .input('pId', sql.Int , cartItem.IdCartItem)
                 .query(`
                     UPDATE CartItem SET
                         Quantity = @pQuantity
