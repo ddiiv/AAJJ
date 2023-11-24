@@ -18,10 +18,11 @@ export const UserProvider = ({ children }) => {
 
     const [Logged, setLogged] = useState(false);
     const [User, setUser] = useState(null);
-
+    
     const getUser = async (credentials) => {
         await getUserByCredentials(credentials).then((data) => {
             if (data !== null) {
+
                 setUser(data.data)
                 window.localStorage.setItem("token", data.token)
                 window.localStorage.setItem("idU", data.data.IdUser)
@@ -34,10 +35,11 @@ export const UserProvider = ({ children }) => {
         });
 
     }
-
     const LogOut = () => {
         setUser(null)
         setLogged(false)
+        window.localStorage.removeItem("token")
+        window.localStorage.removeItem("idU")
     }
 
 
@@ -53,7 +55,7 @@ export const UserProvider = ({ children }) => {
     const authLogged = async () => {
         const token = window.localStorage.getItem("token");
         const idU = window.localStorage.getItem("idU")
-        if (token !== null && User === null) {
+        if (token !== null) {
             await getUserById(idU).then((data) => {
                 setUser(data);
                 setLogged(true);
@@ -65,10 +67,9 @@ export const UserProvider = ({ children }) => {
     })
 
 
-    return <UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut, authLogged }}>
+    return (<UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut, authLogged }}>
         <UserContext.Provider value={User}>
             {children}
-
         </UserContext.Provider>
-    </UserLogged.Provider>
+    </UserLogged.Provider>)
 }

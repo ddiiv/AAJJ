@@ -74,11 +74,11 @@ export const getSizesByIdProduct = async (id) => {
 //-----------------------------------Users--------------------------------------------------------------
 export const getUserByCredentials = async (credentials) => {
     try {
-        const { data } = await axios.post('http://localhost:3001/user/login',
-            {
-                "user": credentials.User,
-                "password": credentials.Password
-            }
+        const bodyData = {
+            user: credentials.User,
+            password: credentials.Password
+        }
+        const { data } = await axios.post('http://localhost:3001/user/login',bodyData
         )
         return data;
 
@@ -119,13 +119,7 @@ export const getUserById = async (id) => {
 
 export const getCartByIdUser = async (idUser) => {
     try {
-        const { data } = await axios.get(`${baseURL}cartitems/${idUser}`,
-            {
-                headers: {
-                    "user_token": token
-                }
-            }
-        );
+        const { data } = await axios.get(`${baseURL}cartitems/${idUser}`, { headers });
         return data;
     } catch (e) {
         if (e.response.status === 404) {

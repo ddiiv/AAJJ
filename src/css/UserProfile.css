@@ -1,0 +1,11 @@
+.profile-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .profile-details {
+    margin-top: 50px;
+    text-align: left;
+  }

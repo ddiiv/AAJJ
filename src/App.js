@@ -20,15 +20,14 @@ import Login from './pages/Login'
 import UserProfile from './pages/UserProfile'
 //---------Context
 import { UserProvider } from './context/UserContext';
-import { useUserContext } from './context/UserContext';
+import { useUserContext, useUserLogged } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import { SearchProvider, useSearchFunctions } from './context/SearchContext';
 
 
 function App() {
 
-  const contextUser = useUserContext();
-
+  const contextUser = useUserLogged();
   const contextSearch = useSearchFunctions();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
@@ -45,44 +44,42 @@ function App() {
       })
 
   }, [])
-
+ 
   return (
+    <>
+      <UserProvider>
+        <CartProvider>
+          <SearchProvider>
+            <div className="App">
+              <BrowserRouter>
+                <TopNav />
+                <BottomNav />
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  {category.map((categories) => {
+                    const categorytoLowerCase = categories.Category
+                    return (
+                      <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
+                    )
+                  })}
+                  {products.map((product) => {
 
-    <UserProvider>
-      <CartProvider>
-        <SearchProvider>
-          <div className="App">
-            
-            <BrowserRouter>
-              <TopNav />
-              <BottomNav />
-              <Routes>
-                <Route path='/' element={<Home />} />
-                {category.map((categories) => {
-                  const categorytoLowerCase = categories.Category
-                  return (
-                    <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
-                  )
-                })}
-                {products.map((product) => {
-
-                  return (
-                    <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail productSelected={product} />} />
-                  )
-                })}
-                <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
-                <Route path='/cartdetail' element={<CartDetail />}></Route>
-                <Route path='/login' element={<Login />}></Route>
-                <Route path={`/profile/${contextUser?.User}`} element={<UserProfile />}></Route>
-              </Routes>
-
-            </BrowserRouter>
-            <Footer />
-          </div>
-        </SearchProvider>
-      </CartProvider>
-    </UserProvider>
-
+                    return (
+                      <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail productSelected={product} />} />
+                    )
+                  })}
+                  <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
+                  <Route path='/cartdetail' element={<CartDetail />}></Route>
+                  <Route path={`/profile/caste12`} element={<UserProfile />}></Route>
+                  <Route path='/login' element={<Login />}></Route>
+                </Routes>
+              </BrowserRouter>
+              <Footer />
+            </div>
+          </SearchProvider>
+        </CartProvider>
+      </UserProvider>
+    </>
   );
 }
 
