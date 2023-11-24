@@ -9,7 +9,7 @@ const User = () => {
         if (context !== null) {
             return (
                 <button className='buttonItem' id="center">
-                    <Link to={`/profile/${context?.User}`} className="nothing"><img className='items' src={userr} alt="" /> <span className='rich-text usertext'>{context?.User}</span></Link>
+                    <Link to='/profile' className="nothing"><img className='items' src={userr} alt="" /> <span className='rich-text usertext'>{context?.User}</span></Link>
                 </button>
             );
         }

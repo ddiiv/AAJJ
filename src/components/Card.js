@@ -5,26 +5,23 @@ import { getImage } from "../api/apiFunctions";
 const Card = ({ product }) => {
     const [products, setProducts] = useState([]);
 
-
-    const getImageProduct = async () => {
-
-        try {
-
-            const staticProduct = product
-            const res = await getImage(staticProduct.Image)
-            const url = await res.url;
-            setProducts({
-                ...staticProduct,
-                Image: url
-            });
-
-        } catch (error) {
-            throw new Error('Error al obtener los productos de la API. Error: ' + error)
-        }
-    }
     useEffect(() => {
+        const getImageProduct = async () => {
+            try {
+                const staticProduct = product
+                const res = await getImage(staticProduct.Image)
+                const url = await res.url;
+                setProducts({
+                    ...staticProduct,
+                    Image: url
+                });
+    
+            } catch (error) {
+                throw new Error('Error al obtener los productos de la API. Error: ' + error)
+            }
+        }
         getImageProduct()
-    }, [products])
+    }, [2])
     return (
         <>
 

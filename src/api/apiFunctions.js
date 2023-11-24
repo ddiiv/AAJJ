@@ -11,8 +11,8 @@ const headers = {
 //-----------------------------------------GETS---------------------------------------------------------
 
 //----------------------------------------Images--------------------------------------------------------
-export const getImage = (img) => {
-    return fetch(`${baseURL}img/${img}`);
+export const getImage = async(img) => {
+    return await fetch(`${baseURL}img/${img}`);
 };
 
 export const getCarruselImages = async () => {

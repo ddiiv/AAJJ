@@ -27,7 +27,6 @@ import { SearchProvider, useSearchFunctions } from './context/SearchContext';
 
 function App() {
 
-  const contextUser = useUserLogged();
   const contextSearch = useSearchFunctions();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
@@ -44,7 +43,7 @@ function App() {
       })
 
   }, [])
- 
+
   return (
     <>
       <UserProvider>
@@ -56,7 +55,7 @@ function App() {
                 <BottomNav />
                 <Routes>
                   <Route path='/' element={<Home />} />
-                  {category.map((categories) => {
+                  {category?.map((categories) => {
                     const categorytoLowerCase = categories.Category
                     return (
                       <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
@@ -70,7 +69,7 @@ function App() {
                   })}
                   <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
                   <Route path='/cartdetail' element={<CartDetail />}></Route>
-                  <Route path={`/profile/caste12`} element={<UserProfile />}></Route>
+                  <Route path='/profile' element={<UserProfile />}></Route>
                   <Route path='/login' element={<Login />}></Route>
                 </Routes>
               </BrowserRouter>
