@@ -40,24 +40,6 @@ const Filters=({props})=>{
   },[])
   /* --------------------Filter useEffect --------------------*/ 
 
-    /* useEffect(() => {
-    if (!listProduct.length) return;
-    let newProductos = [...listProduct];
-
-    if (filters) {
-      newProductos = newProductos.filter(product => product.SubCategory === filters.SubCategory);
-    }
-
-    if (filters) {
-      newProductos = newProductos.filter(product => product.Size.includes(filters.Size));
-    }
-
-    if(filters){
-      newProductos = newProductos.filter(product => product.Category === filters.Category);
-    }
-
-    setProductosFiltrados(newProductos);
-  }, [filters])*/
   
     return(
 

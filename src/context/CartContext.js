@@ -60,8 +60,10 @@ export const CartProvider = ({ children }) => {
     async function getCartItemsByIdUser() {
         if (UserContext !== null) {
             await getCartByIdUser(UserContext.IdUser).then((data) => {
-                if (cart.IdCartItem === 0) {
-                    data?.map(a => {
+                if (cart.IdCartItem === 0 && data !== null) 
+                {
+                    let g = data;
+                    g.map(a => {
                         let i = 0;
                         if (a.QuantityCart > a.QuantityStock) {
                             i = a.QuantityStock
@@ -73,7 +75,7 @@ export const CartProvider = ({ children }) => {
                             return a;
                         }
                     })
-                    setCart(data)
+                    setCart(g)
 
                     return cart
                 }

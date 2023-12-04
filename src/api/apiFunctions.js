@@ -88,8 +88,7 @@ export const getUserByCredentials = async (credentials) => {
             console.log('Resource could not be found!');
         }
         else if (e.response.status === 401) {
-            const data = null;
-            return data
+            return false
         }
         else {
             console.log("e.response.status")

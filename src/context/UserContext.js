@@ -18,22 +18,26 @@ export const UserProvider = ({ children }) => {
 
     const [Logged, setLogged] = useState(false);
     const [User, setUser] = useState(null);
-    
-    const getUser = async (credentials) => {
-        await getUserByCredentials(credentials).then((data) => {
-            if (data !== null) {
 
+    const getUser = async (credentials) => { 
+        let ValueToReturn = null; 
+        await getUserByCredentials(credentials).then((data) => {
+            if (data !== false) {
                 setUser(data.data)
                 window.localStorage.setItem("token", data.token)
                 window.localStorage.setItem("idU", data.data.IdUser)
                 setLogged(true)
-                return User;
+                ValueToReturn=User;
+                return ValueToReturn;
             }
             else {
-                alert("no llego el user");
+                setLogged(false)
+                setUser(null)
+                ValueToReturn = false;
+                return ValueToReturn;
             }
         });
-
+        return ValueToReturn;
     }
     const LogOut = () => {
         setUser(null)
@@ -57,8 +61,16 @@ export const UserProvider = ({ children }) => {
         const idU = window.localStorage.getItem("idU")
         if (token !== null) {
             await getUserById(idU).then((data) => {
-                setUser(data);
-                setLogged(true);
+                if (data === false) {
+                    setUser(null)
+                    setLogged(false)
+                    return false
+                }
+                else {
+                    setUser(data);
+                    setLogged(true);
+                    return true
+                }
             })
         }
     }

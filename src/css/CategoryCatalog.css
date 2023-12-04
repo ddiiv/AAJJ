@@ -413,10 +413,7 @@ aside{
     font-size: 3vw;
   }
 }
-.nothing{
-  text-decoration: none;
-  color: #000;
-}
+
 .genderContainer{
   width: 100%;
   display: flex;
