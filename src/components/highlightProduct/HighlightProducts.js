@@ -32,7 +32,7 @@ const HighlistProducts = () => {
     autoplaySpeed: 4500,
     arrows: false,
     slide: '.slider-pic',
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     dots: false,
     cssEase: 'ease-out',

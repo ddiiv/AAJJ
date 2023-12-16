@@ -2,16 +2,16 @@ import axios from "axios";
 
 
 const baseURL = "http://localhost:3001/";
-const headerToken = { "user_token": window.localStorage.getItem("token") }
 const token = window.localStorage.getItem("token");
+const headerToken = { user_token: `${token}` };
 const headers = {
     'Content-Type': 'application/json',
-    'user_token': token
+    'user_token': `${token}`
 };
 //-----------------------------------------GETS---------------------------------------------------------
 
 //----------------------------------------Images--------------------------------------------------------
-export const getImage = async(img) => {
+export const getImage = async (img) => {
     return await fetch(`${baseURL}img/${img}`);
 };
 
@@ -78,7 +78,7 @@ export const getUserByCredentials = async (credentials) => {
             user: credentials.User,
             password: credentials.Password
         }
-        const { data } = await axios.post('http://localhost:3001/user/login',bodyData
+        const { data } = await axios.post('http://localhost:3001/user/login', bodyData
         )
         return data;
 
@@ -97,7 +97,7 @@ export const getUserByCredentials = async (credentials) => {
 }
 export const getUserById = async (id) => {
     try {
-
+      
         const { data } = await axios.get(
             `${baseURL}user/${id}`, {
             headers: headerToken
@@ -115,12 +115,20 @@ export const getUserById = async (id) => {
 
 };
 //-----------------------------------Cart---------------------------------------------------------------
-
 export const getCartByIdUser = async (idUser) => {
     try {
-        const { data } = await axios.get(`${baseURL}cartitems/${idUser}`, { headers });
-        return data;
-    } catch (e) {
+      
+        const token = window.localStorage.getItem("token");
+        const headerTokenn = { user_token: `${token}` };
+        const { data } = await axios.get(
+            `${baseURL}cartitems/${idUser}`,
+            {
+                headers: headerTokenn
+            }
+        )
+        return data
+    }
+    catch (e) {
         if (e.response.status === 404) {
             console.log("Resource could not be found!");
         } else {
@@ -147,7 +155,7 @@ export const putCardItem = async (ids) => {
     }
     catch (e) {
 
-            console.log(e);
+        console.log(e);
 
     }
 }
@@ -158,9 +166,6 @@ export const putCartItemQuantity = async (ids) => {
             Quantity: ids.stockToHandle
         }
         const { data } = await axios.put(`${baseURL}cartitem/quantity`, bodyData, { headers })
-            .then(response => {
-                console.log('Respuesta:', response.data);
-            })
         return data
     }
     catch (e) {
@@ -172,11 +177,11 @@ export const putCartItemQuantity = async (ids) => {
 export const deleteCartItem = async (id) => {
     try {
         const { data } = await axios.delete(`${baseURL}cartitem/${id}`, { headers })
-        .then(response => {
-            console.log('Respuesta:', response.data);
-        })
-        
-    return data
+            .then(response => {
+                console.log('Respuesta:', response.data);
+            })
+
+        return data
     }
     catch (e) {
         if (e.response === 404) {

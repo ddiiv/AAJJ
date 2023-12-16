@@ -19,15 +19,15 @@ const CartDetailCard = ({ cartProductIn }) => {
 
     const handleStockAdd = async (e) => {
         if (stock < product.QuantityStock) {
-            e.preventDefault();
             setLoading(true)
             setStock(stock + 1)
             stockToHandle = stock + 1;
             idCartItem = product.IdCartItem;
             idsToPutQuantity = { idCartItem, stockToHandle }
 
-            cartFunctions.changueQuantityItemCart(idsToPutQuantity).then(
+            cartFunctions.changueQuantityItemCart(idsToPutQuantity).then((data) => {
                 setLoading(false)
+            }
             )
 
         }
@@ -35,21 +35,21 @@ const CartDetailCard = ({ cartProductIn }) => {
     }
     const handleStockSubs = async (e) => {
         if (stock > 1) {
-            e.preventDefault();
             setLoading(true)
             setStock(stock - 1)
             stockToHandle = stock - 1;
             idCartItem = product.IdCartItem;
 
             idsToPutQuantity = { idCartItem, stockToHandle }
-            cartFunctions.changueQuantityItemCart(idsToPutQuantity).then(
+            cartFunctions.changueQuantityItemCart(idsToPutQuantity).then((data) => {
                 setLoading(false)
+            }
             )
 
         }
     }
 
-    const removeItemFromCart = (e)=>{
+    const removeItemFromCart = (e) => {
         e.preventDefault();
         cartFunctions.removeFromCart(product?.IdCartItem)
     }
@@ -71,11 +71,9 @@ const CartDetailCard = ({ cartProductIn }) => {
     const priceTotalxProduct = () => { priceTotalByProduct = product.Price * stock; return priceTotalByProduct; }
 
     useEffect(() => {
-        setStock(cartProductIn.QuantityCart)
         getImageProduct()
-
     }, [cartProductIn])
-
+    useEffect(()=>{ setStock(cartProductIn.QuantityCart)},[cartProductIn])
 
     return (
         <>
@@ -97,7 +95,7 @@ const CartDetailCard = ({ cartProductIn }) => {
 
                         <div className="ui-link-container">
                             <div className="item-link">
-                                <a href className="link" onClick={removeItemFromCart}>Eliminar</a> 
+                                <a href className="link" onClick={removeItemFromCart}>Eliminar</a>
                             </div>
                             <div className="item-link">
                                 <a href className="link"  >Guardar</a>

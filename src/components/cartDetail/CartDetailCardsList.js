@@ -24,6 +24,7 @@ const CartDetailCardsList = () => {
         setProductOfCartContext()
 
     }, [cartcontext, products])
+
     function checkCartQuantity() {
         if (cartFunctions.loading === false) {
             return (

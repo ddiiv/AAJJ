@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../css/Carrusel.css';
 import { getCarruselImages } from '../api/apiFunctions';
+import Flickity from 'react-flickity-component';
 
 const CarouselComponent = () => {
     const [images, setImages] = useState([])
@@ -21,25 +20,41 @@ const CarouselComponent = () => {
     }, [])
 
     return (
-        <div className='carrousel'>
-            <Carousel
-                showThumbs={false}
-                autoPlay={true}
-                infiniteLoop={true}
-                showArrows={false}
-                interval={3000}
-                transitionTime={500}
-                showStatus={false}
-                showIndicators={true}
-                stopOnHover={false}
+            <Flickity
+                className={'carousel'}
+                elementType={'div'}
+                options={{
+                    cellAlign: 'center',
+                    contain: true,
+                    wrapAround: true,
+                    autoPlay: 5000,
+                    pauseAutoPlayOnHover: false,
+                    prevNextButtons: false,
+                    pageDots: false,
+                    draggable: true,
+                    freeScroll: false,
+                    groupCells: true,
+                    lazyLoad: true,
+                    selectedAttraction: 0.01,
+                    friction: 0.15,
+                    rightToLeft: false,
+                    imagesLoaded: true,
+                    percentPosition: false,
+                    adaptiveHeight: false,
+                    draggable: true,
+                    groupCells: true,
+                }}
+                disableImagesLoaded={false}
+                reloadOnUpdate
+                static
+
             >
                 {images?.map((image, index) => (
                     <div className='item' key={index}>
-                        <img className='carruselImg' src={image.foto} alt=""/> 
+                        <img className='carruselImg' src={image.foto} alt="" />
                     </div>
                 ))}
-            </Carousel>
-        </div>
+            </Flickity>
     )
 }
 

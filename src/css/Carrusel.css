@@ -1,23 +1,35 @@
 
-.Carrousel{
-    width:100% !important;
-    height: 500px ;
-    
-}
-.item{
+.carousel.flickity-enabled.is-draggable{
 
-    width: 100% ;
-    height: 500px ;
     border: none;
     outline: none;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
+.flickity-button.flickity-prev-next-button.next{
+    display: none;
+}
+.item{
+    width: 100% ;
+    height: 400px ;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+}
+
 .carruselImg{
-
     width: 100%;
-    height: 500px ;
-
+    height: 350px ;
+    border: none !important;
 }
+
 .carousel .slide {
     min-width: 100%;
     margin: 0;
@@ -32,4 +44,5 @@
     display: flex;
     width: 100%;
     height: 500px ;
+    border: none;
 }

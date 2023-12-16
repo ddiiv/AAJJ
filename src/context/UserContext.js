@@ -24,10 +24,10 @@ export const UserProvider = ({ children }) => {
         await getUserByCredentials(credentials).then((data) => {
             if (data !== false) {
                 setUser(data.data)
-                window.localStorage.setItem("token", data.token)
+                window.localStorage.setItem("token", String.valueOf.apply(data.token))
                 window.localStorage.setItem("idU", data.data.IdUser)
                 setLogged(true)
-                ValueToReturn=User;
+                ValueToReturn = data.data;
                 return ValueToReturn;
             }
             else {
@@ -56,14 +56,20 @@ export const UserProvider = ({ children }) => {
             LogOut()
         }
     }
+    
     const authLogged = async () => {
         const token = window.localStorage.getItem("token");
         const idU = window.localStorage.getItem("idU")
-        if (token !== null) {
+        if (token !== null && User === null) {
             await getUserById(idU).then((data) => {
-                if (data === false) {
+                console.log(data)
+                if (data?.error === "Expired token") {
+                    
                     setUser(null)
                     setLogged(false)
+                    alert('Tu sesión ha expirado')
+                    window.localStorage.clear("idU")
+                    window.localStorage.clear("token")
                     return false
                 }
                 else {

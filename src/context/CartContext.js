@@ -14,7 +14,8 @@ export function useCartFunctions() {
 }
 
 export const CartProvider = ({ children }) => {
-
+    const UserContext = useUserContext();
+    const [loading, setLoading] = useState(false);
     const [cart, setCart] = useState({
         Enabled: false,
         IdCartItem: 0,
@@ -28,8 +29,6 @@ export const CartProvider = ({ children }) => {
         QC: true
     });
 
-    const UserContext = useUserContext();
-    const [loading, setLoading] = useState(false);
 
     function sumQuantityCart() {
         let sum = 0;
@@ -37,6 +36,7 @@ export const CartProvider = ({ children }) => {
         let i;
         for (i = 0; i < cont; i++) {
             sum = sum + cart[i].QuantityCart
+
         }
         if (sum === 0) {
             setLoading(true)
@@ -58,12 +58,12 @@ export const CartProvider = ({ children }) => {
         return sum
     }
     async function getCartItemsByIdUser() {
-        if (UserContext !== null) {
+        const token = window.localStorage.getItem("token")
+        if (UserContext !== null && token !== null) {
             await getCartByIdUser(UserContext.IdUser).then((data) => {
-                if (cart.IdCartItem === 0 && data !== null) 
-                {
-                    let g = data;
-                    g.map(a => {
+                if (cart.IdCartItem === 0 && !data.error) {
+                    
+                    data?.map(a => {
                         let i = 0;
                         if (a.QuantityCart > a.QuantityStock) {
                             i = a.QuantityStock
@@ -75,14 +75,12 @@ export const CartProvider = ({ children }) => {
                             return a;
                         }
                     })
-                    setCart(g)
-
+                    setCart(data)
                     return cart
                 }
             });
         }
         else {
-
             setLoading(true)
         }
     }
@@ -114,9 +112,10 @@ export const CartProvider = ({ children }) => {
         if (idsToPutQuantity && cart) {
             await putCartItemQuantity(idsToPutQuantity).then(data => {
                 if (data) {
+                    
                     const idcart = idsToPutQuantity.idCartItem;
                     const updateCart = cart.map(item => {
-                        if (idcart.idCartItem === item.idCartItem) {
+                        if (idcart === item.idCartItem) {
                             return { ...item, QuantityCart: idsToPutQuantity.stockToHandle }
                         }
                         return item;
@@ -125,6 +124,7 @@ export const CartProvider = ({ children }) => {
                 }
             })
         }
+        return cart
     }
 
     return (
