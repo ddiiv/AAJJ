@@ -24,7 +24,7 @@ class jwtservice {
         let payload = null;
 
         try {
-            payload = jwt.decode(token, process.env.TOKEN_KEY);
+            payload = jwt.decode(token,TOKEN_KEY);
         } catch (err) {
             return res.json({
                 error: "Invalid token",

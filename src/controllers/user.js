@@ -23,13 +23,25 @@ export const login = async (req, res) => {
             });
         } 
         else {
-            return res.status(401).json("No se encontró al usuario o la contraseña");
+            return res.status(204).json("No se encontró al usuario o la contraseña");
         }
     } 
     catch (error) {
         console.error(error);
         return res.status(500).json("Error en el servidor");
     }
+}
+
+export const register = async(req,res) =>{
+    let rowsAffected = 0;
+	try {
+		const user = req.body;
+		rowsAffected = await new UserService().register(user);
+		res.status(200).send("Correct Register,"+ rowsAffected +" RowsAffected");
+	} catch (error) {
+		console.error(error);
+        return res.status(500).json("Error en el servidor");
+	}
 }
 
 export const update= async(req,res) =>{

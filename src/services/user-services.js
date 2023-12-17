@@ -57,17 +57,23 @@ class UserService {
         }
         return returnEntity;
     }
-    insert = async (user) => {
+    register = async (user) => {
         let rowsAffected = 0;
-        console.log('Estoy en: UserService.insert(user)');
+        console.log('Estoy en: UserService.register(user)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('pUser', sql.NChar, user?.user)
-                .input('pImage', sql.NChar, user?.image)
+                .input('pPassword', sql.NChar, user?.password)
+                .input('pDateCreation', sql.Date, new Date())
+                .input('pEmail', sql.NChar, user?.email)
+                .input('pMembershipNumber', sql.NChar, user?.membershipNumber ?? null)
+                .input('pDni', sql.Int, user?.dni ?? null)
+                .input('pDateOfBirth', sql.Date, user?.dateOfBirth ?? null)
+                .input('pPhoneNumber', sql.NChar, user?.phoneNumber ?? null)
                 .query(`
-                    INSERT INTO User (User, Image) 
-                    VALUES (@pUser, @pImage)
+                    INSERT INTO [User] ([User], [Password], DateCreation, Email, MembershipNumber, Dni, DateOfBirth, PhoneNumber) 
+                    VALUES (@pUser, @pPassword, @pDateCreation, @pEmail, @pMembershipNumber, @pDni, @pDateOfBirth, @pPhoneNumber)
                 `);
             rowsAffected = result.rowsAffected;
         } catch (error) {
