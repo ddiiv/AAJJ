@@ -83,3 +83,43 @@
     max-width: none;
     display: block;
 }
+.login-form__actions.register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+.andres-button.register{
+    width: 100%;
+    max-width: 30rem;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c00000;
+    border-radius: 25px ;
+}
+.andres-button__content.register{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.login-form.register{
+    padding: 2rem;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }

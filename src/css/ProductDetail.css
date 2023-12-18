@@ -232,22 +232,15 @@ input[type=radio]:checked+ .sizeCircle{
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    
-
 }
 input[type=number]{
     z-index: 1;
     border: none;
     font-size: 12px;
-    text-align: center;
+    text-align: start;
     border-radius: 0;
     background-color: #ffffff;
-
     float: left;
-    
-
-
 }
 .StockProductxSizeNumber{
 

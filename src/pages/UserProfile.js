@@ -26,8 +26,7 @@ const UserProfile = () => {
 
                                 </div>
                                 <div className="profile-buttons">
-
-                                    <button className="profile-button" onClick={contextFunction.LogOut}>Cerrar sesion</button>
+                                    <button className="havetoLogin-button" onClick={contextFunction.LogOut}>Cerrar sesion</button>
                                 </div>
                             </div>
                         </div>

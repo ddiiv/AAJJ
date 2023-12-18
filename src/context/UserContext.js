@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from "react";
 import { useEffect } from "react";
-import { getUserByCredentials, getUserById } from "../api/apiFunctions";
+import { getUserByCredentials, getUserById, putRegisterUser } from "../api/apiFunctions";
 
 
 const UserContext = createContext();
@@ -44,6 +44,7 @@ export const UserProvider = ({ children }) => {
         setLogged(false)
         window.localStorage.removeItem("token")
         window.localStorage.removeItem("idU")
+        window.location.reload()
     }
 
 
@@ -80,12 +81,22 @@ export const UserProvider = ({ children }) => {
             })
         }
     }
+    const registerForm = async (dataform)=>{
+       await putRegisterUser(dataform).then((data)=>{
+        if(data === 200){
+            const credentials = { User:dataform.User, Password: dataform.Password }
+            getUser(credentials)
+            
+        }
+       })
+    }
+
     useEffect(() => {
         authLogged()
     })
 
 
-    return (<UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut, authLogged }}>
+    return (<UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut, authLogged, registerForm }}>
         <UserContext.Provider value={User}>
             {children}
         </UserContext.Provider>

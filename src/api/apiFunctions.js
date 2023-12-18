@@ -97,7 +97,7 @@ export const getUserByCredentials = async (credentials) => {
 }
 export const getUserById = async (id) => {
     try {
-      
+
         const { data } = await axios.get(
             `${baseURL}user/${id}`, {
             headers: headerToken
@@ -117,7 +117,7 @@ export const getUserById = async (id) => {
 //-----------------------------------Cart---------------------------------------------------------------
 export const getCartByIdUser = async (idUser) => {
     try {
-      
+
         const token = window.localStorage.getItem("token");
         const headerTokenn = { user_token: `${token}` };
         const { data } = await axios.get(
@@ -126,6 +126,7 @@ export const getCartByIdUser = async (idUser) => {
                 headers: headerTokenn
             }
         )
+        
         return data
     }
     catch (e) {
@@ -138,6 +139,20 @@ export const getCartByIdUser = async (idUser) => {
 };
 
 //-----------------------------------------PUTS---------------------------------------------------------
+export const putRegisterUser = async (dataform) => {
+    try {
+        const response = await axios.put(
+            `${baseURL}user/register`,
+            dataform
+        )
+        console.log(response.status)
+        return response.status
+    }
+    catch (e) {
+        console.log(e)
+    }
+
+}
 export const putCardItem = async (ids) => {
     try {
         const bodyData = {
