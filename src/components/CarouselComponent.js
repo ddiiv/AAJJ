@@ -41,8 +41,8 @@ const CarouselComponent = () => {
                     imagesLoaded: true,
                     percentPosition: false,
                     adaptiveHeight: false,
-                    draggable: true,
-                    groupCells: true,
+                    accessibility: true,
+                    
                 }}
                 disableImagesLoaded={false}
                 reloadOnUpdate

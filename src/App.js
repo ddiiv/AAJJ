@@ -17,6 +17,7 @@ import ProductDetail from './pages/ProductDetail.js';
 import Search from './pages/Search.js'
 import CartDetail from './pages/CartDetail';
 import Login from './pages/Login'
+import Register from './pages/Register'
 import UserProfile from './pages/UserProfile'
 //---------Context
 import { UserProvider } from './context/UserContext';
@@ -71,6 +72,7 @@ function App() {
                   <Route path='/cartdetail' element={<CartDetail />}></Route>
                   <Route path='/profile' element={<UserProfile />}></Route>
                   <Route path='/login' element={<Login />}></Route>
+                  <Route path='/register' element={<Register />}></Route>
                 </Routes>
               </BrowserRouter>
               <Footer />

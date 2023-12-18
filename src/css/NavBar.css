@@ -262,19 +262,10 @@ a {
         transition: 0.5s;
         transform: translateY(-3);
     }
-
-    .logo {
-        max-width: 30vw;
-    }
-
     .navItem {
         font-size: 14px;
     }
 
-    .items {
-        max-width: 5vw;
-        height: 5vw;
-    }
 }
 
 @media screen and (max-width:770px) {

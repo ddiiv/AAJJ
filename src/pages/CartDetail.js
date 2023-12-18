@@ -1,9 +1,6 @@
 import React from "react";
 import '../css/CartDetail.css'
-
 import { useUserContext } from "../context/UserContext";
-
-
 import CartDetailCardsList from "../components/cartDetail/CartDetailCardsList";
 import HaveToLogin from "../components/HaveToLogin";
 
