@@ -10,4 +10,5 @@ app.use(express.json())
 
 allRoutes.forEach(router => app.use(router))
 
+
 export default app
