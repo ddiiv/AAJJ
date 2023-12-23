@@ -22,19 +22,28 @@ const HighlightCard = ({ product }) => {
     }, [])
     return (
         <>
-            <div className="product-card" key={products.idProduct}>
-                <div className="badge"></div>
-                <div className="product-tumb">
-                    <img src={products.Image} alt="Producto" />
-                </div>
-                <div className="product-details">
-                    <span className="product-catagory"><b className="gender">{products.SubCategory}</b></span>
-                    <h4> <Link className="nothing" to={`/product/${products.Title}`}  ><h1 className="title">{products.Title}</h1> </Link></h4>
-                    <h4 className="description"> <p>{products.Description}</p></h4> 
-                    <div className="product-bottom-details">
-                        <div className="product-price"><span className="price">${products.Price}</span></div>
+            <div className="max-w-6xl mx-auto" key={products.idProduct}>
+                <Link className="nothing--profile" to={`/product/${products.Title}`}>
+                    <div className="max-w-sm w-full sm:w-1/2 lg:w-1/3 py-6 px-3">
+
+                        <div className="bg-white shadow-xl rounded-lg overflow-hidden">
+                            <img src={products.Image} alt="Producto" className="productImage" />
+                            <div className="p-4">
+                                <p className="uppercase tracking-wide text-sm font-bold text-gray-700">{products.SubCategory}</p>
+                                <p className="text-gray-700 Title"> {products.Title}</p>
+                                <p className="text-3xl text-gray-900">{localStorage.getItem("tradecoin")} {products.Price}</p>
+                            </div>
+                            <div className="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+                                <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Descripcion</div>
+                                <div className="flex items-center pt-2">
+                                    <div className="description-text-card">
+                                        <p className="text-sm text-gray-700 Description">{products.Description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </>
     )

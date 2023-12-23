@@ -30,8 +30,8 @@ export const CartProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [cart, setCart] = useState(initialValues);
     const [QuantityCart, setQuantityCart] = useState(0)
-
-
+    const sesionCountry = localStorage.getItem("geoLocation-country")
+    const actualUsd = sessionStorage.getItem("USD-BLUE")
 
     function sumQuantityCart(updateCart) {
 
@@ -41,7 +41,7 @@ export const CartProvider = ({ children }) => {
             for (i = 0; i < cart?.length; i++) {
                 sum = sum + cart[i]?.QuantityCart
             }
-            
+
             setQuantityCart(sum)
         }
         else {
@@ -60,7 +60,12 @@ export const CartProvider = ({ children }) => {
         let cont = cart?.length
         let i;
         for (i = 0; i < cont; i++) {
-            sum = sum + cart[i].QuantityCart * cart[i].Price
+            if (sesionCountry === "US") {
+                sum = parseFloat((sum + (cart[i].QuantityCart * cart[i].Price)).toFixed(3))
+            }
+            else {
+                sum = sum + cart[i].QuantityCart * cart[i].Price
+            }
         }
         return sum
     }
@@ -68,18 +73,39 @@ export const CartProvider = ({ children }) => {
         const token = window.localStorage.getItem("token")
         if (UserContext !== null && token !== null) {
             await getCartByIdUser(UserContext.IdUser).then((data) => {
+
                 if (cart.IdCartItem === 0 && !data.error) {
-                    data?.map(a => {
-                        let i = 0;
-                        if (a.QuantityCart > a.QuantityStock) {
-                            i = a.QuantityStock
-                            a.QuantityCart = i;
-                            return a;
+                    if (sesionCountry === "US") {
+
+
+                        data?.map(a => {
+                            let i = 0;
+                            a.Price = parseFloat((a.Price / actualUsd).toFixed(3))
+                            if (a.QuantityCart > a.QuantityStock) {
+                                i = a.QuantityStock
+                                a.QuantityCart = i;
+                                return a;
+                            }
+                            else {
+                                return a;
+                            }
                         }
-                        else {
-                            return a;
+                        )
+                    }
+                    else{
+                        data?.map(a => {
+                            let i = 0;
+                            if (a.QuantityCart > a.QuantityStock) {
+                                i = a.QuantityStock
+                                a.QuantityCart = i;
+                                return a;
+                            }
+                            else {
+                                return a;
+                            }
                         }
-                    })
+                        )
+                    }
                     setLoading(false)
                     sumQuantityCart(data);
                     setCart(data)
@@ -124,23 +150,23 @@ export const CartProvider = ({ children }) => {
                     let i;
                     let updateCart = null;
                     for (i = 0; i < cart.length; i++) {
-                        
+
                         if (cart[i].IdCartItem === idcart) {
                             cart[i].QuantityCart = idsToPutQuantity.stockToHandle;
                             updateCart = cart;
-                           
+
                         }
                         else {
                             updateCart = cart;
-                          
+
                         }
                         setLoading(true)
 
-                    }                        
-                        setCart(updateCart);
-                        sumQuantityCart(updateCart);
-                        
-                        return updateCart
+                    }
+                    setCart(updateCart);
+                    sumQuantityCart(updateCart);
+
+                    return updateCart
                 }
 
             })

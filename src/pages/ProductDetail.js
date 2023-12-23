@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/ProductDetail.css"
-import "../css/htmltags.css"
 import { getImage } from "../api/apiFunctions";
 import ImagesProduct from "../components/productDetail/ImagesProduct";
 import TitleProduct from "../components/productDetail/TitleProduct";
@@ -47,10 +46,14 @@ const ProductDetail = ({ productSelected }) => {
 
 
                     <DescriptionProduct product={product} />
-                    <Recommended />
+                    
                 </div>
             </div>
+            <div className="recommended_container">
+            <Recommended />
+            </div>
         </div>
+
     )
 }
 export default ProductDetail;

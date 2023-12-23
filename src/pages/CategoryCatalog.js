@@ -1,29 +1,16 @@
 import React, { useEffect, useState } from "react"
-import { getProductsByCategory } from "../api/apiFunctions"
+
 import CardList from "../components/CardList";
 import Filters from "../components/Filters";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/CategoryCatalog.css'
-
+import { useProductFunctions } from "../context/ProductContext";
 const CategoryCatalog = (categorySelected) => {
-
-  const [listProduct, setListProduct] = useState([])
-
+  const ProductFunctions = useProductFunctions();
   /* ------------------GetProducts useEffect------------------*/
   useEffect(() => {
-    const getProductByCategorySelected = async () => {
-
-      try {
-        const products = await getProductsByCategory(categorySelected)
-
-        setListProduct(products)
-
-      } catch (error) {
-        throw new Error('Error al obtener los productos de la API. Error: ' + error)
-      }
-    }
-    getProductByCategorySelected()
-  }, [categorySelected])
+       ProductFunctions.getProductByCategorySelected(categorySelected)
+  },[categorySelected])
 
   
 
@@ -35,7 +22,7 @@ const CategoryCatalog = (categorySelected) => {
             <Filters />
           </aside>
           <main className="products">
-            <CardList props={listProduct} />
+            <CardList props={ProductFunctions?.listProduct} />
           </main>
 
         </div>

@@ -692,7 +692,12 @@ span.price{
 .text-gray-700 {
   color: #4a5568;
   width: 100%;
-
+}
+.text-gray-700.Title{
+  max-width: fit-content;
+  height: 3rem;
+  overflow: hidden;
+  word-break: break-word;
 }
 .text-gray-700.Description {
   height: 4rem;
@@ -716,3 +721,48 @@ span.price{
   max-height: 4rem;
   overflow: hidden;
 }
+@media screen and (max-width: 600px) {
+  .max-w-sm {
+    max-width: 100%;
+  }
+  .productImage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-gray-700.Title{
+    max-width: fit-content;
+    height: 3rem;
+    overflow: hidden;
+    word-break: break-word;
+  }
+  .text-gray-700.Description {
+    height: 4rem;
+  }
+  .description-text-card{
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    max-height: 4rem;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width:1250px){
+  .max-w-sm {
+    max-width: 18rem;
+  }
+  .text-gray-700.Title{
+    max-width: fit-content;
+    height: 3.2rem;
+    overflow: hidden;
+    word-break: break-word;
+  }
+}
+

@@ -31,7 +31,7 @@ const CartDetailBuyOut = () => {
                                     color="black"
                                 />)}
                                 {cartcontext != null && (
-                                    <>$ {cartFunction.sumTotalPriceCart()}</>
+                                    <>{localStorage.getItem("tradecoin")} {cartFunction.sumTotalPriceCart()}</>
                                 )}</span></h6>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ const CartDetailBuyOut = () => {
                                         color="black"
                                     />)}
                                 {cartcontext != null && (
-                                    <>$ {cartFunction.sumTotalPriceCart()}</>
+                                    <>{localStorage.getItem("tradecoin")} {cartFunction.sumTotalPriceCart()}</>
                                 )}
                             </span>
                             </h6>

@@ -128,7 +128,7 @@ const CartDetailCard = ({ cartProductIn }) => {
                 <div className="item-price-container">
                     <div className="item-price">
                         <p className="item-price-p">{loading === false && (
-                            <span className="richtext-gray-regular" id="totalPricexProduct">${priceTotalxProduct()}</span>
+                            <span className="richtext-gray-regular" id="totalPricexProduct">{localStorage.getItem("tradecoin")} {priceTotalxProduct()}</span>
                         )}
                             {loading === true && (<span className="richtext-gray-regular"> Loading</span>)
 

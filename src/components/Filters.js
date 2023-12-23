@@ -40,7 +40,13 @@ const Filters=({props})=>{
   },[])
   /* --------------------Filter useEffect --------------------*/ 
 
-  
+    function localCoin (){
+      if(localStorage.getItem("geoLocation-country") === "AR"){
+        return "Moneda de compra: ARS"
+      }else{
+        return "Trade Currency: USD"
+      }
+    }
     return(
 
 
@@ -101,6 +107,7 @@ const Filters=({props})=>{
               </Dropdown>
             </div>
           </div>
+          <span className="rich-text price" id="product-rich-text">{localCoin()}</span>
             </section>
         </div>  
     )

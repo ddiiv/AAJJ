@@ -11,6 +11,7 @@ const BottomNav = () => {
                 setCategory(Categories)
             })
     }, [])
+   
 
     return (
         <div className='nav'>

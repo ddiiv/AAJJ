@@ -1,6 +1,6 @@
 import axios from "axios";
 import HaveToLogin from "../components/HaveToLogin";
-import { RedirectFunction } from "react-router-dom";
+
 
 const baseURL = "http://localhost:3001/";
 const token = window.localStorage.getItem("token");
@@ -69,6 +69,38 @@ export const getCategories = async () => {
     }
 
 };
+//-----------------------------------GeoLocation--------------------------------------------------------
+const API_endpoint_GeoLocation = `https://api.openweathermap.org/data/2.5/weather?`
+const API_key_GeoLocation = `3c480c60a391f0cc316c18897aabf10b`
+export const getGeoLocation = async (latitude, longitude) => {
+    let finalApiEndPoint = `${API_endpoint_GeoLocation}lat=${latitude}&lon=${longitude}&appid=${API_key_GeoLocation}`
+    try {
+        await axios.get(finalApiEndPoint)
+            .then(response => {
+                localStorage.setItem('geoLocation-country',response.data.sys.country)
+                localStorage.setItem('geoLocation-city', response.data.name)
+                localStorage.setItem('geoLocation-lat', response.data.coord.lat)
+                localStorage.setItem('geoLocation-lon',response.data.coord.lon)
+                if(response.data.sys.country === "AR")
+                {
+                    localStorage.setItem('tradecoin', "ARG")
+                }
+                else{
+                    localStorage.setItem('tradecoin', "USD")
+                }
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
+//-----------------------------------Dolar--------------------------------------------------------------
+export const getDolarBlue = async () => {
+    const response = await fetch(`https://dolarapi.com/v1/dolares/blue`)
+    const data = await response.json();
+    sessionStorage.setItem(`USD-BLUE`, data.compra)
+    return data;
+
+}
 //-----------------------------------SubCategories------------------------------------------------------
 
 export const getSubCategories = async () => {

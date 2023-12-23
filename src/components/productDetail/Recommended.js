@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { getProductsHighlist } from "../../api/apiFunctions";
+import React, { useEffect } from "react";
 import '../../css/HighlistProducts.css'
-
+import '../../css/htmltags.css'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import HighlightCard from "../highlightProduct/HighlightCard.js"
+import { useProductFunctions } from "../../context/ProductContext.js";
 
 const Recommended = () => {
-  const [listProduct, setListProduct] = useState([]);
-
+  const ProductFunctions = useProductFunctions();
   useEffect(() => {
-    const getProductsAndImageHightlist = async () => {
-      try {
-        const products = await getProductsHighlist()
-        setListProduct(products)
+    ProductFunctions.getProductsHightlist();
 
-      }
-      catch (error) {
-        throw new Error('Error al obtener los productos de la API. Error: ' + error)
-      }
-    }
-    getProductsAndImageHightlist()
   }, [])
 
   const settings = {
@@ -49,7 +39,7 @@ const Recommended = () => {
       <h2 className="highList">Recomendados</h2>
       <Slider  {...settings}>
 
-        {listProduct?.map(product =>
+        {ProductFunctions.listProduct?.map(product =>
         (
           <HighlightCard key={product.idProduct} product={product} />
         ))}
