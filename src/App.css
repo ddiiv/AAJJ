@@ -288,6 +288,17 @@ ul.topnav li a .img {
 
 
 }
+.nothing--profile{
+  text-decoration: none;
+  color: #000;
+  padding: 0px;
+  float: none;
+
+}
+.nothing--profile:hover{
+  background-color:rgba(0, 0, 0, 0)
+  
+}
 .nothing{
   text-decoration: none;
   color: #000;

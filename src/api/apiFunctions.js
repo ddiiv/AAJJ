@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import HaveToLogin from "../components/HaveToLogin";
+import { RedirectFunction } from "react-router-dom";
 
 const baseURL = "http://localhost:3001/";
 const token = window.localStorage.getItem("token");
@@ -23,10 +24,15 @@ export const getCarruselImages = async () => {
 //---------------------------------------Products-------------------------------------------------------
 
 export const getProducts = async () => {
-    const response = await fetch(`${baseURL}products`);
-    const data = await response.json();
-
-    return data;
+    try {
+        const response = await fetch(`${baseURL}products`);
+        const data = await response.json();
+        return data;
+    }
+    catch (e) {
+        console.log(e)
+        return (<> <HaveToLogin /></>)
+    }
 };
 export const getProductsByCategory = async (id) => {
     const response = await fetch(
@@ -38,26 +44,44 @@ export const getProductsByCategory = async (id) => {
 };
 
 export const getProductsHighlist = async () => {
-    const response = await fetch(`${baseURL}products/highlights`);
-    const data = await response.json();
-    return data;
+    try {
+        const response = await fetch(`${baseURL}products/highlights`);
+        const data = await response.json();
+        return data;
+    }
+    catch (e) {
+        console.log(e)
+        return e
+    }
 };
 
 //-----------------------------------Categories---------------------------------------------------------
 
 export const getCategories = async () => {
-    const response = await fetch(`${baseURL}categories`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`${baseURL}categories`);
+        const data = await response.json();
+        return data;
+    }
+    catch (e) {
+        console.log(e)
+        return (<> <HaveToLogin /></>)
+    }
 
-    return data;
 };
 //-----------------------------------SubCategories------------------------------------------------------
 
 export const getSubCategories = async () => {
-    const response = await fetch(`${baseURL}subcategories`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`${baseURL}subcategories`);
+        const data = await response.json();
 
-    return data;
+        return data;
+    }
+    catch (e) {
+        console.log(e)
+        return e
+    }
 };
 //-----------------------------------Sizes--------------------------------------------------------------
 export const getSizes = async () => {
@@ -126,7 +150,7 @@ export const getCartByIdUser = async (idUser) => {
                 headers: headerTokenn
             }
         )
-        
+
         return data
     }
     catch (e) {

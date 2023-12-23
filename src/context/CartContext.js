@@ -69,7 +69,6 @@ export const CartProvider = ({ children }) => {
         if (UserContext !== null && token !== null) {
             await getCartByIdUser(UserContext.IdUser).then((data) => {
                 if (cart.IdCartItem === 0 && !data.error) {
-
                     data?.map(a => {
                         let i = 0;
                         if (a.QuantityCart > a.QuantityStock) {
@@ -78,14 +77,12 @@ export const CartProvider = ({ children }) => {
                             return a;
                         }
                         else {
-
                             return a;
                         }
                     })
                     setLoading(false)
                     sumQuantityCart(data);
                     setCart(data)
-
                 }
             });
             return cart
@@ -94,6 +91,7 @@ export const CartProvider = ({ children }) => {
             setLoading(true)
         }
     }
+
     useEffect(() => {
         getCartItemsByIdUser();
     }, [UserContext])

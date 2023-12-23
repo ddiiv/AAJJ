@@ -4,7 +4,6 @@ import './App.css';
 //-------------Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getCategories, getProducts } from './api/apiFunctions';
 
 //---------Components
 
@@ -21,9 +20,12 @@ import Register from './pages/Register'
 import UserProfile from './pages/UserProfile'
 //---------Context
 import { UserProvider } from './context/UserContext';
-import { useUserContext, useUserLogged } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import { SearchProvider, useSearchFunctions } from './context/SearchContext';
+//--------ApiFunctions
+import { getCategories, getProducts } from './api/apiFunctions';
+import NotFound from './pages/NotFound.js';
+import EditProfile from './pages/EditProfile.js';
 
 
 function App() {
@@ -32,25 +34,33 @@ function App() {
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
 
-
   useEffect(() => {
     getCategories()
-      .then(Categories => {
+      .then((Categories) => {
         setCategory(Categories)
+        return category
+      })
+      .catch((error) => {
+        alert(error)
       })
     getProducts()
       .then(Products => {
         setProducts(Products)
+        return products
       })
-
+      .catch((error) => {
+        alert(error)
+      })
   }, [])
 
   return (
     <>
-      <UserProvider>
-        <CartProvider>
-          <SearchProvider>
-            <div className="App">
+      <div className="App">
+
+        <UserProvider>
+          <CartProvider>
+            <SearchProvider>
+
               <BrowserRouter>
                 <TopNav />
                 <BottomNav />
@@ -62,10 +72,9 @@ function App() {
                       <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
                     )
                   })}
-                  {products.map((product) => {
-
+                  {products?.map((product) => {
                     return (
-                      <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail productSelected={product} />} />
+                      <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail key={product.idProduct} productSelected={product} />} />
                     )
                   })}
                   <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
@@ -73,13 +82,15 @@ function App() {
                   <Route path='/profile' element={<UserProfile />}></Route>
                   <Route path='/login' element={<Login />}></Route>
                   <Route path='/register' element={<Register />}></Route>
+                  <Route path='*' element={<NotFound />} />
+                  <Route path='/editprofile' element={<EditProfile />} />
                 </Routes>
               </BrowserRouter>
               <Footer />
-            </div>
-          </SearchProvider>
-        </CartProvider>
-      </UserProvider>
+            </SearchProvider>
+          </CartProvider>
+        </UserProvider>
+      </div>
     </>
   );
 }

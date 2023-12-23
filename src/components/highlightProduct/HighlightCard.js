@@ -29,7 +29,7 @@ const HighlightCard = ({ product }) => {
                 </div>
                 <div className="product-details">
                     <span className="product-catagory"><b className="gender">{products.SubCategory}</b></span>
-                    <h4> <Link className="nothing" to={`/product/${products.Title}`}><h1 className="title">{products.Title}</h1> </Link></h4>
+                    <h4> <Link className="nothing" to={`/product/${products.Title}`}  ><h1 className="title">{products.Title}</h1> </Link></h4>
                     <h4 className="description"> <p>{products.Description}</p></h4> 
                     <div className="product-bottom-details">
                         <div className="product-price"><span className="price">${products.Price}</span></div>
