@@ -14,9 +14,7 @@ export function useCartFunctions() {
 }
 
 export const CartProvider = ({ children }) => {
-    const UserContext = useUserContext();
-    const [loading, setLoading] = useState(false);
-    const [cart, setCart] = useState({
+    const initialValues = {
         Enabled: false,
         IdCartItem: 0,
         IdStock: 0,
@@ -27,26 +25,35 @@ export const CartProvider = ({ children }) => {
         Size: "",
         Title: "",
         QC: true
-    });
+    }
+    const UserContext = useUserContext();
+    const [loading, setLoading] = useState(false);
+    const [cart, setCart] = useState(initialValues);
+    const [QuantityCart, setQuantityCart] = useState(0)
 
 
-    function sumQuantityCart() {
-        let sum = 0;
-        let cont = cart?.length
-        let i;
-        for (i = 0; i < cont; i++) {
-            sum = sum + cart[i].QuantityCart
 
-        }
-        if (sum === 0) {
-            setLoading(true)
-            return sum
+    function sumQuantityCart(updateCart) {
+
+        if (updateCart === null || updateCart === undefined) {
+            let sum = 0;
+            let i = 0;
+            for (i = 0; i < cart?.length; i++) {
+                sum = sum + cart[i]?.QuantityCart
+            }
+            
+            setQuantityCart(sum)
         }
         else {
-            setLoading(false)
-            return sum
-        }
 
+            let sum = 0;
+            let i = 0;
+            for (i = 0; i < updateCart?.length; i++) {
+                sum = sum + updateCart[i]?.QuantityCart
+            }
+            setQuantityCart(sum)
+        }
+        setLoading(false)
     }
     function sumTotalPriceCart() {
         let sum = 0;
@@ -62,7 +69,7 @@ export const CartProvider = ({ children }) => {
         if (UserContext !== null && token !== null) {
             await getCartByIdUser(UserContext.IdUser).then((data) => {
                 if (cart.IdCartItem === 0 && !data.error) {
-                    
+
                     data?.map(a => {
                         let i = 0;
                         if (a.QuantityCart > a.QuantityStock) {
@@ -75,10 +82,13 @@ export const CartProvider = ({ children }) => {
                             return a;
                         }
                     })
+                    setLoading(false)
+                    sumQuantityCart(data);
                     setCart(data)
-                    return cart
+
                 }
             });
+            return cart
         }
         else {
             setLoading(true)
@@ -93,7 +103,6 @@ export const CartProvider = ({ children }) => {
             try {
                 await deleteCartItem(idCartItem);
                 const updatedCart = cart.filter(c => c.idCartItem !== idCartItem);
-                console.log(updatedCart);
                 setCart(updatedCart);
                 window.location.reload()
 
@@ -110,26 +119,40 @@ export const CartProvider = ({ children }) => {
 
     const changueQuantityItemCart = async (idsToPutQuantity) => {
         if (idsToPutQuantity && cart) {
-            await putCartItemQuantity(idsToPutQuantity).then(data => {
+            await putCartItemQuantity(idsToPutQuantity).then((data) => {
                 if (data) {
-                    
+
                     const idcart = idsToPutQuantity.idCartItem;
-                    const updateCart = cart.map(item => {
-                        if (idcart === item.idCartItem) {
-                            return { ...item, QuantityCart: idsToPutQuantity.stockToHandle }
+                    let i;
+                    let updateCart = null;
+                    for (i = 0; i < cart.length; i++) {
+                        
+                        if (cart[i].IdCartItem === idcart) {
+                            cart[i].QuantityCart = idsToPutQuantity.stockToHandle;
+                            updateCart = cart;
+                           
                         }
-                        return item;
-                    })
-                    setCart(updateCart);
+                        else {
+                            updateCart = cart;
+                          
+                        }
+                        setLoading(true)
+
+                    }                        
+                        setCart(updateCart);
+                        sumQuantityCart(updateCart);
+                        
+                        return updateCart
                 }
+
             })
         }
-        return cart
+
     }
 
     return (
         <CartFunctionsContext.Provider
-            value={{ changueQuantityItemCart, clearCart, sumQuantityCart, sumTotalPriceCart, removeFromCart, loading }}>
+            value={{ changueQuantityItemCart, clearCart, QuantityCart, sumTotalPriceCart, removeFromCart, loading }}>
             <CartContext.Provider
                 value={cart}>
                 {children}

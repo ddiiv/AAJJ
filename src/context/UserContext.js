@@ -63,7 +63,6 @@ export const UserProvider = ({ children }) => {
         const idU = window.localStorage.getItem("idU")
         if (token !== null && User === null) {
             await getUserById(idU).then((data) => {
-                console.log(data)
                 if (data?.error === "Expired token") {
                     
                     setUser(null)

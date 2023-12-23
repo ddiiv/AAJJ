@@ -281,20 +281,19 @@ a {
     .topnav {
         height: 80px;
     }
-
+    .logo{
+        max-width: 110px;
+    }
     .topnav,
     .navbarContent,
-    .topnav li.right,
-    .topnav li,
-    .logo,
-    .items,
-    .containerLogo,
-    .nav-item,
-    .buttonItem,
-    .buttonItem#center {
+    .containerLogo{
         transition: 0.5s;
-        transform: translateY(-3);
+        padding: 0px;
     }
+    .containerItems{
+        width: 100%;
+    }
+    
 }
 .searchBar{
     display: flex;

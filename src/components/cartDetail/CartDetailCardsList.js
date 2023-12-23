@@ -8,8 +8,7 @@ import ShoppingBagEmpty from "./ShoppingBagEmpty.js";
 
 const CartDetailCardsList = () => {
     const cartcontext = useCartContext();
-    const cartFunctions = useCartFunctions();
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState(null)
 
     useEffect(() => {
         function setProductOfCartContext() {
@@ -22,11 +21,10 @@ const CartDetailCardsList = () => {
             }
         }
         setProductOfCartContext()
-
     }, [cartcontext, products])
 
     function checkCartQuantity() {
-        if (cartFunctions.loading === false) {
+        if (products !== null) {
             return (
                 <>
                     <div className="card-wrapper">
@@ -39,13 +37,16 @@ const CartDetailCardsList = () => {
 
                                         </div>
                                         <div className="separator-ui"></div>
+                                        {products?.map((cartProductIn) => {
+                                            return (
+                                                <>
+                                                    <CartDetailCard key={cartProductIn.IdCartItem} cartProductIn={cartProductIn} />
+                                                </>
+                                            )
+                                        })
+                                        }
 
-                                        {products?.map(cartProduct =>
-                                        (
-                                            <>
-                                                <CartDetailCard key={cartProduct.IdCartItem} cartProductIn={cartProduct} />
-                                            </>
-                                        ))}
+
                                     </div>
                                     <div className="card-footer">
                                         <div className="ticket-row" id="ticket-row-1">

@@ -7,18 +7,6 @@ const CartDetailBuyOut = () => {
 
     const cartcontext = useCartContext();
     const cartFunction = useCartFunctions();
-    const [sumQuantityCart, setSum] = useState(0);
-    useEffect(()=>{
-        function setSumQuantityCart(){
-            if(cartcontext !== null){
-                setSum(cartFunction.sumQuantityCart())
-            }
-            else{
-                setSum(0)
-            }
-        }
-        setSumQuantityCart()
-    },[cartcontext])
     return (
         <div className="price-box-container">
             <div className="card-wrapper">
@@ -32,7 +20,7 @@ const CartDetailBuyOut = () => {
                     <div className="separator-ui"></div>
                     <div className="ticket-row" id="ticket_row_products_amount">
                         <div>
-                            <span className="rich-text" id="buyout-rich-text">Productos ({sumQuantityCart})</span>
+                            <span className="rich-text" id="buyout-rich-text">Productos ({cartFunction.QuantityCart})</span>
                         </div>
                         <div className="ticket-row__right-column">
                             <h6 className="ticket-row__right-column--primary-text"> <span className="rich-text" id="buyout-rich-text">{cartcontext === null && (
