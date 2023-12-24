@@ -73,7 +73,7 @@ export const getCategories = async () => {
 const API_endpoint_GeoLocation = `https://api.openweathermap.org/data/2.5/weather?`
 const API_key_GeoLocation = `3c480c60a391f0cc316c18897aabf10b`
 export const getGeoLocation = async (latitude, longitude) => {
-    let finalApiEndPoint = `${API_endpoint_GeoLocation}lat=${latitude}&lon=${longitude}&appid=${API_key_GeoLocation}`
+    let finalApiEndPoint = `${API_endpoint_GeoLocation}lat=${28.8884}&lon=${-47.1564}&appid=${API_key_GeoLocation}`
     try {
         await axios.get(finalApiEndPoint)
             .then(response => {

@@ -359,17 +359,6 @@ flex-direction: column;
 
 
 
-aside{
-  transition: 0.5s ease-in-out;
-  width: 26%;
-  height: 100%;
-  position: sticky;
-  top: 2%;
-  transition: 0.5s ease-in-out;
-  float: left;
-  display: block !important;
-  transition: all 300ms ease 0s;
-}
 
 
 @media screen and (max-width:900px) {
@@ -380,7 +369,6 @@ aside{
     display: flex;
   }
   
-  aside,
   .products,
   .title, .price, .gender, p,.addcart,
   .card,
@@ -462,7 +450,7 @@ span.price{
 }
 /*card nuevas*/
 .max-w-6xl {
-  max-width: 60rem;
+  max-width: 100%;
   margin: auto;
 }
 
@@ -721,6 +709,13 @@ span.price{
   max-height: 4rem;
   overflow: hidden;
 }
+.overflowhidden{
+  color:#1a202c;
+  font-size: 0.8rem;
+}
+.max-w-sm.highlist_container--card{
+  max-width: 100%;
+}
 @media screen and (max-width: 600px) {
   .max-w-sm {
     max-width: 100%;
@@ -765,4 +760,93 @@ span.price{
     word-break: break-word;
   }
 }
+.filter_catalog--container{
+  width: 26%;
+  height: 100%;
+  position: sticky;
+  top: 2%;
+  transition: 0.5s ease-in-out;
+  float: left;
+  display: block;
+  transition: all 300ms ease 0s;
+}
+.mx-auto {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+@media screen and (max-width:450px) {
 
+  .containerPage{
+    padding: 0px;
+  }
+  main.products{
+    padding: 0px;  
+  }
+  .max-w-sm {
+    width: 100%;
+    max-width: 20rem;
+  }
+  .max-w-6xl.mx-auto{
+    
+    max-width: 50%;
+
+  }  
+  .highlist_container{
+    max-width: 100% !important;
+  }
+  .px-3{
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .filter_catalog--container{
+    display: none;
+  }
+  .productsHighlist{
+    padding: 0 10px 0 10px;
+  }
+  .productImage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-3xl{
+    
+    font-size: 1.2rem;
+  }
+  .Description{
+    display: none;
+  }
+  p.uppercase{
+    margin-bottom: 0px;
+  }
+  .text-gray-700.Title{
+    max-width: fit-content;
+    font-size: 1.2rem;
+    height: 3.5rem;
+    overflow: hidden;
+    word-break: break-word;
+  }
+  .px-4{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .text-gray-700.Description {
+    height: 4rem;
+  }
+  .description-text-card{
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    max-height: 4rem;
+    overflow: hidden;
+  }
+
+  
+}

@@ -36,10 +36,10 @@ const Card = ({ product }) => {
                                 <p className="text-3xl text-gray-900">{localStorage.getItem("tradecoin")} {products.Price}</p>
                             </div>
 
-                            <div className="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
-                                <div className="text-xs uppercase font-bold text-gray-600 tracking-wide">Descripcion</div>
-                                <div className="flex items-center pt-2">
-                                    <div className="description-text-card">
+                            <div className="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100 Description">
+                                <div className="text-xs uppercase font-bold text-gray-600 tracking-wide Description">Descripcion</div>
+                                <div className="flex items-center pt-2 Description">
+                                    <div className="description-text-card Description">
                                         <p className="text-sm text-gray-700 Description">{products.Description}</p>
                                     </div>
                                 </div>

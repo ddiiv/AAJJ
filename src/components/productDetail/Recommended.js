@@ -18,7 +18,7 @@ const Recommended = () => {
     useTransform: true,
     autoplay: true,
     autoplaySpeed: 4500,
-    arrows: false,
+    arrows: true,
     slide: '.slider-pic',
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -26,9 +26,10 @@ const Recommended = () => {
     cssEase: 'ease-out',
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 450,
         settings: {
-          dots: false
+          dots: false,
+          slidesToShow: 2,
         }
       }]
   };

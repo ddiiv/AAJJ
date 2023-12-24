@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import HighlightCard from "./HighlightCard.js";
 import '../../css/HighlistProducts.css'
 import Slider from 'react-slick';
@@ -17,7 +17,7 @@ const HighlistProducts = () => {
     useTransform: true,
     autoplay: true,
     autoplaySpeed: 4500,
-    arrows: false,
+    arrows: true,
     slide: '.slider-pic',
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -25,9 +25,10 @@ const HighlistProducts = () => {
     cssEase: 'ease-out',
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 450,
         settings: {
-          dots: false
+          dots: false,
+          slidesToShow: 2,
         }
       }]
   };
