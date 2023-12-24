@@ -151,7 +151,7 @@
 
 "@azure/msal-node@^1.10.0":
   version "1.17.3"
-  resolved "https://registry.npmjs.org/@azure/msal-node/-/msal-node-1.17.3.tgz"
+  resolved "https://registry.npmjs.org/@azure/msal-node/-/msal-node-1.18.tgz"
   integrity sha512-slsa+388bQQWnWH1V91KL+zV57rIp/0OQFfF0EmVMY8gnEIkAnpWWFUVBTTMbxEyjEFMk5ZW9xiHvHBcYFHzDw==
   dependencies:
     "@azure/msal-common" "13.1.0"
