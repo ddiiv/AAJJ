@@ -134,7 +134,7 @@ export const getUserByCredentials = async (credentials) => {
             user: credentials.User,
             password: credentials.Password
         }
-        const { data } = await axios.post('http://localhost:3001/user/login', bodyData
+        const { data } = await axios.post(`${baseURL}user/login`, bodyData
         )
         return data;
 
@@ -201,7 +201,6 @@ export const putRegisterUser = async (dataform) => {
             `${baseURL}user/register`,
             dataform
         )
-        console.log(response.status)
         return response.status
     }
     catch (e) {
