@@ -1,0 +1,373 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins";
+
+}
+
+.App {
+  font-size: larger;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 1vw;
+
+}
+
+.page {
+  background-color: rgba(254, 254, 254, 0.846);
+  float: left;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.page#userProfile{
+  background-color: #f5f5f5;
+  float: left;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page#cartDetail {
+  background-color: #f5f5f5;
+  float: left;
+  width: 100%;
+  height: 100vw;
+  overflow: hidden;
+}
+
+.containerPage#cartDetail {
+  background-color: #f5f5f5;
+  float: left;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.containerPage {
+  background-color: rgba(254, 254, 254, 0.846);
+  float: left;
+  width: 100%;
+  padding: 0 30px;
+}
+.containerPage#userProfile{
+  background-color: #f5f5f5;
+  float: left;
+  width: 100%;
+  padding: 0px;
+}
+
+head {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.main {
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.home {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+
+a {
+  float: left;
+  display: block;
+  color: #333;
+
+  padding: 14px 16px;
+  text-decoration: none;
+  text-decoration: dotted;
+}
+
+a:hover {
+  background-color: #bdbdbd6e;
+}
+
+.navbar {
+  padding: 0px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+ul .icons {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+a .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+*/ body {
+  margin: 0;
+  z-index: -1;
+}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  overflow: hidden;
+  background-color: #ffffffe1;
+  border-bottom: black 0.5px solid;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+
+}
+
+
+ul.topnav li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-decoration: dotted;
+  text-align: center;
+  padding: 10px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover {
+  background-color: #64646471;
+}
+
+
+
+ul.topnav li.right {
+  float: right;
+  border-right: 2px solid #333;
+}
+
+@media screen and (max-width: 600px) {
+
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+
+  .page {
+    width: 100%;
+    height: auto;
+  }
+
+  .containerPage {
+    width: 100%;
+    height: auto;
+  }
+
+  .main {
+    width: 100%;
+    height: auto;
+  }
+
+  .home {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+ul.topnav li a .img {
+  width: 20px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .page {
+    width: 100%;
+    height: auto;
+  }
+
+  .containerPage {
+    width: 100%;
+    height: auto;
+    padding: 0 15px;
+  }
+
+  .main {
+    width: 100%;
+    height: auto;
+  }
+
+  .home {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+.main {
+  padding: 20px;
+  margin-top: 60px;
+  width: 200vw;
+  height: 1000vw;
+  background-color: #333;
+}
+.card-havetologin-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  
+}
+.card-havetologin{
+  margin-top: 2rem;
+  background-color: #f5f5f5;
+  width: 50%;
+  height: 50%;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  flex-direction: column;
+  gap: 1rem;
+  
+}
+.havetoLogin{
+  align-items: center;
+  color: rgba(0,0,0,.9);
+  font-size: 16px;
+  font-weight: 400;
+  justify-content: flex-end;
+  line-height: 1.25;
+  margin: 0;
+  padding: 0;
+}
+
+.havetoLogin-button{
+  background-color: #c00101;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 6px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 20px;
+  text-align: center;
+  border: 1px solid rgba(240, 248, 255, 0);
+}
+.havetoLogin-button:hover{
+  background-color: #e20303;
+  border-color: transparent;
+  
+
+
+}
+.nothing--profile{
+  text-decoration: none;
+  color: #000;
+  padding: 0px;
+  float: none;
+
+}
+.nothing--profile:hover{
+  background-color:rgba(0, 0, 0, 0)
+  
+}
+.nothing{
+  text-decoration: none;
+  color: #000;
+}
+.nothing#havetologin{
+  width: auto;
+  color: #ffffff;
+}
+.nothing#havetologin:hover{
+background-color:rgba(0, 0, 0, 0)
+}
+/* modal error */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+.modal-User-Credentials-error{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+span.close{
+  cursor: pointer;
+  color: #d10505;
+}
+.modal-content-error {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  z-index: 1001;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.show-modal {
+  display: block;
+  animation-name: fadeIn;
+}
+
+.hide-modal {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

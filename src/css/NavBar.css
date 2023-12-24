@@ -1,0 +1,350 @@
+.navItem {
+
+    display: flex;
+    color: #101010;
+    text-align: flex-start;
+    text-decoration: dotted;
+    font-weight: 300;
+    transition: 0.5s;
+    line-height: 40px;
+    text-decoration: none;
+    letter-spacing: 0.82px;
+
+}
+
+a {
+    padding: 2px 16px;
+}
+
+a:hover {
+    transition: 0.5s;
+    color: #df0000d3;
+    background-color: #ffffff;
+
+
+}
+
+#a {
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+#a:hover {
+    border-bottom: 2px solid #df0000d3;
+    color: #df0000d3;
+    background-color: #f3f3f3;
+    transition: 0.5s ease-in-out;
+}
+
+.navbarContent {
+    width: 100%;
+    height: 80px;
+    z-index: 999 !important;
+
+}
+
+.nav {
+    border-top: 0.5px solid #eaeaeaed;
+
+    width: 100%;
+    height: 100%;
+    transition-delay: 5s;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #ffffff;
+    text-align: center;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999 !important;
+    background-color: #ffffff;
+}
+
+.CategoryNavbar {
+    width: 100%;
+    height: 45px;
+    transition-delay: 5s;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+}
+
+.topnav {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: 0px;
+    text-align: center;
+    display: flex;
+    padding: 0 50px;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1px;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+a .img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+}
+
+
+
+.topnav li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-decoration: dotted;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+.topnav li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+
+.topnav li.right {
+    float: right;
+    border-right: 2px solid #333;
+}
+
+
+.topnav li a .img {
+    width: 20px;
+    object-fit: cover;
+}
+
+
+
+.logo {
+
+    max-width: 200px;
+    align-items: flex-start;
+    justify-content: center;
+    display: flex;
+    transition: 0.5s;
+    margin-top: 15px;
+}
+
+.logo:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+}
+.cartContainer {
+    display: flex;
+    flex-direction: row;
+}
+.containerLogo {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.containerNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 65%;
+    padding: 0 0 0 0px;
+}
+
+.containerItems {
+    height: 30px;
+    width: 40%;
+    position: relative;
+    display: flex;
+    justify-content: right;
+    margin-left: auto;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 13px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.buttonItem {
+    appearance: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+    height: auto;
+    z-index: 20;
+    box-sizing: border-box;
+    box-shadow: none;
+    cursor: pointer;
+    display: inline-block;
+    list-style: none;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+
+    word-wrap: break-word;
+}
+
+
+.buttonItem#center {
+
+    border-left: 1px solid rgb(102, 102, 102);
+    border-right: 1px solid rgb(102, 102, 102);
+
+}
+
+
+.buttonItem:hover {
+
+    border: none;
+    box-shadow: #12121200 2px 0 0 2px, transparent 0 0 0 2px;
+}
+
+
+
+.buttonItem:focus {
+    outline: 1px transparent;
+}
+
+.buttonItem:before {
+    display: none;
+}
+
+.buttonItem:-webkit-details-marker {
+    display: none;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media screen and (max-width: 950px) {
+
+    .topnav,
+    .navbarContent,
+    .topnav li.right,
+    .topnav li,
+    .items,
+    .containerLogo,
+    .CategoryNavbar,
+    .nav-item,
+    .navItem,
+    .buttonItem,
+    .buttonItem#center {
+        transition: 0.5s;
+        transform: translateY(-3);
+    }
+    .navItem {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width:770px) {
+
+    .CategoryNavbar,
+    .nav,
+    .navItem {
+        display: none;
+
+    }
+
+    .navbarContent,
+    .topnav {
+        height: 80px;
+    }
+    .logo{
+        max-width: 110px;
+    }
+    .topnav,
+    .navbarContent,
+    .containerLogo{
+        transition: 0.5s;
+        padding: 0px;
+    }
+    .containerItems{
+        width: 100%;
+    }
+    
+}
+.searchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a.searchBar {
+    padding: 0px 0px 0px 0px;
+}
+
+.searchInput {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 250px;
+    font-family: "PoppinsItalic";
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: row;
+
+}
+.rich-text.usertext{
+    font-family: "Poppins"; 
+    font-size: 16px;
+    line-height: 1.45;
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+    color: #101010;
+}
+.cartItemsQuantity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #df0000d3;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0;
+    text-align: center;
+    font-family: "Poppins";
+}
+.absoluteCartQuantity{
+    position: absolute;
+    top: 1;
+    right: 0;
+    margin-right: 10px;
+    margin-top: 30px;
+}

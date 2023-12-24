@@ -1,0 +1,188 @@
+
+.landscape-view__container {
+    display: flex;
+    margin: 1rem 0;
+    justify-content: center;
+    padding: 0 2.5rem;
+}
+
+.landscape-view__column--left {
+    margin-right: 0.5rem;
+    width: 30rem;
+
+}
+
+.landscape-view__column--right {
+    height: 100%;
+    max-width: 30.875rem;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 6px;
+}
+
+.ticket-row__left-column--primary-text#landscape-view {
+    max-width: 22.5rem;
+}
+
+.rich-text#landscape-view-text {
+    font-family: "Poppins";
+    font-size: 30px;
+}
+
+.login-form {
+    margin: 1rem;
+    height: 100%;
+}
+
+.login-form__actions {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.login-form .andes-button {
+    display: inline-block;
+    line-height: 1;
+    width: auto;
+}
+
+.andres-button__content {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.andres-button__content.login {
+    font-size: 16px;
+    color: #fff;
+    font-family: "Poppins";
+}
+.andres-button__content.login:hover{
+    color: #c00101;
+}
+.login-form__input {
+    position: relative;
+    z-index: 10;
+}
+
+.andres-form-control {
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    padding-top: 0.6666666667em;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+
+}
+
+.andres-form-control__label {
+    color: rgba(0, 0, 0, .9);
+    cursor: text;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins';
+    line-height: 1.0714285714em;
+    margin: 0 0 0.4285714286em 0.4285714286em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform: unset !important;
+    transition: .2s ease-out;
+    transition-property: color;
+    white-space: nowrap;
+}
+
+.andres-form-control__control {
+
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 0.375em;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .25);
+    display: flex;
+    font-size: 16px;
+    min-height: 48px;
+    justify-content: flex-start;
+    border: 0px;
+}
+
+.andres-form-control__field {
+    background: transparent;
+    border: 0;
+    color: rgba(0, 0, 0, .9);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: normal;
+    margin: 8px 0 4px;
+    overflow: hidden;
+    padding: 0;
+    resize: none;
+}
+
+.andres-form-control--textfield.andes-form-control__field {
+    border-radius: 0.375em;
+    font-size: 16px;
+    height: auto;
+    line-height: 22px;
+    margin: 0;
+    width: 100%;
+    padding: 0.8125em 0.75em;
+    border: 0px solid rgba(0, 0, 0, .1);
+    border-radius: 6px;
+}
+
+.andres-form-control__bottom {
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    font-family: Proxima Nova, -apple-system, Roboto, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    text-align: left;
+}
+
+.andres-form-control__message {
+    color: #d40000;
+    font-size: 14px;
+    line-height: 1em;
+    margin-top: 0.3333333333em;
+    min-height: 14px;
+    opacity: 0;
+    opacity: 1;
+    text-align: left;
+    transition: opacity .15s ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.andres-form-control__message#user_id-message {
+    font-size: 16px;
+    font-family: "Poppins";
+}
+
+.input-error{
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.link#login {
+    margin-top: 0px;
+    font-size: 15px;
+    font-family: "Poppins";
+}
+
+.separator-ui#login-separator{
+margin-top: 15px;
+}
+.andres-form-label-container{
+    width: 100%;
+    padding: 5px;
+}
+.andres-form-control__itemcontainer{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}

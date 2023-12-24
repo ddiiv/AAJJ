@@ -1,0 +1,111 @@
+
+
+button{
+    transition: 333ms ease-in-out;
+}
+h1{
+    font-family: "Poppins";
+    font-size: 20px;
+    line-height: 18px;
+    letter-spacing: 0.8px;
+    color: #101010;
+}
+span{
+    font-family: "PoppinsExtraBold";
+    color: #1a1a1a;
+    font-size: 30px;
+    letter-spacing: 0.8px;
+}
+b{
+    font-family:"PoppinsExtraLight";
+    color: rgb(173, 173, 173);
+    font-size: 20px;
+}
+
+span.richtext-gray-regular{
+    font-family: "PoppinsMedium";
+    color:rgba(0,0,0,.55);
+    font-size: 1rem;
+
+}
+
+span.richtext-gray-regular#cartitemSize{
+    font-family: "PoppinsMedium";
+    color:rgba(0,0,0,.55);
+    font-size: 1rem;
+    margin-left: 20px;
+}
+span.richtext-black{
+    font-family: "PoppinsMedium";
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+span.richtext-gray-regular#totalPricexProduct{
+    color: #101010;
+}
+.andres-button, .andres-button:focus, .andres-button:link{
+    background-color: #c00101;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 6px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 24px;
+    text-align: center;
+    border: 1px solid rgba(240, 248, 255, 0);
+    
+}
+.andres-button:hover{
+    background-color: rgb(241, 241, 241);
+    border: 1px solid#c00101;
+    color: #c00101;
+}
+.andres-button.andres__empty{
+    margin-top: 16px ;
+    background-color: #000000;
+}
+.andres-button.andres__empty:hover{
+
+    background-color: #650000;
+}
+#principal_btn_cartempty{
+
+    font-size: 16px;
+    font-family: "Poppins";
+    color: #e0e0e0;
+}
+.span-container-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+.span-text-btn{
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.andres-button.container-button{
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    width: 100%;
+}
+.andres-button.container-button#checkoutButton-disabled{
+    cursor:not-allowed;
+    background-color: #e0e0e0;
+}
+.span-text-btn#span-checkout{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0;
+    text-align: center;
+    font-family: "Poppins";
+    color: white;
+}

@@ -1,0 +1,125 @@
+.andres-form-label-container.register {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: normal;
+}
+
+.rich-text.register#landscape-view-text {
+    display: block;
+
+}
+
+.landscape-view__column--left.register {
+    width: 30rem;
+    margin-left: 2rem;
+    float: left;
+}
+
+.landscape-view__column--right.register {
+    width: 100%;
+    margin-left: 2rem;
+    max-width: 100%;
+}
+
+.section_andres-form__left.register {
+    margin-left: 2rem;
+
+    float: left;
+}
+
+.section_andres-form__right.register {
+    margin-left: 2rem;
+    float: right;
+}
+
+.row-register-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.andres-form-control__control.register {
+
+    align-items: flex-start;
+    background-color: #fff;
+    border-radius: 0.375em;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .25);
+    display: flex;
+    font-size: 16px;
+    min-height: 48px;
+    justify-content: flex-start;
+    border: 0px;
+    width: 100%;
+
+}
+
+.andres-form-control__itemcontainer.register {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.andres-form-control--textfield.andes-form-control__field.register{
+    font-size: 16px;
+    height: auto;
+    line-height: 22px;
+    margin: 0;
+    width: 30rem;
+    padding: 0.8125em 0.75em;
+    border: 0px solid rgba(0, 0, 0, .1);
+    border-radius: 6px;
+}
+.ticket-row__left-column--primary-text#landscape-view.register{
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    color: #000;
+    font-family: Poppins,sans-serif;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    max-width: none;
+    display: block;
+}
+.login-form__actions.register{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+.andres-button.register{
+    width: 100%;
+    max-width: 30rem;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c00000;
+    border-radius: 25px ;
+}
+.andres-button__content.register{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.login-form.register{
+    padding: 2rem;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
