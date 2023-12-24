@@ -120,6 +120,7 @@ export const CartProvider = ({ children }) => {
 
     useEffect(() => {
         getCartItemsByIdUser();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [UserContext])
 
     const removeFromCart = async (idCartItem) => {

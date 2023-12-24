@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { useUserContext, useUserLogged } from "../context/UserContext";
+import { useUserContext /*, useUserLogged*/ } from "../context/UserContext";
 import "../css/UserProfile.css";
 
 const EditProfile = () => {
     const context = useUserContext();
-    const contextFunction = useUserLogged();
+    /*const contextFunction = useUserLogged();*/
 
     const [name, setName] = useState(context?.User);
-    const [email, setEmail] = useState("");
 
     const handleNameChange = (event) => {
         setName(event.target.value);

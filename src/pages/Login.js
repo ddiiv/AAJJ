@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage, validateYupSchema } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useUserLogged } from "../context/UserContext";
 import * as Yup from "yup"
 import '../css/Login.css'

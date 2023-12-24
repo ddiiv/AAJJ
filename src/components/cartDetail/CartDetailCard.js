@@ -71,9 +71,12 @@ const CartDetailCard = ({ cartProductIn }) => {
     const priceTotalxProduct = () => { priceTotalByProduct = product.Price * stock; return priceTotalByProduct; }
 
     useEffect(() => {
-        getImageProduct()
-    }, [cartProductIn])
-    useEffect(()=>{ setStock(cartProductIn.QuantityCart)},[cartProductIn])
+        
+    })
+    useEffect(()=>{ setStock(cartProductIn.QuantityCart)
+         getImageProduct()
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+        },[cartProductIn])
 
     return (
         <>

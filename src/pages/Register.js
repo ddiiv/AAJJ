@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../css/Register.css"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup"

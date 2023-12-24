@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 
 import CardList from "../components/CardList";
 import Filters from "../components/Filters";
@@ -10,6 +10,7 @@ const CategoryCatalog = (categorySelected) => {
   /* ------------------GetProducts useEffect------------------*/
   useEffect(() => {
        ProductFunctions.getProductByCategorySelected(categorySelected)
+       // eslint-disable-next-line react-hooks/exhaustive-deps
   },[categorySelected])
 
   

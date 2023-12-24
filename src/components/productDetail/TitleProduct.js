@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { getDolarBlue } from "../../api/apiFunctions";
+import React from "react";
 
 
 const TitleProduct = ({ product }) => {
