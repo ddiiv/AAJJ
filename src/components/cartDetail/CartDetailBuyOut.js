@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useCartContext, useCartFunctions } from "../../context/CartContext";
 import { Waveform } from "@uiball/loaders/dist";
-import { useState } from "react";
+
 
 const CartDetailBuyOut = () => {
 

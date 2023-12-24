@@ -1,5 +1,5 @@
 import React from "react";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { CarouselProvider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const ImagesProduct = ({ imageurl }) => {
@@ -22,7 +22,7 @@ const ImagesProduct = ({ imageurl }) => {
                     </div>
                     <div className="MainImage">
 
-                        <img src={imageurl} alt={imageurl} />
+                        <img className="mainImage-resolution" src={imageurl} alt={imageurl} />
                     </div>
                 </div>
             </CarouselProvider>
