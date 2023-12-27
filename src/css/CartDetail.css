@@ -383,7 +383,7 @@
     font-family: "Poppins";
 
 }
-.price-box-container#--disabled{
+.price-box-container#disabled-price{
     background-color: #ffffff;
     border-radius: 6px;
     bottom: 0;
@@ -397,7 +397,7 @@
     height: 100%;
     z-index: 14;
 }
-.price-box-container__title#--disabled{
+.price-box-container__title#disabled-price{
     background-color: #ffff;
     font-size: 20px;
     font-family: "Poppins";

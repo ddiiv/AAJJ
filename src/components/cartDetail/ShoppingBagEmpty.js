@@ -16,8 +16,8 @@ const ShoppingBagEmpty = () => {
                                 <Link to="/" className="link" id="emptylink_home">Comprar Ahora</Link>
                     </div>
                 </div>
-                <div className="price-box-container" id="--disabled">
-                    <div className="price-box-container__title" id="--disabled">
+                <div className="price-box-container" id="disabled-price">
+                    <div className="price-box-container__title" id="disabled-price">
                         <div className="card-header">
                             <h5 className="ticket-row__left-column--primary-text" id="productListCard"><span className="rich-text" id="secondary_text_cartempty">
                                 Resumen de compra

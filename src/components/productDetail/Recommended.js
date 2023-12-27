@@ -11,7 +11,7 @@ const Recommended = () => {
   const ProductFunctions = useProductFunctions();
   useEffect(() => {
     ProductFunctions.getProductsHightlist();
-
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const settings = {

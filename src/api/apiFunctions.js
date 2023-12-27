@@ -1,7 +1,5 @@
-import axios from "axios";
 import HaveToLogin from "../components/HaveToLogin";
-
-
+import axios from 'axios';
 const baseURL = "https://backend-aajj.onrender.com/";
 const token = window.localStorage.getItem("token");
 const headerToken = { user_token: `${token}` };
@@ -9,7 +7,10 @@ const headers = {
     'Content-Type': 'application/json',
     'user_token': `${token}`
 };
+
+
 //-----------------------------------------GETS---------------------------------------------------------
+
 
 //----------------------------------------Images--------------------------------------------------------
 export const getImage = async (img) => {

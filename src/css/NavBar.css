@@ -2,7 +2,6 @@
 
     display: flex;
     color: #101010;
-    text-align: flex-start;
     text-decoration: dotted;
     font-weight: 300;
     transition: 0.5s;
@@ -247,20 +246,6 @@ a {
 
 @media screen and (max-width: 950px) {
 
-    .topnav,
-    .navbarContent,
-    .topnav li.right,
-    .topnav li,
-    .items,
-    .containerLogo,
-    .CategoryNavbar,
-    .nav-item,
-    .navItem,
-    .buttonItem,
-    .buttonItem#center {
-        transition: 0.5s;
-        transform: translateY(-3);
-    }
     .navItem {
         font-size: 14px;
     }
@@ -346,7 +331,6 @@ a.searchBar {
 }
 .absoluteCartQuantity{
     position: absolute;
-    top: 1;
     right: 0;
     margin-right: 10px;
     margin-top: 30px;

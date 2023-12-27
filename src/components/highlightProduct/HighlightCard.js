@@ -19,6 +19,7 @@ const HighlightCard = ({ product }) => {
     }
     useEffect(() => {
         getImageProduct()
+               // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>

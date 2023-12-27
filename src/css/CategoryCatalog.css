@@ -373,11 +373,11 @@ flex-direction: column;
   .title, .price, .gender, p,.addcart,
   .card,
   .productImg{
-    transform: translateY(-3);
+    transform: translateY(-3px);
   }
   .size-buttons {
     transition: 0.5s;
-    transform: translateY(-3);
+    transform: translateY(-3px);
   }
   
 }
