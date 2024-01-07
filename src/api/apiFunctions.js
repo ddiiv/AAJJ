@@ -1,15 +1,16 @@
-import axios from "axios";
 import HaveToLogin from "../components/HaveToLogin";
-
-
-const baseURL = "http://localhost:3001/";
+import axios from 'axios';
+const baseURL = "https://backend-aajj.onrender.com/";
 const token = window.localStorage.getItem("token");
 const headerToken = { user_token: `${token}` };
 const headers = {
     'Content-Type': 'application/json',
     'user_token': `${token}`
 };
+
+
 //-----------------------------------------GETS---------------------------------------------------------
+
 
 //----------------------------------------Images--------------------------------------------------------
 export const getImage = async (img) => {
@@ -73,7 +74,7 @@ export const getCategories = async () => {
 const API_endpoint_GeoLocation = `https://api.openweathermap.org/data/2.5/weather?`
 const API_key_GeoLocation = `3c480c60a391f0cc316c18897aabf10b`
 export const getGeoLocation = async (latitude, longitude) => {
-    let finalApiEndPoint = `${API_endpoint_GeoLocation}lat=${28.8884}&lon=${-47.1564}&appid=${API_key_GeoLocation}`
+    let finalApiEndPoint = `${API_endpoint_GeoLocation}lat=${latitude}&lon=${longitude}&appid=${API_key_GeoLocation}`
     try {
         await axios.get(finalApiEndPoint)
             .then(response => {
@@ -134,7 +135,7 @@ export const getUserByCredentials = async (credentials) => {
             user: credentials.User,
             password: credentials.Password
         }
-        const { data } = await axios.post('http://localhost:3001/user/login', bodyData
+        const { data } = await axios.post(`${baseURL}user/login`, bodyData
         )
         return data;
 
@@ -201,7 +202,6 @@ export const putRegisterUser = async (dataform) => {
             `${baseURL}user/register`,
             dataform
         )
-        console.log(response.status)
         return response.status
     }
     catch (e) {

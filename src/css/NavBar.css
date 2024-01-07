@@ -2,7 +2,6 @@
 
     display: flex;
     color: #101010;
-    text-align: flex-start;
     text-decoration: dotted;
     font-weight: 300;
     transition: 0.5s;
@@ -135,13 +134,11 @@ a .img {
 
 
 .logo {
-
     max-width: 200px;
     align-items: flex-start;
     justify-content: center;
     display: flex;
     transition: 0.5s;
-    margin-top: 15px;
 }
 
 .logo:hover {
@@ -167,6 +164,7 @@ a .img {
     width: 100%;
     height: 65%;
     padding: 0 0 0 0px;
+    overflow: hidden;
 }
 
 .containerItems {
@@ -248,20 +246,6 @@ a {
 
 @media screen and (max-width: 950px) {
 
-    .topnav,
-    .navbarContent,
-    .topnav li.right,
-    .topnav li,
-    .items,
-    .containerLogo,
-    .CategoryNavbar,
-    .nav-item,
-    .navItem,
-    .buttonItem,
-    .buttonItem#center {
-        transition: 0.5s;
-        transform: translateY(-3);
-    }
     .navItem {
         font-size: 14px;
     }
@@ -282,7 +266,7 @@ a {
         height: 80px;
     }
     .logo{
-        max-width: 110px;
+        max-width: 125px;
     }
     .topnav,
     .navbarContent,
@@ -293,7 +277,11 @@ a {
     .containerItems{
         width: 100%;
     }
-    
+    a.nothing#responsive__set{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 .searchBar{
     display: flex;
@@ -343,7 +331,6 @@ a.searchBar {
 }
 .absoluteCartQuantity{
     position: absolute;
-    top: 1;
     right: 0;
     margin-right: 10px;
     margin-top: 30px;

@@ -55,8 +55,6 @@
   margin-top: 1rem;
   width: 100%;
   border-radius: 15px;
-  width: 100%;
-  height: 5rem;
   padding: 1rem;
   margin-top: 1rem;
   box-shadow: rgba(9, 15, 66, 0.25) 2px 2px;
@@ -130,10 +128,6 @@
 }
 
 @media screen and (max-width:1050px) {
-  .profile-actions {
-    padding-left: 10rem;
-    padding-right: 10rem;
-  }
 
   .detail-card__title {
     font-size: 1.2rem;
@@ -151,9 +145,7 @@
     line-height: 18px;
   }
 
-  .hub-header__icon {
-    margin-right: 1rem;
-  }
+
 
   .header__title {
     font-size: 1.5rem;

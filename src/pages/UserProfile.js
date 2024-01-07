@@ -41,7 +41,7 @@ const UserProfile = () => {
                                                 <h3 className="detail-card__title">Información personal</h3>
                                             </div>
                                             <div className="detail-card-description">
-                                                <span className="rich-text"><p className="detail-card__text">Aquí podras ver datos registrados de tu cuenta de socio</p></span>
+                                                <span className="rich-text"><p className="detail-card__text">Ver información personal</p></span>
 
                                             </div>
                                         </div>

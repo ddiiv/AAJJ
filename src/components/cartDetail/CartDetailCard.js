@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getImage } from "../../api/apiFunctions";
 import { Link } from "react-router-dom";
-import { Waveform } from '@uiball/loaders'
+
 import { useCartFunctions } from "../../context/CartContext";
 
 
@@ -71,9 +71,12 @@ const CartDetailCard = ({ cartProductIn }) => {
     const priceTotalxProduct = () => { priceTotalByProduct = product.Price * stock; return priceTotalByProduct; }
 
     useEffect(() => {
-        getImageProduct()
-    }, [cartProductIn])
-    useEffect(()=>{ setStock(cartProductIn.QuantityCart)},[cartProductIn])
+        
+    })
+    useEffect(()=>{ setStock(cartProductIn.QuantityCart)
+         getImageProduct()
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+        },[cartProductIn])
 
     return (
         <>
@@ -113,12 +116,12 @@ const CartDetailCard = ({ cartProductIn }) => {
                         <button className="selector-button" onClick={handleStockSubs}>-</button>
                         <div className="input-controler">
                             {loading === true && (
-                                <Waveform
-                                    size={25}
-                                    lineWeight={3.5}
-                                    speed={1}
-                                    color="black"
-                                />
+                                <></>/*<Waveform
+                                size={25}
+                                lineWeight={3.5}
+                                speed={1}
+                                color="black"
+                            />*/
                             )} {loading === false && (<input className="cartitemQuantityCart" type="number" inputMode="numeric" value={stock} min={1} max={product.QuantityStock} disabled />)}
                         </div>
                         <button className="selector-button" onClick={handleStockAdd}>+</button>

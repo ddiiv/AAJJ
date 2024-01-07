@@ -23,7 +23,7 @@ const ProductDetail = ({ productSelected }) => {
 
     useEffect(() => {
         fetchImage();
-    }, []);
+    });
 
 
     return (
