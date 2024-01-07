@@ -84,7 +84,6 @@ const Login = () => {
                                     validationSchema={SignupSchema}
                                     onSubmit={async (values) => {
                                         await new Promise((r) => setTimeout(r, 500));
-                                        alert("Bienvenido " + values.User + " !");
                                         checkLogged(values);
                                     }}
                                 >

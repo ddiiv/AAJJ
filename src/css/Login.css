@@ -1,4 +1,3 @@
-
 .landscape-view__container {
     display: flex;
     margin: 1rem 0;
@@ -57,9 +56,11 @@
     color: #fff;
     font-family: "Poppins";
 }
-.andres-button__content.login:hover{
+
+.andres-button__content.login:hover {
     color: #c00101;
 }
+
 .login-form__input {
     position: relative;
     z-index: 10;
@@ -162,7 +163,7 @@
     font-family: "Poppins";
 }
 
-.input-error{
+.input-error {
     color: #1a1a1a;
     font-weight: 600;
     font-size: 13px;
@@ -174,15 +175,128 @@
     font-family: "Poppins";
 }
 
-.separator-ui#login-separator{
-margin-top: 15px;
+.separator-ui#login-separator {
+    margin-top: 15px;
 }
-.andres-form-label-container{
+
+.andres-form-label-container {
     width: 100%;
     padding: 5px;
 }
-.andres-form-control__itemcontainer{
+
+.andres-form-control__itemcontainer {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+}
+
+@media screen and (max-width:1024px) {
+    .landscape-view__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 1.5rem;
+    }
+
+    .landscape-view__column--left {
+        width: 100%;
+
+    }
+
+    .andres-form-control__itemcontainer {
+        padding: 0;
+    }
+
+    .rich-text#landscape-view-text {
+        font-size: 20px;
+    }
+
+    .landscape-view__column--right {
+        width: 100%;
+        margin: 0;
+        border: none;
+        max-width: none;
+    }
+
+    .link#login {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    .ticket-row__left-column--primary-text{
+        justify-content: center;
+    }
+
+    .ticket-row__left-column--primary-text#landscape-view{
+        max-width: none;
+    }
+    .andres-form-control {
+        width: 100%;
+        padding: 0;
+    }
+
+    .login-form {
+        margin: 0;
+    }
+
+    .andres-button__content.login {
+        font-size: 18px;
+    }
+
+    .andres-button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+}
+
+@media screen and (max-width:650px) {
+    .landscape-view__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 1.5rem;
+    }
+
+    .landscape-view__column--left {
+        width: 100%;
+
+    }
+
+    .andres-form-control__itemcontainer {
+        padding: 0;
+        padding-bottom: 1rem;
+    }
+
+    .rich-text#landscape-view-text {
+        font-size: 20px;
+    }
+
+    .landscape-view__column--right {
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
+
+    .andres-form-control {
+        width: 100%;
+        padding: 0;
+    }
+
+    .login-form {
+        margin: 0;
+    }
+
+    .andres-button__content.login {
+        font-size: 18px;
+    }
+
+    .andres-button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .link#login {
+        width: 50%;
+    }
 }

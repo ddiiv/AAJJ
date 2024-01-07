@@ -9,7 +9,6 @@ const CarouselComponent = () => {
         const getImage = async () => {
         try {
                 const rutas = await getCarruselImages()
-                
                 const images = rutas.map((ruta) => ({ ...ruta, foto:  `https://backend-aajj.onrender.com/img/${ruta.Route}` }))
                 setImages(images)
             }

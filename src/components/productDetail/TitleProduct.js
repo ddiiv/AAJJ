@@ -20,7 +20,7 @@ const TitleProduct = ({ product }) => {
     return (
         <>
             <div className="ProductInfoTitle">
-                <h2>{product.Title}</h2>
+                <h2 className="productDetail__Title">{product.Title}</h2>
             </div>
             <div className="ProductReference">
                 <b>Ref. GU{product.idProduct}RF1</b>

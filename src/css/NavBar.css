@@ -52,9 +52,9 @@ a:hover {
     align-items: flex-start;
     background-color: #ffffff;
     text-align: center;
-    position: sticky !important;
+    position: sticky ;
     top: 0 !important;
-    z-index: 999 !important;
+    z-index: 998 ;
     background-color: #ffffff;
 }
 
@@ -145,10 +145,12 @@ a .img {
     transition: 0.5s;
     transform: scale(1.1);
 }
+
 .cartContainer {
     display: flex;
     flex-direction: row;
 }
+
 .containerLogo {
     height: 100%;
     width: 100%;
@@ -244,6 +246,21 @@ a {
 
 }
 
+.responsive_logo.disabled {
+    display: none;
+}
+
+.responsive_logo {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+}
+
+.responsive_logo.enabled {
+    display: flex;
+}
+
 @media screen and (max-width: 950px) {
 
     .navItem {
@@ -254,6 +271,35 @@ a {
 
 @media screen and (max-width:770px) {
 
+    .navbarContent,
+    .topnav {
+        height: 80px;
+    }
+
+    .logo {
+        max-width: 125px;
+    }
+
+    .topnav,
+    .navbarContent,
+    .containerLogo {
+        transition: 0.5s;
+        padding: 0px;
+    }
+
+    .containerItems {
+        width: 100%;
+    }
+
+    a.nothing#responsive__set {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:620px) {
+
     .CategoryNavbar,
     .nav,
     .navItem {
@@ -261,33 +307,122 @@ a {
 
     }
 
-    .navbarContent,
-    .topnav {
-        height: 80px;
-    }
-    .logo{
-        max-width: 125px;
-    }
-    .topnav,
-    .navbarContent,
-    .containerLogo{
-        transition: 0.5s;
-        padding: 0px;
-    }
-    .containerItems{
-        width: 100%;
-    }
-    a.nothing#responsive__set{
+    .responsive_logo.disabled {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
+
+    .responsive_logo.enabled {
+        display: none;
+    }
+    .responsive_logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+
 }
-.searchBar{
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.modal-background#open{
+    display: flex;
+}
+
+.aside_nav--left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 240px;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.aside_nav--left#open {
+    transform: translateX(0);
+}
+
+
+.nothing-aside {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+    padding: 0px;
+    margin-bottom: 20px;
+}
+
+.svg-icon-aside {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.aside_nav--left__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.aside_nav-category {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.navItem-aside {
+    color: #333;
+    text-decoration: none;
+    width: 100%;
+    text-align: left !important;
+}
+
+.navItem-aside:hover {
+    color: #007bff;
+}
+
+.hamburguer-logo__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.searchBar {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 a.searchBar {
     padding: 0px 0px 0px 0px;
 }
@@ -299,13 +434,18 @@ a.searchBar {
     font-family: "PoppinsItalic";
 }
 
+.logo.aside {
+    margin-bottom: 20px;
+}
+
 .userContainer {
     display: flex;
     flex-direction: row;
 
 }
-.rich-text.usertext{
-    font-family: "Poppins"; 
+
+.rich-text.usertext {
+    font-family: "Poppins";
     font-size: 16px;
     line-height: 1.45;
     margin: 0;
@@ -313,7 +453,8 @@ a.searchBar {
     text-align: center;
     color: #101010;
 }
-.cartItemsQuantity{
+
+.cartItemsQuantity {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -329,7 +470,8 @@ a.searchBar {
     text-align: center;
     font-family: "Poppins";
 }
-.absoluteCartQuantity{
+
+.absoluteCartQuantity {
     position: absolute;
     right: 0;
     margin-right: 10px;

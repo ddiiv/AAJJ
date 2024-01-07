@@ -7,11 +7,11 @@ const Filters=({props})=>{
     const [category, setCategory] = useState([])
     const [subCategory, setSubCategory] = useState([])  
     const [size, setSize] = useState([])    
-    const [filters, setFilters] = useState([])
+
     
   const handleClick = (e) => {
     e.preventDefault();
-    setFilters(filters => ({ ...filters, [e.target.name]: e.target.value }))
+    
     
   }
 
