@@ -16,9 +16,9 @@ const Search = () => {
         <main className="page">
             <div className="containerPage" >
                 <div className="catalog">
-                    <aside>
+                    {/* <aside>
                         <Filters />
-                    </aside>
+                    </aside> */}
                     <main className="products">
                         <CardList props={contextSearch} />
                     </main>

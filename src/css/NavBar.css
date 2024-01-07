@@ -10,7 +10,13 @@
     letter-spacing: 0.82px;
 
 }
+.serachbox_cotainer.disabled {
+    display: none;
+}
 
+.enabled {
+    display: flex;
+}
 a {
     padding: 2px 16px;
 }
@@ -41,9 +47,7 @@ a:hover {
 
 }
 
-.nav {
-    border-top: 0.5px solid #eaeaeaed;
-
+.nav-bottom_categories {
     width: 100%;
     height: 100%;
     transition-delay: 5s;
@@ -52,9 +56,9 @@ a:hover {
     align-items: flex-start;
     background-color: #ffffff;
     text-align: center;
-    position: sticky ;
+    position: sticky;
     top: 0 !important;
-    z-index: 998 ;
+    z-index: 998;
     background-color: #ffffff;
 }
 
@@ -78,6 +82,7 @@ a:hover {
     display: flex;
     padding: 0 50px;
     align-items: center;
+    border-bottom: 1px solid #DA1212;
 }
 
 .icons {
@@ -261,70 +266,6 @@ a {
     display: flex;
 }
 
-@media screen and (max-width: 950px) {
-
-    .navItem {
-        font-size: 14px;
-    }
-
-}
-
-@media screen and (max-width:770px) {
-
-    .navbarContent,
-    .topnav {
-        height: 80px;
-    }
-
-    .logo {
-        max-width: 125px;
-    }
-
-    .topnav,
-    .navbarContent,
-    .containerLogo {
-        transition: 0.5s;
-        padding: 0px;
-    }
-
-    .containerItems {
-        width: 100%;
-    }
-
-    a.nothing#responsive__set {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-}
-
-@media screen and (max-width:620px) {
-
-    .CategoryNavbar,
-    .nav,
-    .navItem {
-        display: none;
-
-    }
-
-    .responsive_logo.disabled {
-        display: flex;
-    }
-
-    .responsive_logo.enabled {
-        display: none;
-    }
-    .responsive_logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-    
-
-}
-
 .close-btn {
     position: absolute;
     right: 20px;
@@ -347,7 +288,8 @@ a {
     align-items: center;
     z-index: 999;
 }
-.modal-background#open{
+
+.modal-background#open {
     display: flex;
 }
 
@@ -362,7 +304,7 @@ a {
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     z-index: 1000;
-    
+
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
 }
@@ -432,6 +374,13 @@ a.searchBar {
     border-bottom: 1px solid black;
     width: 250px;
     font-family: "PoppinsItalic";
+    transition: 333ms all;
+}
+.searchInput:focus{
+    outline: none;
+    box-shadow: none;
+   border-bottom:1px solid #007bff;
+   transition: 333ms all;
 }
 
 .logo.aside {
@@ -476,4 +425,97 @@ a.searchBar {
     right: 0;
     margin-right: 10px;
     margin-top: 30px;
+}
+
+
+.serachBar__Form-Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+.serachbox_cotainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+@media screen and (max-width: 950px) {
+
+    .navItem {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width:770px) {
+
+    .navbarContent,
+    .topnav {
+        height: 80px;
+    }
+
+    .logo {
+        max-width: 125px;
+    }
+
+    .topnav,
+    .navbarContent,
+    .containerLogo {
+        transition: 0.5s;
+        padding: 0px;
+    }
+
+    .containerItems {
+        width: 100%;
+    }
+
+    a.nothing#responsive__set {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:620px) {
+    .serachbox_cotainer.disabled,.disabled{
+        display: flex;
+    }
+    .enabled,
+    .CategoryNavbar{
+        display: none;
+
+    }
+
+    .responsive_logo.disabled {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .responsive_logo.enabled {
+        display: none;
+    }
+
+    .responsive_logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .aside_nav--left {
+        border-right: 4px solid #11468F;
+    }
+
+    .nothing-aside-logo {
+        background-color: transparent !important;
+        padding: 0px;
+
+    }
 }
