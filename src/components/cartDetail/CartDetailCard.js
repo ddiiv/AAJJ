@@ -71,12 +71,13 @@ const CartDetailCard = ({ cartProductIn }) => {
     const priceTotalxProduct = () => { priceTotalByProduct = product.Price * stock; return priceTotalByProduct; }
 
     useEffect(() => {
-        
+
     })
-    useEffect(()=>{ setStock(cartProductIn.QuantityCart)
-         getImageProduct()
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-        },[cartProductIn])
+    useEffect(() => {
+        setStock(cartProductIn.QuantityCart)
+        getImageProduct()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cartProductIn])
 
     return (
         <>
@@ -91,20 +92,20 @@ const CartDetailCard = ({ cartProductIn }) => {
                     <div className="item-cart__info">
                         <div className="item-name">
                             <Link to={`/product/${product.Title}`} className="nothing">
-                                <h5 className="ticket-row__left-column--primary-text" id="cartDetailTitlexSize"><span className="richtext-black">{product.Title}</span></h5>
+                                <h5 className="ticket-row__left-column--primary-text" id="cartDetailTitlexSize"><span className="richtext-black" id="title-product__cart">{product.Title}</span></h5>
                             </Link>
                             <p className="item-cart__description-text"><span className="richtext-gray-regular" id="cartitemSize">Talle seleccionado: {product.Size}</span></p>
                         </div>
 
                         <div className="ui-link-container">
                             <div className="item-link">
-                                <a href className="link" onClick={removeItemFromCart}>Eliminar</a>
+                                <a href className="link" id="item__cart" onClick={removeItemFromCart}>Eliminar</a>
                             </div>
                             <div className="item-link">
-                                <a href className="link"  >Guardar</a>
+                                <a href className="link" id="item__cart" >Guardar</a>
                             </div>
                             <div className="item-link">
-                                <a href className="link">Comprar Ahora</a>
+                                <a href className="link" id="item__cart" >Comprar Ahora</a>
                             </div>
                         </div>
 

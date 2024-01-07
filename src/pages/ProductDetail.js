@@ -10,7 +10,7 @@ import Recommended from "../components/productDetail/Recommended";
 const ProductDetail = ({ productSelected }) => {
     const [product, setProduct] = useState([]);
     const productDetail = productSelected
-    
+
     const fetchImage = async () => {
         const res = await getImage(productDetail.Image)
         const url = await res.url;
@@ -34,23 +34,25 @@ const ProductDetail = ({ productSelected }) => {
                         <ImagesProduct imageurl={product.Image} />
                         <div className="ProductInfo">
                             <TitleProduct product={product} />
-
+                            <div className="separator-ui"></div>
                             <div className="ProductInfoSize">
                                 <h3 className="sizeTitle">Talles disponibles</h3>
                             </div>
                             <li className="ProductSizeItem" >
                                 <SizesProduct idProductS={productDetail.idProduct} />
-                            </li>
+                                
+                            </li> 
                         </div>
+                       <div className="separator-ui" id="special_html-error"></div>
                     </div>
 
-
-                    <DescriptionProduct product={product} />
                     
+                    <DescriptionProduct product={product} />
+
                 </div>
             </div>
             <div className="recommended_container">
-            <Recommended />
+                <Recommended />
             </div>
         </div>
 

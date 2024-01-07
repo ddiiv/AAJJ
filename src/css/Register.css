@@ -123,3 +123,80 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] { -moz-appearance:textfield; }
+@media screen and (max-width:1024px) {
+    .login-form.register{
+        padding: 0rem;
+    }
+    .landscape-view__column--right.register{
+        width: 100%;
+        margin-left: 0rem;
+        max-width: 100%;
+    }
+    .andres-form-label-container.register{
+        width: 100%;
+        padding: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: normal;
+    }
+    .andres-form-control__itemcontainer.register{
+        padding: 0;
+        padding-bottom: 1rem;
+    }
+    .andres-form-control--textfield.andes-form-control__field.register{
+        font-size: 16px;
+        height: auto;
+        line-height: 22px;
+        margin: 0;
+        width: 100%;
+        padding: 0.8125em 0.75em;
+        border: 0px solid rgba(0, 0, 0, .1);
+        border-radius: 6px;
+    }
+    .row-register-form{
+        display: block;
+    }
+    .login-form__actions.register{
+        padding: 0rem;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .login-form.register{
+        padding: 0rem;
+    }
+    .landscape-view__column--right.register{
+        width: 100%;
+        margin-left: 0rem;
+        max-width: 100%;
+    }
+    .andres-form-label-container.register{
+        width: 100%;
+        padding: 0rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: normal;
+    }
+    .andres-form-control__itemcontainer.register{
+        padding: 0;
+        padding-bottom: 1rem;
+    }
+    .andres-form-control--textfield.andes-form-control__field.register{
+        font-size: 16px;
+        height: auto;
+        line-height: 22px;
+        margin: 0;
+        width: 100%;
+        padding: 0.8125em 0.75em;
+        border: 0px solid rgba(0, 0, 0, .1);
+        border-radius: 6px;
+    }
+    .row-register-form{
+        display: block;
+    }
+    .login-form__actions.register{
+        padding: 0rem;
+    }
+}

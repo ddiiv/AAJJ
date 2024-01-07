@@ -6,8 +6,9 @@ const DescriptionProduct = ({ product }) => {
         <>
 
             <div className="ProductDescription">
+                
                 <span className="DescriptionProduct">Descripcion</span>
-                <h1>{product.Description}</h1>
+                <h1 className="descriptionBox_Product">{product.Description}</h1>
             </div>
         </>
     )

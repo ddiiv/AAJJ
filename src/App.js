@@ -62,7 +62,9 @@ function App() {
       .catch((error) => {
         alert(error)
       })
+    // eslint-disable-next-line
   }, [])
+
 
   return (
     <>
@@ -74,8 +76,8 @@ function App() {
               <SearchProvider>
 
                 <BrowserRouter>
-                  <TopNav />
-                  <BottomNav />
+                  <TopNav category={category}/>
+                  <BottomNav category={category}/>
                   <Routes>
                     <Route path='/' element={<Home />} />
                     {category?.map((categories) => {
