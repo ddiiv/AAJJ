@@ -9,6 +9,7 @@ const Card = ({ product }) => {
         const getImageProduct = async () => {
             try {
                 const staticProduct = product
+                console.log(staticProduct.Image)
                 const res = await getImage(staticProduct.Image)
                 const url = await res.url;
                 setProducts({

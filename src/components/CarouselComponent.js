@@ -9,7 +9,8 @@ const CarouselComponent = () => {
         const getImage = async () => {
         try {
                 const rutas = await getCarruselImages()
-                const images = rutas.map((ruta) => ({ ...ruta, foto:  `http://localhost:3001/img/${ruta.Route}` }))
+                
+                const images = rutas.map((ruta) => ({ ...ruta, foto:  `https://backend-aajj.onrender.com/img/${ruta.Route}` }))
                 setImages(images)
             }
             catch (error) {
