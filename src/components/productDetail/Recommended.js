@@ -37,7 +37,13 @@ const Recommended = () => {
   return (
 
     <div className="productsHighlist">
-      <h2 className="highList">Recomendados</h2>
+       <header className="header_productHighlist--container">
+        <h2 className="highList">Productos 
+        <strong className="highList-Strong">Recomendados</strong>
+        </h2>
+       
+
+      </header>
       <Slider  {...settings}>
 
         {ProductFunctions.listProduct?.map(product =>

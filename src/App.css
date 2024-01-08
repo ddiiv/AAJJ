@@ -57,7 +57,9 @@
   width: 100%;
   padding: 0px;
 }
-
+.containerPage.ProductDetail-Container{
+  background-color: rgb(254 254 254 / 99%);
+}
 head {
   margin: 0;
 }

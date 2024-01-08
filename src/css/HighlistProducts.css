@@ -1,40 +1,51 @@
-.productsHighlist
-{
+.productsHighlist {
     width: 100%;
     height: 100%;
 }
-.slick-next {
-    display: none !important;; 
-}
-.CardHighList{
+
+.CardHighList {
     width: 26rem;
     display: flex;
     border: none;
     border-radius: 0;
     float: left;
     align-items: flex-start;
-    justify-content:flex-start;
+    justify-content: flex-start;
     flex-direction: column;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    
-}
-.highList{
-    font-family: "PoppinsMedium";
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    transition: 0.5s;
-    font-size: 35px;
-    margin: 10px 0 20px;
-    text-align: center;
-    color: #000;
-    padding: 0 12px 0;
-    text-transform:uppercase;
+
 }
 
-.productImgHighList
-{
+.highList {
+    font-family: "PoppinsExtraBold";
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: 0.5s;
+    color: #DA1212;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    position: relative;
+    text-align: left;
+    padding-bottom: 30px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding: 20px 0 30px 10px;
+    background-image: url(https://bocashop.vteximg.com.br/arquivos/background-carousel.png?v=637316413110230000);
+    background-repeat: no-repeat;
+    background-position-x: 99.8%;
+    background-position-y: center;
+    background-size: 96px;
+    margin: 10px;
+}
+.highList-Strong{
+    padding-left: 2rem;
+}
+
+.productImgHighList {
     width: 100%;
     height: 100%;
     padding: 0.5px;
@@ -46,31 +57,33 @@
     transition: 0.5s;
 }
 
-.LinkConteiner{
+.LinkConteiner {
     margin: 5px;
     box-shadow: 0 0.5px 0.5rem -4px #000;
-        text-decoration: none;
-        color: #000;
-        overflow: hidden;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 250ms ease-in-out;
-        
+    text-decoration: none;
+    color: #000;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+
 }
-.LinkConteiner:hover{
+
+.LinkConteiner:hover {
     text-decoration: none;
     box-shadow: 0 4px 1rem -4px #000;
     transform: translateY(-3px);
 }
 
-.genderContainer{
+.genderContainer {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     transition: 0.5s;
 }
-.priceContainer{
+
+.priceContainer {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -78,20 +91,23 @@
     transition: 0.5s;
     padding-top: 1rem;
 }
-.price{
+
+.price {
     font-family: "Poppins";
     font-size: 10px;
     line-height: 18px;
 
 }
-.titleContainer{
+
+.titleContainer {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     transition: 0.5s;
 }
-.price-highlist{
+
+.price-highlist {
     color: #585858;
     margin-bottom: 8px;
     letter-spacing: 3px;
@@ -99,23 +115,36 @@
     font-size: 25px;
     line-height: 18px;
 }
-.title-highlist{
+
+.title-highlist {
     letter-spacing: 2px;
     font-size: 15px;
 }
-b.gender{
-    
+
+b.gender {
+
     letter-spacing: 2px;
     font-size: 15px;
 }
-a.LinkConteiner{
+
+a.LinkConteiner {
     padding: 0 0 0 0px;
 }
-.infoContainer{
+
+.infoContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     transition: 0.5s;
     padding: 10px;
+}
+
+.max-w-6xl.highlist_container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    flex-direction: row;
+    transition: 0.5s;
 }

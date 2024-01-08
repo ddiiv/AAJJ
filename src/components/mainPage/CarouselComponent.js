@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import '../css/Carrusel.css';
-import { getCarruselImages } from '../api/apiFunctions';
+import '../../css/Carrusel.css';
+import { getCarruselImages } from '../../api/apiFunctions';
 import Flickity from 'react-flickity-component';
 
 const CarouselComponent = () => {

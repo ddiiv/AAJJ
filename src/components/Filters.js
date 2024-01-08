@@ -107,7 +107,7 @@ const Filters=({props})=>{
               </Dropdown>
             </div>
           </div>
-          <span className="rich-text price" id="product-rich-text">{localCoin()}</span>
+          <span className="product-rich-text__CategoryCatalog" >{localCoin()}</span>
             </section>
         </div>  
     )

@@ -1,6 +1,7 @@
 import React from "react";
-import CarouselComponent from "../components/CarouselComponent.js";
+import CarouselComponent from "../components/mainPage/CarouselComponent.js";
 import HighlistProducts from "../components/highlightProduct/HighlightProducts.js";
+import CarouselSubCategories from "../components/mainPage/CarouselSubCategories.js";
 import '../css/MainComponent.css'
 
 const Home = () => {
@@ -8,15 +9,19 @@ const Home = () => {
    return (
       <>
          <div className="page">
-            <div className="MainContainer">
-               <CarouselComponent />
-               <HighlistProducts />
+            <article className="MainContainer">
+               <section className="section-main__container firstSlide">
+                  <CarouselComponent />
+               </section>
 
-               {/* footer */}
-              
-            </div>
-
-
+               {              /* <section className="section-main__container">
+                  <CarouselSubCategories />
+               </section>
+*/}
+         {    /*  <section className="section-main__container">*/}
+                  <HighlistProducts />
+      {        /* </section>*/}
+            </article>
          </div>
       </>
    )

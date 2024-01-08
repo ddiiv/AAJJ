@@ -10,18 +10,18 @@ const HighlistProducts = () => {
   const ProductFunctions = useProductFunctions();
   useEffect(() => {
     ProductFunctions.getProductsHightlist();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const settings = {
     useTransform: true,
     autoplay: true,
     autoplaySpeed: 4500,
-    arrows: true,
+    infinite: true,
     slide: '.slider-pic',
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    dots: false,
+    dots: true,
     cssEase: 'ease-out',
     responsive: [
       {
@@ -35,8 +35,14 @@ const HighlistProducts = () => {
 
   return (
 
-    <div className="productsHighlist">
-      <h2 className="highList">Destacados</h2>
+    <section className="productsHighlist">
+      <header className="header_productHighlist--container">
+        <h2 className="highList">Productos 
+        <strong className="highList-Strong">Destacados</strong>
+        </h2>
+       
+
+      </header>
       <Slider  {...settings}>
 
         {ProductFunctions.listProduct?.map(product =>
@@ -44,7 +50,7 @@ const HighlistProducts = () => {
           <HighlightCard key={product.idProduct} product={product} />
         ))}
       </Slider>
-    </div>
+    </section>
 
   );
 
