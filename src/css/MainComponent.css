@@ -3,3 +3,13 @@
 width: 100%;
 height:100%;
 }
+
+.section-main__container{
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+.section-main__container.firstSlide{
+    padding-top: 0px;
+}

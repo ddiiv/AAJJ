@@ -379,7 +379,7 @@ a.searchBar {
 .searchInput:focus{
     outline: none;
     box-shadow: none;
-   border-bottom:1px solid #007bff;
+   border-bottom:2px solid #007bff;
    transition: 333ms all;
 }
 

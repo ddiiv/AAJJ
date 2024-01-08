@@ -1,31 +1,44 @@
 import React from "react";
-import { CarouselProvider } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-
+import "react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from "react-image-gallery";
 const ImagesProduct = ({ imageurl }) => {
+
+    const images = [
+        {
+            original: imageurl,
+            thumbnail: imageurl
+        },
+        {
+            original: imageurl,
+            thumbnail: imageurl
+        },
+        {
+            original: imageurl,
+            thumbnail: imageurl
+        }
+
+    ]
+
+
     return (
         <>
-
-            <CarouselProvider
-                naturalSlideWidth={100}
-                naturalSlideHeight={100}
-                totalSlides={3}
-                visibleSlides={1}
+            <ImageGallery
+                items={images}
                 className="carousel"
+                showPlayButton={false}
+                showFullscreenButton={true}
+                showThumbnails={true}
+                showNav={false}
+                showBullets={true}
+                autoPlay={true}
+                slideInterval={5000}
+                thumbnailPosition="left"
+                slideOnThumbnailOver={false}
+                disableKeyDown={false}
+                disableThumbnailScroll={true}
+                disableSwipe={false}
             >
-
-                <div className="ProductImages">
-                    <div className="asideImages">
-                        <img className="asideImage" src={imageurl} alt={imageurl} />
-                        <img className="asideImage" src={imageurl} alt={imageurl} />
-                        <img className="asideImage" src={imageurl} alt={imageurl} />
-                    </div>
-                    <div className="MainImage">
-
-                        <img className="mainImage-resolution" src={imageurl} alt={imageurl} />
-                    </div>
-                </div>
-            </CarouselProvider>
+            </ImageGallery>
         </>
     )
 }
