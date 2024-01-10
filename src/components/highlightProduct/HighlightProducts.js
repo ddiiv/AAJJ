@@ -34,24 +34,22 @@ const HighlistProducts = () => {
   };
 
   return (
-
-    <section className="productsHighlist">
+    <>
       <header className="header_productHighlist--container">
-        <h2 className="highList">Productos 
-        <strong className="highList-Strong">Destacados</strong>
+        <h2 className="highList">Productos
+          <strong className="highList-Strong">Destacados</strong>
         </h2>
-       
-
       </header>
-      <Slider  {...settings}>
+      <section className="productsHighlist">
+        <Slider  {...settings}>
 
-        {ProductFunctions.listProduct?.map(product =>
-        (
-          <HighlightCard key={product.idProduct} product={product} />
-        ))}
-      </Slider>
-    </section>
-
+          {ProductFunctions.listProduct?.map(product =>
+          (
+            <HighlightCard key={product.idProduct} product={product} />
+          ))}
+        </Slider>
+      </section>
+    </>
   );
 
 

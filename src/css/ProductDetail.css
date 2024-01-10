@@ -125,14 +125,14 @@ img.asideImage {
     width: 100%;
     height: 100%;
     display: flex;
-    padding: 4rem 3rem;
+    padding: 2rem 2rem;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 
 }
 .section-main__container.descriptionProductDetail{
-    background: #11468F;
+   
     padding: 0px;
 
 }
@@ -140,7 +140,6 @@ img.asideImage {
 .ProductInfoSize {
     width: 100%;
     height: 10%;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -164,8 +163,9 @@ img.asideImage {
     font-size: 1rem;
     line-height: 1.5rem;
     text-align: left;
-    color: #EEEEEE;
+    color: #121212;
     padding-left: 1rem;
+    font-weight: 700;
 }
 .separator-ui.ProductDetail{
     background: #DA1212;
@@ -177,7 +177,6 @@ img.asideImage {
 .ProductSizeItem {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
