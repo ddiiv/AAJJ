@@ -11,7 +11,7 @@ const Recommended = () => {
   const ProductFunctions = useProductFunctions();
   useEffect(() => {
     ProductFunctions.getProductsHightlist();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const settings = {
@@ -35,24 +35,22 @@ const Recommended = () => {
   };
 
   return (
-
-    <div className="productsHighlist">
-       <header className="header_productHighlist--container">
-        <h2 className="highList">Productos 
-        <strong className="highList-Strong">Recomendados</strong>
+    <>
+      <header className="header_productHighlist--container">
+        <h2 className="highList recommended">Productos
+          <strong className="highList-Strong recommended">Recomendados</strong>
         </h2>
-       
-
       </header>
-      <Slider  {...settings}>
+      <div className="productsHighlist">
+        <Slider  {...settings}>
 
-        {ProductFunctions.listProduct?.map(product =>
-        (
-          <HighlightCard key={product.idProduct} product={product} />
-        ))}
-      </Slider>
-    </div>
-
+          {ProductFunctions.listProduct?.map(product =>
+          (
+            <HighlightCard key={product.idProduct} product={product} />
+          ))}
+        </Slider>
+      </div >
+    </>
   );
 
 

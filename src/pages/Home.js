@@ -4,6 +4,7 @@ import HighlistProducts from "../components/highlightProduct/HighlightProducts.j
 import CarouselSubCategories from "../components/mainPage/CarouselSubCategories.js";
 import '../css/MainComponent.css'
 
+
 const Home = () => {
 
    return (
@@ -18,9 +19,10 @@ const Home = () => {
                   <CarouselSubCategories />
                </section>
 */}
-         {    /*  <section className="section-main__container">*/}
-                  <HighlistProducts />
-      {        /* </section>*/}
+               {    /*  <section className="section-main__container">*/}
+               
+               <HighlistProducts />
+               {        /* </section>*/}
             </article>
          </div>
       </>

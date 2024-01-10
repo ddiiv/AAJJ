@@ -41,10 +41,13 @@
     background-size: 96px;
     margin: 10px;
 }
-.highList-Strong{
+
+.highList-Strong {
     padding-left: 2rem;
 }
-
+.recommended{
+    font-size: 20px;
+}
 .productImgHighList {
     width: 100%;
     height: 100%;
@@ -147,4 +150,22 @@ a.LinkConteiner {
     padding: 0px;
     flex-direction: row;
     transition: 0.5s;
+}
+
+.header_productHighlist--container {
+    background: linear-gradient(75deg, rgba(250, 250, 250, 0) 30%, rgba(221, 0, 0, 1) 40%);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width:620px) {
+    .header_productHighlist--container {
+        background: linear-gradient(75deg, rgba(250, 250, 250, 0) 50%, rgba(221, 0, 0, 1) 80%);
+        padding: 1rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+    .recommended{
+        font-size: 16px;
+    }
 }

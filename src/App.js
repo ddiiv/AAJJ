@@ -69,42 +69,45 @@ function App() {
   return (
     <>
       <div className="App">
+        <div className="page">
+          <article className="MainContainer">
+            <UserProvider>
+              <ProductProvider>
+                <CartProvider>
+                  <SearchProvider>
 
-        <UserProvider>
-          <ProductProvider>
-            <CartProvider>
-              <SearchProvider>
-
-                <BrowserRouter>
-                  <TopNav category={category}/>
-                  <BottomNav category={category}/>
-                  <Routes>
-                    <Route path='/' element={<Home />} />
-                    {category?.map((categories) => {
-                      const categorytoLowerCase = categories.Category
-                      return (
-                        <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
-                      )
-                    })}
-                    {products?.map((product) => {
-                      return (
-                        <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail key={product.idProduct} productSelected={product} />} />
-                      )
-                    })}
-                    <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
-                    <Route path='/cartdetail' element={<CartDetail />}></Route>
-                    <Route path='/profile' element={<UserProfile />}></Route>
-                    <Route path='/login' element={<Login />}></Route>
-                    <Route path='/register' element={<Register />}></Route>
-                    <Route path='*' element={<NotFound />} />
-                    <Route path='/editprofile' element={<EditProfile />} />
-                  </Routes>
-                </BrowserRouter>
-                <Footer />
-              </SearchProvider>
-            </CartProvider>
-          </ProductProvider>
-        </UserProvider>
+                    <BrowserRouter>
+                      <TopNav category={category}/>
+                      <BottomNav category={category} />
+                      <Routes>
+                        <Route path='/' element={<Home />} />
+                        {category?.map((categories) => {
+                          const categorytoLowerCase = categories.Category
+                          return (
+                            <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
+                          )
+                        })}
+                        {products?.map((product) => {
+                          return (
+                            <Route path={`/product/${product.Title}`} key={product.idProduct} element={<ProductDetail key={product.idProduct} productSelected={product} />} />
+                          )
+                        })}
+                        <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
+                        <Route path='/cartdetail' element={<CartDetail />}></Route>
+                        <Route path='/profile' element={<UserProfile />}></Route>
+                        <Route path='/login' element={<Login />}></Route>
+                        <Route path='/register' element={<Register />}></Route>
+                        <Route path='*' element={<NotFound />} />
+                        <Route path='/editprofile' element={<EditProfile />} />
+                      </Routes>
+                    </BrowserRouter>
+                    <Footer />
+                  </SearchProvider>
+                </CartProvider>
+              </ProductProvider>
+            </UserProvider>
+          </article>
+        </div>
       </div>
     </>
   );

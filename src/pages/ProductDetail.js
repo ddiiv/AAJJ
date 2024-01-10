@@ -27,40 +27,36 @@ const ProductDetail = ({ productSelected }) => {
 
 
     return (
-        <div className="page">
-            <div className="containerPage ProductDetail-Container">
-                <section className="section-main__container">
-                    <div className="ProductDetailContainer">
-                        <div className="ProductDetail">
-                            <ImagesProduct imageurl={product.Image} />
-                            <div className="ProductInfo">
-                                <TitleProduct product={product} />
-                                <div className="separator-ui ProductDetail"></div>
-                                <div className="ProductInfoSize">
-                                    <h3 className="sizeTitle">Talles disponibles</h3>
+        <>
+            <div className="page">
+                <div className="containerPage ProductDetail-Container">
+                    <section className="section-main__container">
+                        <div className="ProductDetailContainer">
+                            <div className="ProductDetail">
+                                <ImagesProduct imageurl={product.Image} />
+                                <div className="ProductInfo">
+                                    <TitleProduct product={product} />
+                                    <div className="separator-ui ProductDetail"></div>
+                                    <div className="ProductInfoSize">
+                                        <h3 className="sizeTitle">Talles disponibles</h3>
+                                    </div>
+                                    <li className="ProductSizeItem" >
+                                        <SizesProduct idProductS={productDetail.idProduct} />
+                                    </li>
                                 </div>
-                                <li className="ProductSizeItem" >
-                                    <SizesProduct idProductS={productDetail.idProduct} />
 
-                                </li>
                             </div>
-                         
                         </div>
-                    </div>
+                    </section>
+                </div>
+                <section className="section-main__container descriptionProductDetail">
+                    <DescriptionProduct product={product} />
+                </section>
+                <section className="section-main__container">
+                    <Recommended />
                 </section>
             </div>
-            <section className="section-main__container descriptionProductDetail">
-            <div class="separator-ui ProductDetail"></div>
-                <DescriptionProduct product={product} />
-                <div class="separator-ui ProductDetail"></div>
-            </section>
-
-
-            <section className="section-main__container">
-                <Recommended />
-            </section>
-        </div>
-
+        </>
     )
 }
 export default ProductDetail;
