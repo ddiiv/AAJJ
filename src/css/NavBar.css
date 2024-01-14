@@ -53,7 +53,7 @@ a:hover {
     width: 100%;
     height: 80px;
     z-index: 999 !important;
-    background: linear-gradient(75deg, rgba(250, 250, 250, 0) 30%, rgba(221, 0, 0, 1) 50%);
+    background: #fcfcfc;
     position: sticky;
     top: 0 !important;
 }
@@ -204,11 +204,11 @@ a .img {
     position: relative;
     cursor: pointer;
     transition: 0.5s ease-in-out;
-    fill: #EEEE;
+    fill: #101010;
 }
 
 .items:hover {
-    fill: #ffffff;
+    fill: #df0000d3;
     color: #df0000d3;
     transition: 0.5s ease-in-out;
 
@@ -397,7 +397,7 @@ a.searchBar {
 
 .searchInput {
     border: none;
-    border-bottom: 1px solid #EEEE;
+    border-bottom: 1px solid #101010;
     width: 250px;
     font-family: "PoppinsItalic";
     transition: 333ms all;

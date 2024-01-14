@@ -1,15 +1,121 @@
-.MainContainer{
+.MainContainer {
 
-width: 100%;
-height:100%;
+    width: 100%;
+    height: 100%;
 }
 
-.section-main__container{
+.section-main__container {
     width: 100%;
     height: 100%;
     padding-top: 1rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
 }
-.section-main__container.firstSlide{
+
+.section-main__container.firstSlide {
     padding-top: 0px;
+}
+
+.header_title-mainSubCategories {
+    font-family: "PoppinsExtraBold";
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: 0.5s;
+    color: #DA1212;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: normal;
+    position: relative;
+}
+
+.header_container-mainSubCategories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.carousel__cards--subcategories{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem;
+}
+.carousel__card--subcategories{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    cursor: pointer;
+    padding: 1rem;
+}
+.carousel__card--subcategories__img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transition: 0.5s;
+}
+.carousel_card-img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    transition: 0.5s;
+}
+.carousel_card-img:hover{
+    transform: scale(1.01);
+    transition: 0.5s;
+
+}
+.carousel__card--subcategories__img:hover{
+    transform: scale(1.01);
+    transition: 0.5s;
+
+
+}
+.nothing.cardSubcategories{
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding: 0px;
+    transition: 0.5s;
+}
+.carousel__card--subcategories__title{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+    background-color: #000000a0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.carousel__card--subcategories__title--name{
+    font-family: "PoppinsExtraBold";
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    padding: 10px;
+    color: #EEEE;
+    width: fit-content;
+    margin: 0 auto;
+}
+.card--subcategories__title{
+    content: "";
+    height: 2px;
+    background-color: #e31724;
+    display: block;
+    margin-top: 5px;
+}
+
+.slick-prev:before, .slick-next:before{
+    color: #DA1212;
 }
