@@ -42,7 +42,6 @@ const HighlistProducts = () => {
       </header>
       <section className="productsHighlist">
         <Slider  {...settings}>
-
           {ProductFunctions.listProduct?.map(product =>
           (
             <HighlightCard key={product.idProduct} product={product} />

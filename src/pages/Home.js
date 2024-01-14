@@ -14,15 +14,12 @@ const Home = () => {
                <section className="section-main__container firstSlide">
                   <CarouselComponent />
                </section>
-
-               {              /* <section className="section-main__container">
+               <section className="section-main__container">
                   <CarouselSubCategories />
                </section>
-*/}
-               {    /*  <section className="section-main__container">*/}
-               
-               <HighlistProducts />
-               {        /* </section>*/}
+               <section className="section-main__container">
+                  <HighlistProducts />
+               </section>
             </article>
          </div>
       </>
