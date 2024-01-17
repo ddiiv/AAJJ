@@ -20,7 +20,7 @@ const CarouselSubCategories = () => {
                 breakpoint: 450,
                 settings: {
                     dots: true,
-                    arrows:false,
+                    arrows: false,
                     slidesToShow: 1,
                 }
             }]
@@ -44,7 +44,6 @@ const CarouselSubCategories = () => {
                                         </div>
                                     </Link>
                                 </div>
-
                             </div>
                             <div className="carousel__card--subcategories">
                                 <div className="carousel__card--subcategories__img">

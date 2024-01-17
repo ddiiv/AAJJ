@@ -1,6 +1,5 @@
 .navItem {
 
-    display: flex;
     color: #101010;
     text-decoration: dotted;
     font-weight: 300;
@@ -8,7 +7,14 @@
     line-height: 40px;
     text-decoration: none;
     letter-spacing: 0.82px;
+}
 
+.categories_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: row;
 }
 
 a.nothing:hover {
@@ -27,7 +33,7 @@ a.nothing:hover {
 }
 
 a {
-    padding: 2px 16px;
+    padding: 0px;
 }
 
 a:hover {
@@ -165,6 +171,7 @@ a .img {
 .cartContainer {
     display: flex;
     flex-direction: row;
+    padding: 0 5px;
 }
 
 .containerLogo {
@@ -350,9 +357,13 @@ a {
     height: 20px;
     margin-right: 10px;
     fill: #EEEE;
+    border-left: #101010 1px solid;
+    padding-left: 5px;
 }
+
 .svg-icon-aside.close {
     fill: #101010;
+    border: none;
 }
 
 .aside_nav--left__container {
@@ -382,7 +393,7 @@ a {
     cursor: pointer;
     z-index: 10;
     border-left: 1px solid rgb(102, 102, 102);
-    padding: 2px 16px;
+    padding: 0px;
 }
 
 .searchBar {
@@ -396,20 +407,22 @@ a.searchBar {
 }
 
 .searchInput {
+    transition: 333ms ease-out;
     border: none;
     border-bottom: 1px solid #101010;
     width: 250px;
     font-family: "PoppinsItalic";
-    transition: 333ms all;
     background: transparent;
     color: #ffffff;
+    
 }
 
 .searchInput:focus {
+    transition: 333ms ease-out;
     outline: none;
     box-shadow: none;
-    border-bottom: 2px solid #007bff;
-    transition: 333ms all;
+    border-bottom: 1px solid #007bff;
+    
 }
 
 .logo.aside {
@@ -432,6 +445,10 @@ a.searchBar {
     color: #101010;
 }
 
+a.nothing#responsive__set {
+    padding: 0 1rem 0 16px;
+}
+
 .cartItemsQuantity {
     display: flex;
     justify-content: center;
@@ -444,7 +461,7 @@ a.searchBar {
     font-size: 12px;
     font-weight: 600;
     line-height: 1.45;
-    margin: 0;
+    margin: 5px;
     text-align: center;
     font-family: "Poppins";
 }
@@ -452,7 +469,7 @@ a.searchBar {
 .absoluteCartQuantity {
     position: absolute;
     right: 0;
-    margin-right: 10px;
+    margin-right: -2px;
     margin-top: 30px;
 }
 
@@ -507,40 +524,67 @@ a.searchBar {
 
     a.nothing#responsive__set {
         display: flex;
+
         flex-direction: column;
         justify-content: center;
+    }
+    .cartContainer{
+        padding-right: 5px;
+        
     }
 }
 
 @media screen and (max-width:620px) {
-    .svg-icon-aside{
+    .items.cart {
+        padding-right: 0px;
+        border-left: #101010 1px solid;
+
+        margin-left: 5px;
+    }
+
+    .hamburguer-logo__button,
+    .buttonItem#center {
+        border: none;
+        padding-left: 0.5rem;
+    }
+
+    .svg-icon-aside {
         fill: #101010;
     }
-    .navbarContent{
+
+    .navbarContent {
         background: rgba(250, 250, 250, 0);
     }
-    .carruselImg{
+
+    .carruselImg {
         height: 10rem;
     }
-    .carousel.flickity-enabled.is-draggable{
+
+    .carousel.flickity-enabled.is-draggable {
         height: 10rem;
     }
+
     .serachbox_cotainer.disabled,
     .disabled {
         display: flex;
     }
 
-    .rich-text.usertext,.items,.items.searchBarSVG{
+    .rich-text.usertext,
+    .items,
+    .items.searchBarSVG {
         color: #101010;
         fill: #101010;
     }
-    .searchInput{
+
+    .searchInput {
         color: #101010;
     }
-    .absoluteCartQuantity{
+
+    .absoluteCartQuantity {
         position: relative;
     }
-    .absoluteCartQuantity{
+
+    .absoluteCartQuantity {
         margin-right: 0px;
     }
 
@@ -579,5 +623,15 @@ a.searchBar {
         background-color: transparent !important;
         padding: 0px;
 
+    }
+
+    a.nothing#responsive__set {
+        padding: 0px;
+    }
+    .cartContainer{
+        padding: 0px;
+    }
+    .cartItemsQuantity{
+        margin: 0px;
     }
 }

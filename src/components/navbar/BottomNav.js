@@ -1,6 +1,5 @@
 import { BrowserRouter as Routes, Link } from "react-router-dom";
 import '../../css/NavBar.css'
-import search_png from "../../img/search.png"
 import { useSearchFunctions } from "../../context/SearchContext";
 import { useNavigate } from "react-router-dom";
 

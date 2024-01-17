@@ -213,10 +213,8 @@
 }
 
 .ui-link-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min(1rem, 100%), 1fr));
     margin-top: 10px;
     width: 100%;
 
@@ -473,6 +471,14 @@
     .item-price-p{
         text-align: left;
     }
-
-    
+    span.richtext-gray-regular#cartitemSize{
+        margin-left: 0px;
+    }
+    .item-img-container{
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+    span.richtext-gray-regular{
+        font-size: 0.8rem;
+    }
 }

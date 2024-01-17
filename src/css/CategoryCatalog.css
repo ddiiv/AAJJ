@@ -16,6 +16,12 @@ a {
   text-decoration: none;
 }
 
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min(10rem, 100%), 1fr));
+  grid-gap: 1rem;
+}
+
 .product-card {
   width: 280px;
   max-height: 500px;
@@ -482,13 +488,12 @@ span.price {
 
 /*card nuevas*/
 .max-w-6xl {
-  width: 33%;
-    float: left;
-    text-align: left;
-    position: relative;
-    padding: 0 12px 0;
-    transition: width 0.5s;
-    margin-bottom: 1rem;
+  float: left;
+  text-align: left;
+  position: relative;
+  padding: 0 12px 0;
+  transition: width 0.5s;
+  margin-bottom: 1rem;
 }
 
 .flex {
@@ -509,10 +514,15 @@ span.price {
 
 
 @media screen and (max-width:724px) {
-  .max-w-6xl {
-  width: 50%;
+  .products {
+    grid-template-columns: repeat(2, minmax(min(10rem, 100%), 1fr));
+
+  }
+  .text-gray-700.Title{
+    font-size: 0.7rem;
+  }
 }
-}
+
 .w-full {
   width: 100%;
 }
@@ -520,6 +530,7 @@ span.price {
 .bg-white {
   background-color: #ffffff;
 }
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -538,7 +549,7 @@ span.price {
 
 .p-4 {
   padding: 0px !important;
-  
+
 }
 
 .uppercase {
@@ -717,10 +728,12 @@ span.price {
   height: 100%;
   transition: 0.5s;
 }
-img.productImage:hover{
-  transform: scale3d(1.1,1.1,1.1);
+
+img.productImage:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
   transition: 0.5s;
 }
+
 .description-text-card {
   -ms-word-break: break-all;
   word-break: break-word;
@@ -782,9 +795,7 @@ img.productImage:hover{
 }
 
 @media screen and (min-width:1250px) {
-  .max-w-sm {
-    max-width: 18rem;
-  }
+
 
   .text-gray-700.Title {
     max-width: fit-content;
@@ -793,10 +804,12 @@ img.productImage:hover{
     word-break: break-word;
   }
 }
-.product-rich-text__CategoryCatalog{
+
+.product-rich-text__CategoryCatalog {
   font-family: "Poppins";
   font-size: 20px;
 }
+
 .filter_catalog--container {
   width: 100%;
   max-width: 18%;
@@ -808,6 +821,8 @@ img.productImage:hover{
   display: block;
   transition: all 300ms ease 0s;
 }
+
+
 
 @media screen and (max-width:450px) {
 
@@ -824,11 +839,6 @@ img.productImage:hover{
     max-width: 20rem;
   }
 
-  .max-w-6xl.mx-auto {
-
-    max-width: 50%;
-
-  }
 
   .highlist_container {
     max-width: 100% !important;
@@ -856,8 +866,7 @@ img.productImage:hover{
   }
 
   .text-3xl {
-
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
 
   .Description {
@@ -871,7 +880,7 @@ img.productImage:hover{
 
   .text-gray-700.Title {
     max-width: fit-content;
-    font-size: 15px;
+    font-size: 13px;
     height: 2.8rem;
     overflow: hidden;
     word-break: break-word;
