@@ -58,7 +58,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
     transition: 0.5s;
 }
 .carousel_card-img{
@@ -116,6 +116,6 @@
     margin-top: 5px;
 }
 
-.slick-prev:before, .slick-next:before{
+.slick-prev:before,.slick-next:before{
     color: #DA1212;
 }

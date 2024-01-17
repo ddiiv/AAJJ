@@ -22,6 +22,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .hub-header-card {
@@ -44,7 +45,8 @@
 .profile-actions {
   display: list-item;
   flex-direction: column;
-  padding: 1rem;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .profile-action {
@@ -54,7 +56,7 @@
   flex-direction: row;
   margin-top: 1rem;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 8px;
   padding: 1rem;
   margin-top: 1rem;
   box-shadow: rgba(9, 15, 66, 0.25) 2px 2px;
@@ -66,9 +68,14 @@
   cursor: pointer;
   transform: translateY(4%);
   transition: ease-in-out 333ms;
-  background-color: #f5f5f5;  
+  background-color: #f5f5f5;
 }
+.accountPrincipal:hover{
+  transform: none;
+  cursor: default;
+  background-color: #fff;
 
+}
 .detail-card__action {
   display: flex;
   justify-content: space-between;
@@ -90,27 +97,31 @@
 }
 
 .redirect_action--profilebutton.logOut {
-  background-color: #c00101;
-  color: #fff;
+  color: #DA1212;
   border-radius: 5px;
   padding: 0.5rem;
+  width: auto;
 }
 
 .redirect_action--profilebutton.logOut:hover {
-  background-color: #343434;
-  color: #d50000;
+  color: #000000;
 }
 
 .redirect_action--profilebutton.logOut:active {
-  background-color: #343434;
-  color: #d50000;
+  color: #DA1212;
 }
 
 .logOut-action {
   margin-top: 2rem;
   width: 100%;
 }
-
+.detail-card__title.account{
+  font-size: 1.4rem;
+  font-family: "PoppinsExtraBold";
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
+}
 .detail-card__title {
   font-size: 1.2rem;
   color: #333;
@@ -126,6 +137,89 @@
   font-size: 14px;
   line-height: 18px;
 }
+
+.profileCard__button {
+  display: flex;
+  justify-content: center;
+}
+
+/*   EditProfile   */
+
+
+.profile-action.edit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: #11468fb5 2px 2px;
+  background-color: #fff;
+  transition: ease-in-out 333ms;
+
+}
+
+.edit:hover {
+  transform: none;
+}
+
+.editProfile__button {
+  display: block;
+  width: 100%;
+  border: 0px solid;
+  background-color: #fff;
+  transition: ease-in-out 333ms;
+  font-size: 16px;
+  color: #DA1212;
+}
+
+.andres-card.editProfileTitle {
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 700;
+  color: #333;
+}
+
+.andres-card.list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.editProfileDetailTitle {
+  font-size: 16px;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-style: italic;
+  color: #919191;
+}
+
+.profile-card__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.headerEditProfile {
+  font-size: 25px;
+  font-family: "PoppinsMedium";
+  font-weight: 500;
+  color: #333;
+}
+
+.profile-card__buttons-editProfile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  width: 100%;
+}
+
 
 @media screen and (max-width:1050px) {
 
@@ -159,5 +253,35 @@
     align-items: center;
     margin-top: 2rem;
   }
+}
 
+@media screen and (max-width:724px) {
+  .profile-actions {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .profile-card__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .profile-card__buttons{
+    padding: 0rem;
+    background-color: transparent;
+    border: none;
+    
+  }
+  .hub-title__container{
+    margin-bottom: 0rem;
+  }
+  .profile-card__buttons-editProfile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 }

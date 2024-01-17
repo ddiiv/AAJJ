@@ -19,18 +19,22 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import UserProfile from './pages/UserProfile'
 //---------Context
-import { UserProvider } from './context/UserContext';
+import { UserProvider, useUserContext } from './context/UserContext';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider } from './context/ProductContext.js';
 import { SearchProvider, useSearchFunctions } from './context/SearchContext';
 //--------ApiFunctions
 import { getCategories, getProducts, getGeoLocation, getDolarBlue } from './api/apiFunctions';
+//--------Pages
 import NotFound from './pages/NotFound.js';
-import EditProfile from './pages/EditProfile.js';
-
+import EditAccountSettings from './pages/EditAccountSettings.js';
+import HaveToLogin from './components/HaveToLogin.js';
+import EditPersonalData from './pages/EditPersonalData.js';
+import ViewOrders from './pages/ViewOrders.js';
+import ViewPayMethod from './pages/ViewPayMethod.js';
 
 function App() {
-
+  const contextUser = useUserContext();
   const contextSearch = useSearchFunctions();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
@@ -64,7 +68,26 @@ function App() {
       })
     // eslint-disable-next-line
   }, [])
-
+  function isLogged() {
+    if (contextUser?.User !== null) {
+      return (
+        <>
+          <Route path='/profile' element={<UserProfile />}></Route>
+          <Route path='/cartdetail' element={<CartDetail />}></Route>
+          <Route path='/profile/account_settings' element={<EditAccountSettings />} /> 
+          <Route path='/profile/personal_data' element={<EditPersonalData />} /> 
+          <Route path={`/profile/orders_${localStorage.getItem("token")}`} element={<ViewOrders />} /> 
+          <Route path='/profile/pay_methods' element={<ViewPayMethod />} /> 
+        </>
+      )
+    } else {
+      return (
+        <>
+          <HaveToLogin />
+        </>
+      )
+    }
+  }
 
   return (
     <>
@@ -77,7 +100,7 @@ function App() {
                   <SearchProvider>
 
                     <BrowserRouter>
-                      <TopNav category={category}/>
+                      <TopNav category={category} />
                       <BottomNav category={category} />
                       <Routes>
                         <Route path='/' element={<Home />} />
@@ -93,12 +116,10 @@ function App() {
                           )
                         })}
                         <Route path={`/search=?${contextSearch?.searchInput}`} element={<Search />}></Route>
-                        <Route path='/cartdetail' element={<CartDetail />}></Route>
-                        <Route path='/profile' element={<UserProfile />}></Route>
                         <Route path='/login' element={<Login />}></Route>
                         <Route path='/register' element={<Register />}></Route>
                         <Route path='*' element={<NotFound />} />
-                        <Route path='/editprofile' element={<EditProfile />} />
+                        {isLogged()}
                       </Routes>
                     </BrowserRouter>
                     <Footer />
