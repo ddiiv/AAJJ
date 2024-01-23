@@ -65,8 +65,8 @@ const Login = () => {
 
         <>
             {modal()}
-            <main className="page">
-                <section className="containerPage">
+           
+             
                     <div className="landscape-view__container">
 
                         <div className="landscape-view__column landscape-view__column--left">
@@ -159,8 +159,8 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                </section>
-            </main>
+            
+           
         </>
     )
 }

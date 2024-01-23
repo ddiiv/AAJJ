@@ -47,6 +47,9 @@
   flex-direction: column;
   padding-left: 10%;
   padding-right: 10%;
+  background-color:#ededed;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .profile-action {
@@ -259,6 +262,8 @@
   .profile-actions {
     padding-left: 5%;
     padding-right: 5%;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
   }
 
   .profile-card__buttons {

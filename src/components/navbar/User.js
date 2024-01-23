@@ -1,5 +1,4 @@
 import React from 'react';
-import userr from '../../img/user.png'
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../../context/UserContext';
 
