@@ -9,26 +9,26 @@ const CategoryCatalog = (categorySelected) => {
   const ProductFunctions = useProductFunctions();
   /* ------------------GetProducts useEffect------------------*/
   useEffect(() => {
-       ProductFunctions.getProductByCategorySelected(categorySelected)
-       // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[categorySelected])
+    ProductFunctions.getProductByCategorySelected(categorySelected)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categorySelected])
 
-  
+
 
   return (
-    <main className="page">
-      <div className="containerPage" >
-        <div className="catalog">
-          <aside className="filter_catalog--container">
-            <Filters />
-          </aside>
-          <main className="products">
-            <CardList props={ProductFunctions?.listProduct} />
-          </main>
 
-        </div>
+
+      <div className="catalog">
+        <aside className="filter_catalog--container">
+          <Filters />
+        </aside>
+        <main className="products">
+          <CardList props={ProductFunctions?.listProduct} />
+        </main>
+
       </div>
-    </main>
+
+
   );
 }
 

@@ -74,10 +74,10 @@ function App() {
         <>
           <Route path='/profile' element={<UserProfile />}></Route>
           <Route path='/cartdetail' element={<CartDetail />}></Route>
-          <Route path='/profile/account_settings' element={<EditAccountSettings />} /> 
-          <Route path='/profile/personal_data' element={<EditPersonalData />} /> 
-          <Route path={`/profile/orders_${localStorage.getItem("token")}`} element={<ViewOrders />} /> 
-          <Route path='/profile/pay_methods' element={<ViewPayMethod />} /> 
+          <Route path='/profile/account_settings' element={<EditAccountSettings />} />
+          <Route path='/profile/personal_data' element={<EditPersonalData />} />
+          <Route path={`/profile/orders_${localStorage.getItem("token")}`} element={<ViewOrders />} />
+          <Route path='/profile/pay_methods' element={<ViewPayMethod />} />
         </>
       )
     } else {
@@ -121,8 +121,8 @@ function App() {
                         <Route path='*' element={<NotFound />} />
                         {isLogged()}
                       </Routes>
+                      <Footer />
                     </BrowserRouter>
-                    <Footer />
                   </SearchProvider>
                 </CartProvider>
               </ProductProvider>

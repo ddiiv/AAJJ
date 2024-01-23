@@ -9,7 +9,7 @@ const Home = () => {
 
    return (
       <>
-         <div className="page">
+      
             <article className="MainContainer">
                <section className="section-main__container firstSlide">
                   <CarouselComponent />
@@ -21,7 +21,7 @@ const Home = () => {
                   <HighlistProducts />
                </section>
             </article>
-         </div>
+     
       </>
    )
 

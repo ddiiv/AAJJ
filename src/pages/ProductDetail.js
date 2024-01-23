@@ -28,7 +28,7 @@ const ProductDetail = ({ productSelected }) => {
 
     return (
         <>
-            <div className="page">
+ 
                 <div className="containerPage ProductDetail-Container">
                     <section className="section-main__container">
                         <div className="ProductDetailContainer">
@@ -55,7 +55,7 @@ const ProductDetail = ({ productSelected }) => {
                 <section className="section-main__container">
                     <Recommended />
                 </section>
-            </div>
+           
         </>
     )
 }

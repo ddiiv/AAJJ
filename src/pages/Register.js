@@ -39,7 +39,6 @@ const Register = () => {
         if (UserFunctions.Logged === false) {
             return (<>
                 <div className="landscape-view__container register">
-
                     <div className="andres-card landscape-view__column landscape-view__column--right register ">
                         <div className="andres-card__content landscape-view__card-content">
                             <Formik
@@ -263,11 +262,9 @@ const Register = () => {
     }, [UserFunctions.Logged, navigate]);
 
     return (
-        <main className="page">
-            <section className="containerPage">
-                {isLogged()}
-            </section>
-        </main>
+        <>
+            {isLogged()}
+        </>
     )
 }
 export default Register;
