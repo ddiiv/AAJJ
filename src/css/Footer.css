@@ -181,6 +181,10 @@ ul {
     color: #fff;
 
 }
+.nothing--footerr__copyrights:hover{
+    color: #fff;
+    background-color: transparent;
+}
 .col-xl-4.col-lg-4.mb-50{
     margin-bottom: 1rem;
 }
