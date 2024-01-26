@@ -1,12 +1,13 @@
 import React from "react";
 import "../css/Footer.css"
 import { Link } from "react-router-dom";
-import bichostorelogo from "../img/bichologowhite.png"
+import bichostorelogo from "../img/bichologo.png"
 
 const Footer = () => {
     return (
         <>
             <footer className="footer-section">
+               <div className="ui-separator"></div> 
                 <div className="container">
                     <div className="footer-cta pt-5 pb-5">
                         <div className="row">
