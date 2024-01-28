@@ -143,6 +143,7 @@ input[type=number] { -moz-appearance:textfield; }
     .andres-form-control__itemcontainer.register{
         padding: 0;
         padding-bottom: 1rem;
+        width: 100%;
     }
     .andres-form-control--textfield.andes-form-control__field.register{
         font-size: 16px;
@@ -155,7 +156,7 @@ input[type=number] { -moz-appearance:textfield; }
         border-radius: 6px;
     }
     .row-register-form{
-        display: block;
+       gap: 10px
     }
     .login-form__actions.register{
         padding: 0rem;
@@ -198,5 +199,5 @@ input[type=number] { -moz-appearance:textfield; }
     }
     .login-form__actions.register{
         padding: 0rem;
-    }
+    }   
 }

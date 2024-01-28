@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
     const getUser = async (credentials) => { 
         let ValueToReturn = null; 
         await getUserByCredentials(credentials).then((data) => {
-            if (data !== false) {
+            if (data !== null) {
                 setUser(data.data)
                 window.localStorage.setItem("token", String.valueOf.apply(data.token))
                 window.localStorage.setItem("idU", data.data.IdUser)

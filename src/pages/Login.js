@@ -51,8 +51,9 @@ const Login = () => {
 
     function checkLogged(values) {
         context.getUser(values).then((data) => {
+            console.log(data)
             if (data === false) {
-                SetModal(true)
+                SetModal(true)  
             }
             else {
                 return navigate('/profile');
