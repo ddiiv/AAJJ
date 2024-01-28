@@ -1,8 +1,10 @@
 .landscape-view__container {
     display: flex;
-    margin: 1rem 0;
     justify-content: center;
     padding: 0 2.5rem;
+    background-color: #fbfbfb;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .landscape-view__column--left {
@@ -36,6 +38,7 @@
 .login-form__actions {
     display: flex;
     margin-top: 1rem;
+    justify-content: space-evenly;
 }
 
 .login-form .andes-button {
@@ -196,6 +199,8 @@
         justify-content: center;
         flex-direction: column;
         padding: 0 1.5rem;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
     }
 
     .landscape-view__column--left {
@@ -256,6 +261,8 @@
         justify-content: center;
         flex-direction: column;
         padding: 0 1.5rem;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
     }
 
     .landscape-view__column--left {

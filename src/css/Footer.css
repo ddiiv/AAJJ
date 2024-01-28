@@ -5,7 +5,6 @@ ul {
 .footer-section {
   background: #fff;
   position: static;
-  margin-top: 1rem;
 }
 .footer-cta {
   border-bottom: 1px solid #041562;
@@ -55,11 +54,12 @@ ul {
   line-height: 28px;
 }
 .footer-social-icon span {
-  color: #fff;
+  color: #be0a0a;
   display: block;
   font-size: 20px;
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
+  margin-bottom: 5px;
 }
 .footer-social-icon a {
   color: #fff;
@@ -234,4 +234,7 @@ ul {
 }
 .links_footer--needs{
     width: 100% !important;
+}
+.separator-ui.footer{
+  height: 2px;
 }

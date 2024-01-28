@@ -78,15 +78,14 @@ export const getGeoLocation = async (latitude, longitude) => {
     try {
         await axios.get(finalApiEndPoint)
             .then(response => {
-                localStorage.setItem('geoLocation-country',response.data.sys.country)
+                localStorage.setItem('geoLocation-country', response.data.sys.country)
                 localStorage.setItem('geoLocation-city', response.data.name)
                 localStorage.setItem('geoLocation-lat', response.data.coord.lat)
-                localStorage.setItem('geoLocation-lon',response.data.coord.lon)
-                if(response.data.sys.country === "AR")
-                {
+                localStorage.setItem('geoLocation-lon', response.data.coord.lon)
+                if (response.data.sys.country === "AR") {
                     localStorage.setItem('tradecoin', "ARG")
                 }
-                else{
+                else {
                     localStorage.setItem('tradecoin', "USD")
                 }
             })
@@ -135,21 +134,17 @@ export const getUserByCredentials = async (credentials) => {
             user: credentials.User,
             password: credentials.Password
         }
-        const { data } = await axios.post(`${baseURL}user/login`, bodyData
-        )
-        return data;
+        const { data } = await axios.post(`${baseURL}user/login`, bodyData)
+        if (data === "") {
+            return null;
+        }
+        else {
+            return data;
+        }
 
     }
     catch (e) {
-        if (e.response.status === 404) {
-            console.log('Resource could not be found!');
-        }
-        else if (e.response.status === 401) {
-            return false
-        }
-        else {
-            console.log("e.response.status")
-        }
+        console.log(e)
     }
 }
 export const getUserById = async (id) => {
@@ -218,7 +213,6 @@ export const putCardItem = async (ids) => {
         }
         const { data } = await axios.put(`${baseURL}cartitem`, bodyData, { headers })
             .then(response => {
-                // Manejar la respuesta exitosa
                 console.log('Respuesta:', response.data);
             })
         console.log(data)
