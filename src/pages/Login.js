@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useUserLogged } from "../context/UserContext";
 import * as Yup from "yup"
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import '../css/Login.css'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -19,12 +19,12 @@ const Login = () => {
 
         Password: Yup.string()
             .required("Debes poner una contraseña")
-
-
     });
+
     useEffect(() => {
         if (context.Logged === true) {
             navigate('/profile');
+            window.location.reload()
         } else {
             navigate('/login');
         }
@@ -86,6 +86,7 @@ const Login = () => {
                                     onSubmit={async (values) => {
                                         await new Promise((r) => setTimeout(r, 500));
                                         checkLogged(values);
+                                        window.location.reload()
                                     }}
                                 >
                                     <Form className="login-form">

@@ -413,7 +413,7 @@ a.searchBar {
     width: 250px;
     font-family: "PoppinsItalic";
     background: transparent;
-    color: #ffffff;
+    color: #101010;
     
 }
 
@@ -421,8 +421,7 @@ a.searchBar {
     transition: 333ms ease-out;
     outline: none;
     box-shadow: none;
-    border-bottom: 1px solid #007bff;
-    
+    border-bottom: 1px solid #007bff;   
 }
 
 .logo.aside {
