@@ -25,11 +25,9 @@ const CartDetail = () => {
         }
     }
     return (
-        <main className="page" id="cartDetail">
-            <div className="containerPage" id="cartDetail">
-                {isLogged()}
-            </div>
-        </main>
+        <>
+            {isLogged()}
+        </>
     )
 }
 export default CartDetail;

@@ -1,11 +1,14 @@
 import React from "react";
 import "../css/UserProfile.css";
 import { Link } from "react-router-dom";
+import HaveToLogin from "../components/HaveToLogin";
+import { useUserContext } from "../context/UserContext";
 
 const ViewPayMethod = () => {
-    return (
-        <main className="page" id="userProfile">
-            <div className="containerPage" id="userProfile">
+    const context = useUserContext();
+    function isLogged() {
+        if (context) {
+            return <>
                 <section className="profile-actions">
                     <div className="navigation-section__container">
                         <div className="navigation__container--content">
@@ -24,8 +27,17 @@ const ViewPayMethod = () => {
                     </div>
 
                 </section>
-            </div>
-        </main>
+                </>
+        }
+        else {
+            return <HaveToLogin />
+        }
+    }
+
+    return (
+        <>
+            {isLogged()}
+        </>
     );
 }
 

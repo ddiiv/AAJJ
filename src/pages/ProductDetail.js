@@ -52,7 +52,7 @@ const ProductDetail = ({ productSelected }) => {
                 <section className="section-main__container descriptionProductDetail">
                     <DescriptionProduct product={product} />
                 </section>
-                <section className="section-main__container">
+                <section className="section-main__container recommendedProductDetail">
                     <Recommended />
                 </section>
            

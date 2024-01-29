@@ -1,11 +1,14 @@
 import React from "react";
 import "../css/UserProfile.css";
 import { Link } from "react-router-dom";
-
+import { useUserContext } from "../context/UserContext";
+import HaveToLogin from "../components/HaveToLogin";
 const ViewOrders = () => {
-    return (
-        <main className="page" id="userProfile">
-            <div className="containerPage" id="userProfile">
+    const context = useUserContext();
+
+    function isLogged() {
+        if (context) {
+            return <>
                 <section className="profile-actions">
                     <div className="navigation-section__container">
                         <div className="navigation__container--content">
@@ -24,8 +27,16 @@ const ViewOrders = () => {
                     </div>
 
                 </section>
-            </div>
-        </main>
+            </>
+        }
+        else {
+            return <HaveToLogin />
+        }
+    }
+    return (
+        <>
+            {isLogged()}
+        </>
     );
 }
 

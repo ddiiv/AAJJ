@@ -4,6 +4,7 @@ import "../css/UserProfile.css";
 import { Link } from "react-router-dom";
 import * as Yup from "yup"
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import HaveToLogin from "../components/HaveToLogin";
 
 const EditPersonalData = () => {
     const context = useUserContext();
@@ -50,7 +51,7 @@ const EditPersonalData = () => {
             const SignupSchema = Yup.object().shape({
                 Dni: Yup.number()
                     .required("Un Dni es requerida")
-                    .meta(5,"Mínimo de numeros")
+                    .meta(5, "Mínimo de numeros")
                     .max(70000000, "No existe un dni de mas caracteres")
                     .positive("No puede ser negativo")
             });
@@ -97,12 +98,16 @@ const EditPersonalData = () => {
     }
     function DateOfBirthFormEdit() {
         if (DateOfBirthForm === false) {
-            const dateofbirth = context?.DateOfBirth
+            const dateofbirth = new Date(context?.DateOfBirth)
+            const month = dateofbirth.toLocaleString('default', { month: '2-digit' })
+            const day = dateofbirth.getDate();
+            const year = dateofbirth.getFullYear();
+
             return (<>
 
                 <div className="andres-card list-item">
                     <span className="andres-card editProfileTitle">Fecha de Cumpleaños</span>
-                    <span className="editProfileDetailTitle">{dateofbirth}</span>
+                    <span className="editProfileDetailTitle">{`${year}-${month}-${day}`}</span>
                 </div>
                 <div className="separator-ui editprofile-separator"></div>
                 <div>
@@ -116,18 +121,22 @@ const EditPersonalData = () => {
                 DateOfBirth: Yup.date()
                     .required("Una fecha es requerida")
             });
-
+            const dateofbirth = new Date(context?.DateOfBirth)
+            const month = dateofbirth.toLocaleString('default', { month: '2-digit' })
+            const day = dateofbirth.getDate();
+            const year = dateofbirth.getFullYear();
+            const formatedDate = `${year}-${month}-${day}`
             return (<>
                 <Formik
                     initialValues={{
-                        DateOfBirth: 1000 / 1 / 1
+                        DateOfBirth: formatedDate
                     }}
                     validationSchema={SignupSchema}
                     onSubmit={
                         async (values) => {
                             await new Promise((r) => setTimeout(r, 500));
                             contextUserFunctions.editProfile(values.DateOfBirth.toString(), "DateOfBirth")
-                            
+
                         }}
                 >
                     <Form className="editProdile__Forms">
@@ -156,33 +165,44 @@ const EditPersonalData = () => {
             )
         }
     }
+
+    function isLogged() {
+        if (context) {
+            return <>
+                <section className="profile-actions">
+                    <div className="navigation-section__container">
+                        <div className="navigation__container--content">
+                            <ol className="links-redirection__navigator">
+                                <li className="linkToRedirect__navigator"> <Link className="navigatorLink" to="/profile"> Mi perfil </Link> </li>
+                                {">"}
+                                <li className="linkToRedirect__navigator unavailable">Información personal</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div className="header profile-card__buttons">
+                        <h2 className="profile-card__title"> <span className="headerEditProfile">Información personal</span></h2>
+
+                        <div className="profile-card__buttons-editProfile">
+
+                            <div className="profile-action edit">
+                                {DateOfBirthFormEdit()}
+                            </div>
+                            <div className="profile-action edit">
+                                {DniFormEdit()}
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </>
+        }
+        else {
+            return <HaveToLogin />
+        }
+    }
     return (
         <>
-            <section className="profile-actions">
-                <div className="navigation-section__container">
-                    <div className="navigation__container--content">
-                        <ol className="links-redirection__navigator">
-                            <li className="linkToRedirect__navigator"> <Link className="navigatorLink" to="/profile"> Mi perfil </Link> </li>
-                            {">"}
-                            <li className="linkToRedirect__navigator unavailable">Información personal</li>
-                        </ol>
-                    </div>
-                </div>
-                <div className="header profile-card__buttons">
-                    <h2 className="profile-card__title"> <span className="headerEditProfile">Información personal</span></h2>
-
-                    <div className="profile-card__buttons-editProfile">
-
-                        <div className="profile-action edit">
-                            {DateOfBirthFormEdit()}
-                        </div>
-                        <div className="profile-action edit">
-                            {DniFormEdit()}
-                        </div>
-
-                    </div>
-                </div>
-            </section>
+            {isLogged()}
         </>
     );
 }
