@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from "react";
 import { useEffect } from "react";
-import { getUserByCredentials, getUserById, putRegisterUser } from "../api/apiFunctions";
+import { getUserByCredentials, getUserById, putRegisterUser, updateUserProfile } from "../api/apiFunctions";
 
 
 const UserContext = createContext();
@@ -19,8 +19,8 @@ export const UserProvider = ({ children }) => {
     const [Logged, setLogged] = useState(false);
     const [User, setUser] = useState(null);
 
-    const getUser = async (credentials) => { 
-        let ValueToReturn = null; 
+    const getUser = async (credentials) => {
+        let ValueToReturn = null;
         await getUserByCredentials(credentials).then((data) => {
             if (data !== null) {
                 setUser(data.data)
@@ -57,14 +57,14 @@ export const UserProvider = ({ children }) => {
             LogOut()
         }
     }
-    
+
     const authLogged = async () => {
         const token = window.localStorage.getItem("token");
         const idU = window.localStorage.getItem("idU")
         if (token !== null && User === null) {
             await getUserById(idU).then((data) => {
                 if (data?.error === "Expired token") {
-                    
+
                     setUser(null)
                     setLogged(false)
                     alert('Tu sesión ha expirado')
@@ -80,14 +80,47 @@ export const UserProvider = ({ children }) => {
             })
         }
     }
-    const registerForm = async (dataform)=>{
-       await putRegisterUser(dataform).then((data)=>{
-        if(data === 200){
-            const credentials = { User:dataform.User, Password: dataform.Password }
-            getUser(credentials)
-            
+    const registerForm = async (dataform) => {
+        await putRegisterUser(dataform).then((data) => {
+            if (data === 200) {
+                const credentials = { User: dataform.User, Password: dataform.Password }
+                getUser(credentials)
+
+            }
+        })
+    }
+
+    const editProfile = async (dataform, typedata) => {
+        switch (typedata) {
+            case "Email":
+                User.Email = dataform;
+                await updateUserProfile(User)
+                break;
+
+            case "Dni":
+                User.Dni = dataform;
+                await updateUserProfile(User)
+                break;
+
+            case "DateOfBirth":
+                User.DateOfBirth = dataform;
+                await updateUserProfile(User)
+                break;
+
+            case "User":
+                User.User = dataform;
+                await updateUserProfile(User)
+                break;
+
+            case "PhoneNumber":
+                User.PhoneNumber = dataform;
+                await updateUserProfile(User)
+                break;
+
+            default:
+                break;
         }
-       })
+        window.location.reload();
     }
 
     useEffect(() => {
@@ -95,7 +128,7 @@ export const UserProvider = ({ children }) => {
     })
 
 
-    return (<UserLogged.Provider value={{ Logged, changueLogin, getUser, LogOut, authLogged, registerForm }}>
+    return (<UserLogged.Provider value={{ Logged, editProfile, changueLogin, getUser, LogOut, authLogged, registerForm }}>
         <UserContext.Provider value={User}>
             {children}
         </UserContext.Provider>

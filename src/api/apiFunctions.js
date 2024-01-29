@@ -166,6 +166,19 @@ export const getUserById = async (id) => {
     }
 
 };
+
+export const updateUserProfile = async (User) => {
+    try {
+        const { data } = await axios.put(`${baseURL}user`,User, { headers })
+    }
+    catch (e) {
+        if (e.response.status === 404) {
+            console.log("Resource could not be found!");
+        } else {
+            console.log(e.message);
+        }
+    }
+}
 //-----------------------------------Cart---------------------------------------------------------------
 export const getCartByIdUser = async (idUser) => {
     try {
