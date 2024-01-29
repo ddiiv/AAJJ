@@ -37,7 +37,7 @@ class UserService {
     login = async (user, password) => {
         let returnEntity = null;
         console.log('Estoy en: UserService.login(user, password)');
-        
+
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
@@ -88,14 +88,15 @@ class UserService {
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pUser', sql.NChar, user?.user)
-                .input('pPassword', sql.NChar, user?.password)
-                .input('pDateCreation', sql.Date, user?.dateCreation)
-                .input('pEmail', sql.NChar, user?.email)
-                .input('pMembershipNumber', sql.Int, user?.membershipNumber)
-                .input('pDni', sql.Int, user?.dni)
-                .input('pDateOfBirth', sql.Date, user?.dateOfBirth)
-                .input('pPhonenumber', sql.NChar, user?.phoneNumber)
+                .input('pIdUser', sql.Int, user?.IdUser)
+                .input('pUser', sql.NChar, user?.User)
+                .input('pPassword', sql.NChar, user?.Password)
+                .input('pDateCreation', sql.Date, user?.DateCreation)
+                .input('pEmail', sql.NChar, user?.Email)
+                .input('pMembershipNumber', sql.Int, user?.MembershipNumber)
+                .input('pDni', sql.Int, user?.Dni)
+                .input('pDateOfBirth', sql.Date, user?.DateOfBirth)
+                .input('pPhonenumber', sql.NChar, user?.PhoneNumber)
                 .query(`
                     UPDATE [User] SET 
                         [User] = @pUser,
@@ -106,7 +107,7 @@ class UserService {
                         Dni = @pDni,
                         DateOfBirth = @pDateOfBirth,
                         Phonenumber = @pPhonenumber
-                    WHERE Id=@pId`
+                        WHERE IdUser= @pIdUser`
                 );
             rowsAffected = result.rowsAffected;
         } catch (error) {
