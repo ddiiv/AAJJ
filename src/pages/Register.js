@@ -57,7 +57,7 @@ const Register = () => {
                                     alert("Bienvenido " + values.User + " !");
                                     values.PhoneNumber = values.PhoneNumber?.toString()
                                     UserFunctions.registerForm(values)
-                                    window.location.reload()
+                                    
                                 }}
                             >
                                 <Form className="login-form register">
