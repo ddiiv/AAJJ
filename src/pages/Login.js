@@ -86,7 +86,7 @@ const Login = () => {
                                     onSubmit={async (values) => {
                                         await new Promise((r) => setTimeout(r, 500));
                                         checkLogged(values);
-                                        window.location.reload()
+                                        
                                     }}
                                 >
                                     <Form className="login-form">
