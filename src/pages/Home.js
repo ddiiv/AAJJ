@@ -10,7 +10,7 @@ const Home = () => {
    return (
       <>
       
-            <article className="MainContainer">
+            <article className="MainContainerSection">
                <section className="section-main__container firstSlide">
                   <CarouselComponent />
                </section>

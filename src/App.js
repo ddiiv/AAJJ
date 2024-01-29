@@ -69,11 +69,9 @@ function App() {
     // eslint-disable-next-line
   }, [])
   function isLogged() {
-    if (contextUser?.User !== null) {
+    if (contextUser?.IdUser !== 0) {
       return (
         <>
-          <Route path='/profile' element={<UserProfile />}></Route>
-          <Route path='/cartdetail' element={<CartDetail />}></Route>
           <Route path='/profile/account_settings' element={<EditAccountSettings />} />
           <Route path='/profile/personal_data' element={<EditPersonalData />} />
           <Route path={`/profile/orders_${localStorage.getItem("token")}`} element={<ViewOrders />} />
@@ -98,7 +96,6 @@ function App() {
               <ProductProvider>
                 <CartProvider>
                   <SearchProvider>
-
                     <BrowserRouter>
                       <TopNav category={category} />
                       <BottomNav category={category} />
@@ -120,6 +117,8 @@ function App() {
                         <Route path='/register' element={<Register />}></Route>
                         <Route path='*' element={<NotFound />} />
                         {isLogged()}
+                        <Route path='/profile' element={<UserProfile />}></Route>
+                        <Route path='/cartdetail' element={<CartDetail />}></Route>
                       </Routes>
                       <Footer />
                     </BrowserRouter>

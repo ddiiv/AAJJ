@@ -132,9 +132,11 @@ img.asideImage {
 
 }
 .section-main__container.descriptionProductDetail{
-   
     padding: 0px;
-
+    background-color: #fff;
+}
+.section-main__container.recommendedProductDetail{
+    background-color: #fff; 
 }
 
 .ProductInfoSize {

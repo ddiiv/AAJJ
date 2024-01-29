@@ -298,11 +298,11 @@ ul.topnav li a .img {
   justify-content: center;
   align-items: center;
   text-align:center;
-  
+  height: 50vh;
+
 }
 .card-havetologin{
   margin-top: 2rem;
-  background-color: #f5f5f5;
   width: 75%;
   height: 50%;
   border-radius: 10px;

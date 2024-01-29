@@ -4,6 +4,7 @@ import "../css/UserProfile.css";
 import { Link } from "react-router-dom";
 import * as Yup from "yup"
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import HaveToLogin from "../components/HaveToLogin";
 
 const EditAccountSettings = () => {
     const context = useUserContext();
@@ -222,34 +223,44 @@ const EditAccountSettings = () => {
             )
         }
     }
+    function isLogged() {
+        if (context) {
+            return <section className="profile-actions">
+                <div className="navigation-section__container">
+                    <div className="navigation__container--content">
+                        <ol className="links-redirection__navigator">
+                            <li className="linkToRedirect__navigator"> <Link className="navigatorLink" to="/profile"> Mi perfil </Link> </li>
+                            {">"}
+                            <li className="linkToRedirect__navigator unavailable">Datos de cuenta</li>
+                        </ol>
+                    </div>
+                </div>
+                <div className="header profile-card__buttons">
+                    <h2 className="profile-card__title"> <span className="headerEditProfile">Datos de cuenta</span></h2>
+                    <div className="profile-card__buttons-editProfile">
+
+                        <div className="profile-action edit">
+                            {UserFormFunction()}
+                        </div>
+                        <div className="profile-action edit">
+                            {PhoneNumberFunction()}
+                        </div>
+                        <div className="profile-action edit">
+                            {EmailFormFunction()}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+        else {
+            return <HaveToLogin />
+        }
+    }
 
     return (
-        <section className="profile-actions">
-            <div className="navigation-section__container">
-                <div className="navigation__container--content">
-                    <ol className="links-redirection__navigator">
-                        <li className="linkToRedirect__navigator"> <Link className="navigatorLink" to="/profile"> Mi perfil </Link> </li>
-                        {">"}
-                        <li className="linkToRedirect__navigator unavailable">Datos de cuenta</li>
-                    </ol>
-                </div>
-            </div>
-            <div className="header profile-card__buttons">
-                <h2 className="profile-card__title"> <span className="headerEditProfile">Datos de cuenta</span></h2>
-                <div className="profile-card__buttons-editProfile">
-
-                    <div className="profile-action edit">
-                        {UserFormFunction()}
-                    </div>
-                    <div className="profile-action edit">
-                        {PhoneNumberFunction()}
-                    </div>
-                    <div className="profile-action edit">
-                        {EmailFormFunction()}
-                    </div>
-                </div>
-            </div>
-        </section>
+        <>
+            {isLogged()}
+        </>
     );
 }
 
