@@ -1,5 +1,6 @@
 import HaveToLogin from "../components/HaveToLogin";
 import axios from 'axios';
+import LoadingPageMaradona from "../components/LoadingPageMaradona";
 const baseURL = "https://backend-aajj.onrender.com/";
 const token = window.localStorage.getItem("token");
 const headerToken = { user_token: `${token}` };
@@ -27,28 +28,61 @@ export const getCarruselImages = async () => {
 export const getProducts = async () => {
     try {
         const response = await fetch(`${baseURL}products`);
-        const data = await response.json();
-        return data;
+        if (!response.ok) {
+            window.sessionStorage.setItem("loading-info", true)
+            throw {
+                msg: response.statusText,
+                code: response.status
+            }
+
+        }
+        else {
+            const data = await response.json();
+            window.sessionStorage.setItem("loading-info", false)
+            return data;
+        }
     }
-    catch (e) {
-        console.log(e)
-        return (<> <HaveToLogin /></>)
+    catch (error) {
+        console.log(error)
+        window.sessionStorage.setItem("loading-info", true)
+
     }
 };
 export const getProductsByCategory = async (id) => {
     const response = await fetch(
         `${baseURL}product/category/${id.categorySelected}`
     );
-    const data = await response.json();
+    if (!response.ok) {
+        window.sessionStorage.setItem("loading-info", true)
+        throw {
+            msg: response.statusText,
+            code: response.status
+        }
 
-    return data;
+    }
+    else {
+        const data = await response.json();
+        window.sessionStorage.setItem("loading-info", false)
+        return data;
+    }
 };
 
 export const getProductsHighlist = async () => {
     try {
         const response = await fetch(`${baseURL}products/highlights`);
-        const data = await response.json();
-        return data;
+        if (!response.ok) {
+            window.sessionStorage.setItem("loading-info", true)
+            throw {
+                msg: response.statusText,
+                code: response.status
+            }
+
+        }
+        else {
+            const data = await response.json();
+            window.sessionStorage.setItem("loading-info", false)
+            return data;
+        }
     }
     catch (e) {
         console.log(e)
@@ -61,12 +95,22 @@ export const getProductsHighlist = async () => {
 export const getCategories = async () => {
     try {
         const response = await fetch(`${baseURL}categories`);
-        const data = await response.json();
-        return data;
+        if (!response.ok) {
+            window.sessionStorage.setItem("loading-info", true)
+            throw {
+                msg: response.statusText,
+                code: response.status
+            }
+
+        }
+        else {
+            const data = await response.json();
+            window.sessionStorage.setItem("loading-info", false)
+            return data;
+        }
     }
     catch (e) {
         console.log(e)
-        return (<> <HaveToLogin /></>)
     }
 
 };
@@ -169,7 +213,7 @@ export const getUserById = async (id) => {
 
 export const updateUserProfile = async (User) => {
     try {
-        const { data } = await axios.put(`${baseURL}user`,User, { headers })
+        const { data } = await axios.put(`${baseURL}user`, User, { headers })
     }
     catch (e) {
         if (e.response.status === 404) {

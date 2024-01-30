@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getImage } from "../api/apiFunctions";
+import LoadingPageMaradona from "./LoadingPageMaradona";
 
 const Card = ({ product }) => {
     const [products, setProducts] = useState([]);
@@ -22,6 +23,7 @@ const Card = ({ product }) => {
         }
         getImageProduct()
     }, [2])
+  
     return (
         <>
             <article className="max-w-6xl mx-auto" key={products.idProduct}>
@@ -34,9 +36,7 @@ const Card = ({ product }) => {
                                 <p className="uppercase tracking-wide text-sm font-bold text-gray-700">{products.SubCategory}</p>
                                 <p className="text-gray-700 Title"> {products.Title}</p>
                                 <p className="text-3xl text-gray-900">{localStorage.getItem("tradecoin")} {products.Price}</p>
-                            </div>
-
-                            
+                            </div>    
                         </div>
                     </div>
                 </Link>
