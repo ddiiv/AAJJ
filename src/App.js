@@ -32,13 +32,18 @@ import HaveToLogin from './components/HaveToLogin.js';
 import EditPersonalData from './pages/EditPersonalData.js';
 import ViewOrders from './pages/ViewOrders.js';
 import ViewPayMethod from './pages/ViewPayMethod.js';
+import LoadingPageMaradona from './components/LoadingPageMaradona.js';
+
 
 function App() {
+
   const contextUser = useUserContext();
   const contextSearch = useSearchFunctions();
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
+
 
     navigator.geolocation.getCurrentPosition(async position => {
       const { latitude, longitude } = position.coords;
@@ -86,7 +91,7 @@ function App() {
       )
     }
   }
-
+  
   return (
     <>
       <div className="App">
@@ -97,6 +102,7 @@ function App() {
                 <CartProvider>
                   <SearchProvider>
                     <BrowserRouter>
+                    <LoadingPageMaradona />
                       <TopNav category={category} />
                       <BottomNav category={category} />
                       <Routes>
