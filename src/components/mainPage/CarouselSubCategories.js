@@ -40,7 +40,7 @@ const CarouselSubCategories = () => {
                                         <img className="carousel_card-img" src={example} alt="example" />
                                         <div className="carousel__card--subcategories__title">
                                             <h3 className="carousel__card--subcategories__title--name">Mujer</h3>
-                                            <after className="card--subcategories__title" />
+                                            <div className="card--subcategories__title" />
                                         </div>
                                     </Link>
                                 </div>
@@ -51,7 +51,7 @@ const CarouselSubCategories = () => {
                                         <img className="carousel_card-img" src={example} alt="example" />
                                         <div className="carousel__card--subcategories__title">
                                             <h3 className="carousel__card--subcategories__title--name">Hombre</h3>
-                                            <after className="card--subcategories__title" />
+                                            <div className="card--subcategories__title" />
                                         </div>
                                     </Link>
                                 </div>
@@ -62,7 +62,7 @@ const CarouselSubCategories = () => {
                                         <img className="carousel_card-img" src={example} alt="example" />
                                         <div className="carousel__card--subcategories__title">
                                             <h3 className="carousel__card--subcategories__title--name">Niños</h3>
-                                            <after className="card--subcategories__title" />
+                                            <div className="card--subcategories__title" />
                                         </div>
                                     </Link>
                                 </div>

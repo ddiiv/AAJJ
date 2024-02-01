@@ -6,7 +6,7 @@ const HaveToLogin= () =>{
         <>
             <section className="card-havetologin-container">
                 <div className="card-havetologin">
-                    <h1 className="havetoLogin"><span className="rich"> Para realizar esta acción tienes que iniciar sesión</span> </h1>
+                    <h1 className="havetoLogin"><span className="rich" id="havetologin"> Para realizar esta acción tienes que iniciar sesión</span> </h1>
                     <button className="havetoLogin-button"><Link to="/login" className="nothing" id="havetologin">Iniciar Sesión</Link></button>
 
                 </div>

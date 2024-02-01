@@ -56,7 +56,10 @@ function App() {
 
     getCategories()
       .then((Categories) => {
-        setCategory(Categories)
+        const categorytoLowerCase = Categories?.map((categories)=>{
+          return {...categories, Name: categories.Category.toLowerCase()}
+        })
+        setCategory(categorytoLowerCase)
         return category
       })
       .catch((error) => {
@@ -91,7 +94,7 @@ function App() {
       )
     }
   }
-  
+
   return (
     <>
       <div className="App">
@@ -102,15 +105,14 @@ function App() {
                 <CartProvider>
                   <SearchProvider>
                     <BrowserRouter>
-                    <LoadingPageMaradona />
+                      <LoadingPageMaradona />
                       <TopNav category={category} />
                       <BottomNav category={category} />
                       <Routes>
                         <Route path='/' element={<Home />} />
                         {category?.map((categories) => {
-                          const categorytoLowerCase = categories.Category
                           return (
-                            <Route path={`/category/${categorytoLowerCase.toLowerCase()}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
+                            <Route path={`/category/${categories.Name}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />
                           )
                         })}
                         {products?.map((product) => {

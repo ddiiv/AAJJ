@@ -24,7 +24,8 @@ const CartDetailCardsList = () => {
     }, [cartcontext, products])
 
     function checkCartQuantity() {
-        if (products !== null) {
+        console.log(products)
+        if (products?.length !== 0) {
             return (
                 <>
                     <div className="card-wrapper">
