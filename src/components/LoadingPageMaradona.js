@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import maradona from "../img/bichologo.png"
 
 const LoadingPageMaradona = () => {
-    function loading() {
-        const loadingsesionstorage = window.sessionStorage.getItem("loading-info")
+    const [cont, setCont] = useState(10);
 
-        if (loadingsesionstorage === "true") {
+    function intervalSet() {
+        const intervalo = setInterval(() => {
+
+            setCont((prevContador) => (prevContador > 0 ? prevContador - 1 : 0));
+        }, 1000);
+
+        return () => clearInterval(intervalo);
+    }
+
+    function loading() {
+        intervalSet()
+        while (cont > 1) {
             return (<>
                 <div className="MainScreenLock">
                     <div className="center-img_maradona">
@@ -14,10 +24,8 @@ const LoadingPageMaradona = () => {
                 </div>
             </>)
         }
-        else {
-            return (<></>)
-        }
     }
+
     return (
         <>
             {loading()}

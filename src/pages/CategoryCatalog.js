@@ -5,38 +5,26 @@ import Filters from "../components/Filters";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/CategoryCatalog.css'
 import { useProductFunctions } from "../context/ProductContext";
+
 const CategoryCatalog = (categorySelected) => {
   const ProductFunctions = useProductFunctions();
-  /* ------------------GetProducts useEffect------------------*/
+
+  const [cont, setCont] = useState(2.5);
   useEffect(() => {
+
     ProductFunctions.getProductByCategorySelected(categorySelected)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categorySelected])
-  const [cont, setCont] = useState(4);
-  useEffect(() => {
-    const intervalo = setInterval(() => {
 
+    setCont(2.5)
+    const intervalo = setInterval(() => {
       setCont((prevContador) => (prevContador > 0 ? prevContador - 1 : 0));
     }, 1000);
 
     return () => clearInterval(intervalo);
-  }, []);
+  }, [categorySelected])
 
   function loading() {
-    if (cont === 0) {
-      return <>
-        <div className="catalog">
-          <aside className="filter_catalog--container">
-            <Filters />
-          </aside>
-          <main className="products">
-            <CardList props={ProductFunctions?.listProduct} />
-          </main>
-
-        </div></>
-
-    }
-    else {
+    while (cont > 1) {
       return <>
         <div className="MainScreenLock">
           <div className="center-img_maradona">
@@ -45,10 +33,20 @@ const CategoryCatalog = (categorySelected) => {
         </div>
       </>
     }
+
   }
   return (
     <>
-      {loading()}
+    {loading()}
+      <div className="catalog">
+        <aside className="filter_catalog--container">
+          <Filters />
+        </aside>
+        <main className="products">
+          <CardList props={ProductFunctions?.listProduct} />
+        </main>
+
+      </div>
     </>
   );
 }

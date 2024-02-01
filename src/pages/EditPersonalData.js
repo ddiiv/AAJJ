@@ -123,9 +123,10 @@ const EditPersonalData = () => {
             });
             const dateofbirth = new Date(context?.DateOfBirth)
             const month = dateofbirth.toLocaleString('default', { month: '2-digit' })
-            const day = dateofbirth.getDate();
+            const day = dateofbirth.toLocaleString('default', { day: '2-digit' })
             const year = dateofbirth.getFullYear();
             const formatedDate = `${year}-${month}-${day}`
+            console.log(formatedDate.toString())
             return (<>
                 <Formik
                     initialValues={{
@@ -145,7 +146,7 @@ const EditPersonalData = () => {
                             <span className="andres-card editProfileTitle">Fecha de Cumpleaños</span>
                             <Field
                                 type="date"
-                                placeholder={context?.DateOfBirth}
+                                placeholder={formatedDate}
                                 name="DateOfBirth"
                                 autoCapitalize="true"
                                 className="searchInput editProfile-forms"
@@ -157,7 +158,7 @@ const EditPersonalData = () => {
                             </span>
                         </div>
                         <div>
-                            <button className="editProfile__button" id="form_editProfile" value="submit" >Aceptar</button>
+                            <button className="editProfile__button" id="form_editProfile" type="submit" >Aceptar</button>
                         </div>
                     </Form>
                 </Formik>

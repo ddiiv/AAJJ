@@ -551,10 +551,6 @@ a.nothing#responsive__set {
         fill: #101010;
     }
 
-    .navbarContent {
-        background: rgba(250, 250, 250, 0);
-    }
-
     .carruselImg {
         height: 10rem;
     }

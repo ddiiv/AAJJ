@@ -417,13 +417,14 @@ span.close{
   width: 100%;
   height: 100%;
   padding: 2rem;
-  border-radius: 8px;
   z-index: 1002;
   animation-duration: 0.3s;
   animation-fill-mode: both;
   justify-content: center;
-    align-items: center;
-    background-color: #080808f5;
+  align-items: center;
+  background-color: #080808f5;
+  top: 0;
+  bottom: 0;
 }
 .center-img_maradona{
   display: flex;
@@ -461,4 +462,11 @@ span.close{
   to {
     opacity: 0;
   }
+}
+
+@media screen and (max-width: 458px) {
+  .rich#havetologin{
+    font-size: 20px !important;
+  }
+  
 }

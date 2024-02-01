@@ -831,10 +831,6 @@ img.productImage:hover {
     padding: 0px;
   }
 
-  main.products {
-    padding: 0px;
-  }
-
   .max-w-sm {
     width: 100%;
     max-width: 20rem;

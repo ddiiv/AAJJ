@@ -21,7 +21,6 @@ export const ProductProvider = ({ children }) => {
             })
     }, [])
     const getProductByCategorySelected = async (categorySelected) => {
-
         try {
             const products = await getProductsByCategory(categorySelected)
             if (localStorage.getItem("geoLocation-country") === "AR") {

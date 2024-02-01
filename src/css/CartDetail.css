@@ -49,6 +49,7 @@
 .card-wrapper {
     width: 100%;
     height: 100%;
+    padding: 0 2rem;
 }
 
 .cards-container {
@@ -479,5 +480,17 @@
     }
     span.richtext-gray-regular{
         font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 460px) {
+    .card-wrapper{
+        padding: 0.5rem;
+    }
+    .price-box-container#disabled-price{
+        width: 100%;
+        position:sticky;
+        top: 0;
+
+
     }
 }

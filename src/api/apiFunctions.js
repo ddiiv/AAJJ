@@ -34,7 +34,7 @@ export const getProducts = async () => {
                 msg: response.statusText,
                 code: response.status
             }
-
+            
         }
         else {
             const data = await response.json();
