@@ -12,14 +12,15 @@ const BottomNav = ({ category }) => {
         event.preventDefault();
         navigate(`/search=?${contextFunctions.searchInput}`);
     }
-   
+
     return (
         <div className='nav-bottom_categories'>
             <div className="categories_container enabled">
-                {category?.map((categories) => 
-                {
+                <li className='nav-item' ><Link to={`/indumentaria`} id="a" className='navItem'> Indumentaria </Link></li>
+                {category?.map((categories) => {
                     return <li className='nav-item' key={categories.IdCategory} ><Link to={`/category/${categories.Name}`} id="a" className='navItem'>{categories.Category}</Link></li>
                 })}
+
             </div>
             <div className="serachbox_cotainer disabled">
                 <div className="navItem disabled" id="searchBar">

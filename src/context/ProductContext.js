@@ -16,9 +16,6 @@ export const ProductProvider = ({ children }) => {
                 setProducts(Products)
                 return Products
             })
-            .catch((error) => {
-                alert(error)
-            })
     }, [])
     const getProductByCategorySelected = async (categorySelected) => {
         try {

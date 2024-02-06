@@ -33,6 +33,7 @@ import EditPersonalData from './pages/EditPersonalData.js';
 import ViewOrders from './pages/ViewOrders.js';
 import ViewPayMethod from './pages/ViewPayMethod.js';
 import LoadingPageMaradona from './components/LoadingPageMaradona.js';
+import Indumentary from './pages/Indumentary.js';
 
 
 function App() {
@@ -110,6 +111,7 @@ function App() {
                       <BottomNav category={category} />
                       <Routes>
                         <Route path='/' element={<Home />} />
+                        <Route path="/indumentaria" element={<Indumentary />} />
                         {category?.map((categories) => {
                           return (
                             <Route path={`/category/${categories.Name}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories.IdCategory} />} />

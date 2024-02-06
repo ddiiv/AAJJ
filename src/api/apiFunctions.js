@@ -1,6 +1,5 @@
-import HaveToLogin from "../components/HaveToLogin";
 import axios from 'axios';
-import LoadingPageMaradona from "../components/LoadingPageMaradona";
+
 const baseURL = "https://backend-aajj.onrender.com/";
 const token = window.localStorage.getItem("token");
 const headerToken = { user_token: `${token}` };

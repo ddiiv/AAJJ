@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react"
 import maradona from "../img/bichologo.png"
-import CardList from "../components/CardList";
 import Filters from "../components/Filters";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/CategoryCatalog.css'
 import { useProductFunctions } from "../context/ProductContext";
+import Card from "../components/Card";
+import NoProductsAvailable from "../components/NoProductsAvaible";
+import { Link } from "react-router-dom";
 
 const CategoryCatalog = (categorySelected) => {
   const ProductFunctions = useProductFunctions();
-
   const [cont, setCont] = useState(2.5);
+
   useEffect(() => {
 
     ProductFunctions.getProductByCategorySelected(categorySelected)
@@ -35,18 +36,50 @@ const CategoryCatalog = (categorySelected) => {
     }
 
   }
+
+  function NoProductsAvailableNow() {
+    if (ProductFunctions.listProduct?.length !== 0) {
+      return (
+        <>
+          <main className="products">
+
+            {ProductFunctions.listProduct?.map(product => {
+              return (
+                <Card product={product} key={product.idProduct} />
+              )
+            })
+            }
+          </main>
+        </>
+      )
+    }
+    else {
+      return <NoProductsAvailable />
+    }
+  }
+
   return (
     <>
-    {loading()}
-      <div className="catalog">
-        <aside className="filter_catalog--container">
-          <Filters />
-        </aside>
-        <main className="products">
-          <CardList props={ProductFunctions?.listProduct} />
-        </main>
-
-      </div>
+      {loading()}
+      <main id='catalog'>
+        <section className="navigation-section__container">
+          <div className="navigation__container--content">
+            <ol className="links-redirection__navigator">
+              <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/"> Home </Link> </li>
+              {">"}
+              <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/indumentaria"> Indumentaria </Link> </li>
+              {">"}
+              <li className="linkToRedirect__navigator unavailable" id="category-catalog">{ProductFunctions?.listProduct[0]?.Category}</li>
+            </ol>
+          </div>
+        </section>
+        <div className="catalog">
+          <aside className="filter_catalog--container">
+            <Filters />
+          </aside>
+          {NoProductsAvailableNow()}
+        </div>
+      </main>
     </>
   );
 }

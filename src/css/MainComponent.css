@@ -73,9 +73,10 @@
 }
 
 .carousel_card-img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
+    width: 30rem;
+    height: 20rem;
+    object-fit: fill;
     transition: 0.5s;
 }
 
@@ -136,4 +137,32 @@
 .slick-prev:before,
 .slick-next:before {
     color: #DA1212;
+}
+
+@media screen and (max-width:768px) {
+    .carousel_card-img {
+        width: 100%;
+        height: 11rem;
+        object-fit: cover;
+        transition: 0.5s;
+    }
+
+    .productsHighlist#CarouselSubCategories {
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+    }
+    
+}
+@media screen and (max-width: 458px) {
+    .carousel_card-img {
+        object-fit: cover;
+        transition: 0.5s;
+    }
+
+}
+@media screen and (max-width : 375px) {
+    .carousel_card-img {
+        height: 12rem;
+    }
 }
