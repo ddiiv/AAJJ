@@ -160,9 +160,9 @@ a.navigatorLink:hover{
   }
   .links-redirection__navigator{
     padding: 0px;
-    padding-left: 0.5rem;
     margin: 0px;
     font-size: 15px;
+    padding-top: 0.5rem;
   }
   .headerEditProfile{
     display: none;
@@ -466,6 +466,11 @@ span.close{
   text-align: center;
   font-family: "Poppins";
   font-style: italic;
+}
+.svg-right-arrow{
+  width: 29px;
+  transition: 0.3s ease-in-out;
+
 }
 @keyframes scaleIcon {
   0%, 100% {

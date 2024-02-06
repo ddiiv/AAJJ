@@ -16,6 +16,7 @@ export const SearchProvider = ({ children }) => {
     const [allProducts, setAllProducts] = useState(null);
     const [filteredProducts, setFilteredProducts] = useState(null);
     const [searchInput, setSearchInput] = useState('');
+    const [searchByInput, setSearchByInput] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,12 +38,13 @@ export const SearchProvider = ({ children }) => {
             const updateProducts = allProducts.filter((r) =>
                 r.Title && typeof r.Title === 'string' && r.Title.toLowerCase().includes(searchInput.toLowerCase())
             );
+            setSearchByInput(searchInput);
             setFilteredProducts(updateProducts);
         }
         
     }
     return (
-        <SearchFunctions.Provider value={{ handleSearchProductsByInput, searchInput, handleChangeSearch }}>
+        <SearchFunctions.Provider value={{ handleSearchProductsByInput, searchInput, handleChangeSearch, searchByInput }}>
             <SerachContext.Provider value={filteredProducts}>
                 {children}
             </SerachContext.Provider>

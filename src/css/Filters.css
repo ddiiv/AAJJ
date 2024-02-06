@@ -1,0 +1,77 @@
+.filters-form{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 1rem;
+}
+.filterSection__Size
+,.filterSection__Category,
+.filterSection__Price
+,.filterSection__Color
+,.filterSection__SubCategory{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.filterSection__Category__Item,
+.filterSection__Size__Item,
+.filterSection__Price__Item,
+.filterSection__Color__Item,
+.filterSection__SubCategory__Item{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.filters-label__products{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #333;
+    font-family: "Poppins";
+    text-transform:capitalize;
+}
+.filters-titles__sections{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    font-family: "Poppins";
+    text-transform:capitalize;
+
+}
+.titleFilter{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #DA1212;
+    font-family: "PoppinsExtraBold";
+    text-transform:capitalize;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.svg-filter-tag{
+    width: 25px;
+    fill: #DA1212;
+
+}
+.svg-filter-localcoin{
+    width: 25px;
+    fill: #026a26;
+
+}
+.bCoin{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #026a26;
+    font-family: "PoppinsExtraBold";
+    text-transform:capitalize;
+
+}
+.product-rich-text__LocalCoin-filters{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 20px;
+}

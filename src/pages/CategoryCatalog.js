@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import maradona from "../img/bichologo.png"
 import Filters from "../components/Filters";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/CategoryCatalog.css'
 import { useProductFunctions } from "../context/ProductContext";
 import Card from "../components/Card";
 import NoProductsAvailable from "../components/NoProductsAvaible";
+import { Link } from "react-router-dom";
 
 const CategoryCatalog = (categorySelected) => {
   const ProductFunctions = useProductFunctions();
@@ -44,7 +44,6 @@ const CategoryCatalog = (categorySelected) => {
           <main className="products">
 
             {ProductFunctions.listProduct?.map(product => {
-              console.log(product)
               return (
                 <Card product={product} key={product.idProduct} />
               )
@@ -62,15 +61,25 @@ const CategoryCatalog = (categorySelected) => {
   return (
     <>
       {loading()}
-      <div className="catalog">
-        <aside className="filter_catalog--container">
-          <Filters />
-        </aside>
-
-        {NoProductsAvailableNow()}
-
-
-      </div>
+      <main id='catalog'>
+        <section className="navigation-section__container">
+          <div className="navigation__container--content">
+            <ol className="links-redirection__navigator">
+              <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/"> Home </Link> </li>
+              {">"}
+              <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/indumentaria"> Indumentaria </Link> </li>
+              {">"}
+              <li className="linkToRedirect__navigator unavailable" id="category-catalog">{ProductFunctions?.listProduct[0]?.Category}</li>
+            </ol>
+          </div>
+        </section>
+        <div className="catalog">
+          <aside className="filter_catalog--container">
+            <Filters />
+          </aside>
+          {NoProductsAvailableNow()}
+        </div>
+      </main>
     </>
   );
 }

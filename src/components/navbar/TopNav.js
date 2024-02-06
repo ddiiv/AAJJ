@@ -34,9 +34,11 @@ const TopNav = ({ category }) => {
                                     </button>
                                     <div className='aside_nav--left__container'>
                                         <Link to="/" className='nothing-aside' ><img className='logo' src={bichologo} alt="" /></Link>
+                                        <li className='aside_nav-category'><Link to={`/indumentaria`} className='navItem-aside' onClick={() => setShow(false)}>Indumentaria</Link></li>
                                         {category?.map((categories) => {
                                             return <li className='aside_nav-category' key={categories.IdCategory} ><Link to={`/category/${categories.Category}`} className='navItem-aside' onClick={() => setShow(false)}>{categories.Category}</Link></li>
                                         })}
+
                                     </div>
                                 </aside>
                             </div>
