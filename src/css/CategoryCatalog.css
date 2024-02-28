@@ -739,7 +739,19 @@ img.productImage:hover {
 .max-w-sm.highlist_container--card {
   max-width: 100%;
 }
+.catalog__container--header{
 
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+
+}
+.catalog__container--header-banner{
+  width: 100%;
+  height: 100%;
+  display: block;
+
+}
 @media screen and (max-width: 600px) {
   .max-w-sm {
     max-width: 100%;

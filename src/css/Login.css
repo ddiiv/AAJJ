@@ -5,6 +5,7 @@
     background-color: #fbfbfb;
     padding-bottom: 1rem;
     padding-top: 1rem;
+  
 }
 
 .landscape-view__column--left {
@@ -18,7 +19,8 @@
     max-width: 30.875rem;
     width: 100%;
     border: 1px solid rgba(0, 0, 0, .1);
-    border-radius: 6px;
+    border-radius: 6px;    
+
 }
 
 .ticket-row__left-column--primary-text#landscape-view {

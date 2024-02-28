@@ -49,7 +49,7 @@ export const getProducts = async () => {
 };
 export const getProductsByCategory = async (id) => {
     const response = await fetch(
-        `${baseURL}product/category/${id.categorySelected}`
+        `${baseURL}product/category/${id}`
     );
     if (!response.ok) {
         window.sessionStorage.setItem("loading-info", true)

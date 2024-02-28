@@ -4,6 +4,7 @@ import Filters from "../components/Filters";
 import NoProductsAvailable from "../components/NoProductsAvaible.js";
 import { useSearchContext, useSearchFunctions } from "../context/SearchContext.js";
 import '../css/CategoryCatalog.css'
+import CatalogMembersBanner from "../img/catalogimg-members.png"
 
 const Search = () => {
     const contextSearch = useSearchContext();
@@ -30,6 +31,11 @@ const Search = () => {
     }
     return (
         <main id='catalog'>
+        <section className="catalog__container--header">
+          <div className="catalog__container--header-content">
+            <img className="catalog__container--header-banner" src={CatalogMembersBanner} alt="catalog-Banner" />
+          </div>
+        </section>
             <section className="navigation-section__container">
                 <div className="navigation__container--content">
                     <ol className="links-redirection__navigator">
