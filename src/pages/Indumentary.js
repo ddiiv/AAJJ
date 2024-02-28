@@ -6,6 +6,7 @@ import { useProductContext } from "../context/ProductContext";
 import Card from "../components/Card";
 import NoProductsAvailable from "../components/NoProductsAvaible";
 import { Link } from "react-router-dom";
+import CatalogMembersBanner from "../img/catalogimg-members.png"
 
 const Indumentary = () => {
     const ProductContext = useProductContext();
@@ -59,13 +60,16 @@ const Indumentary = () => {
         <>
             {loading()}
             <main id='catalog'>
+                <section className="catalog__container--header">
+                    <div className="catalog__container--header-content">
+                        <img className="catalog__container--header-banner" src={CatalogMembersBanner} alt="catalog-Banner" />
+                    </div>
+                </section>
                 <section className="navigation-section__container">
                     <div className="navigation__container--content">
                         <ol className="links-redirection__navigator">
                             <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/"> Home </Link> </li>
-                            <svg class="svg-right-arrow text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
-                            </svg>
+                            {">"}
                             <li className="linkToRedirect__navigator unavailable" id="category-catalog">Indumentaria</li>
                         </ol>
                     </div>

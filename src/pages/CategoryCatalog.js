@@ -6,14 +6,14 @@ import { useProductFunctions } from "../context/ProductContext";
 import Card from "../components/Card";
 import NoProductsAvailable from "../components/NoProductsAvaible";
 import { Link } from "react-router-dom";
+import CatalogMembersBanner from "../img/catalogimg-members.png"
 
-const CategoryCatalog = (categorySelected) => {
+const CategoryCatalog = ({ categorySelected }) => {
   const ProductFunctions = useProductFunctions();
   const [cont, setCont] = useState(2.5);
-
   useEffect(() => {
 
-    ProductFunctions.getProductByCategorySelected(categorySelected)
+    ProductFunctions.getProductByCategorySelected(categorySelected?.IdCategory)
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     setCont(2.5)
@@ -22,7 +22,8 @@ const CategoryCatalog = (categorySelected) => {
     }, 1000);
 
     return () => clearInterval(intervalo);
-  }, [categorySelected])
+  }, [categorySelected?.IdCategory])
+
 
   function loading() {
     while (cont > 1) {
@@ -57,11 +58,15 @@ const CategoryCatalog = (categorySelected) => {
       return <NoProductsAvailable />
     }
   }
-
   return (
     <>
       {loading()}
       <main id='catalog'>
+        <section className="catalog__container--header">
+          <div className="catalog__container--header-content">
+            <img className="catalog__container--header-banner" src={CatalogMembersBanner} alt="catalog-Banner" />
+          </div>
+        </section>
         <section className="navigation-section__container">
           <div className="navigation__container--content">
             <ol className="links-redirection__navigator">
@@ -69,7 +74,7 @@ const CategoryCatalog = (categorySelected) => {
               {">"}
               <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/indumentaria"> Indumentaria </Link> </li>
               {">"}
-              <li className="linkToRedirect__navigator unavailable" id="category-catalog">{ProductFunctions?.listProduct[0]?.Category}</li>
+              <li className="linkToRedirect__navigator unavailable" id="category-catalog">{categorySelected.Category}</li>
             </ol>
           </div>
         </section>

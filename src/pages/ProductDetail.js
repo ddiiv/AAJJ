@@ -12,6 +12,7 @@ const ProductDetail = ({ productSelected }) => {
     const productDetail = productSelected
 
     const fetchImage = async () => {
+        console.log(productSelected)
         const res = await getImage(productDetail.Image)
         const url = await res.url;
         setProduct({
@@ -23,8 +24,8 @@ const ProductDetail = ({ productSelected }) => {
 
     useEffect(() => {
         fetchImage();
-    });
-
+    },[]);
+    
 
     return (
         <>

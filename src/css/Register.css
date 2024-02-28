@@ -22,6 +22,7 @@
     width: 100%;
     margin-left: 2rem;
     max-width: 100%;
+
 }
 
 .section_andres-form__left.register {
@@ -121,9 +122,15 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none; 
   margin: 0; 
 }
-
+.landscape-view__container.register{
+    min-height: 75vw;
+    
+}
 input[type=number] { -moz-appearance:textfield; }
 @media screen and (max-width:1024px) {
+    .landscape-view__container.register{
+        height: 100%;
+    }
     .login-form.register{
         padding: 0rem;
     }
@@ -200,4 +207,82 @@ input[type=number] { -moz-appearance:textfield; }
     .login-form__actions.register{
         padding: 0rem;
     }   
+}
+@media screen and (min-width:2000px) {
+    .landscape-view__column--right.register{
+        width: 50%;
+        min-width: 50%;
+    
+    }
+    .landscape-view__column--left.register{
+        width: 25%;
+        min-width: 25%;
+    }
+    .login-form.register{
+        padding: 2rem;
+    }
+    .andres-form-label-container.register{
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: normal;
+    }
+    .andres-form-control__itemcontainer.register{
+        padding: 1rem;
+    }
+    .andres-form-control--textfield.andes-form-control__field.register{
+        font-size: 16px;
+        height: auto;
+        line-height: 22px;
+        margin: 0;
+        width: 30rem;
+        padding: 0.8125em 0.75em;
+        border: 0px solid rgba(0, 0, 0, .1);
+        border-radius: 6px;
+    }
+    .row-register-form{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    .login-form__actions.register{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+    }
+    .andres-button.register{
+        width: 100%;
+        max-width: 30rem;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #c00000;
+        border-radius: 25px ;
+    }
+    .andres-button__content.register{
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        text-align: center;
+        white-space: nowrap;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .landscape-view__container.register{
+        min-height: 75vw;
+        
+    }
+    *{
+        transform: scale(1.0025);
+    }
+    
 }
