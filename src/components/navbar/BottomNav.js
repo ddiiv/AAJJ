@@ -2,11 +2,12 @@ import { BrowserRouter as Routes, Link } from "react-router-dom";
 import '../../css/NavBar.css'
 import { useSearchFunctions } from "../../context/SearchContext";
 import { useNavigate } from "react-router-dom";
-
+import { useFiltersFunctions } from "../../context/FiltersContext";
 
 const BottomNav = ({ category }) => {
     const navigate = useNavigate();
     const contextFunctions = useSearchFunctions();
+    const filters = useFiltersFunctions();
 
     const redurectSubmit = (event) => {
         event.preventDefault();
@@ -18,7 +19,7 @@ const BottomNav = ({ category }) => {
             <div className="categories_container enabled">
                 <li className='nav-item' ><Link to={`/indumentaria`} id="a" className='navItem'> Indumentaria </Link></li>
                 {category?.map((categories) => {
-                    return <li className='nav-item' key={categories.IdCategory} ><Link to={`/category=${categories.Name}`} id="a" className='navItem'>{categories.Category}</Link></li>
+                    return <li className='nav-item' key={categories.IdCategory} ><Link to={`/indumentaria/${categories.Name}`} id="a" className='navItem'  name="category" value={categories.Name} onClick={filters.handleSwitchFilter}>{categories.Category}</Link></li>
                 })}
 
             </div>

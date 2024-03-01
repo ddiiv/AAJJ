@@ -65,6 +65,24 @@ export const getProductsByCategory = async (id) => {
         return data;
     }
 };
+export const getProductsBySubCategory = async (id) => {
+    const response = await fetch(
+        `${baseURL}product/subcategory/${id}`
+    );
+    if (!response.ok) {
+        window.sessionStorage.setItem("loading-info", true)
+        throw {
+            msg: response.statusText,
+            code: response.status
+        }
+
+    }
+    else {
+        const data = await response.json();
+        window.sessionStorage.setItem("loading-info", false)
+        return data;
+    }
+};
 
 export const getProductsHighlist = async () => {
     try {

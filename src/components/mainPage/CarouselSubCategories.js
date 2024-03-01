@@ -6,8 +6,14 @@ import { Link } from "react-router-dom";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useFiltersFunctions } from "../../context/FiltersContext";
 
-const CarouselSubCategories = () => {
+const CarouselSubCategories = ({SubCategory}) => {
+    const Men = SubCategory[0]?.SubCategory
+    const Women = SubCategory[1]?.SubCategory
+    const Kids = SubCategory[2]?.SubCategory
+    const filters = useFiltersFunctions();
+    
     const settings = {
         useTransform: true,
         autoplay: true,
@@ -46,7 +52,7 @@ const CarouselSubCategories = () => {
                         <Slider  {...settings}>
                             <div className="carousel__card--subcategories">
                                 <div className="carousel__card--subcategories__img">
-                                    <Link className="nothing cardSubcategories">
+                                    <Link className="nothing cardSubcategories" to={`/indumentaria/gender=${Women}`} name="subCategory" value={Women} onClick={filters.handleSwitchFilter}>
                                         <img className="carousel_card-img" src={femeninoaajjj} alt="femeninoaajjj" />
                                         <div className="carousel__card--subcategories__title">
                                             <h3 className="carousel__card--subcategories__title--name">Mujer</h3>
@@ -57,7 +63,7 @@ const CarouselSubCategories = () => {
                             </div>
                             <div className="carousel__card--subcategories">
                                 <div className="carousel__card--subcategories__img">
-                                    <Link className="nothing cardSubcategories">
+                                    <Link className="nothing cardSubcategories" to={`/indumentaria/gender=${Men}`} name="subCategory" value={Men} onClick={filters.handleSwitchFilter}>
                                         <img className="carousel_card-img" src={hombreaajj} alt="hombreaajj" />
                                         <div className="carousel__card--subcategories__title">
                                             <h3 className="carousel__card--subcategories__title--name">Hombre</h3>
@@ -68,7 +74,7 @@ const CarouselSubCategories = () => {
                             </div>
                             <div className="carousel__card--subcategories">
                                 <div className="carousel__card--subcategories__img">
-                                    <Link className="nothing cardSubcategories">
+                                    <Link className="nothing cardSubcategories" to={`/indumentaria/gender=${Kids}`} name="subCategory" value={Kids} onClick={filters.handleSwitchFilter}>
                                         <img className="carousel_card-img" src={inferioresaajj} alt="inferioresaajj" />
                                         <div className="carousel__card--subcategories__title">
                                             <h3 className="carousel__card--subcategories__title--name">Niños</h3>

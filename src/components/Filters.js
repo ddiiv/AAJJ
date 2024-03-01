@@ -1,16 +1,100 @@
-import React, { useEffect, useState } from "react"
-import { getCategories, getSizes, getSubCategories } from "../api/apiFunctions"
+import React, { useEffect } from "react"
 import { useFiltersContext } from "../context/FiltersContext"
 import { useFiltersFunctions } from "../context/FiltersContext"
 import "../css/Filters.css"
+import { useProductFunctions } from "../context/ProductContext"
 
-
-const Filters = () => {
-
+const Filters = ({filterToQuit}) => {
+  console.log(filterToQuit)
+  const ProductsFR = useProductFunctions()
   const filters = useFiltersContext()
-  const { handleSwitchFilter } = useFiltersFunctions()
+  const filterFunctions = useFiltersFunctions()
+  const handleSwitchFilter = filterFunctions?.handleSwitchFilter
+  const filterData = filterFunctions?.filtersData
 
-console.log(filters)
+  const SelectedCategory = filters.selectedCategory
+  const SelectedSubCategory = filters.selectedSubCategory
+  const SelectedSize = filters.selectedSize
+  const SelectedRangePrice = filters.selectedRangePrice
+  const SelectedColor = filters.selectedColor
+
+
+  useEffect(() => {
+    ProductsFR.filterProductsBySelected()
+    // eslint-disable-next-line
+  }, [filters])
+
+
+  function filterCleaner() {
+    if (SelectedCategory.length === 0 && SelectedSubCategory.length === 0 && SelectedSize.length === 0 && SelectedRangePrice.length === 0 && SelectedColor.length === 0) {
+      return (
+        <div className="filterSection__Cleaner">
+          <p className="notfound-text filters">No se seleccionaron filtros</p>
+        </div>
+      )
+    }
+    else {
+
+      return (
+        <section className="filterSection__cleaner">
+          <div className="filterSection__container">
+            {SelectedCategory?.map((category, index) => (
+              <article className="filterSelected_container" key={index}>
+                <button className="filterSelected_button" name="category" value={category} onClick={handleSwitchFilter}>
+                  {category}
+                  <svg className="filterSelected_close-svg" viewBox="0 0 20 20">
+                    <path d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+                  </svg>
+                </button>
+              </article>
+            ))}
+            {SelectedSubCategory?.map((subCategory, index) => (
+              <article className="filterSelected_container" key={index}>
+                <button className="filterSelected_button" name="subCategory" value={subCategory} onClick={handleSwitchFilter}>
+                  {subCategory}
+                  <svg className="filterSelected_close-svg" viewBox="0 0 20 20">
+                    <path d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+                  </svg>
+                </button>
+              </article>
+            ))}
+            {SelectedSize?.map((size, index) => (
+              <article className="filterSelected_container" key={index}>
+                <button className="filterSelected_button" name="size" value={size} onClick={handleSwitchFilter}>
+                  {size}
+                  <svg className="filterSelected_close-svg" viewBox="0 0 20 20">
+                    <path d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+                  </svg>
+                </button>
+              </article>
+            ))}
+            {SelectedRangePrice?.map((rangePrice, index) => (
+              <article className="filterSelected_container" key={index}>
+                <button className="filterSelected_button" name="rangePrice" value={rangePrice} onClick={handleSwitchFilter}>
+                  ${rangePrice.min}- ${rangePrice.max}
+                  <svg className="filterSelected_close-svg" viewBox="0 0 20 20">
+                    <path d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+                  </svg>
+                </button>
+              </article>
+            ))}
+            {SelectedColor?.map((color, index) => (
+              <article className="filterSelected_container" key={index}>
+                <button className="filterSelected_button" name="color" value={color} onClick={handleSwitchFilter}>
+                  {color}
+                  <svg className="filterSelected_close-svg" viewBox="0 0 20 20">
+                    <path d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+                  </svg>
+                </button>
+              </article>
+            ))}
+          </div>
+          <button className="filters-button__cleaner" onClick={filterFunctions?.cleanFilters}>Limpiar Filtros</button>
+        </section>
+      )
+    }
+  }
+
   function localCoin() {
     if (localStorage.getItem("geoLocation-country") === "AR") {
       return (<>
@@ -42,27 +126,27 @@ console.log(filters)
           <path d="M18 3h-5.7a2 2 0 0 0-1.4.6L3.6 11a2 2 0 0 0 0 2.8l6.6 6.6a2 2 0 0 0 2.8 0l7.4-7.5a2 2 0 0 0 .6-1.4V6a3 3 0 0 0-3-3Zm-2.4 6.4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z" />
         </svg>
 
-
-
       </h2>
-    
+      {
+        filterCleaner()
+      }
       <section>
         <div className="vertical-buttons">
           <form className="filters-form">
             <div className="filterSection__Category">
               <h3 className="filters-titles__sections">Deporte</h3>
-              {filters?.category.map((category) => (
+              {filterData?.category.map((category) => (
                 <div key={category.IdCategory} className="filterSection__Category__Item">
-                  <input className="filters-checkbox__products" type="checkbox" id={category.IdCategory} name="category" value={category.Category} onChange={handleSwitchFilter}  />
+                  <input className="filters-checkbox__products" type="checkbox" id={category.IdCategory} name="category" value={category.Category} onChange={handleSwitchFilter} />
                   <label className="filters-label__products" htmlFor={category.IdCategory}>{category.Category}</label>
                 </div>
               ))}
             </div>
             <div className="filterSection__SubCategory">
               <h3 className="filters-titles__sections">Generos</h3>
-              {filters?.subCategory.map((subCategory, index) => (
+              {filterData?.subCategory.map((subCategory, index) => (
                 <div key={index} className="filterSection__SubCategory__Item">
-                  <input className="filters-checkbox__products" type="checkbox" id={subCategory.IdSubCategory} name="subCategory" value={subCategory.SubCategory} onChange={handleSwitchFilter}  />
+                  <input className="filters-checkbox__products" type="checkbox" id={subCategory.IdSubCategory} name="subCategory" value={subCategory.SubCategory} onChange={handleSwitchFilter} />
                   <label className="filters-label__products" >{subCategory.SubCategory}</label>
                 </div>
               )
@@ -70,28 +154,30 @@ console.log(filters)
             </div>
             <div className="filterSection__Size">
               <h3 className="filters-titles__sections">Talles</h3>
-              {filters?.size.map((size, index) => (
+              {filterData?.size.map((size, index) => (
                 <div key={index} className="filterSection__Size__Item">
-                  <input className="filters-checkbox__products" type="checkbox" id={size.IdSize} name="size" value={size.size} onChange={handleSwitchFilter}  />
+                  <input className="filters-checkbox__products" type="checkbox" id={size.IdSize} name="size" value={size.size} onChange={handleSwitchFilter} />
                   <label className="filters-label__products" >{size.size}</label>
                 </div>
               ))}
             </div>
-            <div className="filterSection__Price">
-              <h3 className="filters-titles__sections">Precio</h3>
-              <div className="filterSection__Price__Item">
-                <input className="filters-checkbox__products" type="checkbox" id="price1" name="price1" value="price1" />
-                <label className="filters-label__products" >Menor a $20.000</label>
+
+              <div className="filterSection__Price">
+                <h3 className="filters-titles__sections">Precio</h3>
+                <div className="filterSection__Price__Item">
+                  <input className="filters-checkbox__products radio" type="radio" id="price1" name="rangePrice" value={JSON.stringify({ min: 0, max: 10000 })} onChange={handleSwitchFilter} />
+                  <label className="filters-label__products" >Menor a $10.000</label>
+                </div>
+                <div className="filterSection__Price__Item">
+                  <input className="filters-checkbox__products radio" type="radio" id="price2" name="rangePrice" value={JSON.stringify({ min: 10000, max: 20000 })} onChange={handleSwitchFilter} />
+                  <label className="filters-label__products" >$10.000 - $20.000</label>
+                </div>
+                <div className="filterSection__Price__Item">
+                  <input className="filters-checkbox__products radio" type="radio" id="price3" name="rangePrice" value={JSON.stringify({ min: 20000, max: 1000000 })} onChange={handleSwitchFilter} />
+                  <label className="filters-label__products">Mayor a $20.000</label>
+                </div>
               </div>
-              <div className="filterSection__Price__Item">
-                <input className="filters-checkbox__products" type="checkbox" id="price2" name="price2" value="price2" />
-                <label className="filters-label__products" >$20.000 - $50.000</label>
-              </div>
-              <div className="filterSection__Price__Item">
-                <input className="filters-checkbox__products" type="checkbox" id="price3" name="price3" value="price3" />
-                <label className="filters-label__products">Mayor a $50.000</label>
-              </div>
-            </div>
+    
             <div className="filterSection__Color">
               <h3 className="filters-titles__sections">Color</h3>
               <ul>

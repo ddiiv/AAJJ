@@ -5,7 +5,7 @@ import CarouselSubCategories from "../components/mainPage/CarouselSubCategories.
 import '../css/MainComponent.css'
 
 
-const Home = () => {
+const Home = ({SubCategory}) => {
 
    return (
       <>
@@ -15,7 +15,7 @@ const Home = () => {
                   <CarouselComponent />
                </section>
                <section className="section-main__container">
-                  <CarouselSubCategories />
+                  <CarouselSubCategories SubCategory={SubCategory} />
                </section>
                <section className="section-main__container">
                   <HighlistProducts />

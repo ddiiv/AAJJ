@@ -76,8 +76,6 @@ export const CartProvider = ({ children }) => {
 
                 if (cart.IdCartItem === 0 && !data.error) {
                     if (sesionCountry === "US") {
-
-
                         data?.map(a => {
                             let i = 0;
                             a.Price = parseFloat((a.Price / actualUsd).toFixed(3))
@@ -146,7 +144,6 @@ export const CartProvider = ({ children }) => {
         if (idsToPutQuantity && cart) {
             await putCartItemQuantity(idsToPutQuantity).then((data) => {
                 if (data) {
-
                     const idcart = idsToPutQuantity.idCartItem;
                     let i;
                     let updateCart = null;
@@ -166,7 +163,6 @@ export const CartProvider = ({ children }) => {
                     }
                     setCart(updateCart);
                     sumQuantityCart(updateCart);
-
                     return updateCart
                 }
 
