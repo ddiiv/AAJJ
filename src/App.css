@@ -359,7 +359,7 @@ ul.topnav li a .img {
 .nothing--profile{
   text-decoration: none;
   color: #000;
-  padding: 0px;
+  padding: 0 1rem;
   float: none;
   width: 100%;
 }
