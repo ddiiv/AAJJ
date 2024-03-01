@@ -12,67 +12,66 @@ export function useFiltersFunctions() {
 }
 
 export const FiltersProvider = ({ children }) => {
+
     const initialValues = {
         category: [],
         subCategory: [],
-        size: [],
+        size: []
+    }
+    const initialValuesSelected = {
         selectedCategory: [],
         selectedSubCategory: [],
         selectedSize: [],
         selectedRangePrice: [],
         selectedColor: []
     }
-
-    const [filters, setFilters] = useState(initialValues);
+    const [filtersData, setFiltersData] = useState(initialValues);
+    const [filters, setFilters] = useState(initialValuesSelected);
 
     useEffect(() => {
         getCategories()
             .then(Categories => {
-                setFilters(prev => ({ ...prev, category: Categories }))
+                setFiltersData(prev => ({ ...prev, category: Categories }))
             })
 
         getSubCategories()
             .then(SubCategory => {
-                setFilters(prev => ({ ...prev, subCategory: SubCategory }))
+                setFiltersData(prev => ({ ...prev, subCategory: SubCategory }))
             })
 
         getSizes()
             .then(Sizes => {
-                setFilters(prev => ({ ...prev, size: Sizes }))
+                setFiltersData(prev => ({ ...prev, size: Sizes }))
             })
 
     }, [])
 
     function handleSwitchFilter(e) {
-        if ( e.target.checked === true) {
-
+        if (e.target.checked === true) {
             switch (e.target.name) {
                 case "category":
                     setFilters(prev => ({ ...prev, selectedCategory: [...prev.selectedCategory, e.target.value] }))
-                    console.log(e.target.value)
                     break;
                 case "subCategory":
                     setFilters(prev => ({ ...prev, selectedSubCategory: [...prev.selectedSubCategory, e.target.value] }));
-                    console.log(e.target.value)
                     break;
                 case "size":
                     setFilters(prev => ({ ...prev, selectedSize: [...prev.selectedSize, e.target.value] }));
-                    console.log(e.target.value)
                     break;
                 case "color":
                     setFilters(prev => ({ ...prev, selectedColor: [...prev.selectedColor, e.target.value] }));
-
                     break;
                 case "rangePrice":
-                    setFilters(prev => ({ ...prev, selectedRangePrice: [...prev.selectedRangePrice, e.target.value] }));
 
+                    const value = JSON.parse(e.target.value);
+                    setFilters(prev => ({ ...prev, selectedRangePrice: [value] }));
                     break;
                 default:
                     console.log("No se selecciono nada")
                     break;
             }
         }
-        else{
+        else {
             switch (e.target.name) {
                 case "category":
                     setFilters(prev => ({ ...prev, selectedCategory: prev.selectedCategory.filter(category => category !== e.target.value) }))
@@ -87,19 +86,24 @@ export const FiltersProvider = ({ children }) => {
                     setFilters(prev => ({ ...prev, selectedColor: prev.selectedColor.filter(color => color !== e.target.value) }));
                     break;
                 case "rangePrice":
-                    setFilters(prev => ({ ...prev, selectedRangePrice: prev.selectedRangePrice.filter(rangePrice => rangePrice !== e.target.value) }));
+                    setFilters(prev => ({ ...prev, selectedRangePrice: []}));
                     break;
                 default:
                     console.log("No se selecciono nada")
                     break;
+
             }
         }
+
     }
 
+    function cleanFilters() {
+        setFilters(initialValuesSelected)
+    }
 
     return (
         <FiltersContext.Provider value={filters}>
-            <FiltersFunctionsContext.Provider value={{ handleSwitchFilter }}>
+            <FiltersFunctionsContext.Provider value={{ handleSwitchFilter, filtersData, cleanFilters }}>
                 {children}
             </FiltersFunctionsContext.Provider>
         </FiltersContext.Provider>

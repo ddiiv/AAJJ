@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react"
 import maradona from "../img/bichologo.png"
 import Filters from "../components/Filters";
 import '../css/CategoryCatalog.css'
-import { useProductContext } from "../context/ProductContext";
+import { useProductFunctions } from "../context/ProductContext";
 import Card from "../components/Card";
 import NoProductsAvailable from "../components/NoProductsAvaible";
 import { Link } from "react-router-dom";
 import CatalogMembersBanner from "../img/catalogimg-members.png"
 
 const Indumentary = () => {
-    const ProductContext = useProductContext();
+    const ProductContext = useProductFunctions();
     const [cont, setCont] = useState(2.5);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const Indumentary = () => {
                 <>
                     <main className="products">
 
-                        {ProductContext?.map(product => {
+                        {ProductContext.filteredProducts?.map(product => {
                             return (
                                 <Card product={product} key={product.idProduct} />
                             )

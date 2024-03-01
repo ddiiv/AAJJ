@@ -8,20 +8,20 @@ import NoProductsAvailable from "../components/NoProductsAvaible";
 import { Link } from "react-router-dom";
 import CatalogMembersBanner from "../img/catalogimg-members.png"
 
-const CategoryCatalog = ({ categorySelected }) => {
+const SubCategory = ({ subCategorySelected }) => {
   const ProductFunctions = useProductFunctions();
   const [cont, setCont] = useState(2.5);
-  
+
   useEffect(() => {
-    ProductFunctions.getProductByCategorySelected(categorySelected?.IdCategory)
+    ProductFunctions.getProductBySubCategorySelected(subCategorySelected?.IdSubCategory)
     setCont(2.5)
     const intervalo = setInterval(() => {
       setCont((prevContador) => (prevContador > 0 ? prevContador - 1 : 0));
     }, 1000);
 
-    return () => clearInterval(intervalo);
+    return () => clearInterval(intervalo); 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [categorySelected?.IdCategory])
+  }, [subCategorySelected?.IdSubCategory])
 
 
   function loading() {
@@ -38,12 +38,13 @@ const CategoryCatalog = ({ categorySelected }) => {
   }
 
   function NoProductsAvailableNow() {
-    if (ProductFunctions.listProduct?.length !== 0) {
+
+    if (ProductFunctions.filteredProducts?.length !== 0) {
       return (
         <>
           <main className="products">
 
-            {ProductFunctions.listProduct?.map(product => {
+            {ProductFunctions.filteredProducts?.map(product => {
               return (
                 <Card product={product} key={product.idProduct} />
               )
@@ -73,13 +74,13 @@ const CategoryCatalog = ({ categorySelected }) => {
               {">"}
               <li className="linkToRedirect__navigator" id="category-catalog"> <Link className="navigatorLink" to="/indumentaria"> Indumentaria </Link> </li>
               {">"}
-              <li className="linkToRedirect__navigator unavailable" id="category-catalog">{categorySelected.Category}</li>
+              <li className="linkToRedirect__navigator unavailable" id="category-catalog">{subCategorySelected.SubCategory}</li>
             </ol>
           </div>
         </section>
         <div className="catalog">
           <aside className="filter_catalog--container">
-            <Filters filterToQuit={categorySelected.Category} />
+            <Filters filterToQuit={subCategorySelected.SubCategory} />
           </aside>
           {NoProductsAvailableNow()}
         </div>
@@ -88,4 +89,4 @@ const CategoryCatalog = ({ categorySelected }) => {
   );
 }
 
-export default CategoryCatalog;
+export default SubCategory;

@@ -26,7 +26,7 @@ import { SearchProvider, useSearchFunctions } from './context/SearchContext';
 import { FiltersProvider } from './context/FiltersContext';
 
 //--------ApiFunctions
-import { getCategories, getProducts, getGeoLocation, getDolarBlue } from './api/apiFunctions';
+import { getCategories, getProducts, getGeoLocation, getDolarBlue, getSubCategories } from './api/apiFunctions';
 
 //--------Pages
 import NotFound from './pages/NotFound.js';
@@ -37,17 +37,16 @@ import ViewOrders from './pages/ViewOrders.js';
 import ViewPayMethod from './pages/ViewPayMethod.js';
 import LoadingPageMaradona from './components/LoadingPageMaradona.js';
 import Indumentary from './pages/Indumentary.js';
-
+import SubCategory from './pages/SubCategoryCatalog.js';
 
 function App() {
 
   const contextUser = useUserContext();
   const contextSearch = useSearchFunctions();
-  const contextFilters = useSearchFunctions();
 
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
-
+  const [subCategory, setSubCategories] = useState([]);
   useEffect(() => {
 
 
@@ -80,6 +79,12 @@ function App() {
       .catch((error) => {
         alert(error)
       })
+    getSubCategories()
+      .then((SubCategories) => {
+        setSubCategories(SubCategories)
+        return subCategory
+      })
+      .catch((error) => console.log(error))
     // eslint-disable-next-line
   }, [])
   function isLogged() {
@@ -108,19 +113,27 @@ function App() {
           <article className="MainContainer">
             <UserProvider>
               <CartProvider>
-                <ProductProvider>
+                <FiltersProvider>
                   <SearchProvider>
-                    <FiltersProvider>
+                    <ProductProvider>
                       <BrowserRouter>
                         <LoadingPageMaradona />
                         <TopNav category={category} />
                         <BottomNav category={category} />
                         <Routes>
-                          <Route path='/' element={<Home />} />
+                          <Route path='/' element={<Home SubCategory={subCategory} />} />
                           <Route path="/indumentaria" element={<Indumentary />} />
+                          {subCategory?.map((subcategory) => {
+                            return (
+
+                              <Route path={`/indumentaria/gender=${subcategory.SubCategory}`} key={subcategory.IdSubCategory} element={<SubCategory subCategorySelected={subcategory} />} />
+                            )
+                          })
+
+                          }
                           {category?.map((categories) => {
                             return (
-                              <Route path={`/category=${categories.Name}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories} />} />
+                              <Route path={`/indumentaria/${categories.Name}`} key={categories.IdCategory} element={<CategoryCatalog categorySelected={categories} />} />
                             )
                           })}
                           {products?.map((product) => {
@@ -138,9 +151,9 @@ function App() {
                         </Routes>
                         <Footer />
                       </BrowserRouter>
-                    </FiltersProvider>
+                    </ProductProvider>
                   </SearchProvider>
-                </ProductProvider>
+                </FiltersProvider>
               </CartProvider>
             </UserProvider>
           </article>
