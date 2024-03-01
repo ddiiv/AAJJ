@@ -11,8 +11,8 @@ export const getById = async(req, res) =>{
 export const getByIdCategory = async(req, res) =>{
     res.send(await new ProductService().getByIdCategory(req.params.id))
 }
-export const getBySubCategory = async(req, res) =>{
-    res.send(await new ProductService().getBySubCategory(req.params.subcategory))
+export const getByIdSubCategory = async(req, res) =>{
+    res.send(await new ProductService().getByIdSubCategory(req.params.id))
 }
 export const getHighlights = async(req, res) =>{
 	res.send(await new ProductService().getHighlights());

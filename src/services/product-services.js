@@ -104,6 +104,31 @@ class ProductService {
         }
         return returnArray;
     }
+    getByIdSubCategory = async (id) => {
+        let returnArray = null;
+        console.log('Estoy en: ProductService.getBySubCategory(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query(`
+                    SELECT P.idProduct, C.Category, S.SubCategory, I.Image, P.Title, P.Price, P.Description, P.Enabled, P.Material
+                    FROM Product AS P
+                    INNER JOIN SubCategory AS S
+                    ON S.IdSubCategory = P.IdSubCategory
+                    INNER JOIN Category AS C
+                    ON C.IdCategory = P.IdCategory
+                    INNER JOIN ImageProduct AS I 
+                    ON I.idProduct = P.idProduct
+                    WHERE S.IdSubCategory = @pId
+                `);
+            returnArray = result.recordsets[0];
+        }
+        catch (error) {
+            console.log(error);
+        }
+        return returnArray;
+    }
 
     insert = async (product) => {
         let rowsAffected = 0;
